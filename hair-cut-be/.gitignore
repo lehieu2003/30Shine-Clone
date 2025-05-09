@@ -1,0 +1,8 @@
+node_modules
+# Keep environment variables out of version control
+products-dataset
+
+generated/
+**/generated/
+bun.lock
+.vscode

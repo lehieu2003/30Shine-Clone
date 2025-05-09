@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"module": "esnext",
+		"target": "esnext",
+		"baseUrl": ".",
+		"moduleResolution": "node",
+		"checkJs": true, // ⚠️ Đây là cái giúp kiểm tra lỗi import
+		"allowJs": true
+	},
+	"exclude": ["node_modules", "./eslint.config.js"]
+}
