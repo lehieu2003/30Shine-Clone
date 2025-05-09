@@ -89,12 +89,7 @@ function RouteComponent() {
               >
                 Trang chủ
               </a>
-              <a
-                href="/about"
-                className="text-md font-medium hover:text-blue-700 transition-colors active:text-blue-700"
-              >
-                Về 30Shine
-              </a>
+
               <a
                 href="/shop"
                 className="text-md font-medium hover:text-blue-700 transition-colors active:text-blue-700"
@@ -124,6 +119,12 @@ function RouteComponent() {
                 className="text-md font-medium hover:text-blue-700 transition-colors active:text-blue-700"
               >
                 Nụ cười DV
+              </a>
+              <a
+                href="/about"
+                className="text-md font-medium hover:text-blue-700 transition-colors active:text-blue-700"
+              >
+                Về 30Shine
               </a>
             </nav>
           </div>

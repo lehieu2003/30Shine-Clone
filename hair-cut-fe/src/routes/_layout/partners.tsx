@@ -12,19 +12,62 @@ import {
 } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { CheckCircle, ChevronRight, ExternalLink } from 'lucide-react'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
 
 export const Route = createFileRoute('/_layout/partners')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
+  const brands = [
+    {
+      name: 'SNP ACSYS For Men',
+      path: 'https://static.30shine.com/shop-admin/2022/01/07/30SM4WSK-download.png',
+    },
+    {
+      name: '30SHINE',
+      path: 'https://static.30shine.com/shop-admin/2023/05/19/30S7CWIB-30shine-shop.jpg',
+    },
+
+    {
+      name: 'SKIN&DR',
+      path: 'https://static.30shine.com/shop-admin/2023/03/20/30SJX0WM-dr-for-skin.jpg',
+    },
+    {
+      name: 'REUZEL',
+      path: 'https://static.30shine.com/shop-admin/2022/01/07/30SHJGCY-reuzel.jpg',
+    },
+    {
+      name: 'THE PLANT BASE',
+      path: 'https://static.30shine.com/shop-admin/2022/01/07/30SZM4FT-download.jpg',
+    },
+    {
+      name: 'UMOS',
+      path: 'https://static.30shine.com/shop-admin/2024/08/23/30SXCJ3O-U.jpg',
+    },
+    {
+      name: 'Winmen',
+      path: 'https://static.30shine.com/shop-admin/2023/05/19/30SDVVQA-winmen.jpg',
+    },
+    {
+      name: 'Gillette',
+      path: 'https://static.30shine.com/shop-admin/2023/05/19/30SS8REB-gillette.jpg',
+    },
+  ]
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10"></div>
         <div className="absolute inset-0 bg-gray-800">
-          <div className="h-full w-full bg-[url('/placeholder.svg?height=400&width=1200')] bg-cover bg-center opacity-70"></div>
+          <div className="h-full w-full bg-[url('https://30shine.com/logo-new.png')] bg-cover bg-center opacity-70"></div>
         </div>
         <div className="container relative z-20 mx-auto flex h-full flex-col items-start justify-center px-4 text-white">
           <h1 className="mb-2 text-4xl font-bold md:text-5xl lg:text-6xl">
@@ -109,58 +152,41 @@ function RouteComponent() {
                     <ChevronRight className="ml-1 h-4 w-4" />
                   </Button>
                 </div>
-                <div className="relative aspect-square rounded-xl overflow-hidden">
-                  <img
-                    src="/placeholder.svg?height=500&width=500"
-                    alt="Supplier partnership"
-                    className="object-cover"
-                  />
-                </div>
               </div>
             </TabsContent>
 
             <TabsContent value="brand" className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <h3 className="text-2xl font-bold mb-4">
-                    Đối tác thương hiệu
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    30Shine hợp tác với các thương hiệu uy tín để mang đến những
-                    trải nghiệm độc đáo và giá trị gia tăng cho khách hàng.
-                    Chúng tôi tìm kiếm các cơ hội hợp tác marketing, đồng thương
-                    hiệu và các chương trình khuyến mãi chung.
-                  </p>
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-start gap-2">
-                      <CheckCircle className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
-                      <span>Hợp tác marketing và quảng cáo</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <CheckCircle className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
-                      <span>Chương trình khuyến mãi chung</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <CheckCircle className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
-                      <span>Phát triển sản phẩm đồng thương hiệu</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <CheckCircle className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
-                      <span>Chương trình ưu đãi cho khách hàng</span>
-                    </div>
+              <div className="flex-col gap-8 items-center">
+                <h3 className="text-2xl font-bold mb-4">Đối tác thương hiệu</h3>
+                <p className="text-muted-foreground mb-4">
+                  30Shine hợp tác với các thương hiệu uy tín để mang đến những
+                  trải nghiệm độc đáo và giá trị gia tăng cho khách hàng. Chúng
+                  tôi tìm kiếm các cơ hội hợp tác marketing, đồng thương hiệu và
+                  các chương trình khuyến mãi chung.
+                </p>
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
+                    <span>Hợp tác marketing và quảng cáo</span>
                   </div>
-                  <Button className="bg-blue-600 hover:bg-blue-700">
-                    Hợp tác thương hiệu
-                    <ChevronRight className="ml-1 h-4 w-4" />
-                  </Button>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
+                    <span>Chương trình khuyến mãi chung</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
+                    <span>Phát triển sản phẩm đồng thương hiệu</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
+                    <span>Chương trình ưu đãi cho khách hàng</span>
+                  </div>
                 </div>
-                <div className="relative aspect-square rounded-xl overflow-hidden">
-                  <img
-                    src="/placeholder.svg?height=500&width=500"
-                    alt="Brand partnership"
-                    className="object-cover"
-                  />
-                </div>
+
+                <Button className="bg-blue-600 hover:bg-blue-700">
+                  Hợp tác thương hiệu
+                  <ChevronRight className="ml-1 h-4 w-4" />
+                </Button>
               </div>
             </TabsContent>
 
@@ -196,13 +222,6 @@ function RouteComponent() {
                     Hợp tác công nghệ
                     <ChevronRight className="ml-1 h-4 w-4" />
                   </Button>
-                </div>
-                <div className="relative aspect-square rounded-xl overflow-hidden">
-                  <img
-                    src="/placeholder.svg?height=500&width=500"
-                    alt="Technology partnership"
-                    className="object-cover"
-                  />
                 </div>
               </div>
             </TabsContent>
@@ -241,13 +260,6 @@ function RouteComponent() {
                     <ChevronRight className="ml-1 h-4 w-4" />
                   </Button>
                 </div>
-                <div className="relative aspect-square rounded-xl overflow-hidden">
-                  <img
-                    src="/placeholder.svg?height=500&width=500"
-                    alt="Media partnership"
-                    className="object-cover"
-                  />
-                </div>
               </div>
             </TabsContent>
           </Tabs>
@@ -264,24 +276,23 @@ function RouteComponent() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {Array(12)
-              .fill(0)
-              .map((_, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg p-6 flex items-center justify-center h-24 shadow-sm hover:shadow-md transition-shadow"
-                >
+          <Carousel className="max-w-5xl mx-auto mb-6">
+            <CarouselPrevious />
+            <CarouselContent>
+              {brands.map((brand, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <img
-                    src="/placeholder.svg?height=80&width=120"
-                    alt={`Partner logo ${index + 1}`}
-                    width={120}
-                    height={80}
-                    className="max-h-full max-w-full object-contain"
+                    width={300}
+                    height={300}
+                    src={brand.path}
+                    alt={brand.name}
+                    className="object-cover"
                   />
-                </div>
+                </CarouselItem>
               ))}
-          </div>
+            </CarouselContent>
+            <CarouselNext />
+          </Carousel>
         </div>
       </section>
 

@@ -2,8 +2,12 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import { Award, CheckCircle, Users } from 'lucide-react'
 
-const image = 'D:/hair-cut/hair_cut/hair-cut-fe/public/image.png'
-
+const image = [
+  'https://storage.30shine.com/web/v4/images/lien-he-nhuong-quyen/hinh-thuc-nhuong-quyen-1.jpg',
+  'https://storage.30shine.com/web/v4/images/lien-he-nhuong-quyen/hinh-thuc-nhuong-quyen-2.jpg',
+  'https://storage.30shine.com/web/v4/images/lien-he-nhuong-quyen/hinh-thuc-nhuong-quyen-3.jpg',
+  'https://storage.30shine.com/web/v4/images/lien-he-nhuong-quyen/ho-tro-a-z-1.jpg',
+]
 export const Route = createFileRoute('/_layout/about')({
   component: RouteComponent,
 })
@@ -63,7 +67,7 @@ function RouteComponent() {
             <div className="grid grid-cols-2 gap-4">
               <div className="aspect-square overflow-hidden rounded-lg">
                 <img
-                  src={image}
+                  src={image[0]}
                   alt="30Shine salon"
                   width={300}
                   height={300}
@@ -72,7 +76,7 @@ function RouteComponent() {
               </div>
               <div className="aspect-square overflow-hidden rounded-lg mt-8">
                 <img
-                  src={image}
+                  src={image[1]}
                   alt="30Shine stylist"
                   width={300}
                   height={300}
@@ -81,7 +85,7 @@ function RouteComponent() {
               </div>
               <div className="aspect-square overflow-hidden rounded-lg">
                 <img
-                  src={image}
+                  src={image[2]}
                   alt="30Shine customer"
                   width={300}
                   height={300}
@@ -90,7 +94,7 @@ function RouteComponent() {
               </div>
               <div className="aspect-square overflow-hidden rounded-lg mt-8">
                 <img
-                  src={image}
+                  src={image[3]}
                   alt="30Shine interior"
                   width={300}
                   height={300}
@@ -210,13 +214,12 @@ function RouteComponent() {
                 key={index}
                 className="bg-card rounded-xl overflow-hidden shadow-sm"
               >
-                <div className="aspect-[3/4] relative">
-                  <img
-                    src="/placeholder.svg?height=400&width=300"
-                    alt={member.name}
-                    className="object-cover"
-                  />
-                </div>
+                <img
+                  src={image[0]}
+                  alt={member.name}
+                  className="object-cover"
+                  width={350}
+                />
                 <div className="p-4 text-center">
                   <h3 className="font-bold text-lg">{member.name}</h3>
                   <p className="text-muted-foreground">{member.role}</p>

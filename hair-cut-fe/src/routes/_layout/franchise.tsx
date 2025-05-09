@@ -46,7 +46,7 @@ function RouteComponent() {
             </Button>
             <Button
               variant="outline"
-              className="rounded-full border-white text-white hover:bg-white hover:text-black"
+              className="rounded-full border-white text-black hover:bg-white "
             >
               Liên hệ ngay
             </Button>

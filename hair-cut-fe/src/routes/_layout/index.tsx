@@ -33,6 +33,7 @@ export const Route = createFileRoute('/_layout/')({
 })
 
 function RouteComponent() {
+  const location = '10.762622,106.660172'
   const [rating, setRating] = useState(1)
   const data = useLoaderData({
     from: '/_layout/',
@@ -182,7 +183,7 @@ function RouteComponent() {
         </Button>
       </div>
       <section id="contact" className="container py-12 md:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="animate-fade-right animate-once animate-duration-1000 animate-ease-in-out">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
               Liên hệ với chúng tôi
@@ -265,15 +266,17 @@ function RouteComponent() {
           </div>
 
           <div className="h-[400px] rounded-lg overflow-hidden animate-fade-left animate-once animate-duration-1000 animate-ease-in-out">
-            {/* This would be a map in a real implementation */}
-            <div className="w-full h-full bg-muted flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="h-12 w-12 mx-auto mb-4 text-primary animate-bounce animate-infinite animate-duration-[2000ms]" />
-                <p className="text-lg font-medium">Vị trí bản đồ</p>
-                <p className="text-muted-foreground">
-                  Bản đồ tương tác sẽ được hiển thị tại đây
-                </p>
-              </div>
+            <div style={{ width: '100%', height: '500px' }}>
+              <iframe
+                title="Google Maps"
+                src={`https://www.google.com/maps?q=${location}&output=embed`}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
         </div>
