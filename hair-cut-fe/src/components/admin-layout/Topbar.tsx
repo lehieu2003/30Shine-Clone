@@ -13,10 +13,6 @@ export default function Topbar() {
             <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500" />
           </button>
           <div className="flex items-center">
-            <img
-              src="/placeholder.svg?height=40&width=40"
-              className="h-8 w-8 rounded-full"
-            />
             <div className="ml-2">
               <div className="text-sm font-medium text-gray-700">
                 {user?.fullName}

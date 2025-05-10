@@ -25,6 +25,7 @@ import { Route as LayoutBookingImport } from './routes/_layout/booking'
 import { Route as LayoutAboutImport } from './routes/_layout/about'
 import { Route as AdminStaffIndexImport } from './routes/admin/staff/index'
 import { Route as AdminServicesIndexImport } from './routes/admin/services/index'
+import { Route as AdminProductsIndexImport } from './routes/admin/products/index'
 import { Route as AdminCustomersIndexImport } from './routes/admin/customers/index'
 import { Route as AdminBookingsIndexImport } from './routes/admin/bookings/index'
 import { Route as LayoutServicesHairCutIndexImport } from './routes/_layout/services/hair-cut/index'
@@ -113,6 +114,12 @@ const AdminStaffIndexRoute = AdminStaffIndexImport.update({
 const AdminServicesIndexRoute = AdminServicesIndexImport.update({
   id: '/services/',
   path: '/services/',
+  getParentRoute: () => AdminRoute,
+} as any)
+
+const AdminProductsIndexRoute = AdminProductsIndexImport.update({
+  id: '/products/',
+  path: '/products/',
   getParentRoute: () => AdminRoute,
 } as any)
 
@@ -250,6 +257,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminCustomersIndexImport
       parentRoute: typeof AdminImport
     }
+    '/admin/products/': {
+      id: '/admin/products/'
+      path: '/products'
+      fullPath: '/admin/products'
+      preLoaderRoute: typeof AdminProductsIndexImport
+      parentRoute: typeof AdminImport
+    }
     '/admin/services/': {
       id: '/admin/services/'
       path: '/services'
@@ -324,6 +338,7 @@ interface AdminRouteChildren {
   AdminIndexRoute: typeof AdminIndexRoute
   AdminBookingsIndexRoute: typeof AdminBookingsIndexRoute
   AdminCustomersIndexRoute: typeof AdminCustomersIndexRoute
+  AdminProductsIndexRoute: typeof AdminProductsIndexRoute
   AdminServicesIndexRoute: typeof AdminServicesIndexRoute
   AdminStaffIndexRoute: typeof AdminStaffIndexRoute
   AdminServicesIdEditRoute: typeof AdminServicesIdEditRoute
@@ -334,6 +349,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminIndexRoute: AdminIndexRoute,
   AdminBookingsIndexRoute: AdminBookingsIndexRoute,
   AdminCustomersIndexRoute: AdminCustomersIndexRoute,
+  AdminProductsIndexRoute: AdminProductsIndexRoute,
   AdminServicesIndexRoute: AdminServicesIndexRoute,
   AdminStaffIndexRoute: AdminStaffIndexRoute,
   AdminServicesIdEditRoute: AdminServicesIdEditRoute,
@@ -356,6 +372,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/admin/bookings': typeof AdminBookingsIndexRoute
   '/admin/customers': typeof AdminCustomersIndexRoute
+  '/admin/products': typeof AdminProductsIndexRoute
   '/admin/services': typeof AdminServicesIndexRoute
   '/admin/staff': typeof AdminStaffIndexRoute
   '/services/hair-cut/$id': typeof LayoutServicesHairCutIdRoute
@@ -376,6 +393,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/admin/bookings': typeof AdminBookingsIndexRoute
   '/admin/customers': typeof AdminCustomersIndexRoute
+  '/admin/products': typeof AdminProductsIndexRoute
   '/admin/services': typeof AdminServicesIndexRoute
   '/admin/staff': typeof AdminStaffIndexRoute
   '/services/hair-cut/$id': typeof LayoutServicesHairCutIdRoute
@@ -399,6 +417,7 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/admin/bookings/': typeof AdminBookingsIndexRoute
   '/admin/customers/': typeof AdminCustomersIndexRoute
+  '/admin/products/': typeof AdminProductsIndexRoute
   '/admin/services/': typeof AdminServicesIndexRoute
   '/admin/staff/': typeof AdminStaffIndexRoute
   '/_layout/services/hair-cut/$id': typeof LayoutServicesHairCutIdRoute
@@ -423,6 +442,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/admin/bookings'
     | '/admin/customers'
+    | '/admin/products'
     | '/admin/services'
     | '/admin/staff'
     | '/services/hair-cut/$id'
@@ -442,6 +462,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/bookings'
     | '/admin/customers'
+    | '/admin/products'
     | '/admin/services'
     | '/admin/staff'
     | '/services/hair-cut/$id'
@@ -463,6 +484,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/admin/bookings/'
     | '/admin/customers/'
+    | '/admin/products/'
     | '/admin/services/'
     | '/admin/staff/'
     | '/_layout/services/hair-cut/$id'
@@ -517,6 +539,7 @@ export const routeTree = rootRoute
         "/admin/",
         "/admin/bookings/",
         "/admin/customers/",
+        "/admin/products/",
         "/admin/services/",
         "/admin/staff/",
         "/admin/services/$id/edit"
@@ -568,6 +591,10 @@ export const routeTree = rootRoute
     },
     "/admin/customers/": {
       "filePath": "admin/customers/index.tsx",
+      "parent": "/admin"
+    },
+    "/admin/products/": {
+      "filePath": "admin/products/index.tsx",
       "parent": "/admin"
     },
     "/admin/services/": {

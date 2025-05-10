@@ -50,6 +50,12 @@ const SIDEBAR_ALL_ITEMS = [
     label: 'Báo cáo',
     role: ['admin'],
   },
+  {
+    href: '/admin/products/',
+    icon: <BarChart3 size={20} />,
+    label: 'Quản lý sản phẩm',
+    role: ['admin'],
+  },
 ]
 export default function Sidebar({ open, toggle }: Props) {
   const { isAuth, user, refreshUser } = useAuth()

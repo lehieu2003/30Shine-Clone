@@ -10,7 +10,7 @@ import {
   Settings,
   User,
 } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import TanstackQueryLayout from '../integrations/tanstack-query/layout'
 import { Toaster } from '@/components/ui/sonner'
 import { Button } from '@/components/ui/button'
