@@ -10,6 +10,13 @@ import {
   Star,
   Twitter,
 } from 'lucide-react'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
 
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -17,13 +24,12 @@ import { Input } from '@/components/ui/input'
 import serviceService from '@/services/service.service'
 import { cn } from '@/lib/utils'
 import { useAuth } from '@/contexts/AuthContext'
-
+import { bannerImages } from '@/utils/images'
 export const Route = createFileRoute('/_layout/')({
   loader: async () => {
     const data = await serviceService.queryServices({
       sortDirection: 'desc',
       sortBy: 'createdAt',
-      size: 3,
       page: 1,
     })
     return data.data.data
@@ -54,13 +60,24 @@ function RouteComponent() {
   }
   return (
     <>
-      <div className="relative w-full h-[400px] bg-blue-900">
-        <img
-          src="https://storage.30shine.com/banner/2025/20250103_banner_uongdinhhinh_w.png"
-          alt="30Shine Banner"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-transparent flex items-center"></div>
+      <div className="flex items-center justify-center w-full">
+        <Carousel className="w-3/4">
+          <CarouselContent>
+            {bannerImages.map((image, index) => (
+              <CarouselItem key={index}>
+                <img
+                  src={image}
+                  alt={`Banner ${index}`}
+                  className="object-cover"
+                  width="full"
+                  height="full"
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md" />
+          <CarouselNext className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md" />
+        </Carousel>
       </div>
 
       <div className="container mx-auto px-4 py-8">
@@ -185,7 +202,7 @@ function RouteComponent() {
       <section id="contact" className="container py-12 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="animate-fade-right animate-once animate-duration-1000 animate-ease-in-out">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
+            <h2 className="text-2xl font-bold text-blue-900 uppercase mb-6">
               Liên hệ với chúng tôi
             </h2>
             <p className="text-muted-foreground mb-8">

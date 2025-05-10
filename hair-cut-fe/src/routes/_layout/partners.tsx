@@ -19,48 +19,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
+import { brands } from '@/utils/images'
 
 export const Route = createFileRoute('/_layout/partners')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  const brands = [
-    {
-      name: 'SNP ACSYS For Men',
-      path: 'https://static.30shine.com/shop-admin/2022/01/07/30SM4WSK-download.png',
-    },
-    {
-      name: '30SHINE',
-      path: 'https://static.30shine.com/shop-admin/2023/05/19/30S7CWIB-30shine-shop.jpg',
-    },
-
-    {
-      name: 'SKIN&DR',
-      path: 'https://static.30shine.com/shop-admin/2023/03/20/30SJX0WM-dr-for-skin.jpg',
-    },
-    {
-      name: 'REUZEL',
-      path: 'https://static.30shine.com/shop-admin/2022/01/07/30SHJGCY-reuzel.jpg',
-    },
-    {
-      name: 'THE PLANT BASE',
-      path: 'https://static.30shine.com/shop-admin/2022/01/07/30SZM4FT-download.jpg',
-    },
-    {
-      name: 'UMOS',
-      path: 'https://static.30shine.com/shop-admin/2024/08/23/30SXCJ3O-U.jpg',
-    },
-    {
-      name: 'Winmen',
-      path: 'https://static.30shine.com/shop-admin/2023/05/19/30SDVVQA-winmen.jpg',
-    },
-    {
-      name: 'Gillette',
-      path: 'https://static.30shine.com/shop-admin/2023/05/19/30SS8REB-gillette.jpg',
-    },
-  ]
-
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}

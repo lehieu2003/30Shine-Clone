@@ -71,15 +71,13 @@ function RouteComponent() {
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-8">
-            {/* <Scissors /> */}
             <div className="flex items-center gap-2">
               <Link to="/" className="flex items-center gap-2">
-                <div className="relative h-10 w-10 overflow-hidden rounded-full bg-blue-600">
-                  <div className="absolute inset-0 flex items-center justify-center text-xl font-bold text-white">
-                    30
-                  </div>
-                </div>
-                <span className="text-xl font-bold text-blue-500">30Shine</span>
+                <img
+                  src="https://30shine.com/static/media/logo_30shine_new.7135aeb8.png"
+                  alt="30Shine Logo"
+                  className="h-15 w-35"
+                />
               </Link>
             </div>
             <nav className="hidden md:flex items-center space-x-6">

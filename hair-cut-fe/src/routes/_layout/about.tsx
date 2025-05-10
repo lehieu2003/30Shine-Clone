@@ -1,13 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import { Award, CheckCircle, Users } from 'lucide-react'
+import { ourStoryImages } from '@/utils/images'
 
-const image = [
-  'https://storage.30shine.com/web/v4/images/lien-he-nhuong-quyen/hinh-thuc-nhuong-quyen-1.jpg',
-  'https://storage.30shine.com/web/v4/images/lien-he-nhuong-quyen/hinh-thuc-nhuong-quyen-2.jpg',
-  'https://storage.30shine.com/web/v4/images/lien-he-nhuong-quyen/hinh-thuc-nhuong-quyen-3.jpg',
-  'https://storage.30shine.com/web/v4/images/lien-he-nhuong-quyen/ho-tro-a-z-1.jpg',
-]
 export const Route = createFileRoute('/_layout/about')({
   component: RouteComponent,
 })
@@ -67,7 +62,7 @@ function RouteComponent() {
             <div className="grid grid-cols-2 gap-4">
               <div className="aspect-square overflow-hidden rounded-lg">
                 <img
-                  src={image[0]}
+                  src={ourStoryImages[0]}
                   alt="30Shine salon"
                   width={300}
                   height={300}
@@ -76,7 +71,7 @@ function RouteComponent() {
               </div>
               <div className="aspect-square overflow-hidden rounded-lg mt-8">
                 <img
-                  src={image[1]}
+                  src={ourStoryImages[1]}
                   alt="30Shine stylist"
                   width={300}
                   height={300}
@@ -85,7 +80,7 @@ function RouteComponent() {
               </div>
               <div className="aspect-square overflow-hidden rounded-lg">
                 <img
-                  src={image[2]}
+                  src={ourStoryImages[2]}
                   alt="30Shine customer"
                   width={300}
                   height={300}
@@ -94,7 +89,7 @@ function RouteComponent() {
               </div>
               <div className="aspect-square overflow-hidden rounded-lg mt-8">
                 <img
-                  src={image[3]}
+                  src={ourStoryImages[3]}
                   alt="30Shine interior"
                   width={300}
                   height={300}
@@ -215,7 +210,7 @@ function RouteComponent() {
                 className="bg-card rounded-xl overflow-hidden shadow-sm"
               >
                 <img
-                  src={image[0]}
+                  src={ourStoryImages[0]}
                   alt={member.name}
                   className="object-cover"
                   width={350}

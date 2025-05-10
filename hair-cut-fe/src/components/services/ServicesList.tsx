@@ -122,7 +122,7 @@ export function ServicesList({
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {formatDate(service.createdAt)}
+                    {formatDate(service.createdAt || '')}
                   </td>
                   <td className="px-6 py-4">
                     <div className="text-sm text-gray-900 max-w-xs truncate">
