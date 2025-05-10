@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Button } from '@/components/ui/button'
 import { Award, CheckCircle, Users } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import { ourStoryImages } from '@/utils/images'
 
 export const Route = createFileRoute('/_layout/about')({

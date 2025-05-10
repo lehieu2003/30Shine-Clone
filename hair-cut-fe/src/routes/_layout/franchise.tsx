@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -16,7 +17,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import { CheckCircle } from 'lucide-react'
 
 export const Route = createFileRoute('/_layout/franchise')({
   component: RouteComponent,

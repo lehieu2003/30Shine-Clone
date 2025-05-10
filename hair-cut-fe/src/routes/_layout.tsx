@@ -91,7 +91,7 @@ function RouteComponent() {
 
               <a
                 key="shop"
-                href="/shop"
+                href="/shopping"
                 className="text-md font-medium hover:text-blue-700 transition-colors active:text-blue-700"
               >
                 30Shine Shop

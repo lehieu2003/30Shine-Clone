@@ -5,10 +5,23 @@ export const productApi = {
   // Get all products
   getAllProducts: async (): Promise<Array<Product>> => {
     const response = await apiClient.get('/api/products')
-    console.log('products length 1111', response.data.data.length)
 
     return Array.isArray(response.data.data) ? response.data.data : []
   },
+  // Get a product by ID
+  getProductById: async (id: string): Promise<Product> => {
+    try {
+      const response = await apiClient.get(`/api/products/${id}`)
+      if (!response.data?.success || !response.data?.data) {
+        throw new Error('Invalid product data received')
+      }
+      return response.data.data
+    } catch (error) {
+      console.error('Error fetching product:', error)
+      throw error
+    }
+  },
+
   // Create a new product
   createProduct: async (productData: Partial<Product>): Promise<Product> => {
     const response = await apiClient.post('/api/products/admin', productData)

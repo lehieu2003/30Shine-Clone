@@ -10,6 +10,8 @@ import {
   Star,
   Twitter,
 } from 'lucide-react'
+import React, { useState } from 'react'
+import { bannerImages } from '@/utils/images'
 import {
   Carousel,
   CarouselContent,
@@ -18,13 +20,12 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel'
 
-import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import serviceService from '@/services/service.service'
 import { cn } from '@/lib/utils'
 import { useAuth } from '@/contexts/AuthContext'
-import { bannerImages } from '@/utils/images'
+
 export const Route = createFileRoute('/_layout/')({
   loader: async () => {
     const data = await serviceService.queryServices({
@@ -161,7 +162,10 @@ function RouteComponent() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {data.map((service) => (
-            <div key={service.id} className="bg-white rounded-lg overflow-hidden shadow-sm group">
+            <div
+              key={service.id}
+              className="bg-white rounded-lg overflow-hidden shadow-sm group"
+            >
               <div className="relative h-64 overflow-hidden">
                 <img
                   src={service.bannerImageUrl}

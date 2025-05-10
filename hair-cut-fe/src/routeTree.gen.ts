@@ -17,7 +17,6 @@ import { Route as AdminIndexImport } from './routes/admin/index'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
 import { Route as AdminReportsImport } from './routes/admin/reports'
 import { Route as LayoutWeddingImport } from './routes/_layout/wedding'
-import { Route as LayoutShopImport } from './routes/_layout/shop'
 import { Route as LayoutPartnersImport } from './routes/_layout/partners'
 import { Route as LayoutLocationsImport } from './routes/_layout/locations'
 import { Route as LayoutFranchiseImport } from './routes/_layout/franchise'
@@ -28,8 +27,10 @@ import { Route as AdminServicesIndexImport } from './routes/admin/services/index
 import { Route as AdminProductsIndexImport } from './routes/admin/products/index'
 import { Route as AdminCustomersIndexImport } from './routes/admin/customers/index'
 import { Route as AdminBookingsIndexImport } from './routes/admin/bookings/index'
+import { Route as LayoutShoppingIndexImport } from './routes/_layout/shopping/index'
 import { Route as LayoutServicesHairCutIndexImport } from './routes/_layout/services/hair-cut/index'
 import { Route as AdminServicesIdEditImport } from './routes/admin/services/$id.edit'
+import { Route as LayoutShoppingProductIdImport } from './routes/_layout/shopping/product/$id'
 import { Route as LayoutServicesHairCutIdImport } from './routes/_layout/services/hair-cut/$id'
 
 // Create/Update Routes
@@ -66,12 +67,6 @@ const AdminReportsRoute = AdminReportsImport.update({
 const LayoutWeddingRoute = LayoutWeddingImport.update({
   id: '/wedding',
   path: '/wedding',
-  getParentRoute: () => LayoutRoute,
-} as any)
-
-const LayoutShopRoute = LayoutShopImport.update({
-  id: '/shop',
-  path: '/shop',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -135,6 +130,12 @@ const AdminBookingsIndexRoute = AdminBookingsIndexImport.update({
   getParentRoute: () => AdminRoute,
 } as any)
 
+const LayoutShoppingIndexRoute = LayoutShoppingIndexImport.update({
+  id: '/shopping/',
+  path: '/shopping/',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
 const LayoutServicesHairCutIndexRoute = LayoutServicesHairCutIndexImport.update(
   {
     id: '/services/hair-cut/',
@@ -147,6 +148,12 @@ const AdminServicesIdEditRoute = AdminServicesIdEditImport.update({
   id: '/services/$id/edit',
   path: '/services/$id/edit',
   getParentRoute: () => AdminRoute,
+} as any)
+
+const LayoutShoppingProductIdRoute = LayoutShoppingProductIdImport.update({
+  id: '/shopping/product/$id',
+  path: '/shopping/product/$id',
+  getParentRoute: () => LayoutRoute,
 } as any)
 
 const LayoutServicesHairCutIdRoute = LayoutServicesHairCutIdImport.update({
@@ -208,13 +215,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutPartnersImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/shop': {
-      id: '/_layout/shop'
-      path: '/shop'
-      fullPath: '/shop'
-      preLoaderRoute: typeof LayoutShopImport
-      parentRoute: typeof LayoutImport
-    }
     '/_layout/wedding': {
       id: '/_layout/wedding'
       path: '/wedding'
@@ -242,6 +242,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexImport
       parentRoute: typeof AdminImport
+    }
+    '/_layout/shopping/': {
+      id: '/_layout/shopping/'
+      path: '/shopping'
+      fullPath: '/shopping'
+      preLoaderRoute: typeof LayoutShoppingIndexImport
+      parentRoute: typeof LayoutImport
     }
     '/admin/bookings/': {
       id: '/admin/bookings/'
@@ -285,6 +292,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutServicesHairCutIdImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/shopping/product/$id': {
+      id: '/_layout/shopping/product/$id'
+      path: '/shopping/product/$id'
+      fullPath: '/shopping/product/$id'
+      preLoaderRoute: typeof LayoutShoppingProductIdImport
+      parentRoute: typeof LayoutImport
+    }
     '/admin/services/$id/edit': {
       id: '/admin/services/$id/edit'
       path: '/services/$id/edit'
@@ -310,10 +324,11 @@ interface LayoutRouteChildren {
   LayoutFranchiseRoute: typeof LayoutFranchiseRoute
   LayoutLocationsRoute: typeof LayoutLocationsRoute
   LayoutPartnersRoute: typeof LayoutPartnersRoute
-  LayoutShopRoute: typeof LayoutShopRoute
   LayoutWeddingRoute: typeof LayoutWeddingRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
+  LayoutShoppingIndexRoute: typeof LayoutShoppingIndexRoute
   LayoutServicesHairCutIdRoute: typeof LayoutServicesHairCutIdRoute
+  LayoutShoppingProductIdRoute: typeof LayoutShoppingProductIdRoute
   LayoutServicesHairCutIndexRoute: typeof LayoutServicesHairCutIndexRoute
 }
 
@@ -323,10 +338,11 @@ const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutFranchiseRoute: LayoutFranchiseRoute,
   LayoutLocationsRoute: LayoutLocationsRoute,
   LayoutPartnersRoute: LayoutPartnersRoute,
-  LayoutShopRoute: LayoutShopRoute,
   LayoutWeddingRoute: LayoutWeddingRoute,
   LayoutIndexRoute: LayoutIndexRoute,
+  LayoutShoppingIndexRoute: LayoutShoppingIndexRoute,
   LayoutServicesHairCutIdRoute: LayoutServicesHairCutIdRoute,
+  LayoutShoppingProductIdRoute: LayoutShoppingProductIdRoute,
   LayoutServicesHairCutIndexRoute: LayoutServicesHairCutIndexRoute,
 }
 
@@ -365,17 +381,18 @@ export interface FileRoutesByFullPath {
   '/franchise': typeof LayoutFranchiseRoute
   '/locations': typeof LayoutLocationsRoute
   '/partners': typeof LayoutPartnersRoute
-  '/shop': typeof LayoutShopRoute
   '/wedding': typeof LayoutWeddingRoute
   '/admin/reports': typeof AdminReportsRoute
   '/': typeof LayoutIndexRoute
   '/admin/': typeof AdminIndexRoute
+  '/shopping': typeof LayoutShoppingIndexRoute
   '/admin/bookings': typeof AdminBookingsIndexRoute
   '/admin/customers': typeof AdminCustomersIndexRoute
   '/admin/products': typeof AdminProductsIndexRoute
   '/admin/services': typeof AdminServicesIndexRoute
   '/admin/staff': typeof AdminStaffIndexRoute
   '/services/hair-cut/$id': typeof LayoutServicesHairCutIdRoute
+  '/shopping/product/$id': typeof LayoutShoppingProductIdRoute
   '/admin/services/$id/edit': typeof AdminServicesIdEditRoute
   '/services/hair-cut': typeof LayoutServicesHairCutIndexRoute
 }
@@ -386,17 +403,18 @@ export interface FileRoutesByTo {
   '/franchise': typeof LayoutFranchiseRoute
   '/locations': typeof LayoutLocationsRoute
   '/partners': typeof LayoutPartnersRoute
-  '/shop': typeof LayoutShopRoute
   '/wedding': typeof LayoutWeddingRoute
   '/admin/reports': typeof AdminReportsRoute
   '/': typeof LayoutIndexRoute
   '/admin': typeof AdminIndexRoute
+  '/shopping': typeof LayoutShoppingIndexRoute
   '/admin/bookings': typeof AdminBookingsIndexRoute
   '/admin/customers': typeof AdminCustomersIndexRoute
   '/admin/products': typeof AdminProductsIndexRoute
   '/admin/services': typeof AdminServicesIndexRoute
   '/admin/staff': typeof AdminStaffIndexRoute
   '/services/hair-cut/$id': typeof LayoutServicesHairCutIdRoute
+  '/shopping/product/$id': typeof LayoutShoppingProductIdRoute
   '/admin/services/$id/edit': typeof AdminServicesIdEditRoute
   '/services/hair-cut': typeof LayoutServicesHairCutIndexRoute
 }
@@ -410,17 +428,18 @@ export interface FileRoutesById {
   '/_layout/franchise': typeof LayoutFranchiseRoute
   '/_layout/locations': typeof LayoutLocationsRoute
   '/_layout/partners': typeof LayoutPartnersRoute
-  '/_layout/shop': typeof LayoutShopRoute
   '/_layout/wedding': typeof LayoutWeddingRoute
   '/admin/reports': typeof AdminReportsRoute
   '/_layout/': typeof LayoutIndexRoute
   '/admin/': typeof AdminIndexRoute
+  '/_layout/shopping/': typeof LayoutShoppingIndexRoute
   '/admin/bookings/': typeof AdminBookingsIndexRoute
   '/admin/customers/': typeof AdminCustomersIndexRoute
   '/admin/products/': typeof AdminProductsIndexRoute
   '/admin/services/': typeof AdminServicesIndexRoute
   '/admin/staff/': typeof AdminStaffIndexRoute
   '/_layout/services/hair-cut/$id': typeof LayoutServicesHairCutIdRoute
+  '/_layout/shopping/product/$id': typeof LayoutShoppingProductIdRoute
   '/admin/services/$id/edit': typeof AdminServicesIdEditRoute
   '/_layout/services/hair-cut/': typeof LayoutServicesHairCutIndexRoute
 }
@@ -435,17 +454,18 @@ export interface FileRouteTypes {
     | '/franchise'
     | '/locations'
     | '/partners'
-    | '/shop'
     | '/wedding'
     | '/admin/reports'
     | '/'
     | '/admin/'
+    | '/shopping'
     | '/admin/bookings'
     | '/admin/customers'
     | '/admin/products'
     | '/admin/services'
     | '/admin/staff'
     | '/services/hair-cut/$id'
+    | '/shopping/product/$id'
     | '/admin/services/$id/edit'
     | '/services/hair-cut'
   fileRoutesByTo: FileRoutesByTo
@@ -455,17 +475,18 @@ export interface FileRouteTypes {
     | '/franchise'
     | '/locations'
     | '/partners'
-    | '/shop'
     | '/wedding'
     | '/admin/reports'
     | '/'
     | '/admin'
+    | '/shopping'
     | '/admin/bookings'
     | '/admin/customers'
     | '/admin/products'
     | '/admin/services'
     | '/admin/staff'
     | '/services/hair-cut/$id'
+    | '/shopping/product/$id'
     | '/admin/services/$id/edit'
     | '/services/hair-cut'
   id:
@@ -477,17 +498,18 @@ export interface FileRouteTypes {
     | '/_layout/franchise'
     | '/_layout/locations'
     | '/_layout/partners'
-    | '/_layout/shop'
     | '/_layout/wedding'
     | '/admin/reports'
     | '/_layout/'
     | '/admin/'
+    | '/_layout/shopping/'
     | '/admin/bookings/'
     | '/admin/customers/'
     | '/admin/products/'
     | '/admin/services/'
     | '/admin/staff/'
     | '/_layout/services/hair-cut/$id'
+    | '/_layout/shopping/product/$id'
     | '/admin/services/$id/edit'
     | '/_layout/services/hair-cut/'
   fileRoutesById: FileRoutesById
@@ -525,10 +547,11 @@ export const routeTree = rootRoute
         "/_layout/franchise",
         "/_layout/locations",
         "/_layout/partners",
-        "/_layout/shop",
         "/_layout/wedding",
         "/_layout/",
+        "/_layout/shopping/",
         "/_layout/services/hair-cut/$id",
+        "/_layout/shopping/product/$id",
         "/_layout/services/hair-cut/"
       ]
     },
@@ -565,10 +588,6 @@ export const routeTree = rootRoute
       "filePath": "_layout/partners.tsx",
       "parent": "/_layout"
     },
-    "/_layout/shop": {
-      "filePath": "_layout/shop.tsx",
-      "parent": "/_layout"
-    },
     "/_layout/wedding": {
       "filePath": "_layout/wedding.tsx",
       "parent": "/_layout"
@@ -584,6 +603,10 @@ export const routeTree = rootRoute
     "/admin/": {
       "filePath": "admin/index.tsx",
       "parent": "/admin"
+    },
+    "/_layout/shopping/": {
+      "filePath": "_layout/shopping/index.tsx",
+      "parent": "/_layout"
     },
     "/admin/bookings/": {
       "filePath": "admin/bookings/index.tsx",
@@ -607,6 +630,10 @@ export const routeTree = rootRoute
     },
     "/_layout/services/hair-cut/$id": {
       "filePath": "_layout/services/hair-cut/$id.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/shopping/product/$id": {
+      "filePath": "_layout/shopping/product/$id.tsx",
       "parent": "/_layout"
     },
     "/admin/services/$id/edit": {

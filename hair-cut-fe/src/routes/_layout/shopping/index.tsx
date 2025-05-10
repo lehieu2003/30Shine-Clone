@@ -1,7 +1,8 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@tanstack/react-router'
 import { Heart, Search, ShoppingBag, Star } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import type { Product } from '@/types/product'
+import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
@@ -15,9 +16,8 @@ import {
 import { Slider } from '@/components/ui/slider'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { useProduct } from '@/contexts/ProductContext'
-import { Skeleton } from '../../components/ui/skeleton'
 
-export const Route = createFileRoute('/_layout/shop')({
+export const Route = createFileRoute('/_layout/shopping/')({
   component: RouteComponent,
 })
 
@@ -31,7 +31,6 @@ function RouteComponent() {
   const [sortBy, setSortBy] = useState('popular')
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 9
-  console.log('products length', products.length)
 
   // Get unique categories and brands from products
   const categories = [
@@ -125,57 +124,67 @@ function RouteComponent() {
 
   const renderProductCard = (product: Product) => (
     <Card key={product.id} className="overflow-hidden group">
-      <div className="relative aspect-square">
-        <img
-          src={product.imageUrl || '/placeholder.svg?height=300&width=300'}
-          alt={product.name}
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-        <Button
-          size="icon"
-          variant="outline"
-          className="absolute top-2 right-2 h-8 w-8 rounded-full bg-white/80 backdrop-blur-sm"
-        >
-          <Heart className="h-4 w-4" />
-        </Button>
-        {product.isDiscount && (
-          <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded">
-            -{product.discountPercent}%
-          </div>
-        )}
-      </div>
-      <CardContent className="p-4">
-        <div className="flex items-center gap-1 mb-2">
-          {Array(5)
-            .fill(0)
-            .map((_, i) => (
-              <Star
-                key={i}
-                className={`h-3 w-3 ${
-                  i < Math.floor(product.ratingScore)
-                    ? 'fill-yellow-400 text-yellow-400'
-                    : 'text-gray-300'
-                }`}
-              />
-            ))}
-          <span className="text-xs text-muted-foreground ml-1">
-            ({product.totalSold})
-          </span>
-        </div>
-        <h3 className="font-medium line-clamp-2 mb-1 group-hover:text-blue-600">
-          {product.name}
-        </h3>
-        <div className="flex items-center gap-2">
-          <span className="font-bold text-blue-600">
-            {formatPrice(product.price)}
-          </span>
+      <Link
+        to="/shopping/product/$id"
+        params={{ id: product.id.toString() }}
+        className="block"
+      >
+        <div className="relative aspect-square">
+          <img
+            src={product.imageUrl || '/placeholder.svg?height=300&width=300'}
+            alt={product.name}
+            className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+          />
+          <Button
+            size="icon"
+            variant="outline"
+            className="absolute top-2 right-2 h-8 w-8 rounded-full bg-white/80 backdrop-blur-sm"
+            onClick={(e) => {
+              e.preventDefault()
+              // Add to wishlist logic here
+            }}
+          >
+            <Heart className="h-4 w-4" />
+          </Button>
           {product.isDiscount && (
-            <span className="text-sm text-muted-foreground line-through">
-              {formatPrice(product.listedPrice)}
-            </span>
+            <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded">
+              -{product.discountPercent}%
+            </div>
           )}
         </div>
-      </CardContent>
+        <CardContent className="p-4">
+          <div className="flex items-center gap-1 mb-2">
+            {Array(5)
+              .fill(0)
+              .map((_, i) => (
+                <Star
+                  key={i}
+                  className={`h-3 w-3 ${
+                    i < Math.floor(product.ratingScore)
+                      ? 'fill-yellow-400 text-yellow-400'
+                      : 'text-gray-300'
+                  }`}
+                />
+              ))}
+            <span className="text-xs text-muted-foreground ml-1">
+              ({product.totalSold})
+            </span>
+          </div>
+          <h3 className="font-medium line-clamp-2 mb-1 group-hover:text-blue-600">
+            {product.name}
+          </h3>
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-blue-600">
+              {formatPrice(product.price)}
+            </span>
+            {product.isDiscount && (
+              <span className="text-sm text-muted-foreground line-through">
+                {formatPrice(product.listedPrice)}
+              </span>
+            )}
+          </div>
+        </CardContent>
+      </Link>
       <CardFooter className="p-4 pt-0">
         <Button className="w-full bg-blue-600 hover:bg-blue-700">
           <ShoppingBag className="mr-2 h-4 w-4" />

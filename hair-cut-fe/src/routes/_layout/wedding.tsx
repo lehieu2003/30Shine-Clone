@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { Quote, Star } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -17,7 +18,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
-import { Quote, Star } from 'lucide-react'
 
 export const Route = createFileRoute('/_layout/wedding')({
   component: RouteComponent,

@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { Clock, MapPin, Phone, Star } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -10,7 +11,6 @@ import {
 } from '@/components/ui/select'
 import { Card, CardContent } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Clock, MapPin, Phone, Star } from 'lucide-react'
 
 export const Route = createFileRoute('/_layout/locations')({
   component: RouteComponent,
