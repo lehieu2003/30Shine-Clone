@@ -3,7 +3,7 @@ import { PrismaClient } from "../database/generated/index.js";
 const prisma = new PrismaClient();
 
 const productController = {
-  // Get all products with optional filtering
+  // Get all products with optional filtering (Public API)
   getAllProducts: async (req, res) => {
     try {
       const {
@@ -16,14 +16,14 @@ const productController = {
         maxPrice,
         sortBy = "createdAt",
         sortOrder = "desc",
-        isActive,
       } = req.query;
 
       const skip = (parseInt(page) - 1) * parseInt(limit);
       
-      // Build filter
+      // Build filter - only show active products for public
       const filter = {
         where: {
+          isActive: true, // Only show active products
           ...(search && {
             OR: [
               { name: { contains: search } },
@@ -35,7 +35,6 @@ const productController = {
           ...(brand && { brandSlug: brand }),
           ...(minPrice && { price: { gte: parseFloat(minPrice) } }),
           ...(maxPrice && { price: { lte: parseFloat(maxPrice) } }),
-          ...(isActive !== undefined && { isActive: isActive === 'true' }),
         },
         include: {
           images: true,
@@ -73,7 +72,7 @@ const productController = {
     }
   },
 
-  // Get a product by ID or slug
+  // Get a product by ID or slug (Public API)
   getProductById: async (req, res) => {
     try {
       const { id } = req.params;
@@ -82,8 +81,9 @@ const productController = {
         where: {
           OR: [
             { id },
-            { slug: id }, // If ID is actually a slug
+            { slug: id },
           ],
+          isActive: true, // Only show active products
         },
         include: {
           images: true,
@@ -112,9 +112,19 @@ const productController = {
     }
   },
 
-  // Create a new product
+  // Create a new product (Admin only)
   createProduct: async (req, res) => {
     try {
+      // Check admin role
+      if (req.user.role !== 'admin') {
+        return res.status(403).json({
+          success: false,
+          message: "Access denied. Admin only.",
+        });
+      }
+
+      console.log(`Admin ${req.user.id} is creating a new product`);
+
       const {
         name,
         slug,
@@ -142,7 +152,7 @@ const productController = {
         variants,
       } = req.body;
 
-      // Create the product using a transaction to ensure all related records are created together
+      // Create the product using a transaction
       const product = await prisma.$transaction(async (prisma) => {
         // Create the main product
         const newProduct = await prisma.product.create({
@@ -170,6 +180,7 @@ const productController = {
             tags,
             ingredients,
             manual,
+            isActive: true, // Default to active
           },
         });
 
@@ -243,10 +254,20 @@ const productController = {
     }
   },
 
-  // Update a product
+  // Update a product (Admin only)
   updateProduct: async (req, res) => {
     try {
+      // Check admin role
+      if (req.user.role !== 'admin') {
+        return res.status(403).json({
+          success: false,
+          message: "Access denied. Admin only.",
+        });
+      }
+
       const { id } = req.params;
+      console.log(`Admin ${req.user.id} is updating product: ${id}`);
+
       const {
         name,
         slug,
@@ -388,47 +409,128 @@ const productController = {
     }
   },
 
-  // Delete a product
+  // Delete a product (Admin only)
+  // deleteProduct: async (req, res) => {
+  //   try {
+  //     // Check admin role
+  //     if (req.user.role !== 'admin') {
+  //       return res.status(403).json({
+  //         success: false,
+  //         message: "Access denied. Admin only.",
+  //       });
+  //     }
+
+  //     const { id } = req.params;
+  //     console.log(`Admin ${req.user.id} is deleting product: ${id}`);
+
+  //     // Check if product exists
+  //     const productExists = await prisma.product.findUnique({
+  //       where: { id },
+  //     });
+
+  //     if (!productExists) {
+  //       return res.status(404).json({
+  //         success: false,
+  //         message: "Product not found",
+  //       });
+  //     }
+
+  //     // Delete the product (cascade will delete related images and variants)
+  //     await prisma.product.delete({
+  //       where: { id },
+  //     });
+
+  //     return res.status(200).json({
+  //       success: true,
+  //       message: "Product deleted successfully",
+  //     });
+  //   } catch (error) {
+  //     console.error("Error deleting product:", error);
+  //     return res.status(500).json({
+  //       success: false,
+  //       message: "Internal server error",
+  //       error: error.message,
+  //     });
+  //   }
+  // },
+
+  // Delete a product (Admin only)
   deleteProduct: async (req, res) => {
     try {
-      const { id } = req.params;
+        // Check admin role
+        if (req.user.role !== 'admin') {
+            return res.status(403).json({
+                success: false,
+                message: "Access denied. Admin only.",
+            });
+        }
 
-      // Check if product exists
-      const productExists = await prisma.product.findUnique({
-        where: { id },
-      });
+        const { id } = req.params;
+        console.log(`Admin ${req.user.id} is deleting product: ${id}`);
 
-      if (!productExists) {
-        return res.status(404).json({
+        // Check if product exists
+        const productExists = await prisma.product.findUnique({
+            where: { id },
+        });
+
+        if (!productExists) {
+            return res.status(404).json({
+                success: false,
+                message: "Product not found",
+            });
+        }
+
+        // Delete the product using a transaction to handle related records
+        await prisma.$transaction(async (prisma) => {
+            // Delete related records first
+            await prisma.inventoryTransaction.deleteMany({
+                where: { productId: id },
+            });
+
+            await prisma.productImage.deleteMany({
+                where: { productId: id },
+            });
+
+            await prisma.productVariant.deleteMany({
+                where: { productId: id },
+            });
+
+            // Finally delete the product
+            await prisma.product.delete({
+                where: { id },
+            });
+        });
+
+        return res.status(200).json({
+            success: true,
+            message: "Product deleted successfully",
+        });
+    } catch (error) {
+        console.error("Error deleting product:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error",
+            error: error.message,
+        });
+    }
+  },
+  
+
+  // Update product inventory (Admin only)
+  updateInventory: async (req, res) => {
+    try {
+      // Check admin role
+      if (req.user.role !== 'admin') {
+        return res.status(403).json({
           success: false,
-          message: "Product not found",
+          message: "Access denied. Admin only.",
         });
       }
 
-      // Delete the product (cascade will delete related images and variants)
-      await prisma.product.delete({
-        where: { id },
-      });
-
-      return res.status(200).json({
-        success: true,
-        message: "Product deleted successfully",
-      });
-    } catch (error) {
-      console.error("Error deleting product:", error);
-      return res.status(500).json({
-        success: false,
-        message: "Internal server error",
-        error: error.message,
-      });
-    }
-  },
-
-  // Update product inventory
-  updateInventory: async (req, res) => {
-    try {
       const { id } = req.params;
       const { quantity, unitPrice, notes } = req.body;
+
+      console.log(`Admin ${req.user.id} is updating inventory for product: ${id}`);
 
       if (!quantity || !unitPrice) {
         return res.status(400).json({
@@ -498,11 +600,21 @@ const productController = {
     }
   },
 
-  // Get inventory transactions for a product
+  // Get inventory transactions for a product (Admin only)
   getInventoryTransactions: async (req, res) => {
     try {
+      // Check admin role
+      if (req.user.role !== 'admin') {
+        return res.status(403).json({
+          success: false,
+          message: "Access denied. Admin only.",
+        });
+      }
+
       const { id } = req.params;
       const { page = 1, limit = 10 } = req.query;
+
+      console.log(`Admin ${req.user.id} is viewing inventory transactions for product: ${id}`);
 
       const skip = (parseInt(page) - 1) * parseInt(limit);
 
@@ -552,6 +664,179 @@ const productController = {
       });
     } catch (error) {
       console.error("Error getting inventory transactions:", error);
+      return res.status(500).json({
+        success: false,
+        message: "Internal server error",
+        error: error.message,
+      });
+    }
+  },
+  // Get products by category
+  getProductsByCategory: async (req, res) => {
+    try {
+      const { category } = req.params;
+      const { page = 1, limit = 10 } = req.query;
+
+      const skip = (parseInt(page) - 1) * parseInt(limit);
+
+      const [products, total] = await Promise.all([
+        prisma.product.findMany({
+          where: {
+            categorySlug: category,
+            isActive: true,
+          },
+          include: {
+            images: true,
+            variants: true,
+          },
+          skip,
+          take: parseInt(limit),
+          orderBy: {
+            createdAt: 'desc',
+          },
+        }),
+        prisma.product.count({
+          where: {
+            categorySlug: category,
+            isActive: true,
+          },
+        }),
+      ]);
+
+      return res.status(200).json({
+        success: true,
+        data: products,
+        meta: {
+          page: parseInt(page),
+          limit: parseInt(limit),
+          total,
+          totalPages: Math.ceil(total / parseInt(limit)),
+        },
+      });
+    } catch (error) {
+      console.error("Error getting products by category:", error);
+      return res.status(500).json({
+        success: false,
+        message: "Internal server error",
+        error: error.message,
+      });
+    }
+  },
+
+  // Search products
+  searchProducts: async (req, res) => {
+    try {
+      const { query, page = 1, limit = 10 } = req.query;
+
+      const skip = (parseInt(page) - 1) * parseInt(limit);
+
+      const [products, total] = await Promise.all([
+        prisma.product.findMany({
+          where: {
+            isActive: true,
+            OR: [
+              { name: { contains: query } },
+              { description: { contains: query } },
+              { brand: { contains: query } },
+              { category: { contains: query } },
+            ],
+          },
+          include: {
+            images: true,
+            variants: true,
+          },
+          skip,
+          take: parseInt(limit),
+          orderBy: {
+            createdAt: 'desc',
+          },
+        }),
+        prisma.product.count({
+          where: {
+            isActive: true,
+            OR: [
+              { name: { contains: query } },
+              { description: { contains: query } },
+              { brand: { contains: query } },
+              { category: { contains: query } },
+            ],
+          },
+        }),
+      ]);
+
+      return res.status(200).json({
+        success: true,
+        data: products,
+        meta: {
+          page: parseInt(page),
+          limit: parseInt(limit),
+          total,
+          totalPages: Math.ceil(total / parseInt(limit)),
+        },
+      });
+    } catch (error) {
+      console.error("Error searching products:", error);
+      return res.status(500).json({
+        success: false,
+        message: "Internal server error",
+        error: error.message,
+      });
+    }
+  },
+
+  // Get all inventory transactions (Admin only)
+  getAllInventoryTransactions: async (req, res) => {
+    try {
+      // Check admin role
+      if (req.user.role !== 'admin') {
+        return res.status(403).json({
+          success: false,
+          message: "Access denied. Admin only.",
+        });
+      }
+
+      const { page = 1, limit = 10 } = req.query;
+      const skip = (parseInt(page) - 1) * parseInt(limit);
+
+      console.log(`Admin ${req.user.id} is viewing all inventory transactions`);
+
+      const [transactions, total] = await Promise.all([
+        prisma.inventoryTransaction.findMany({
+          include: {
+            product: {
+              select: {
+                id: true,
+                name: true,
+                sku: true,
+              },
+            },
+            employee: {
+              select: {
+                id: true,
+                fullName: true,
+                email: true,
+              },
+            },
+          },
+          orderBy: { transactionDate: "desc" },
+          skip,
+          take: parseInt(limit),
+        }),
+        prisma.inventoryTransaction.count(),
+      ]);
+
+      return res.status(200).json({
+        success: true,
+        data: transactions,
+        meta: {
+          page: parseInt(page),
+          limit: parseInt(limit),
+          total,
+          totalPages: Math.ceil(total / parseInt(limit)),
+        },
+      });
+    } catch (error) {
+      console.error("Error getting all inventory transactions:", error);
       return res.status(500).json({
         success: false,
         message: "Internal server error",
