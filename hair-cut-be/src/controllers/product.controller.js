@@ -408,52 +408,6 @@ const productController = {
       });
     }
   },
-
-  // Delete a product (Admin only)
-  // deleteProduct: async (req, res) => {
-  //   try {
-  //     // Check admin role
-  //     if (req.user.role !== 'admin') {
-  //       return res.status(403).json({
-  //         success: false,
-  //         message: "Access denied. Admin only.",
-  //       });
-  //     }
-
-  //     const { id } = req.params;
-  //     console.log(`Admin ${req.user.id} is deleting product: ${id}`);
-
-  //     // Check if product exists
-  //     const productExists = await prisma.product.findUnique({
-  //       where: { id },
-  //     });
-
-  //     if (!productExists) {
-  //       return res.status(404).json({
-  //         success: false,
-  //         message: "Product not found",
-  //       });
-  //     }
-
-  //     // Delete the product (cascade will delete related images and variants)
-  //     await prisma.product.delete({
-  //       where: { id },
-  //     });
-
-  //     return res.status(200).json({
-  //       success: true,
-  //       message: "Product deleted successfully",
-  //     });
-  //   } catch (error) {
-  //     console.error("Error deleting product:", error);
-  //     return res.status(500).json({
-  //       success: false,
-  //       message: "Internal server error",
-  //       error: error.message,
-  //     });
-  //   }
-  // },
-
   // Delete a product (Admin only)
   deleteProduct: async (req, res) => {
     try {

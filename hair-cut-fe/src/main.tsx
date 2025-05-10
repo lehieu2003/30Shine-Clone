@@ -9,6 +9,7 @@ import { routeTree } from './routeTree.gen'
 import './styles.css'
 import reportWebVitals from './reportWebVitals.ts'
 import { AuthProvider } from './contexts/AuthContext.tsx'
+import { ProductProvider } from './contexts/ProductContext'
 
 const router = createRouter({
   routeTree,
@@ -33,9 +34,11 @@ if (rootElement && !rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <AuthProvider>
-        <TanstackQuery.Provider>
-          <RouterProvider router={router} />
-        </TanstackQuery.Provider>
+        <ProductProvider>
+          <TanstackQuery.Provider>
+            <RouterProvider router={router} />
+          </TanstackQuery.Provider>
+        </ProductProvider>
       </AuthProvider>
     </StrictMode>,
   )

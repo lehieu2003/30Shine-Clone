@@ -106,7 +106,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
       registerForm.reset()
       toast.success('Đăng ký thành công!')
     },
-    onError: (error: any) => {
+    onError: () => {
       toast.error('Đã xảy ra lỗi, vui lòng thử lại sau')
     },
   })
@@ -123,7 +123,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
       localStorage.setItem('access_token', data.accessToken)
       refreshUser()
     },
-    onError: (error: any) => {
+    onError: () => {
       toast.error('Đã xảy ra lỗi, vui lòng thử lại sau')
     },
   })
@@ -295,7 +295,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
                         <Input
                           placeholder="Nhập số điện thoại"
                           {...rest}
-                          onBlur={(e) => {
+                          onBlur={() => {
                             onBlur()
                             handlePhoneBlur()
                           }}
@@ -315,7 +315,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
                         <Input
                           placeholder="Nhập email"
                           {...rest}
-                          onBlur={(e) => {
+                          onBlur={() => {
                             onBlur()
                             handleEmailBlur()
                           }}

@@ -9,6 +9,14 @@ import {
   Search,
   Trash2,
 } from 'lucide-react'
+import type {
+  InventoryTransaction,
+  Product,
+  ProductImage,
+  ProductVariant,
+} from '@/types/product'
+
+import { useProduct } from '@/contexts/ProductContext'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -40,86 +48,23 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
 
-// Types
-interface Product {
-  id: string
-  name: string
-  slug: string
-  description: string | null
-  shortDescription: string | null
-  brand: string | null
-  brandSlug: string | null
-  category: string | null
-  categorySlug: string | null
-  subcategory: string | null
-  subcategorySlug: string | null
-  price: number
-  listedPrice: number
-  cost: number | null
-  discountPercent: number
-  isDiscount: boolean
-  quantity: number
-  minimumStock: number
-  isOutOfStock: boolean
-  imageUrl: string | null
-  sku: string | null
-  tags: string | null
-  ingredients: string | null
-  manual: string | null
-  ratingScore: number
-  totalSold: number
-  isActive: boolean
-  createdAt: string
-  updatedAt: string | null
-  images: Array<ProductImage>
-  variants: Array<ProductVariant>
-}
-
-// Add interfaces for the related models
-interface ProductImage {
-  id: number
-  productId: string
-  name: string
-  url: string
-  alt: string | null
-}
-
-interface ProductVariant {
-  id: number
-  productId: string
-  name: string
-  price: number
-  listedPrice: number
-  sku: string | null
-  imageUrl: string | null
-  isDiscount: boolean
-  discountPercent: number
-  isOutOfStock: boolean
-}
-
-interface InventoryTransaction {
-  id: number
-  productId: string
-  productName?: string // For display purposes
-  quantity: number
-  unitPrice: number
-  totalPrice: number
-  transactionDate: string
-  notes: string | null
-  employeeId: number
-  employeeName?: string // For display purposes
-}
-
 export default function ProductManagementPage() {
-  const [products, setProducts] = useState<Array<Product>>([])
-  const [inventoryTransactions, setInventoryTransactions] = useState<
-    Array<InventoryTransaction>
-  >([])
+  const {
+    products,
+    isLoading,
+    fetchProducts,
+    createProduct,
+    updateProduct,
+    deleteProduct,
+    updateInventory,
+    getInventoryTransactions,
+    getAllInventoryTransactions,
+  } = useProduct()
+
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [selectedProductInventory, setSelectedProductInventory] = useState<
     Array<InventoryTransaction>
   >([])
-  const [isLoading, setIsLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage] = useState(10)
@@ -188,168 +133,6 @@ export default function ProductManagementPage() {
     fetchProducts()
   }, [])
 
-  const fetchProducts = async () => {
-    setIsLoading(true)
-    try {
-      const response = await fetch('/products')
-      if (!response.ok) throw new Error('Failed to fetch products')
-      const data = await response.json()
-      setProducts(data)
-    } catch (error) {
-      console.error('Error fetching products:', error)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  // Fetch all inventory transactions
-  const fetchInventoryTransactions = async () => {
-    setIsLoading(true)
-    try {
-      const response = await fetch('/products/admin/inventory', {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-      })
-      if (!response.ok)
-        throw new Error('Failed to fetch inventory transactions')
-      const data = await response.json()
-      setInventoryTransactions(data)
-    } catch (error) {
-      console.error('Error fetching inventory transactions:', error)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  // Fetch inventory transactions for a specific product
-  const fetchProductInventoryTransactions = async (productId: string) => {
-    setIsLoading(true)
-    try {
-      const response = await fetch(`/products/admin/inventory/${productId}`, {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-      })
-      if (!response.ok)
-        throw new Error('Failed to fetch product inventory transactions')
-      const data = await response.json()
-      setSelectedProductInventory(data)
-    } catch (error) {
-      console.error('Error fetching product inventory transactions:', error)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  // Create product
-  const createProduct = async () => {
-    try {
-      const productData = {
-        ...formData,
-        images: productImages,
-        variants: productVariants,
-      }
-
-      const response = await fetch('/products/admin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-        body: JSON.stringify(productData),
-      })
-
-      if (!response.ok) throw new Error('Failed to create product')
-
-      fetchProducts()
-      setProductFormOpen(false)
-      resetForm()
-    } catch (error) {
-      console.error('Error creating product:', error)
-    }
-  }
-
-  // Update product
-  const updateProduct = async () => {
-    if (!selectedProduct) return
-
-    try {
-      const productData = {
-        ...formData,
-        images: productImages,
-        variants: productVariants,
-      }
-
-      const response = await fetch(`/products/admin/${selectedProduct.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-        body: JSON.stringify(productData),
-      })
-
-      if (!response.ok) throw new Error('Failed to update product')
-
-      fetchProducts()
-      setProductFormOpen(false)
-      resetForm()
-    } catch (error) {
-      console.error('Error updating product:', error)
-    }
-  }
-
-  // Delete product
-  const deleteProduct = async () => {
-    if (!selectedProduct) return
-
-    try {
-      const response = await fetch(`/products/admin/${selectedProduct.id}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-      })
-
-      if (!response.ok) throw new Error('Failed to delete product')
-
-      fetchProducts()
-      setDeleteConfirmOpen(false)
-      setSelectedProduct(null)
-    } catch (error) {
-      console.error('Error deleting product:', error)
-    }
-  }
-
-  // Update inventory
-  const updateInventory = async () => {
-    if (!selectedProduct) return
-
-    try {
-      const response = await fetch(
-        `/products/admin/${selectedProduct.id}/inventory`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + localStorage.getItem('token'),
-          },
-          body: JSON.stringify(inventoryFormData),
-        },
-      )
-
-      if (!response.ok) throw new Error('Failed to update inventory')
-
-      fetchProducts()
-      fetchProductInventoryTransactions(selectedProduct.id)
-      setInventoryFormOpen(false)
-      resetInventoryForm()
-    } catch (error) {
-      console.error('Error updating inventory:', error)
-    }
-  }
-
   // Handle edit product
   const handleEditProduct = (product: Product) => {
     setSelectedProduct(product)
@@ -385,16 +168,73 @@ export default function ProductManagementPage() {
   }
 
   // Handle inventory update
-  const handleInventoryUpdate = (product: Product) => {
+  const handleInventoryUpdate = async (product: Product) => {
     setSelectedProduct(product)
-    fetchProductInventoryTransactions(product.id)
-    setInventoryFormOpen(true)
+    try {
+      const transactions = await getInventoryTransactions(product.id)
+      setSelectedProductInventory(transactions)
+      setInventoryFormOpen(true)
+    } catch (error) {
+      console.error('Error fetching inventory transactions:', error)
+    }
   }
 
   // Handle delete confirmation
   const handleDeleteConfirm = (product: Product) => {
     setSelectedProduct(product)
     setDeleteConfirmOpen(true)
+  }
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    try {
+      if (formMode === 'create') {
+        await createProduct({
+          ...formData,
+          images: productImages,
+          variants: productVariants,
+        })
+      } else if (selectedProduct) {
+        await updateProduct(selectedProduct.id, {
+          ...formData,
+          images: productImages,
+          variants: productVariants,
+        })
+      }
+      setProductFormOpen(false)
+      resetForm()
+    } catch (error) {
+      console.error('Error submitting product:', error)
+    }
+  }
+
+  const handleInventorySubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!selectedProduct) return
+
+    try {
+      await updateInventory(selectedProduct.id, inventoryFormData)
+      const transactions = await getInventoryTransactions(selectedProduct.id)
+      setSelectedProductInventory(transactions)
+      setInventoryFormOpen(false)
+      resetInventoryForm()
+    } catch (error) {
+      console.error('Error updating inventory:', error)
+    }
+  }
+
+  // Handle delete product
+  const handleDeleteProduct = async () => {
+    if (!selectedProduct) return
+
+    try {
+      await deleteProduct(selectedProduct.id)
+      setDeleteConfirmOpen(false)
+      setSelectedProduct(null)
+    } catch (error) {
+      console.error('Error deleting product:', error)
+    }
   }
 
   // Reset forms
@@ -546,30 +386,16 @@ export default function ProductManagementPage() {
     setProductVariants(productVariants.filter((variant) => variant.id !== id))
   }
 
-  // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (formMode === 'create') {
-      createProduct()
-    } else {
-      updateProduct()
-    }
-  }
-
-  // Handle inventory form submission
-  const handleInventorySubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    updateInventory()
-  }
-
   // Filter products based on search query
-  const filteredProducts = products.filter(
-    (product) =>
-      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (product.category?.toLowerCase() || '').includes(
-        searchQuery.toLowerCase(),
-      ),
-  )
+  const filteredProducts = Array.isArray(products)
+    ? products.filter(
+        (product) =>
+          product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (product.category?.toLowerCase() || '').includes(
+            searchQuery.toLowerCase(),
+          ),
+      )
+    : []
 
   // Pagination
   const indexOfLastItem = currentPage * itemsPerPage
@@ -579,20 +405,6 @@ export default function ProductManagementPage() {
     indexOfLastItem,
   )
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage)
-
-  // Status badge color
-  const getStatusBadgeColor = (status: string) => {
-    switch (status) {
-      case 'active':
-        return 'bg-green-100 text-green-800'
-      case 'inactive':
-        return 'bg-gray-100 text-gray-800'
-      case 'out_of_stock':
-        return 'bg-red-100 text-red-800'
-      default:
-        return 'bg-gray-100 text-gray-800'
-    }
-  }
 
   return (
     <div className="container mx-auto py-8">
@@ -607,7 +419,7 @@ export default function ProductManagementPage() {
               <TabsTrigger value="products">Products</TabsTrigger>
               <TabsTrigger
                 value="inventory"
-                onClick={fetchInventoryTransactions}
+                onClick={getAllInventoryTransactions}
               >
                 Inventory Transactions
               </TabsTrigger>
@@ -676,9 +488,9 @@ export default function ProductManagementPage() {
                           <TableCell>
                             {product.category || 'Uncategorized'}
                           </TableCell>
-                          <TableCell>${product.price.toFixed(2)}</TableCell>
+                          <TableCell>${Number(product.price).toFixed(2)}</TableCell>
                           <TableCell>
-                            ${product.listedPrice.toFixed(2)}
+                            ${Number(product.listedPrice).toFixed(2)}
                           </TableCell>
                           <TableCell>
                             {product.quantity}{' '}
@@ -815,14 +627,14 @@ export default function ProductManagementPage() {
                           </p>
                         </TableCell>
                       </TableRow>
-                    ) : inventoryTransactions.length === 0 ? (
+                    ) : selectedProductInventory.length === 0 ? (
                       <TableRow>
                         <TableCell colSpan={7} className="text-center py-8">
                           <p>No inventory transactions found</p>
                         </TableCell>
                       </TableRow>
                     ) : (
-                      inventoryTransactions.map((transaction) => (
+                      selectedProductInventory.map((transaction) => (
                         <TableRow key={transaction.id}>
                           <TableCell className="font-medium">
                             {transaction.productName}
@@ -1176,7 +988,7 @@ export default function ProductManagementPage() {
 
                     {productImages.length > 0 && (
                       <div className="grid grid-cols-1 gap-4 mb-4">
-                        {productImages.map((image, index) => (
+                        {productImages.map((image) => (
                           <div
                             key={image.id}
                             className="flex items-center justify-between p-3 border rounded-md"
@@ -1279,9 +1091,9 @@ export default function ProductManagementPage() {
                           <div>
                             <p className="font-medium">{variant.name}</p>
                             <div className="flex gap-2 text-sm text-muted-foreground">
-                              <span>Price: ${variant.price.toFixed(2)}</span>
+                              <span>Price: ${Number(variant.price).toFixed(2)}</span>
                               <span>
-                                Listed: ${variant.listedPrice.toFixed(2)}
+                                Listed: ${Number(variant.listedPrice).toFixed(2)}
                               </span>
                               {variant.sku && <span>SKU: {variant.sku}</span>}
                               {variant.isDiscount && (
@@ -1757,7 +1569,7 @@ export default function ProductManagementPage() {
             >
               Cancel
             </Button>
-            <Button variant="destructive" onClick={deleteProduct}>
+            <Button variant="destructive" onClick={handleDeleteProduct}>
               Delete
             </Button>
           </DialogFooter>
