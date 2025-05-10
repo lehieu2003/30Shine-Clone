@@ -5,6 +5,8 @@ export const productApi = {
   // Get all products
   getAllProducts: async (): Promise<Array<Product>> => {
     const response = await apiClient.get('/api/products')
+    console.log('products length 1111', response.data.data.length)
+
     return Array.isArray(response.data.data) ? response.data.data : []
   },
   // Create a new product

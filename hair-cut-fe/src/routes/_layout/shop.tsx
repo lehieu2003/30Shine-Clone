@@ -1,4 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { Heart, Search, ShoppingBag, Star } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import type { Product } from '@/types/product'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
@@ -11,13 +14,177 @@ import {
 } from '@/components/ui/select'
 import { Slider } from '@/components/ui/slider'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
-import { Heart, Search, ShoppingBag, Star } from 'lucide-react'
+import { useProduct } from '@/contexts/ProductContext'
+import { Skeleton } from '../../components/ui/skeleton'
 
 export const Route = createFileRoute('/_layout/shop')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
+  const { products, isLoading, error } = useProduct()
+  const [filteredProducts, setFilteredProducts] = useState<Array<Product>>([])
+  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('all')
+  const [selectedBrand, setSelectedBrand] = useState('all')
+  const [priceRange, setPriceRange] = useState([0, 1000000])
+  const [sortBy, setSortBy] = useState('popular')
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 9
+  console.log('products length', products.length)
+
+  // Get unique categories and brands from products
+  const categories = [
+    'all',
+    ...new Set(
+      products.map((p) => p.category).filter(Boolean) as Array<string>,
+    ),
+  ] as const
+  const brands = [
+    'all',
+    ...new Set(products.map((p) => p.brand).filter(Boolean) as Array<string>),
+  ] as const
+
+  useEffect(() => {
+    let filtered = [...products]
+
+    // Apply search filter
+    if (searchQuery) {
+      filtered = filtered.filter(
+        (product) =>
+          product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          product.description
+            ?.toLowerCase()
+            .includes(searchQuery.toLowerCase()) ||
+          product.brand?.toLowerCase().includes(searchQuery.toLowerCase()),
+      )
+    }
+
+    // Apply category filter
+    if (selectedCategory !== 'all') {
+      filtered = filtered.filter(
+        (product) => product.category === selectedCategory,
+      )
+    }
+
+    // Apply brand filter
+    if (selectedBrand !== 'all') {
+      filtered = filtered.filter((product) => product.brand === selectedBrand)
+    }
+
+    // Apply price range filter
+    filtered = filtered.filter(
+      (product) =>
+        product.price >= priceRange[0] && product.price <= priceRange[1],
+    )
+
+    // Apply sorting
+    switch (sortBy) {
+      case 'price-asc':
+        filtered.sort((a, b) => a.price - b.price)
+        break
+      case 'price-desc':
+        filtered.sort((a, b) => b.price - a.price)
+        break
+      case 'rating':
+        filtered.sort((a, b) => b.ratingScore - a.ratingScore)
+        break
+      case 'newest':
+        filtered.sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+        )
+        break
+      default: // popular
+        filtered.sort((a, b) => b.totalSold - a.totalSold)
+    }
+
+    setFilteredProducts(filtered)
+  }, [
+    products,
+    searchQuery,
+    selectedCategory,
+    selectedBrand,
+    priceRange,
+    sortBy,
+  ])
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage)
+  const paginatedProducts = filteredProducts.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  )
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND',
+    }).format(price)
+  }
+
+  const renderProductCard = (product: Product) => (
+    <Card key={product.id} className="overflow-hidden group">
+      <div className="relative aspect-square">
+        <img
+          src={product.imageUrl || '/placeholder.svg?height=300&width=300'}
+          alt={product.name}
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+        <Button
+          size="icon"
+          variant="outline"
+          className="absolute top-2 right-2 h-8 w-8 rounded-full bg-white/80 backdrop-blur-sm"
+        >
+          <Heart className="h-4 w-4" />
+        </Button>
+        {product.isDiscount && (
+          <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded">
+            -{product.discountPercent}%
+          </div>
+        )}
+      </div>
+      <CardContent className="p-4">
+        <div className="flex items-center gap-1 mb-2">
+          {Array(5)
+            .fill(0)
+            .map((_, i) => (
+              <Star
+                key={i}
+                className={`h-3 w-3 ${
+                  i < Math.floor(product.ratingScore)
+                    ? 'fill-yellow-400 text-yellow-400'
+                    : 'text-gray-300'
+                }`}
+              />
+            ))}
+          <span className="text-xs text-muted-foreground ml-1">
+            ({product.totalSold})
+          </span>
+        </div>
+        <h3 className="font-medium line-clamp-2 mb-1 group-hover:text-blue-600">
+          {product.name}
+        </h3>
+        <div className="flex items-center gap-2">
+          <span className="font-bold text-blue-600">
+            {formatPrice(product.price)}
+          </span>
+          {product.isDiscount && (
+            <span className="text-sm text-muted-foreground line-through">
+              {formatPrice(product.listedPrice)}
+            </span>
+          )}
+        </div>
+      </CardContent>
+      <CardFooter className="p-4 pt-0">
+        <Button className="w-full bg-blue-600 hover:bg-blue-700">
+          <ShoppingBag className="mr-2 h-4 w-4" />
+          Thêm vào giỏ
+        </Button>
+      </CardFooter>
+    </Card>
+  )
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -38,21 +205,18 @@ function RouteComponent() {
       <section className="py-8 border-b">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-4 justify-center">
-            {[
-              'Tất cả sản phẩm',
-              'Sáp vuốt tóc',
-              'Dầu gội',
-              'Dầu xả',
-              'Serum dưỡng tóc',
-              'Sữa rửa mặt',
-              'Kem dưỡng da',
-            ].map((category, index) => (
+            {categories.map((category) => (
               <Button
-                key={index}
-                variant={index === 0 ? 'default' : 'outline'}
-                className={index === 0 ? 'bg-blue-600 hover:bg-blue-700' : ''}
+                key={category}
+                variant={category === selectedCategory ? 'default' : 'outline'}
+                className={
+                  category === selectedCategory
+                    ? 'bg-blue-600 hover:bg-blue-700'
+                    : ''
+                }
+                onClick={() => setSelectedCategory(category)}
               >
-                {category}
+                {category === 'all' ? 'Tất cả sản phẩm' : category}
               </Button>
             ))}
           </div>
@@ -74,6 +238,8 @@ function RouteComponent() {
                       type="search"
                       placeholder="Tìm sản phẩm..."
                       className="pl-8"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
                     />
                   </div>
                 </div>
@@ -83,29 +249,28 @@ function RouteComponent() {
                 <div>
                   <h3 className="text-lg font-bold mb-4">Danh mục</h3>
                   <div className="space-y-2">
-                    {[
-                      { name: 'Tất cả sản phẩm', count: 86 },
-                      { name: 'Sáp vuốt tóc', count: 24 },
-                      { name: 'Dầu gội', count: 18 },
-                      { name: 'Dầu xả', count: 12 },
-                      { name: 'Serum dưỡng tóc', count: 9 },
-                      { name: 'Sữa rửa mặt', count: 15 },
-                      { name: 'Kem dưỡng da', count: 8 },
-                    ].map((category, index) => (
+                    {categories.map((category) => (
                       <div
-                        key={index}
+                        key={category}
                         className="flex items-center justify-between"
                       >
                         <label className="text-sm cursor-pointer hover:text-blue-600">
                           <input
-                            type="checkbox"
+                            type="radio"
+                            name="category"
                             className="mr-2 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
-                            defaultChecked={index === 0}
+                            checked={category === selectedCategory}
+                            onChange={() => setSelectedCategory(category)}
                           />
-                          {category.name}
+                          {category === 'all' ? 'Tất cả sản phẩm' : category}
                         </label>
                         <span className="text-xs text-muted-foreground">
-                          ({category.count})
+                          (
+                          {
+                            products.filter((p) => p.category === category)
+                              .length
+                          }
+                          )
                         </span>
                       </div>
                     ))}
@@ -117,27 +282,23 @@ function RouteComponent() {
                 <div>
                   <h3 className="text-lg font-bold mb-4">Thương hiệu</h3>
                   <div className="space-y-2">
-                    {[
-                      { name: '30Shine', count: 32 },
-                      { name: 'Glanzen', count: 18 },
-                      { name: 'Gatsby', count: 14 },
-                      { name: 'Tigi', count: 10 },
-                      { name: "L'Oreal", count: 8 },
-                      { name: 'Dove', count: 4 },
-                    ].map((brand, index) => (
+                    {brands.map((brand) => (
                       <div
-                        key={index}
+                        key={brand}
                         className="flex items-center justify-between"
                       >
                         <label className="text-sm cursor-pointer hover:text-blue-600">
                           <input
-                            type="checkbox"
+                            type="radio"
+                            name="brand"
                             className="mr-2 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
+                            checked={brand === selectedBrand}
+                            onChange={() => setSelectedBrand(brand)}
                           />
-                          {brand.name}
+                          {brand === 'all' ? 'Tất cả thương hiệu' : brand}
                         </label>
                         <span className="text-xs text-muted-foreground">
-                          ({brand.count})
+                          ({products.filter((p) => p.brand === brand).length})
                         </span>
                       </div>
                     ))}
@@ -150,63 +311,27 @@ function RouteComponent() {
                   <h3 className="text-lg font-bold mb-4">Giá (nghìn đồng)</h3>
                   <div className="space-y-6">
                     <Slider
-                      defaultValue={[50, 500]}
+                      defaultValue={[0, 1000000]}
                       min={0}
-                      max={1000}
-                      step={10}
+                      max={1000000}
+                      step={10000}
+                      value={priceRange}
+                      onValueChange={setPriceRange}
                     />
                     <div className="flex items-center justify-between">
                       <div className="border rounded-md px-3 py-1">
-                        <span className="text-sm">50K</span>
+                        <span className="text-sm">
+                          {formatPrice(priceRange[0])}
+                        </span>
                       </div>
                       <div className="border rounded-md px-3 py-1">
-                        <span className="text-sm">500K</span>
+                        <span className="text-sm">
+                          {formatPrice(priceRange[1])}
+                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
-
-                <Separator />
-
-                <div>
-                  <h3 className="text-lg font-bold mb-4">Đánh giá</h3>
-                  <div className="space-y-2">
-                    {[5, 4, 3, 2, 1].map((rating) => (
-                      <div key={rating} className="flex items-center gap-2">
-                        <input
-                          type="checkbox"
-                          id={`rating-${rating}`}
-                          className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
-                        />
-                        <label
-                          htmlFor={`rating-${rating}`}
-                          className="flex items-center"
-                        >
-                          {Array(rating)
-                            .fill(0)
-                            .map((_, i) => (
-                              <Star
-                                key={i}
-                                className="h-4 w-4 fill-yellow-400 text-yellow-400"
-                              />
-                            ))}
-                          {Array(5 - rating)
-                            .fill(0)
-                            .map((_, i) => (
-                              <Star key={i} className="h-4 w-4 text-gray-300" />
-                            ))}
-                          <span className="ml-1 text-xs text-muted-foreground">
-                            trở lên
-                          </span>
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                  Áp dụng bộ lọc
-                </Button>
               </div>
             </div>
 
@@ -217,13 +342,13 @@ function RouteComponent() {
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-muted-foreground">
-                      Hiển thị 1-12 của 86 sản phẩm
+                      Hiển thị {filteredProducts.length} sản phẩm
                     </span>
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2">
                       <span className="text-sm">Sắp xếp theo:</span>
-                      <Select defaultValue="popular">
+                      <Select value={sortBy} onValueChange={setSortBy}>
                         <SelectTrigger className="w-[180px]">
                           <SelectValue placeholder="Phổ biến nhất" />
                         </SelectTrigger>
@@ -242,210 +367,106 @@ function RouteComponent() {
                         </SelectContent>
                       </Select>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm">Hiển thị:</span>
-                      <Select defaultValue="12">
-                        <SelectTrigger className="w-[80px]">
-                          <SelectValue placeholder="12" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="12">12</SelectItem>
-                          <SelectItem value="24">24</SelectItem>
-                          <SelectItem value="36">36</SelectItem>
-                          <SelectItem value="48">48</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
                   </div>
                 </div>
 
-                {/* Featured Products */}
-                <div>
-                  <h2 className="text-2xl font-bold mb-6">Sản phẩm nổi bật</h2>
+                {/* Products Grid */}
+                {isLoading ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {Array(6)
                       .fill(0)
                       .map((_, index) => (
-                        <Card key={index} className="overflow-hidden group">
-                          <div className="relative aspect-square">
-                            <img
-                              src="/placeholder.svg?height=300&width=300"
-                              alt="Product image"
-                              className="object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                            <Button
-                              size="icon"
-                              variant="outline"
-                              className="absolute top-2 right-2 h-8 w-8 rounded-full bg-white/80 backdrop-blur-sm"
-                            >
-                              <Heart className="h-4 w-4" />
-                            </Button>
-                            {index % 3 === 0 && (
-                              <div className="absolute top-2 left-2 bg-blue-600 text-white text-xs font-medium px-2 py-1 rounded">
-                                Mới
-                              </div>
-                            )}
-                            {index % 4 === 0 && (
-                              <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded">
-                                -20%
-                              </div>
-                            )}
-                          </div>
+                        <Card key={index} className="overflow-hidden">
+                          <Skeleton className="aspect-square" />
                           <CardContent className="p-4">
-                            <div className="flex items-center gap-1 mb-2">
-                              {Array(5)
-                                .fill(0)
-                                .map((_, i) => (
-                                  <Star
-                                    key={i}
-                                    className={`h-3 w-3 ${i < 4 ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
-                                  />
-                                ))}
-                              <span className="text-xs text-muted-foreground ml-1">
-                                (120)
-                              </span>
-                            </div>
-                            <h3 className="font-medium line-clamp-2 mb-1 group-hover:text-blue-600">
-                              Sáp vuốt tóc 30Shine Clay Wax 30S1 - Giữ nếp tự
-                              nhiên
-                            </h3>
-                            <div className="flex items-center gap-2">
-                              <span className="font-bold text-blue-600">
-                                199.000đ
-                              </span>
-                              {index % 4 === 0 && (
-                                <span className="text-sm text-muted-foreground line-through">
-                                  249.000đ
-                                </span>
-                              )}
-                            </div>
+                            <Skeleton className="h-4 w-3/4 mb-2" />
+                            <Skeleton className="h-4 w-1/2" />
                           </CardContent>
-                          <CardFooter className="p-4 pt-0">
-                            <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                              <ShoppingBag className="mr-2 h-4 w-4" />
-                              Thêm vào giỏ
-                            </Button>
-                          </CardFooter>
                         </Card>
                       ))}
                   </div>
-                </div>
-
-                {/* Best Sellers */}
-                <div>
-                  <h2 className="text-2xl font-bold mb-6">Sản phẩm bán chạy</h2>
+                ) : error ? (
+                  <div className="text-center py-8">
+                    <p className="text-red-500">{error}</p>
+                  </div>
+                ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {Array(3)
-                      .fill(0)
-                      .map((_, index) => (
-                        <Card key={index} className="overflow-hidden group">
-                          <div className="relative aspect-square">
-                            <img
-                              src="/placeholder.svg?height=300&width=300"
-                              alt="Product image"
-                              className="object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                            <Button
-                              size="icon"
-                              variant="outline"
-                              className="absolute top-2 right-2 h-8 w-8 rounded-full bg-white/80 backdrop-blur-sm"
-                            >
-                              <Heart className="h-4 w-4" />
-                            </Button>
-                            <div className="absolute top-2 left-2 bg-amber-500 text-white text-xs font-medium px-2 py-1 rounded">
-                              Bán chạy
-                            </div>
-                          </div>
-                          <CardContent className="p-4">
-                            <div className="flex items-center gap-1 mb-2">
-                              {Array(5)
-                                .fill(0)
-                                .map((_, i) => (
-                                  <Star
-                                    key={i}
-                                    className={`h-3 w-3 ${i < 5 ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
-                                  />
-                                ))}
-                              <span className="text-xs text-muted-foreground ml-1">
-                                (358)
-                              </span>
-                            </div>
-                            <h3 className="font-medium line-clamp-2 mb-1 group-hover:text-blue-600">
-                              Dầu gội 30Shine Biotin & Collagen - Ngăn rụng tóc
-                            </h3>
-                            <div className="flex items-center gap-2">
-                              <span className="font-bold text-blue-600">
-                                169.000đ
-                              </span>
-                            </div>
-                          </CardContent>
-                          <CardFooter className="p-4 pt-0">
-                            <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                              <ShoppingBag className="mr-2 h-4 w-4" />
-                              Thêm vào giỏ
-                            </Button>
-                          </CardFooter>
-                        </Card>
-                      ))}
+                    {paginatedProducts.map(renderProductCard)}
                   </div>
-                </div>
+                )}
 
                 {/* Pagination */}
-                <div className="flex justify-center mt-8">
-                  <div className="flex items-center gap-1">
-                    <Button variant="outline" size="icon" disabled>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-4 w-4"
+                {totalPages > 1 && (
+                  <div className="flex justify-center mt-8">
+                    <div className="flex items-center gap-1">
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        disabled={currentPage === 1}
+                        onClick={() =>
+                          setCurrentPage((prev) => Math.max(prev - 1, 1))
+                        }
                       >
-                        <path d="m15 18-6-6 6-6" />
-                      </svg>
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="bg-blue-600 text-white hover:bg-blue-700"
-                    >
-                      1
-                    </Button>
-                    <Button variant="outline" size="icon">
-                      2
-                    </Button>
-                    <Button variant="outline" size="icon">
-                      3
-                    </Button>
-                    <Button variant="outline" size="icon">
-                      4
-                    </Button>
-                    <Button variant="outline" size="icon">
-                      5
-                    </Button>
-                    <Button variant="outline" size="icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-4 w-4"
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="h-4 w-4"
+                        >
+                          <path d="m15 18-6-6 6-6" />
+                        </svg>
+                      </Button>
+                      {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                        (page) => (
+                          <Button
+                            key={page}
+                            variant="outline"
+                            size="icon"
+                            className={
+                              page === currentPage
+                                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                                : ''
+                            }
+                            onClick={() => setCurrentPage(page)}
+                          >
+                            {page}
+                          </Button>
+                        ),
+                      )}
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        disabled={currentPage === totalPages}
+                        onClick={() =>
+                          setCurrentPage((prev) =>
+                            Math.min(prev + 1, totalPages),
+                          )
+                        }
                       >
-                        <path d="m9 18 6-6-6-6" />
-                      </svg>
-                    </Button>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="h-4 w-4"
+                        >
+                          <path d="m9 18 6-6-6-6" />
+                        </svg>
+                      </Button>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>

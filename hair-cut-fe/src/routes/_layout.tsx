@@ -82,6 +82,7 @@ function RouteComponent() {
             </div>
             <nav className="hidden md:flex items-center space-x-6">
               <a
+                key="home"
                 href="/"
                 className="text-md font-medium hover:text-blue-700 transition-colors active:text-blue-700"
               >
@@ -89,36 +90,42 @@ function RouteComponent() {
               </a>
 
               <a
+                key="shop"
                 href="/shop"
                 className="text-md font-medium hover:text-blue-700 transition-colors active:text-blue-700"
               >
                 30Shine Shop
               </a>
               <a
+                key="locations"
                 href="/locations"
                 className="text-md font-medium hover:text-blue-700 transition-colors active:text-blue-700"
               >
                 Tìm 30Shine gần nhất
               </a>
               <a
+                key="franchise"
                 href="/franchise"
                 className="text-md font-medium hover:text-blue-700 transition-colors active:text-blue-700"
               >
                 Nhượng quyền
               </a>
               <a
+                key="partners"
                 href="/partners"
                 className="text-md font-medium hover:text-blue-700 transition-colors active:text-blue-700"
               >
                 Đối tác
               </a>
               <a
+                key="wedding"
                 href="/wedding"
                 className="text-md font-medium hover:text-blue-700 transition-colors active:text-blue-700"
               >
                 Nụ cười DV
               </a>
               <a
+                key="about"
                 href="/about"
                 className="text-md font-medium hover:text-blue-700 transition-colors active:text-blue-700"
               >

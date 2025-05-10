@@ -410,18 +410,20 @@ export default function ProductManagementPage() {
     <div className="container mx-auto py-8">
       <Card>
         <CardHeader>
-          <CardTitle>Product Management</CardTitle>
-          <CardDescription>Manage your products and inventory</CardDescription>
+          <CardTitle>Quản lý sản phẩm</CardTitle>
+          <CardDescription>
+            Quản lý sản phẩm và hàng tồn kho của bạn
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="products">
             <TabsList className="mb-4">
-              <TabsTrigger value="products">Products</TabsTrigger>
+              <TabsTrigger value="products">Sản phẩm</TabsTrigger>
               <TabsTrigger
                 value="inventory"
                 onClick={getAllInventoryTransactions}
               >
-                Inventory Transactions
+                Giao dịch hàng tồn kho
               </TabsTrigger>
             </TabsList>
 
@@ -451,13 +453,14 @@ export default function ProductManagementPage() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Name</TableHead>
-                      <TableHead>Category</TableHead>
-                      <TableHead>Price</TableHead>
-                      <TableHead>Listed Price</TableHead>
-                      <TableHead>Inventory</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead className="text-right">Actions</TableHead>
+                      <TableHead>ID</TableHead>
+                      <TableHead>Tên</TableHead>
+                      <TableHead>Loại</TableHead>
+                      <TableHead>Giá</TableHead>
+                      <TableHead>Giá</TableHead>
+                      <TableHead>Tồn kho</TableHead>
+                      <TableHead>Trạng thái</TableHead>
+                      <TableHead className="text-right">Hành động</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -483,12 +486,17 @@ export default function ProductManagementPage() {
                       currentProducts.map((product) => (
                         <TableRow key={product.id}>
                           <TableCell className="font-medium">
+                            {product.id}
+                          </TableCell>
+                          <TableCell className="font-medium">
                             {product.name}
                           </TableCell>
                           <TableCell>
                             {product.category || 'Uncategorized'}
                           </TableCell>
-                          <TableCell>${Number(product.price).toFixed(2)}</TableCell>
+                          <TableCell>
+                            ${Number(product.price).toFixed(2)}
+                          </TableCell>
                           <TableCell>
                             ${Number(product.listedPrice).toFixed(2)}
                           </TableCell>
@@ -686,24 +694,24 @@ export default function ProductManagementPage() {
             </DialogTitle>
             <DialogDescription>
               {formMode === 'create'
-                ? 'Fill in the details to create a new product.'
-                : 'Update the product information.'}
+                ? 'Điền thông tin để tạo sản phẩm mới.'
+                : 'Cập nhật thông tin sản phẩm.'}
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleSubmit}>
             <Tabs value={productFormTab} onValueChange={setProductFormTab}>
               <TabsList className="mb-4 grid grid-cols-4">
-                <TabsTrigger value="details">Basic Details</TabsTrigger>
-                <TabsTrigger value="pricing">Pricing</TabsTrigger>
-                <TabsTrigger value="images">Images</TabsTrigger>
-                <TabsTrigger value="variants">Variants</TabsTrigger>
+                <TabsTrigger value="details">Chi tiết cơ bản</TabsTrigger>
+                <TabsTrigger value="pricing">Giá</TabsTrigger>
+                <TabsTrigger value="images">Hình ảnh</TabsTrigger>
+                <TabsTrigger value="variants">Biến thể</TabsTrigger>
               </TabsList>
 
               <TabsContent value="details">
                 <div className="grid gap-4 py-4">
                   <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="name" className="text-right">
-                      Name
+                      Tên
                     </Label>
                     <Input
                       id="name"
@@ -729,7 +737,7 @@ export default function ProductManagementPage() {
                   </div>
                   <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="shortDescription" className="text-right">
-                      Short Description
+                      Mô tả ngắn
                     </Label>
                     <Input
                       id="shortDescription"
@@ -745,7 +753,7 @@ export default function ProductManagementPage() {
                   </div>
                   <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="description" className="text-right">
-                      Description
+                      Mô tả
                     </Label>
                     <Textarea
                       id="description"
@@ -761,7 +769,7 @@ export default function ProductManagementPage() {
                   </div>
                   <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="brand" className="text-right">
-                      Brand
+                      Thương hiệu
                     </Label>
                     <Input
                       id="brand"
@@ -772,7 +780,7 @@ export default function ProductManagementPage() {
                   </div>
                   <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="category" className="text-right">
-                      Category
+                      Loại
                     </Label>
                     <Input
                       id="category"
@@ -848,7 +856,7 @@ export default function ProductManagementPage() {
                 <div className="grid gap-4 py-4">
                   <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="price" className="text-right">
-                      Price
+                      Giá
                     </Label>
                     <Input
                       id="price"
@@ -1091,9 +1099,12 @@ export default function ProductManagementPage() {
                           <div>
                             <p className="font-medium">{variant.name}</p>
                             <div className="flex gap-2 text-sm text-muted-foreground">
-                              <span>Price: ${Number(variant.price).toFixed(2)}</span>
                               <span>
-                                Listed: ${Number(variant.listedPrice).toFixed(2)}
+                                Price: ${Number(variant.price).toFixed(2)}
+                              </span>
+                              <span>
+                                Listed: $
+                                {Number(variant.listedPrice).toFixed(2)}
                               </span>
                               {variant.sku && <span>SKU: {variant.sku}</span>}
                               {variant.isDiscount && (

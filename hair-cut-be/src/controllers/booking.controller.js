@@ -23,19 +23,40 @@ const createBooking = [
 	processRequestBody(bookingSchema),
 	async (req, res) => {
 		try {
-			const { phoneNumber, appointmentDate, serviceIds, notes } =
-				req.body;
+			const { phoneNumber, appointmentDate, serviceIds, notes } = req.body;
+			console.log('Creating booking with data:', { phoneNumber, appointmentDate, serviceIds, notes });
+
 			const user = await authService.getUserByPhoneOrCreate(phoneNumber);
-			if (!user)
-				return res
-					.status(500)
-					.json({ message: "Something went wrong" });
+			if (!user) {
+				console.error('Failed to get or create user for phone:', phoneNumber);
+				return res.status(500).json({ message: "Failed to get or create user" });
+			}
+
+			// Ensure serviceIds are numbers
+			const numericServiceIds = serviceIds.map(id => Number(id));
+			console.log('Numeric service IDs:', numericServiceIds);
+
 			const allServices = await db.service.findMany({
-				where: { id: { in: serviceIds } },
+				where: { id: { in: numericServiceIds } },
 			});
+			console.log('Found services:', allServices.map(s => ({
+				id: s.id,
+				price: s.price,
+				priceType: typeof s.price
+			})));
+
+			if (allServices.length !== numericServiceIds.length) {
+				console.error('Some services not found. Requested:', numericServiceIds, 'Found:', allServices.map(s => s.id));
+				return res.status(400).json({ message: "One or more services not found" });
+			}
+
 			const totalPrice = allServices.reduce((acc, service) => {
-				return acc + Number(service.price);
+				const price = Number(service.price);
+				console.log(`Adding price for service ${service.id}:`, price);
+				return acc + price;
 			}, 0);
+			console.log('Calculated total price:', totalPrice);
+
 			const booking = await db.booking.create({
 				data: {
 					customerId: user.id,
@@ -48,16 +69,41 @@ const createBooking = [
 					updatedAt: new Date(),
 				},
 			});
-			await db.bookingService.createMany({
-				data: serviceIds.map((serviceId) => ({
+			console.log('Created booking:', booking);
+
+			// Create booking services with proper decimal prices
+			const bookingServices = numericServiceIds.map((serviceId) => {
+				const service = allServices.find(s => s.id === serviceId);
+				if (!service) {
+					throw new Error(`Service with id ${serviceId} not found`);
+				}
+				const servicePrice = Number(service.price);
+				console.log(`Service ${serviceId} price:`, servicePrice);
+				return {
 					bookingId: booking.id,
 					serviceId,
-				})),
+					servicePrice: servicePrice
+				};
+			});
+			console.log('Booking services to create:', bookingServices);
+
+			// Verify all required fields are present
+			const missingFields = bookingServices.some(bs => bs.servicePrice === undefined);
+			if (missingFields) {
+				throw new Error('Service price is missing for one or more services');
+			}
+
+			await db.bookingService.createMany({
+				data: bookingServices
 			});
 
 			return res.status(201).json(booking);
 		} catch (err) {
-			return res.status(500).json({ error: err.message });
+			console.error('Booking creation error:', err);
+			return res.status(500).json({ 
+				error: err.message,
+				details: err.stack
+			});
 		}
 	},
 ];
@@ -226,11 +272,22 @@ const updateBooking = [
 					where: { bookingId: id },
 				});
 
+				const allServices = await db.service.findMany({
+					where: { id: { in: serviceIds } },
+				});
+
 				await db.bookingService.createMany({
-					data: serviceIds.map((serviceId) => ({
-						bookingId: id,
-						serviceId,
-					})),
+					data: serviceIds.map((serviceId) => {
+						const service = allServices.find(s => s.id === serviceId);
+						if (!service) {
+							throw new Error(`Service with id ${serviceId} not found`);
+						}
+						return {
+							bookingId: id,
+							serviceId,
+							servicePrice: service.price
+						};
+					}),
 				});
 				const prices = await db.bookingService.findMany({
 					where: { bookingId: id },

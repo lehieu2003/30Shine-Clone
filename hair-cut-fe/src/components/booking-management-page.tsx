@@ -181,8 +181,8 @@ const BookingRow = memo(
     onDelete,
   }: {
     booking: Booking
-    onView: (booking: Booking) => void
-    onEdit: (booking: Booking) => void
+    onView: (selectedBooking: Booking) => void
+    onEdit: (editedBooking: Booking) => void
     onChangeStatus: (bookingId: string, status: BookingStatus) => void
     isBarber: boolean
     onDelete: (bookingId: number) => void

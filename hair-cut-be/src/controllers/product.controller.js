@@ -7,8 +7,6 @@ const productController = {
   getAllProducts: async (req, res) => {
     try {
       const {
-        page = 1,
-        limit = 10,
         search = "",
         category,
         brand,
@@ -17,8 +15,6 @@ const productController = {
         sortBy = "createdAt",
         sortOrder = "desc",
       } = req.query;
-
-      const skip = (parseInt(page) - 1) * parseInt(limit);
       
       // Build filter - only show active products for public
       const filter = {
@@ -40,26 +36,18 @@ const productController = {
           images: true,
           variants: true,
         },
-        skip,
-        take: parseInt(limit),
         orderBy: {
           [sortBy]: sortOrder,
         },
       };
 
-      const [products, total] = await Promise.all([
-        prisma.product.findMany(filter),
-        prisma.product.count({ where: filter.where }),
-      ]);
+      const products = await prisma.product.findMany(filter);
 
       return res.status(200).json({
         success: true,
         data: products,
         meta: {
-          page: parseInt(page),
-          limit: parseInt(limit),
-          total,
-          totalPages: Math.ceil(total / parseInt(limit)),
+          total: products.length
         },
       });
     } catch (error) {
