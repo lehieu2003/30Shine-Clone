@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import type { Cart } from '@/types/cart'
 import { cartApi } from '@/lib/api/cart'
 import { useToast } from '@/components/ui/toast-provider'
+import { useAuth } from '@/contexts/AuthContext'
 
 interface CartContextType {
   cart: Cart | null
@@ -22,6 +23,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const toast = useToast()
+  const { isAuth } = useAuth()
 
   const showToast = (title: string, description: string, variant: 'default' | 'destructive' = 'default') => {
     try {
@@ -32,6 +34,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }
 
   const fetchCart = async () => {
+    if (!isAuth) {
+      setCart(null)
+      setIsLoading(false)
+      return
+    }
+
     try {
       setIsLoading(true)
       setError(null)
@@ -47,9 +55,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     fetchCart()
-  }, [])
+  }, [isAuth])
 
   const addToCart = async (productId: string, quantity: number) => {
+    if (!isAuth) {
+      showToast('Error', 'Please login to add items to cart', 'destructive')
+      return
+    }
+
     try {
       const updatedCart = await cartApi.addToCart(productId, quantity)
       setCart(updatedCart)
@@ -60,6 +73,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }
 
   const updateCartItem = async (productId: string, quantity: number) => {
+    if (!isAuth) {
+      showToast('Error', 'Please login to update cart', 'destructive')
+      return
+    }
+
     try {
       const updatedCart = await cartApi.updateCartItem(productId, quantity)
       setCart(updatedCart)
@@ -70,6 +88,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }
 
   const removeFromCart = async (productId: string) => {
+    if (!isAuth) {
+      showToast('Error', 'Please login to remove items from cart', 'destructive')
+      return
+    }
+
     try {
       const updatedCart = await cartApi.removeFromCart(productId)
       setCart(updatedCart)
@@ -80,6 +103,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }
 
   const clearCart = async () => {
+    if (!isAuth) {
+      showToast('Error', 'Please login to clear cart', 'destructive')
+      return
+    }
+
     try {
       if (!cart?.items) return
       
