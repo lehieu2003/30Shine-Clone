@@ -31,7 +31,9 @@ import { Route as LayoutShoppingIndexImport } from './routes/_layout/shopping/in
 import { Route as LayoutServicesHairCutIndexImport } from './routes/_layout/services/hair-cut/index'
 import { Route as AdminServicesIdEditImport } from './routes/admin/services/$id.edit'
 import { Route as LayoutShoppingProductIdImport } from './routes/_layout/shopping/product/$id'
+import { Route as LayoutShoppingCartCartImport } from './routes/_layout/shopping/cart/cart'
 import { Route as LayoutServicesHairCutIdImport } from './routes/_layout/services/hair-cut/$id'
+import { Route as LayoutShoppingCartPaymentMomoImport } from './routes/_layout/shopping/cart/payment/momo'
 
 // Create/Update Routes
 
@@ -156,11 +158,24 @@ const LayoutShoppingProductIdRoute = LayoutShoppingProductIdImport.update({
   getParentRoute: () => LayoutRoute,
 } as any)
 
+const LayoutShoppingCartCartRoute = LayoutShoppingCartCartImport.update({
+  id: '/shopping/cart/cart',
+  path: '/shopping/cart/cart',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
 const LayoutServicesHairCutIdRoute = LayoutServicesHairCutIdImport.update({
   id: '/services/hair-cut/$id',
   path: '/services/hair-cut/$id',
   getParentRoute: () => LayoutRoute,
 } as any)
+
+const LayoutShoppingCartPaymentMomoRoute =
+  LayoutShoppingCartPaymentMomoImport.update({
+    id: '/shopping/cart/payment/momo',
+    path: '/shopping/cart/payment/momo',
+    getParentRoute: () => LayoutRoute,
+  } as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -292,6 +307,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutServicesHairCutIdImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/shopping/cart/cart': {
+      id: '/_layout/shopping/cart/cart'
+      path: '/shopping/cart/cart'
+      fullPath: '/shopping/cart/cart'
+      preLoaderRoute: typeof LayoutShoppingCartCartImport
+      parentRoute: typeof LayoutImport
+    }
     '/_layout/shopping/product/$id': {
       id: '/_layout/shopping/product/$id'
       path: '/shopping/product/$id'
@@ -313,6 +335,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutServicesHairCutIndexImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/shopping/cart/payment/momo': {
+      id: '/_layout/shopping/cart/payment/momo'
+      path: '/shopping/cart/payment/momo'
+      fullPath: '/shopping/cart/payment/momo'
+      preLoaderRoute: typeof LayoutShoppingCartPaymentMomoImport
+      parentRoute: typeof LayoutImport
+    }
   }
 }
 
@@ -328,8 +357,10 @@ interface LayoutRouteChildren {
   LayoutIndexRoute: typeof LayoutIndexRoute
   LayoutShoppingIndexRoute: typeof LayoutShoppingIndexRoute
   LayoutServicesHairCutIdRoute: typeof LayoutServicesHairCutIdRoute
+  LayoutShoppingCartCartRoute: typeof LayoutShoppingCartCartRoute
   LayoutShoppingProductIdRoute: typeof LayoutShoppingProductIdRoute
   LayoutServicesHairCutIndexRoute: typeof LayoutServicesHairCutIndexRoute
+  LayoutShoppingCartPaymentMomoRoute: typeof LayoutShoppingCartPaymentMomoRoute
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
@@ -342,8 +373,10 @@ const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutIndexRoute: LayoutIndexRoute,
   LayoutShoppingIndexRoute: LayoutShoppingIndexRoute,
   LayoutServicesHairCutIdRoute: LayoutServicesHairCutIdRoute,
+  LayoutShoppingCartCartRoute: LayoutShoppingCartCartRoute,
   LayoutShoppingProductIdRoute: LayoutShoppingProductIdRoute,
   LayoutServicesHairCutIndexRoute: LayoutServicesHairCutIndexRoute,
+  LayoutShoppingCartPaymentMomoRoute: LayoutShoppingCartPaymentMomoRoute,
 }
 
 const LayoutRouteWithChildren =
@@ -392,9 +425,11 @@ export interface FileRoutesByFullPath {
   '/admin/services': typeof AdminServicesIndexRoute
   '/admin/staff': typeof AdminStaffIndexRoute
   '/services/hair-cut/$id': typeof LayoutServicesHairCutIdRoute
+  '/shopping/cart/cart': typeof LayoutShoppingCartCartRoute
   '/shopping/product/$id': typeof LayoutShoppingProductIdRoute
   '/admin/services/$id/edit': typeof AdminServicesIdEditRoute
   '/services/hair-cut': typeof LayoutServicesHairCutIndexRoute
+  '/shopping/cart/payment/momo': typeof LayoutShoppingCartPaymentMomoRoute
 }
 
 export interface FileRoutesByTo {
@@ -414,9 +449,11 @@ export interface FileRoutesByTo {
   '/admin/services': typeof AdminServicesIndexRoute
   '/admin/staff': typeof AdminStaffIndexRoute
   '/services/hair-cut/$id': typeof LayoutServicesHairCutIdRoute
+  '/shopping/cart/cart': typeof LayoutShoppingCartCartRoute
   '/shopping/product/$id': typeof LayoutShoppingProductIdRoute
   '/admin/services/$id/edit': typeof AdminServicesIdEditRoute
   '/services/hair-cut': typeof LayoutServicesHairCutIndexRoute
+  '/shopping/cart/payment/momo': typeof LayoutShoppingCartPaymentMomoRoute
 }
 
 export interface FileRoutesById {
@@ -439,9 +476,11 @@ export interface FileRoutesById {
   '/admin/services/': typeof AdminServicesIndexRoute
   '/admin/staff/': typeof AdminStaffIndexRoute
   '/_layout/services/hair-cut/$id': typeof LayoutServicesHairCutIdRoute
+  '/_layout/shopping/cart/cart': typeof LayoutShoppingCartCartRoute
   '/_layout/shopping/product/$id': typeof LayoutShoppingProductIdRoute
   '/admin/services/$id/edit': typeof AdminServicesIdEditRoute
   '/_layout/services/hair-cut/': typeof LayoutServicesHairCutIndexRoute
+  '/_layout/shopping/cart/payment/momo': typeof LayoutShoppingCartPaymentMomoRoute
 }
 
 export interface FileRouteTypes {
@@ -465,9 +504,11 @@ export interface FileRouteTypes {
     | '/admin/services'
     | '/admin/staff'
     | '/services/hair-cut/$id'
+    | '/shopping/cart/cart'
     | '/shopping/product/$id'
     | '/admin/services/$id/edit'
     | '/services/hair-cut'
+    | '/shopping/cart/payment/momo'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/about'
@@ -486,9 +527,11 @@ export interface FileRouteTypes {
     | '/admin/services'
     | '/admin/staff'
     | '/services/hair-cut/$id'
+    | '/shopping/cart/cart'
     | '/shopping/product/$id'
     | '/admin/services/$id/edit'
     | '/services/hair-cut'
+    | '/shopping/cart/payment/momo'
   id:
     | '__root__'
     | '/_layout'
@@ -509,9 +552,11 @@ export interface FileRouteTypes {
     | '/admin/services/'
     | '/admin/staff/'
     | '/_layout/services/hair-cut/$id'
+    | '/_layout/shopping/cart/cart'
     | '/_layout/shopping/product/$id'
     | '/admin/services/$id/edit'
     | '/_layout/services/hair-cut/'
+    | '/_layout/shopping/cart/payment/momo'
   fileRoutesById: FileRoutesById
 }
 
@@ -551,8 +596,10 @@ export const routeTree = rootRoute
         "/_layout/",
         "/_layout/shopping/",
         "/_layout/services/hair-cut/$id",
+        "/_layout/shopping/cart/cart",
         "/_layout/shopping/product/$id",
-        "/_layout/services/hair-cut/"
+        "/_layout/services/hair-cut/",
+        "/_layout/shopping/cart/payment/momo"
       ]
     },
     "/admin": {
@@ -632,6 +679,10 @@ export const routeTree = rootRoute
       "filePath": "_layout/services/hair-cut/$id.tsx",
       "parent": "/_layout"
     },
+    "/_layout/shopping/cart/cart": {
+      "filePath": "_layout/shopping/cart/cart.tsx",
+      "parent": "/_layout"
+    },
     "/_layout/shopping/product/$id": {
       "filePath": "_layout/shopping/product/$id.tsx",
       "parent": "/_layout"
@@ -642,6 +693,10 @@ export const routeTree = rootRoute
     },
     "/_layout/services/hair-cut/": {
       "filePath": "_layout/services/hair-cut/index.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/shopping/cart/payment/momo": {
+      "filePath": "_layout/shopping/cart/payment/momo.tsx",
       "parent": "/_layout"
     }
   }

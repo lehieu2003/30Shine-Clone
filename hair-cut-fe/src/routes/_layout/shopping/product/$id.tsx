@@ -8,6 +8,14 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { productApi } from '@/lib/api/products'
 import { formatPrice } from '@/lib/formatters'
+import { useCart } from '@/contexts/CartContext'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
 
 export const Route = createFileRoute('/_layout/shopping/product/$id')({
   component: ProductDetailComponent,
@@ -18,8 +26,7 @@ function ProductDetailComponent() {
   const [product, setProduct] = useState<Product | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-
-  console.log('Product ID from loader:', id) // Add debugging
+  const { addToCart } = useCart()
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -73,6 +80,10 @@ function ProductDetailComponent() {
     )
   }
 
+  const handleAddToCart = async () => {
+    await addToCart(product.id, 1)
+  }
+
   return (
     <div className="container py-8">
       <Link
@@ -86,11 +97,43 @@ function ProductDetailComponent() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Product Image */}
         <div className="relative aspect-square">
-          <img
+          {/* <img
             src={product.imageUrl || '/placeholder.svg?height=600&width=600'}
             alt={product.name}
             className="object-cover rounded-lg"
-          />
+          /> */}
+          <Card>
+            <CardContent className="p-0">
+              {product.images.length > 0 ? (
+                <Carousel>
+                  <CarouselContent>
+                    {product.images.map((image) => (
+                      <CarouselItem key={image.id}>
+                        <img
+                          src={
+                            image.url || '/placeholder.svg?height=600&width=600'
+                          }
+                          alt={image.alt || product.name}
+                          className="object-cover rounded-lg"
+                        />
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
+              ) : (
+                <img
+                  src={
+                    product.imageUrl || '/placeholder.svg?height=600&width=600'
+                  }
+                  alt={product.name}
+                  className="object-cover rounded-lg"
+                />
+              )}
+            </CardContent>
+          </Card>
+
           {product.isDiscount && (
             <div className="absolute top-4 left-4 bg-red-500 text-white text-sm font-medium px-3 py-1 rounded">
               -{product.discountPercent}%
@@ -157,9 +200,13 @@ function ProductDetailComponent() {
           </div>
 
           <div className="flex gap-4">
-            <Button className="flex-1 bg-blue-600 hover:bg-blue-700">
+            <Button
+              className="flex-1 bg-blue-600 hover:bg-blue-700"
+              onClick={handleAddToCart}
+              disabled={product.isOutOfStock}
+            >
               <ShoppingBag className="mr-2 h-4 w-4" />
-              Thêm vào giỏ
+              {product.isOutOfStock ? 'Hết hàng' : 'Thêm vào giỏ'}
             </Button>
             <Button
               variant="outline"

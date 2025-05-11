@@ -16,6 +16,7 @@ import {
 import { Slider } from '@/components/ui/slider'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { useProduct } from '@/contexts/ProductContext'
+import { useCart } from '@/contexts/CartContext'
 
 export const Route = createFileRoute('/_layout/shopping/')({
   component: RouteComponent,
@@ -23,6 +24,7 @@ export const Route = createFileRoute('/_layout/shopping/')({
 
 function RouteComponent() {
   const { products, isLoading, error } = useProduct()
+  const { addToCart } = useCart()
   const [filteredProducts, setFilteredProducts] = useState<Array<Product>>([])
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -122,6 +124,10 @@ function RouteComponent() {
     }).format(price)
   }
 
+  const handleAddToCart = async (product: Product) => {
+    await addToCart(product.id, 1)
+  }
+
   const renderProductCard = (product: Product) => (
     <Card key={product.id} className="overflow-hidden group">
       <Link
@@ -186,9 +192,16 @@ function RouteComponent() {
         </CardContent>
       </Link>
       <CardFooter className="p-4 pt-0">
-        <Button className="w-full bg-blue-600 hover:bg-blue-700">
+        <Button 
+          className="w-full bg-blue-600 hover:bg-blue-700"
+          onClick={(e) => {
+            e.preventDefault()
+            handleAddToCart(product)
+          }}
+          disabled={product.isOutOfStock}
+        >
           <ShoppingBag className="mr-2 h-4 w-4" />
-          Thêm vào giỏ
+          {product.isOutOfStock ? 'Hết hàng' : 'Thêm vào giỏ'}
         </Button>
       </CardFooter>
     </Card>

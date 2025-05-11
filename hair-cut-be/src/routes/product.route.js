@@ -19,6 +19,4 @@ productRouter.post("/admin/:id/inventory", authenticateMiddleware, isAdmin, prod
 productRouter.get("/admin/inventory", authenticateMiddleware, isAdmin, productController.getAllInventoryTransactions);
 productRouter.get("/admin/inventory/:id", authenticateMiddleware, isAdmin, productController.getInventoryTransactions);
 
-
-
 export default productRouter;

@@ -7,6 +7,8 @@ import bookingRouter from "./booking.route.js";
 import userRouter from "./user.route.js";
 import reportRouter from "./report.route.js";
 import productRouter from "./product.route.js";
+import cartRouter from "./cart.routes.js";
+import paymentRouter from "./payment.routes.js";
 
 const apiRoute = express.Router();
 
@@ -18,5 +20,7 @@ apiRoute.use("/bookings", bookingRouter);
 apiRoute.use("/users", userRouter);
 apiRoute.use("/reports", reportRouter);
 apiRoute.use("/products", productRouter);
+apiRoute.use("/cart", cartRouter);
+apiRoute.use("/payment", paymentRouter);
 
 export default apiRoute;

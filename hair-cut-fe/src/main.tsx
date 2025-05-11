@@ -10,6 +10,8 @@ import './styles.css'
 import reportWebVitals from './reportWebVitals.ts'
 import { AuthProvider } from './contexts/AuthContext.tsx'
 import { ProductProvider } from './contexts/ProductContext'
+import { CartProvider } from './contexts/CartContext'
+import { ToastProvider } from '@/components/ui/toast-provider'
 
 const router = createRouter({
   routeTree,
@@ -33,13 +35,17 @@ if (rootElement && !rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
-      <AuthProvider>
-        <ProductProvider>
-          <TanstackQuery.Provider>
-            <RouterProvider router={router} />
-          </TanstackQuery.Provider>
-        </ProductProvider>
-      </AuthProvider>
+      <ToastProvider>
+        <AuthProvider>
+          <CartProvider>
+            <ProductProvider>
+              <TanstackQuery.Provider>
+                <RouterProvider router={router} />
+              </TanstackQuery.Provider>
+            </ProductProvider>
+          </CartProvider>
+        </AuthProvider>
+      </ToastProvider>
     </StrictMode>,
   )
 }

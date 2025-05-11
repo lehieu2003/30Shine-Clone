@@ -73,6 +73,7 @@ enum PaymentMethod {
   credit_card
   bank_transfer
   e_wallet
+  momo
 }
 
 enum PaymentStatus {
@@ -80,6 +81,14 @@ enum PaymentStatus {
   completed
   failed
   refunded
+  cancelled
+}
+
+enum PaymentProvider {
+  momo
+  vnpay
+  zalopay
+  other
 }
 
 enum PromotionType {
@@ -112,6 +121,7 @@ model User {
   notifications     Notification[]
   expenses          Expense[]            @relation("ExpenseCreator")
   inventoryActions  InventoryTransaction[]
+  cart              Cart?
 }
 
 model Schedule {
@@ -213,17 +223,25 @@ model BookingService {
 
 model Payment {
   id            Int           @id @default(autoincrement())
-  bookingId     Int
+  bookingId     Int?
   amount        Decimal       @db.Decimal(10, 2)
   paymentMethod PaymentMethod
   paymentStatus PaymentStatus @default(pending)
-  transactionId String?
+  provider      PaymentProvider?
+  transactionId String?       @unique
   paymentDate   DateTime      @default(now())
   notes         String?       @db.Text
+  extraData     String?       @db.Text
+  signature     String?       @db.Text
+  requestId     String?       @db.VarChar(255)
+  responseData  String?       @db.Text
+  updatedAt     DateTime      @updatedAt
 
-  booking       Booking       @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  booking       Booking?      @relation(fields: [bookingId], references: [id], onDelete: SetNull)
 
   @@index([bookingId])
+  @@index([transactionId])
+  @@index([paymentStatus])
 }
 
 model Promotion {
@@ -279,6 +297,7 @@ model Product {
   images           ProductImage[]
   variants         ProductVariant[]
   transactions     InventoryTransaction[]
+  cartItems        CartItem[]
 
   @@index([slug])
   @@index([brandSlug])
@@ -340,4 +359,29 @@ model Expense {
 
   @@index([categoryId])
   @@index([createdBy])
+}
+
+model Cart {
+  id        String      @id @default(cuid())
+  userId    Int         @unique
+  user      User        @relation(fields: [userId], references: [id])
+  items     CartItem[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  @@index([userId])
+}
+
+model CartItem {
+  id        String   @id @default(cuid())
+  cartId    String
+  cart      Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  productId String   @db.VarChar(255)
+  product   Product  @relation(fields: [productId], references: [id])
+  quantity  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([cartId, productId])
+  @@index([productId])
 }
