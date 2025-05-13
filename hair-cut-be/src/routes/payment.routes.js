@@ -7,9 +7,6 @@ const router = express.Router()
 // Create MoMo payment request
 router.post('/momo/create', authenticateMiddleware, paymentController.createMomoPayment)
 
-// Create MoMo QR code payment request
-router.post('/momo/qr/create', authenticateMiddleware, paymentController.createMomoQRPayment)
-
 // Handle MoMo return URL
 router.get('/momo/return', paymentController.handleMomoReturn)
 
@@ -19,4 +16,9 @@ router.post('/momo/notify', paymentController.handleMomoNotify)
 // Handle MoMo IPN URL
 router.post('/momo/ipn', paymentController.handleMomoNotify)
 
+// Check payment status
+router.post('/momo/check-status', authenticateMiddleware, paymentController.checkPaymentStatus)
+
+// COD payment
+router.post('/cod', authenticateMiddleware, paymentController.createCodPayment)
 export default router

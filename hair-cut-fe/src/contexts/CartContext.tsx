@@ -25,7 +25,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const toast = useToast()
   const { isAuth } = useAuth()
 
-  const showToast = (title: string, description: string, variant: 'default' | 'destructive' = 'default') => {
+  const showToast = (
+    title: string,
+    description: string,
+    variant: 'default' | 'destructive' = 'default',
+  ) => {
     try {
       toast.toast({ title, description, variant })
     } catch (err) {
@@ -89,7 +93,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const removeFromCart = async (productId: string) => {
     if (!isAuth) {
-      showToast('Error', 'Please login to remove items from cart', 'destructive')
+      showToast(
+        'Error',
+        'Please login to remove items from cart',
+        'destructive',
+      )
       return
     }
 
@@ -110,15 +118,15 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
     try {
       if (!cart?.items) return
-      
+
       // Remove all items from cart
       await Promise.all(
-        cart.items.map((item) => removeFromCart(item.productId))
+        cart.items.map((item) => removeFromCart(item.productId)),
       )
-      
+
       // Refresh cart
       await fetchCart()
-      
+
       showToast('Success', 'Cart cleared successfully')
     } catch (err) {
       showToast('Error', 'Failed to clear cart', 'destructive')
@@ -129,7 +137,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const getCartTotal = () => {
     if (!cart?.items) return 0
     return cart.items.reduce((total, item) => {
-      const price = item.product.isDiscount ? item.product.price : item.product.listedPrice
+      const price = item.product.isDiscount
+        ? item.product.price
+        : item.product.listedPrice
       return total + price * item.quantity
     }, 0)
   }

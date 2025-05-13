@@ -24,6 +24,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
+// import axios from 'axios'
+import apiClient from '@/lib/api'
 
 export const Route = createFileRoute('/_layout/shopping/cart/cart')({
   component: CartPage,
@@ -31,8 +33,14 @@ export const Route = createFileRoute('/_layout/shopping/cart/cart')({
 
 function CartPage() {
   const navigate = useNavigate()
-  const { cart, isLoading, updateCartItem, removeFromCart, getCartTotal, clearCart } =
-    useCart()
+  const {
+    cart,
+    isLoading,
+    updateCartItem,
+    removeFromCart,
+    getCartTotal,
+    clearCart,
+  } = useCart()
   const [paymentMethod, setPaymentMethod] = useState<'cod' | 'momo'>('cod')
   const [isProcessing, setIsProcessing] = useState(false)
   const [showConfirmDialog, setShowConfirmDialog] = useState(false)
@@ -57,7 +65,7 @@ function CartPage() {
     )
   }
 
-  const handlePayment = async () => {
+  const handlePayment = () => {
     setShowConfirmDialog(true)
   }
 
@@ -65,22 +73,49 @@ function CartPage() {
     setIsProcessing(true)
     try {
       if (paymentMethod === 'cod') {
-        // Handle COD payment
-        await clearCart() // Clear the cart after successful order
-        toast.success('Đặt hàng thành công!', {
-          description: 'Bạn sẽ thanh toán khi nhận hàng',
+        // Create a unique order ID
+        const orderId = `ORD_${Date.now()}_${Math.floor(Math.random() * 1000)}`
+        const totalAmount = getCartTotal()
+
+        // Call the COD payment API
+        const response = await apiClient.post('/api/payment/cod', {
+          orderId,
+          amount: totalAmount,
+          customerInfo: {
+            items: cart.items.map((item) => ({
+              productId: item.productId,
+              name: item.product.name,
+              quantity: item.quantity,
+              price: item.product.price,
+            })),
+            notes: 'Order placed through website',
+          },
         })
-        // Redirect to shopping page after successful order
-        setTimeout(() => {
-          navigate({ to: '/shopping' })
-        }, 1500) // Give user time to see the success message
+
+        if (response.data.success) {
+          await clearCart() // Clear the cart after successful order
+          toast.success('Đặt hàng thành công!', {
+            description: 'Bạn sẽ thanh toán khi nhận hàng',
+          })
+          // Redirect to shopping page after successful order
+          setTimeout(() => {
+            navigate({ to: '/shopping' })
+          }, 1500) // Give user time to see the success message
+        } else {
+          throw new Error(response.data.message || 'Payment failed')
+        }
       } else {
         // Redirect to MoMo payment page
         navigate({ to: '/shopping/cart/payment/momo' })
       }
     } catch (error) {
+      console.error('Payment error:', error)
+      const errorMessage =
+        error instanceof Error
+          ? (error as any)?.response?.data?.message || error.message
+          : 'Vui lòng thử lại sau'
       toast.error('Có lỗi xảy ra', {
-        description: 'Vui lòng thử lại sau',
+        description: errorMessage,
       })
     } finally {
       setIsProcessing(false)
@@ -230,8 +265,8 @@ function CartPage() {
                 </RadioGroup>
               </div>
 
-              <Button 
-                className="w-full mt-6" 
+              <Button
+                className="w-full mt-6"
                 onClick={handlePayment}
                 disabled={isProcessing}
               >
@@ -260,10 +295,7 @@ function CartPage() {
             >
               Hủy
             </Button>
-            <Button
-              onClick={handleConfirmPayment}
-              disabled={isProcessing}
-            >
+            <Button onClick={handleConfirmPayment} disabled={isProcessing}>
               {isProcessing ? 'Đang xử lý...' : 'Xác nhận'}
             </Button>
           </DialogFooter>
