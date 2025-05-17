@@ -197,6 +197,6 @@ DATABASE_URL="your-database-connection-string"
 JWT_SECRET="your-jwt-secret"
 ```
 
-## License
+## Database Design
 
-[MIT](LICENSE)
+https://dbdiagram.io/d/haircut-main-67cd0602263d6cf9a0b63158
