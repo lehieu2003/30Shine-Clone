@@ -83,10 +83,6 @@ export default function Sidebar({ open, toggle }: Props) {
     >
       <div className="flex items-center justify-between p-4 border-b border-blue-800">
         <div className="flex items-center">
-          <img
-            src="/placeholder.svg?height=40&width=40"
-            className="h-10 w-10"
-          />
           {open && (
             <span className="ml-3 font-bold text-xl">30Shine Admin</span>
           )}

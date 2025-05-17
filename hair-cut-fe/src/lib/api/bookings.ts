@@ -89,3 +89,69 @@ export async function changeBookingStatus(
   })
   return response.data
 }
+export async function fetchRecentBookings({
+  limit = 5,
+  sortBy = 'appointmentDate',
+  sortDirection = 'desc',
+}: {
+  limit?: number
+  sortBy?: string
+  sortDirection?: string
+}) {
+  const params: Record<string, any> = {
+    page: 1,
+    size: limit,
+    sortBy,
+    sortDirection,
+  }
+
+  const response = await apiClient.get('/api/bookings', { params })
+  return response.data as {
+    data: Array<any>
+    meta: { total: number; page: number; size: number }
+  }
+}
+
+export interface DashboardStats {
+  todayBookingsCount: number
+  todayBookingsGrowth: number
+  todayRevenue: number
+  todayRevenueGrowth: number
+  newCustomersCount: number
+  newCustomersGrowth: number
+  averageServiceTime: number
+  averageServiceTimeGrowth: number
+}
+
+export interface RecentActivity {
+  id: string
+  message: string
+  timestamp: string
+  type: string
+}
+
+export async function fetchDashboardStats() {
+  const response = await apiClient.get('/api/reports/dashboard')
+  return response.data
+}
+
+export async function fetchRecentActivities(limit = 5) {
+  const response = await apiClient.get('/api/reports/activities', {
+    params: { limit },
+  })
+  return response.data
+}
+
+export async function fetchRevenueByService(period: string) {
+  const response = await apiClient.get('/api/reports/service', {
+    params: { period },
+  })
+  return response.data
+}
+
+export async function fetchBookingsByDate(period: string) {
+  const response = await apiClient.get('/api/reports/monthly', {
+    params: { period },
+  })
+  return response.data
+}
