@@ -7,7 +7,8 @@ A full-stack application for managing hair salon appointments, services, and pay
 ```
 hair-cut/
 ├── hair-cut-fe/         # Frontend React application
-└── hair-cut-be/         # Backend Express.js API
+├── hair-cut-be/         # Backend Express.js API
+└── crawler-data-product-30shine/ # Data crawler for product sourcing
 ```
 
 ## Frontend (hair-cut-fe)
@@ -179,6 +180,68 @@ npm run dev
 - JWT-based authentication
 - Data validation with Zod
 - Clean architecture with routes separation
+
+## Data Crawler (crawler-data-product-30shine)
+
+### Tech Stack
+
+- **Language**: Python
+- **Libraries**:
+  - Requests - For making HTTP requests
+  - Pandas - For data manipulation and CSV export
+  - JSON - For data serialization
+
+### Purpose
+
+This component crawls product data from 30Shine's e-commerce platform to source product information for the hair salon application. It collects comprehensive product details including names, prices, descriptions, categories, and images.
+
+### Features
+
+- Automatic product data collection from 30shine API
+- Data export to both CSV and JSON formats
+- Support for incremental data updates
+- Category-specific crawling options
+- Pagination handling for large datasets
+
+### Available Scripts
+
+- `crawler_data_product.py` - Main script for crawling all products
+- `add_more_product.py` - Script for crawling products from specific categories
+
+### Data Structure
+
+The crawler collects the following product information:
+
+- Product ID and name
+- Pricing information (current price, listed price, discount)
+- Product categories and subcategories
+- Brand information
+- Availability status
+- Images and product assets
+- Full descriptions and usage instructions
+
+### How to Run
+
+```bash
+cd crawler-data-product-30shine
+
+# Install required packages
+pip install -r requirements.txt
+
+# Run the main crawler
+python crawler_data_product.py
+
+# Run category-specific crawler
+python add_more_product.py
+```
+
+### Output
+
+Collected data is stored in the `output` directory:
+
+- `products.csv` - CSV format product data
+- `products.json` - JSON format product data
+- `product_details.csv` - Detailed product information in CSV format
 
 ## Development Workflow
 

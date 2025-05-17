@@ -1,0 +1,1614 @@
+[
+  {
+    "id": "65a3bd74122f00001d93268c",
+    "name": "Tinh dầu dưỡng tóc ATS For man Styling Oil 80ml",
+    "slug": "tinh-dau-duong-toc-ats-for-man-styling-oil-80ml",
+    "price": 655000,
+    "listed_price": 655000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc tóc",
+    "category_slug": "cham-soc-toc",
+    "subcategory": "Dưỡng tóc",
+    "subcategory_slug": "duong-toc",
+    "brand": "ATS",
+    "brand_slug": "ats",
+    "image_url": "https://static.30shine.com/shop-admin/2024/01/14/30SF3Q4K-5.jpg",
+    "tags": "30Shine",
+    "images": [
+      {
+        "name": "1.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/01/19/30S9LUM8-1.jpg",
+        "alt": ""
+      },
+      {
+        "name": "2.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/01/19/30SR3IDD-2.jpg",
+        "alt": ""
+      },
+      {
+        "name": "3.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/01/19/30S6283O-3.jpg",
+        "alt": ""
+      },
+      {
+        "name": "4.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/01/19/30SS6MGW-4.jpg",
+        "alt": ""
+      },
+      {
+        "name": "7.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/01/19/30S08OQK-7.jpg",
+        "alt": ""
+      },
+      {
+        "name": "6.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/01/19/30SF3PPH-6.jpg",
+        "alt": ""
+      },
+      {
+        "name": "5.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/01/19/30S1B1IS-5.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Tinh dầu dưỡng tóc ATS For man Styling Oil 80ml",
+    "description": "<p style=\"margin-left:0px;\">Là sản phẩm chăm sóc tóc tự nhiên, có công dụng cung cấp dưỡng chất và độ ẩm cho mái tóc và da đầu, trong thành phần của nó có chứa tới hơn 60% là bơ và dầu hoa trà, cùng với đó là acid amin, vitamin E &amp; độ ẩm, giúp cải thiện tối đa tình trạng lão hóa tóc, đồng thời giảm hư tổn hiệu quả trên tóc.</p><p style=\"margin-left:0px;\">Cung cấp độ sáng 4.5/5 và Điểm Care (mức độ thẩm thấu của dưỡng chất) 5/5. Không chứa Gluten, Para, Paraben (hóa chất bảo quản công nghiệp), Alcohol (cồn) và Sulfate (chất tẩy rửa công nghiệp). Có thể sử dụng trên hầu hết mọi chất tóc và da đầu. Dễ dàng thẩm thấu vào sâu chân tóc, mang lại sự thoải mái tóc người dùng.</p><p style=\"margin-left:0px;\"><strong>Thành phần:</strong> Hợp chất Hyaluronic giúp cung cấp năng lượng, độ ẩm, độ đàn hồi và độ bóng cho mái tóc. Galactomyces đây là một loại men rượu tự nhiên có giá trị cao, chứa nhiều loại axit amin, axit hữu cơ, vitamin, khoáng chất giúp cho việc nuôi dưỡng tóc hoàn hảo hơn. CM Plex giúp tái tạo cấu trúc, liên kết của các phân tử sợi tóc.</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "65a3bd74122f00001d93268d",
+        "name": "Default",
+        "price": 655000,
+        "listedPrice": 655000,
+        "sku": "SP04458",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "65a3bb4d122f00001d9324d5",
+    "name": "Sáp vuốt tóc By Vilain giữ nếp lâu mùi hương nam tính 30Shine phân phối chính hãng",
+    "slug": "sap-vuot-toc-by-vilain-giu-nep-dinh-cao-mui-huong-nam-tinh-30shine-phan-phoi-chinh-hang",
+    "price": {
+      "from": 199000,
+      "to": 359000
+    },
+    "listed_price": 0,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Tạo kiểu tóc",
+    "category_slug": "tao-kieu-toc",
+    "subcategory": "Sáp vuốt tóc",
+    "subcategory_slug": "sap-vuot-toc",
+    "brand": "By Vilain",
+    "brand_slug": "by-vilain",
+    "image_url": "https://static.30shine.com/shop-admin/2024/01/14/30S7P683-combo-3-by-vilain.jpg",
+    "tags": "30Shine",
+    "images": [
+      {
+        "name": "By-Vilain-Silver-Fox.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/01/14/30SR2JY6-By-Vilain-Silver-Fox.jpg",
+        "alt": ""
+      },
+      {
+        "name": "ByVilainGoldDigger65mlclosedwith.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/01/14/30SH8HIH-ByVilainGoldDigger65mlclosedwith.jpg",
+        "alt": ""
+      },
+      {
+        "name": "By-Vilain-Gold-Digger-1.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/01/14/30STD1M8-By-Vilain-Gold-Digger-1.jpg",
+        "alt": ""
+      },
+      {
+        "name": "sap-vuot-toc-dynamite-clay_3d957.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/01/14/30SRH1U5-sap-vuot-toc-dynamite-clay_3d957.jpg",
+        "alt": ""
+      },
+      {
+        "name": "goldigger-front.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/01/14/30SQ94GO-goldigger-front.jpg",
+        "alt": ""
+      },
+      {
+        "name": "silver_fox_front.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/01/14/30S27H2K-silver_fox_front.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Sáp vuốt tóc By Vilain giữ nếp đỉnh cao mùi hương nam tính 30Shine phân phối chính hãng",
+    "description": "<p style=\"margin-left:0px;\">Sáp vuốt tóc By Vilain giữ nếp đỉnh cao mùi hương nam tính 30Shine phân phối chính hãng</p><p style=\"margin-left:0px;\">&nbsp;</p><p style=\"margin-left:0px;\">- Thương hiệu: By Vilain</p><p style=\"margin-left:0px;\">- Xuất xứ: Đan Mạch</p><p style=\"margin-left:0px;\">- Hạn sử dụng: 2 năm kể từ ngày sản xuất</p><p style=\"margin-left:0px;\">- Độ giữ nếp :10/10</p><p style=\"margin-left:0px;\">- Độ bóng:&nbsp;0/10</p><p style=\"margin-left:0px;\">- Khả năng giữ nếp cực kỳ cao (Extreme Hold)</p><p style=\"margin-left:0px;\">- Hoàn thiện tự nhiên, giúp tóc giữ được độ mềm mại vốn có (Matte Finish)</p><p style=\"margin-left:0px;\">- Giữ nếp cực&nbsp;lâu</p><p style=\"margin-left:0px;\">- Không bóng, không bết, mùi thơm vani nhẹ</p><p style=\"margin-left:0px;\">- Làm tóc trông dày hơn, bồng bềnh, tự nhiên&nbsp;hơn</p><p style=\"margin-left:0px;\">- Dễ dàng tạo kiểu lại sau khi đội mũ bảo hiểm</p><p style=\"margin-left:0px;\">- Phù hợp với nhiều loại tóc ( đặc biệt tóc dày )</p><p style=\"margin-left:0px;\">- Dễ dàng gội sạch với nước, không bị rít tóc</p><p style=\"margin-left:0px;\">&nbsp;</p><p style=\"margin-left:0px;\">Hướng dẫn sử dụng sáp tạo kiểu tóc</p><p style=\"margin-left:0px;\">Bước 1: Lấy mộ lượng sáp vuốt tóc nhỏ, dùng lòng bàn tay xoa đều cho sáp tan chảy.</p><p style=\"margin-left:0px;\">Bước 2: Dùng tay xoa sáp lên phần ngọn tóc, dùng các ngón tay lùa vuốt từ gốc lên ngọn tóc.</p><p style=\"margin-left:0px;\">Bước 3: Dùng máy sấy, lược sấy để dễ dàng tạo được kiểu tóc mong muốn.</p><p style=\"margin-left:0px;\">&nbsp;Lưu ý: Do sáp có tính chất hơi rít nên dùng sáp ngay khi tóc còn ẩm</p><p style=\"margin-left:0px;\">&nbsp;</p><p style=\"margin-left:0px;\">&nbsp;</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "65a3bb4d122f00001d9324d6",
+        "name": "Gold Digger 15g",
+        "price": 199000,
+        "listedPrice": 199000,
+        "sku": "SP04446",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "65a3bb4d122f00001d9324d7",
+        "name": "Gold Digger 30g",
+        "price": 359000,
+        "listedPrice": 359000,
+        "sku": "SP04336",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "65a3bb4d122f00001d9324d9",
+        "name": "Silver Fox 15g",
+        "price": 199000,
+        "listedPrice": 199000,
+        "sku": "SP04445",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "65a3bb4d122f00001d9324dc",
+        "name": "Dynamite Clay 15g",
+        "price": 199000,
+        "listedPrice": 199000,
+        "sku": "SP04447",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "652cf654485492001dee37c5",
+    "name": "Dầu Gội Vichy Giảm Gàu Cho Da Đầu Dầu Dercos Shampoo Dandruff & Itchy Scalp 200ml",
+    "slug": "dau-goi-vichy-giam-gau-cho-da-dau-dau-dercos-shampoo-dandruff-itchy-scalp-200ml",
+    "price": 415000,
+    "listed_price": 415000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc tóc",
+    "category_slug": "cham-soc-toc",
+    "subcategory": "Dầu gội",
+    "subcategory_slug": "dau-goi",
+    "brand": "Vichy",
+    "brand_slug": "vichy",
+    "image_url": "https://static.30shine.com/shop-admin/2023/10/16/30S6A3HD-zoom-side-213548.jpg",
+    "tags": "30Shine",
+    "images": [
+      {
+        "name": "zoom-extra1-213548.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/10/16/30SJOARH-zoom-extra1-213548.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Dầu Gội Vichy Giảm Gàu Cho Da Đầu Dầu Dercos Shampoo Dandruff & Itchy Scalp 200ml",
+    "description": "<p style=\"margin-left:0px;\">Hệ vi sinh da đầu là hệ sinh thái vô hình của hàng triệu vi sinh vật. Khi bị mất cân bằng hệ vi sinh da đầu, các hại khuẩn như Malassezia dễ xâm nhập và khiến da đầu bị gàu.</p><p style=\"margin-left:0px;\"><a href=\"https://hasaki.vn/danh-muc/dau-goi-c97.html\"><strong>Dầu Gội</strong></a><strong>&nbsp;Vichy Dercos Anti-Dandruff Sensitive&nbsp;</strong>chứa 1% Selenium Disulfide có tác dụng giảm sản sinh tế bào sừng, kháng khuẩn, kháng nấm. Ngoài ra, 1% Salicylic Acid (BHA) giúp làm sạch sâu bã nhờn và tẩy tế bào chết trên da đầu. Các chuyên gia đề cao sự kết hợp của các hoạt chất da liễu này trong sản phẩm chăm sóc da đầu để tăng hiệu quả loại bỏ gàu, giảm ngứa.</p><p style=\"margin-left:0px;\">&nbsp;</p><p style=\"margin-left:0px;\">&nbsp;</p><figure class=\"image\"><img src=\"https://api.hasaki.vn/wysiwyg?id=e3ttZWRpYSB1cmw9Ind5c2l3eWcvQ2hhdS9kYXUtZ29pLXZpY2h5LTIwMG1sLTEuanBnIn19/\" alt=\"Vichy Dercos Dandruff &amp; Itchy Sensitive Scalp 200ml\"></figure><p style=\"margin-left:0px;\">&nbsp;</p><h3 style=\"margin-left:0px;\">Đối tượng sử dụng:</h3><p style=\"margin-left:0px;\">Sản phẩm dành cho da đầu gàu, ngứa và nhạy cảm.</p><h3 style=\"margin-left:0px;\">Ưu thế nổi bật:</h3><p style=\"margin-left:0px;\"><strong>Dầu gội giảm gàu Dercos Anti-dandruff DS</strong> sở hữu bộ đôi hoạt chất tác động vào nguyên nhân chính gây ra gàu: mất cân bằng hệ vi sinh vật trong đó số lượng vi khuẩn và nấm men Malassezia tăng sinh mất kiểm soát:</p><p style=\"margin-left:0px;\"><strong>1% Selenium Disulfide</strong> – tỷ lệ vàng Chuyên gia khuyên dùng giúp kháng viêm, kháng nấm, giảm số lượng vi khuẩn và nấm men có hại, tăng lượng vi khuẩn có lợi để cân bằng sinh quyển da đầu.</p><p style=\"margin-left:0px;\"><strong>1% BHA</strong> giúp tiêu sừng, làm sạch tế bào chết và dầu thừa, loại bỏ môi trường “ưa thích” của nấm men Malassezia.</p><p style=\"margin-left:0px;\">&nbsp;</p><figure class=\"image\"><img src=\"https://api.hasaki.vn/wysiwyg?id=e3ttZWRpYSB1cmw9Ind5c2l3eWcvQ2hhdS9kYXUtZ29pLXZpY2h5LTIwMG1sLTJfMS5qcGcifX0,/\" alt=\"Vichy Dercos Dandruff &amp; Itchy Sensitive Scalp\"></figure><p style=\"margin-left:0px;\">&nbsp;</p><h3 style=\"margin-left:0px;\">Hiệu quả sử dụng:</h3><p style=\"margin-left:0px;\">Hiệu quả ngay sau lần gội đầu tiên ngay cả khi gàu xuất hiện dai dẳng*.</p><p style=\"margin-left:0px;\">Giúp giảm gàu quay trở lại đến 6 tuần.</p><p style=\"margin-left:0px;\">Nếu sau một thời gian gàu quay trở lại thì tiếp tục sử dụng sản phẩm thêm khoảng 4 tuần.</p><h3 style=\"margin-left:0px;\">Độ an toàn:</h3><p style=\"margin-left:0px;\">Dịu nhẹ và không có Paraben.</p><p style=\"margin-left:0px;\">Mùi hương dễ chịu.</p><p style=\"margin-left:0px;\">Kết cấu Gel trong suốt tươi mát.</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "652cf654485492001dee37c6",
+        "name": "Default",
+        "price": 415000,
+        "listedPrice": 415000,
+        "sku": "SP04254",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "651e8175c8bf80001d2479d7",
+    "name": "Xịt Dưỡng Tóc It's A 10 Miracle Leave-In Mềm Mượt Và Bảo Vệ Tóc 59ML",
+    "slug": "xit-duong-toc-its-a-mem-muot-va-bao-ve-toc-10-miracle-leave-in-59ml",
+    "price": 327000,
+    "listed_price": 327000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc tóc",
+    "category_slug": "cham-soc-toc",
+    "subcategory": "Dưỡng tóc",
+    "subcategory_slug": "duong-toc",
+    "brand": "It's a 10 Haircare",
+    "brand_slug": "its-a-10-haircare",
+    "image_url": "https://static.30shine.com/shop-admin/2023/10/05/30SDLXT6-1.jpg",
+    "tags": "30Shine",
+    "images": [
+      {
+        "name": "156608710_1126222007825907_6766930635585725325_n.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/10/05/30SGIFN3-156608710_1126222007825907_6766930635585725325_n.jpg",
+        "alt": ""
+      },
+      {
+        "name": "149510651_253697762865678_942789993904892863_n.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/10/05/30SB70VL-149510651_253697762865678_942789993904892863_n.jpg",
+        "alt": ""
+      },
+      {
+        "name": "143751232_431309368090379_8350052097756210709_n.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/10/05/30S48JNA-143751232_431309368090379_8350052097756210709_n.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Xịt Dưỡng Tóc It's A Mềm Mượt Và Bảo Vệ Tóc 10 Miracle Leave-In 59ML",
+    "description": "<p><span style=\"font-size:22px;\">Xịt Dưỡng Tóc It's A Mềm Mượt Và Bảo Vệ Tóc 10 Miracle Leave-In 120ML</span></p><p><span style=\"font-size:16px;\"><strong>Công dụng:</strong></span></p><p><span style=\"font-size:16px;\">Tạm biệt các bước chăm sóc tóc cầu kì, phức tạp! Hãy chào đón người bạn BFF chăm sóc tóc mới của bạn, Sản phẩm Xịt dưỡng Miracle Leave-In của chúng tôi. Sản phẩm tạo nên thương hiệu đình đám, loại xịt dễ sử dụng này giúp làm mượt mái tóc, loại bỏ xoăn rối, phục hồi độ bóng và tăng cường vẻ đẹp tự nhiên cho tóc của bạn. Bạn sẽ quên ngay mái tóc xẹp, hư tổn và xỉn màu.&nbsp;</span></p><p><a href=\"https://myphamtocnhapkhau.com/it%E2%80%99s-a-10-my\"><span style=\"font-size:16px;\"><strong>Xịt dưỡng It's A Miracle Leave-In</strong></span></a><span style=\"font-size:16px;\">&nbsp;của chúng tôi chứa đầy các thành phần tự nhiên giúp mang lại độ sáng bóng tự nhiên cho mọi loại tóc, đồng thời làm cho tóc của bạn chắc khỏe hơn qua từng lần sử dụng. Tóc mềm mại, bồng bềnh chưa bao giờ đơn giản hơn thế!</span></p><figure class=\"image\"><img src=\"https://myphamtocnhapkhau.com/Upload/Editor/2023/4/1/xitduongtocitsamiracleleaveinproduct-66af.jpeg\" alt=\"\"></figure><p><span style=\"font-size:16px;\"><strong>10 CÔNG DỤNG TRONG MỖI CHAI:</strong></span></p><p><span style=\"font-size:16px;\">1. Nuôi dưỡng tóc&nbsp;</span></p><p><span style=\"font-size:16px;\">2. Bảo vệ chống nhiệt</span></p><p><span style=\"font-size:16px;\">3. Gỡ rối&nbsp;</span></p><p><span style=\"font-size:16px;\">4. Chăm sóc màu nhuộm</span></p><p><span style=\"font-size:16px;\">5. Tái tạo độ bóng</span></p><p><span style=\"font-size:16px;\">6. Giảm thiểu rối xù</span></p><p><span style=\"font-size:16px;\">7. Bảo vệ chống lại tia UV</span></p><p><span style=\"font-size:16px;\">8. Hỗ trợ thay thế những protein bị mất&nbsp;</span></p><p><span style=\"font-size:16px;\">9. Tăng cường độ dày thân tóc</span></p><p><span style=\"font-size:16px;\">10. giảm chẻ ngọn</span></p><p><span style=\"font-size:16px;\"><strong>Cách sử dụng:</strong></span></p><p><span style=\"font-size:16px;\">- Gội đầu và sử dụng dầu xả tóc như bình thường.</span></p><p><span style=\"font-size:16px;\">- Khi tóc bạn vẫn còn ẩm, hãy sử dụng&nbsp;</span><a href=\"https://myphamtocnhapkhau.com/it%E2%80%99s-a-10-my\"><span style=\"font-size:16px;\"><strong>xịt dưỡng It’s a 10</strong></span></a><span style=\"font-size:16px;\">. Đối với tóc ngắn hoặc tóc lỡ, sử dụng từ 2 đến 3 lần xịt. Đối với tóc dày hoặc dài hơn, hãy sử dụng 4 đến 6 lần xịt.</span></p><p><span style=\"font-size:16px;\">- Gỡ rối tóc, xịt đều từ chân tóc đến ngọn tóc. Sử dụng kỹ thuật phù hợp cho loại tóc của bạn.</span><br><span style=\"font-size:16px;\">Tóc thẳng hoặc gợn sóng - chải tóc bằng lược gỡ rối nhẹ.</span><br><span style=\"font-size:16px;\">Tóc xoăn - chải tóc bằng ngón tay, và nâng bóp để tạo hình các lọn tóc.</span></p><p><span style=\"font-size:16px;\">- Hoàn thành thói quen chăm sóc &amp; tạo kiểu tóc của bạn.</span></p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "651e8175c8bf80001d2479d8",
+        "name": "Default",
+        "price": 327000,
+        "listedPrice": 327000,
+        "sku": "SP04234",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "651e810dc8bf80001d2479b4",
+    "name": "Xịt Dưỡng Tóc It's A 10 Miracle Leave-In Mềm Mượt Và Bảo Vệ Tóc 120ML",
+    "slug": "xit-duong-toc-its-a-mem-muot-va-bao-ve-toc-10-miracle-leave-in-120ml",
+    "price": 529000,
+    "listed_price": 529000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc tóc",
+    "category_slug": "cham-soc-toc",
+    "subcategory": "Dưỡng tóc",
+    "subcategory_slug": "duong-toc",
+    "brand": "It's a 10 Haircare",
+    "brand_slug": "its-a-10-haircare",
+    "image_url": "https://static.30shine.com/shop-admin/2023/10/05/30SMV01Z-2.jpg",
+    "tags": "30Shine",
+    "images": [
+      {
+        "name": "156608710_1126222007825907_6766930635585725325_n.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/10/05/30SRCXVW-156608710_1126222007825907_6766930635585725325_n.jpg",
+        "alt": ""
+      },
+      {
+        "name": "149510651_253697762865678_942789993904892863_n.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/10/05/30SFDBPO-149510651_253697762865678_942789993904892863_n.jpg",
+        "alt": ""
+      },
+      {
+        "name": "143751232_431309368090379_8350052097756210709_n.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/10/05/30SKYW3M-143751232_431309368090379_8350052097756210709_n.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "XỊT DƯỠNG MIRACLE LEAVE-IN IT'S A 10\n",
+    "description": "<p><span style=\"font-size:22px;\">Xịt Dưỡng Tóc It's A Mềm Mượt Và Bảo Vệ Tóc 10 Miracle Leave-In 120ML</span></p><p><span style=\"font-size:16px;\"><strong>Công dụng:</strong></span></p><p><span style=\"font-size:16px;\">Tạm biệt các bước chăm sóc tóc cầu kì, phức tạp! Hãy chào đón người bạn BFF chăm sóc tóc mới của bạn, Sản phẩm Xịt dưỡng Miracle Leave-In của chúng tôi. Sản phẩm tạo nên thương hiệu đình đám, loại xịt dễ sử dụng này giúp làm mượt mái tóc, loại bỏ xoăn rối, phục hồi độ bóng và tăng cường vẻ đẹp tự nhiên cho tóc của bạn. Bạn sẽ quên ngay mái tóc xẹp, hư tổn và xỉn màu.&nbsp;</span></p><p><a href=\"https://myphamtocnhapkhau.com/it%E2%80%99s-a-10-my\"><span style=\"font-size:16px;\"><strong>Xịt dưỡng It's A Miracle Leave-In</strong></span></a><span style=\"font-size:16px;\">&nbsp;của chúng tôi chứa đầy các thành phần tự nhiên giúp mang lại độ sáng bóng tự nhiên cho mọi loại tóc, đồng thời làm cho tóc của bạn chắc khỏe hơn qua từng lần sử dụng. Tóc mềm mại, bồng bềnh chưa bao giờ đơn giản hơn thế!</span></p><figure class=\"image\"><img src=\"https://myphamtocnhapkhau.com/Upload/Editor/2023/4/1/xitduongtocitsamiracleleaveinproduct-66af.jpeg\" alt=\"\"></figure><p><span style=\"font-size:16px;\"><strong>10 CÔNG DỤNG TRONG MỖI CHAI:</strong></span></p><p><span style=\"font-size:16px;\">1. Nuôi dưỡng tóc&nbsp;</span></p><p><span style=\"font-size:16px;\">2. Bảo vệ chống nhiệt</span></p><p><span style=\"font-size:16px;\">3. Gỡ rối&nbsp;</span></p><p><span style=\"font-size:16px;\">4. Chăm sóc màu nhuộm</span></p><p><span style=\"font-size:16px;\">5. Tái tạo độ bóng</span></p><p><span style=\"font-size:16px;\">6. Giảm thiểu rối xù</span></p><p><span style=\"font-size:16px;\">7. Bảo vệ chống lại tia UV</span></p><p><span style=\"font-size:16px;\">8. Hỗ trợ thay thế những protein bị mất&nbsp;</span></p><p><span style=\"font-size:16px;\">9. Tăng cường độ dày thân tóc</span></p><p><span style=\"font-size:16px;\">10. giảm chẻ ngọn</span></p><p><span style=\"font-size:16px;\"><strong>Cách sử dụng:</strong></span></p><p><span style=\"font-size:16px;\">- Gội đầu và sử dụng dầu xả tóc như bình thường.</span></p><p><span style=\"font-size:16px;\">- Khi tóc bạn vẫn còn ẩm, hãy sử dụng&nbsp;</span><a href=\"https://myphamtocnhapkhau.com/it%E2%80%99s-a-10-my\"><span style=\"font-size:16px;\"><strong>xịt dưỡng It’s a 10</strong></span></a><span style=\"font-size:16px;\">. Đối với tóc ngắn hoặc tóc lỡ, sử dụng từ 2 đến 3 lần xịt. Đối với tóc dày hoặc dài hơn, hãy sử dụng 4 đến 6 lần xịt.</span></p><p><span style=\"font-size:16px;\">- Gỡ rối tóc, xịt đều từ chân tóc đến ngọn tóc. Sử dụng kỹ thuật phù hợp cho loại tóc của bạn.</span><br><span style=\"font-size:16px;\">Tóc thẳng hoặc gợn sóng - chải tóc bằng lược gỡ rối nhẹ.</span><br><span style=\"font-size:16px;\">Tóc xoăn - chải tóc bằng ngón tay, và nâng bóp để tạo hình các lọn tóc.</span></p><p><span style=\"font-size:16px;\">- Hoàn thành thói quen chăm sóc &amp; tạo kiểu tóc của bạn.</span></p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "651e810dc8bf80001d2479b5",
+        "name": "Default",
+        "price": 529000,
+        "listedPrice": 529000,
+        "sku": "SP04235",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "651e799bc8bf80001d24756a",
+    "name": "Kem chống nắng chống lão hóa, bảo vệ cao cho da mặt SUN SOUL FACE CREAM SPF 30",
+    "slug": "kem-chong-nang-chong-lao-hoa-bao-ve-cao-cho-da-mat-sun-soul-face-cream-spf-30",
+    "price": 880000,
+    "listed_price": 880000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc da",
+    "category_slug": "cham-soc-da",
+    "subcategory": "Kem chống nắng",
+    "subcategory_slug": "kem-chong-nang",
+    "brand": "30Shine",
+    "brand_slug": "30shine",
+    "image_url": "https://static.30shine.com/shop-admin/2023/10/05/30SOXF6D-1.jpg",
+    "tags": "30Shine",
+    "images": [
+      {
+        "name": "2.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/10/05/30SM3NF1-2.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Kem chống nắng chống lão hóa, bảo vệ cao cho da mặt SUN SOUL FACE CREAM SPF 30",
+    "description": "<figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2023/10/05/30S04O47-2.jpg\"></figure><p>KHUYẾN NGHỊ CỦA BÁC SĨ DA LIỄU ĐỂ giảm NÁM VÀ ĐỐM SẬM MÀU<br>Luôn sử dụng kem chống nắng - SUN SOUL<br><br>Cách tốt nhất để duy trì làn da sáng, trẻ trung là ngăn chặn các tình trạng tăng sắc tố như nám và đốm nắng xảy ra ngay từ đầu chịnh là có thói quen THOA KEM CHỐNG NẮNG.<br><br>Và hãy nhớ không chỉ dùng kem chống nắng mỗi khuôn mặt mà hãy thoa cả toàn bộ cơ thể! Đốm sậm màu xuất hiện do nắng có thể phát triển trên bất kỳ khu vực nào của cơ thể, vì vậy việc đảm bảo rằng bất kỳ vùng da nào thường xuyên tiếp xúc với ánh nắng đều được bảo vệ bằng kem chống nắng là rất quan trọng.<br><br>SẢN PHẨM KHUYÊN DÙNG: SUN SOUL FACE CREAM SPF 30<br><br>☀️ Công nghệ chống nắng thế hệ mới nhất từ nghiên cứu tân tiến của [ comfort zone ]<br>☀️ Hiệu quả trong việc bảo vệ da khỏi tia UVA/UVB &amp; lão hóa do ánh nắng, đồng thời bảo vệ môi trường.<br>☀️ Công thức chống nước cao, sản phẩm hấp thụ nhanh chóng và mềm mượt trên da<br>☀️ Bộ lọc sinh học không phải nano an toàn cho làn da, ổn định với ánh sáng, kết hợp với peptide DNA-DEFENSE chống lão hóa và chiết xuất Acerola chống oxy hóa.<br>☀️ Lý tưởng cho mọi làn da, giới tính, không dễ bị cháy nắng, giảm thiểu tình trạng mất nước và sự xuất hiện của nếp nhăn.<br><br>Và đừng quên, hãy thoa lại sau mỗi 2 tiếng nếu như bạn thường xuyên tiếp xúc với ánh nắng hoặc hoạt động dưới nước!</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "651e799bc8bf80001d24756b",
+        "name": "Default",
+        "price": 880000,
+        "listedPrice": 880000,
+        "sku": "SP04178",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "65080b62019990001d05d6f4",
+    "name": "Tinh Chất Serum Cấp Ẩm Sâu Trẻ Hoá Da GGG Wonder Glow Rejuvenating Serum 30ml",
+    "slug": "tinh-chat-serum-cap-am-sau-tre-hoa-da-ggg-wonder-glow-rejuvenating-serum-30ml",
+    "price": 595000,
+    "listed_price": 595000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc da",
+    "category_slug": "cham-soc-da",
+    "subcategory": "Dưỡng da",
+    "subcategory_slug": "duong-da",
+    "brand": "G.G.G",
+    "brand_slug": "ggg",
+    "image_url": "https://static.30shine.com/shop-admin/2023/09/18/30S3L1HA-main-2.jpg",
+    "tags": "30Shine",
+    "images": [
+      {
+        "name": "main-3.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/09/18/30SKH59F-main-3.jpg",
+        "alt": ""
+      },
+      {
+        "name": "main-5.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/09/18/30S0FZOV-main-5.jpg",
+        "alt": ""
+      },
+      {
+        "name": "30.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/10/13/30SPX3PZ-30.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Tinh Chất Serum Cấp Ẩm Sâu Trẻ Hoá Da GGG Wonder Glow Rejuvenating Serum 30ml",
+    "description": "<p>𝐓𝐢𝐧𝐡 𝐂𝐡ấ𝐭 𝐒𝐞𝐫𝐮𝐦 𝐂ấ𝐩 Ẩ𝐦 𝐒â𝐮 𝐓𝐫ẻ 𝐇𝐨á 𝐃𝐚</p><p>𝐆.𝐆.𝐆 𝐖𝐨𝐧𝐝𝐞𝐫 𝐆𝐥𝐨𝐰 𝐑𝐞𝐣𝐮𝐯𝐞𝐧𝐚𝐭𝐢𝐧𝐠 𝐒𝐞𝐫𝐮𝐦 𝟑𝟎𝐦𝐥</p><p>⋆⋆ Nhẹ dịu cho mọi loại da, thức tỉnh làn da uể oải, thiếu sức sống, lão hóa sớm. Bơm đầy nếp nhăn nhỏ, cho da ẩm mịn sau lần đầu sử dụng⋆⋆</p><p>&nbsp;</p><p>CÔNG DỤNG</p><p>+ Cấp &amp; giữ nước mạnh mẽ, ngừa lão hoá da.</p><p>+ Tăng sinh collagen, Elastine, trẻ hóa da.</p><p>+ Làm mờ đốm thâm, nếp nhăn nhỏ, dưỡng sáng da.</p><p>+ Chất gel màu xanh nhẹ rạng rỡ, tươi tắn.</p><p>THÀNH PHẦN</p><p>+ 𝐋á 𝐧𝐞𝐞𝐦: thần dược Ấn Độ với hơn 100 dưỡng chất cho mọi vấn đề da</p><p>+ 𝐓ả𝐨 𝐱𝐚𝐧𝐡: tăng collagen, bơm đầy nếp nhăn nhỏ</p><p>+ 𝐏𝐡ứ𝐜 𝐇ợ𝐩 𝟏𝟐 𝐥𝐨ạ𝐢 𝐡𝐨𝐚 ( Hisbiscus, Cadenlula...): &nbsp;quả bomb vitamin bảo vệ collagen khỏi các tác nhân oxy hoá</p><p>+ 𝐑𝐞𝐭𝐢𝐧𝐨𝐥 𝐭𝐡ự𝐜 𝐯ậ𝐭: trẻ hoá da, tăng sinh collagen &amp; elastin, giảm mờ rãnh nhăn, dịu nhẹ trên da.</p><p>HƯỚNG DẪN SỬ DỤNG</p><p>Sau khi làm sạch da, thoa 1-2 giọt lên toàn mặt.</p><p>Tinh chất dạng gel, thẩm thấu nhanh chóng vào da mà không gây dính rít, bóng nhờn.</p><p>Bạn có thể tuỳ ý thoa thêm nhiều lớp và xoa ấm lòng bàn tay, ôm nhẹ giúp sản phẩm thấm sâu, tăng hiệu quả dưỡng sáng da, cấp nước cho da.</p><p>Dùng cả sáng lẫn tối để sản phẩm phát huy tác dụng nhanh chóng.</p><p>Sản phẩm phù hợp với mọi loại da, không gây kích ứng.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>BẢO QUẢN:</p><p>&nbsp;</p><p>Để nơi thoáng mát, không tiếp xúc trực tiếp với ánh nắng mặt trời và để xa tầm tay trẻ em.</p><p>&nbsp;</p><p>Đóng nắp khi sử dụng xong sản phẩm.</p><p>&nbsp;</p><p>------------------------------------------</p><p>&nbsp;</p><p>𝐆.𝐆.𝐆 đại diện cho “Glow.- Glitter - Glare”, là thương hiệu mỹ phẩm cao cấp được nhập khẩu từ Hàn Quốc, dành cho các cô gái hiện đại, yêu làm đẹp &amp; luôn tìm cảm hứng hoàn thiện hình ảnh bản thân.</p><p>&nbsp;</p><p>Các sản phẩm của G.G.G tạo nên sự biến đổi nhiệm màu cho nhan sắc với hiệu quả sử dụng cao, an toàn &amp; lành tính, đem lại vẻ đẹp bất ngờ &amp; cảm giác thú vị cho người sử dụng</p><p>&nbsp;</p><p>SẢN XUẤT: Hàn Quốc</p><p>&nbsp;</p><p>HẠN SỬ DỤNG: 36 tháng</p><p>&nbsp;</p><p>NSX: In trên bao bì sản phẩm</p><p>&nbsp;</p><p>#ggg #serum #mờnếpnhăn #antiaging #HA</p><p>&nbsp;</p><p>&nbsp;</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "65080b62019990001d05d6f5",
+        "name": "Default",
+        "price": 595000,
+        "listedPrice": 595000,
+        "sku": "SP04221",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "64df30ca3a467d001d293e65",
+    "name": "Nước dưỡng làm dịu da nhạy cảm Comfort Zone Remedy Toner 200ml 30shine phân phối chính hãng",
+    "slug": "nuoc-duong-lam-diu-da-nhay-cam-comfort-zone-remedy-toner-200ml-30shine-phan-phoi-chinh-hang",
+    "price": 990000,
+    "listed_price": 990000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc da",
+    "category_slug": "cham-soc-da",
+    "subcategory": "Sữa rửa mặt",
+    "subcategory_slug": "sua-rua-mat",
+    "brand": "Comfort Zone",
+    "brand_slug": "comfort-zone",
+    "image_url": "https://static.30shine.com/shop-admin/2023/08/18/30SQYQVI-uno ngày (1).jpg",
+    "tags": "30Shine",
+    "images": [
+      {
+        "name": "CZ_1.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/08/18/30SKIZOJ-CZ_1.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "",
+    "description": "<p>Nước hoa hồng dạng xịt làm dịu mát cho da nhạy cảm Comfort Zone Remedy Toner với tác động giúp củng cố và làm dịu da, được khuyến khích dành cho da nhạy cảm, da có dấu hiệu nhạy cảm và mẩn đỏ. Thiết kế dễ dàng sử dụng, chỉ cần ấn nhẹ nhàng bạn sẽ cảm nhận được các hạt sương lan toả mang lại cảm giác dịu nhẹ tức thì trên da.</p><p>&nbsp;</p><p>CÔNG DỤNG CHÍNH:</p><p>• Làm dịu và phục hồi da cho làn da nhạy cảm</p><p>• Sử dụng khi bị côn trùng đốt, nổi mẩn đỏ</p><p>• Khi da bị cháy nắng</p><p>• Khi da bị nhảy cảm, dị ứng</p><p>&nbsp;</p><p>HƯỚNG DẪN SỬ DỤNG VÀ BẢO QUẢN:</p><p>Xịt nhẹ nhàng lên da (cách 30cm), xịt liên tục nhiều lần trong ngày nếu cần thiết. Không xịt trực tiếp vào mắt</p><p>.***Lưu ý:</p><p>Bảo quản nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp hoặc nơi có nhiệt độ cao/ẩm ướt.</p><p>&nbsp;</p><p>CAM KẾT VỚI KHÁCH HÀNG</p><p>Tư vấn tận tâm - Phụ nữ tại HER được phân tích trực tiếp và tư vấn bởi đội ngũ chuyên viên tư vấn kinh nghiệm và thiết bị hỗ trợ phân tích da được nhập khẩu từ Mỹ.</p><p>Hỗ trợ phục hồi tận tình - Phụ nữ tại HER được chăm sóc da với liệu trình từ cơ bản đến chuyên, được hỗ trợ phục hồi phục hồi da hư tổn do mụn, thâm, nám, lão hoá.</p><p>Chăm sóc tận tụy - Phụ nữ đến với HER luôn có thể yêu cầu chuyên viên tư vấn hỗ trợ chăm sóc, nuôi dưỡng làn da của mình mỗi ngày.</p><p>Đổi trả sản phẩm nếu có lỗi từ nhà sản xuất theo quy định của Shopee</p><p>1. Điều kiện áp dụng (trong vòng 03 ngày kể từ khi nhận sản phẩm):</p><p>- Sản phẩm phải còn nguyên, chưa qua sử dụng.</p><p>- Sản phẩm hư hỏng do vận chuyển hoặc do nhà sản xuất.</p><p>- Không đủ số lượng, không đủ bộ như trong đơn hàng.</p><p>&nbsp;</p><p>THÔNG TIN CHI TIẾT</p><p>Thương hiệu: Comfort Zone</p><p>Xuất xứ: Ý</p><p>Dung tích: 200ml</p><p>Thành phần chính: Aqua / Water / Eau, Propanediol, Glycerin, Butylene Glycol, 1,2-Hexanediol, Alpha-Glucan Oligosaccharide, Disodium Edta, Caprylhydroxamic Acid, Mirabilis Jalapa Extract, Sodium Hydroxide, Citric Acid</p><p>Loại da: Mọi loại da</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "64df30ca3a467d001d293e66",
+        "name": "Default",
+        "price": 990000,
+        "listedPrice": 990000,
+        "sku": "SP04176",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "64df2dda6fc995001d04b111",
+    "name": "Gel Rửa Mặt làm sạch sâu, cân bằng da Comfort Zone Active Pureness Gel 200ml",
+    "slug": "gel-rua-mat-lam-sach-sau-can-bang-da-comfort-zone-active-pureness-gel-200ml",
+    "price": 990000,
+    "listed_price": 990000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc da",
+    "category_slug": "cham-soc-da",
+    "subcategory": "Sữa rửa mặt",
+    "subcategory_slug": "sua-rua-mat",
+    "brand": "Comfort Zone",
+    "brand_slug": "comfort-zone",
+    "image_url": "https://static.30shine.com/shop-admin/2023/08/18/30SDOXQV-GLANZEN MAGIC SPRAY (1).jpg",
+    "tags": "30Shine",
+    "images": [
+      {
+        "name": "CZ_1.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/08/18/30SNUAIP-CZ_1.jpg",
+        "alt": ""
+      },
+      {
+        "name": "CZ_2.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/08/18/30SG2T2L-CZ_2.jpg",
+        "alt": ""
+      },
+      {
+        "name": "17.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/10/13/30SDHZ0W-17.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "",
+    "description": "<p>\"THANH LỌC LÀN DA</p><p>Một giải pháp hữu hiệu để làm giảm thiểu các khuyết điểm do da dầu gây ra, mang đến một làn da tinh khiết, cân bằng và khoẻ mạnh cho người sử dụng.</p><p>Sử dụng Active Pureness để làm sạch, khắc phục tình trạng tiết bã nhờn quá mức và lỗ chân lông to.</p><p>Lý tưởng cho làn da dầu và da hỗn hợp khi cần một giải pháp thanh lọc sâu.</p><p>&nbsp;</p><p>PHỤC HỒI &amp; CÂN BẰNG LÀN DA</p><p>Nguyên nhân khiến làn da tiết nhiều dầu nhờn có thể do các yếu tố như chế độ ăn uống, tinh thần căng thẳng và xu hướng di truyền.</p><p>Các lỗ chân lông trên bề mặt da bị tắc nghẽn, từ đó tạo điều kiện cho dầu tích tụ trong các tuyến bã nhờn, cùng với các tạp chất và tế bào da chết.</p><p>Điều này tạo ra mụn đầu trắng và mụn đầu đen và trong trường hợp xấu nhất,vi khuẩn có thể phát triển gây viêm và mụn trứng cá.</p><p>Active Pureness hỗ trợ làn da bị mất cân bằng, phục hồi trạng thái tối ưu của da một cách nhẹ nhàng và tiến triển.</p><p>&nbsp;</p><p>THÀNH PHẦN HOẠT TÍNH</p><p>Gluconolactone là một thành phần giúp tẩy tế bào chết nhẹ nhàng, làm thông thoáng lỗ chân lông.</p><p>Thành phần đất sét xanh và trắng giúp hấp thụ lượng bã nhờn dư thừa trên da, mang lại làn da rạng ngời và mờ bóng dầu.</p><p>Chiết xuất măng cụt bảo vệ da khỏi quá trình oxy hóa và hạn chế kích ứng, sưng, viêm.</p><p>&nbsp;</p><p>CONSCIOUS SKIN SCIENCE</p><p>Gel và Toner tẩy tế bào chết với 3% Gluconolactone giúp tái tạo và làm sáng da mà không gây kích ứng. Mask đất sét nên được sử dụng hàng tuần, với đặc tính làm se sẽ thấm hút dầu thừa và tạp chất, trong khi đó Corrector được sử dụng trực tiếp lên vùng da bị mụn để thúc đẩy quá trình điều trị. Sử dụng sữa dưỡng ẩm Fluid để giữ cho hàng rào bảo vệ da được cân bằng tốt.</p><p>Không chứa silicone, dẫn xuất từ động vật, dầu khoáng, chất tạo màu nhân tạo, SLS và SLES. Phù hợp cho người ăn chay.</p><p>Hiệu quả đã được chứng minh lâm sàng.</p><p>Sản xuất tại Ý với nguồn năng lượng tái tạo.</p><p>Bao bì bù CO2 có thể tái chế. Được cấp giấy FSC chứng nhận tái chế.</p><p>&nbsp;</p><p>CHU TRÌNH TRỊ LIỆU VỚI ACTIVE PURENESS</p><p>Chu trình kéo dài 50 phút bao gồm sử dụng mặt nạ tảo Spirulina để lột tẩy. Sự kết hợp của Axit Mandelic và mặt nạ chứa đất sét xanh và trắng sẽ thu nhỏ lỗ chân lông để có một làn da mịn màng và đều màu.</p><p>Khuyên dùng cho da dầu, da có sẹo mụn hoặc có khuyết điểm.\" &nbsp; &nbsp; &nbsp;&nbsp;</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "64df2dda6fc995001d04b112",
+        "name": "Default",
+        "price": 990000,
+        "listedPrice": 990000,
+        "sku": "SP04177",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "64d216f0fecb56001d45aea0",
+    "name": "Tinh chất nuôi dưỡng chăm sóc tóc khô và hư tổn UNOVE SILK OIL ESSENCE 70ml",
+    "slug": "tinh-chat-nuoi-duong-cham-soc-toc-kho-va-hu-ton-unove-silk-oil-essence-70ml",
+    "price": 562000,
+    "listed_price": 562000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc tóc",
+    "category_slug": "cham-soc-toc",
+    "subcategory": "Dưỡng tóc",
+    "subcategory_slug": "duong-toc",
+    "brand": "Dr.FORHAIR",
+    "brand_slug": "drforhair",
+    "image_url": "https://static.30shine.com/shop-admin/2023/08/08/30SEHXUN-1681626899-2 CÔNG DỤNG.jpg",
+    "tags": "30Shine",
+    "images": [
+      {
+        "name": "1680861758-13 - Unove Silk Oil Essence-min.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/08/08/30SZAX78-1680861758-13 - Unove Silk Oil Essence-min.jpg",
+        "alt": ""
+      },
+      {
+        "name": "1680861758-CÔNG DỤNG-min.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/08/08/30SXSIWV-1680861758-CÔNG DỤNG-min.jpg",
+        "alt": ""
+      },
+      {
+        "name": "1680861758-HSSD-min.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/08/08/30S37M9G-1680861758-HSSD-min.jpg",
+        "alt": ""
+      },
+      {
+        "name": "1680861758-THÀNH PHẦN-min.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/08/08/30SGC4KW-1680861758-THÀNH PHẦN-min.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Cung cấp các dưỡng chất thiết yếu cho tóc, chăm sóc và nuôi dưỡng sợi tóc",
+    "description": "<p>I. CÔNG DỤNG SẢN PHẨM</p><p>Cung cấp các dưỡng chất thiết yếu cho tóc, chăm sóc và nuôi dưỡng sợi tóc</p><p>Đảm bảo độ suôn mượt lí tưởng cho tóc.</p><p>Xây dựng và củng cố hàng rào độ ẩm, bảo vệ sợi tóc, giảm thiểu tác hại từ môi trường và hóa chất.</p><p>Hỗ trợ điều trị tóc khô xơ, rối, hư tổn do hóa chất và môi trường.</p><p>Cân bằng độ ẩm và dầu của tóc, hạn chế chẻ ngọn, tĩnh điện hay tóc không vào nếp.</p><p>II. ĐỐI TƯỢNG SỬ DỤNG</p><p>Sử dụng trong chu trình chăm sóc tóc hàng ngày.</p><p>Tóc mỏng, yếu, gãy rụng, khô xơ, thiếu sức sống</p><p>Tóc tạo kiểu thẫm mỹ như uốn, duỗi, nhuộm, tẩy, ép,…</p><p>Tóc cháy nắng, tóc lão hóa sớm.</p><p>III. HƯỚNG DẪN SỬ DỤNG</p><p>- Lấy 1 lượng sản phẩm vừa đủ ra tay và thoa trực tiếp lên phần thân và đuôi tóc</p><p>&nbsp;</p><p>- Vuốt nhẹ nhàng từ thân tóc đến đuôi tóc để đưỡng chất thẩm thấu hoàn toàn vào tóc.</p><p>&nbsp;</p><p>- Có thể dùng sau khi gội dầu và tóc vẫn còn ẩm hoặc lúc tóc khô hoàn toàn hoặc bất cứ khi nào có nhu cầu.</p><p>&nbsp;</p><p>IV. LƯU Ý KHI DÙNG</p><p>Không sử dụng trực tiếp trên da đầu.</p><p>Tránh sản phẩm dính vào mắt, rửa ngay với nước nếu sản phẩm lan vào mắt.</p><p>Hỏi ý kiến các chuyên gia hoặc bác sĩ da liễu nếu có dấu hiệu kích ứng với sản phẩm.</p><p>Không nên dùng khăn chà xát tóc để làm khô, nhẹ nhàng lau từ ngọn lên chân tóc.</p><p>Không nên chải đầu lúc tóc đang ướt, bởi da đầu lúc đó đang trong tình trạng nhạy cảm nhất, có thể dẫn đến căng chân tóc, đứt và gãy, rụng tóc.</p><p>Khuyến khích sấy khô 80% sau đó để tóc khô tự nhiên. Như vậy, sẽ hạn chế việc sản sinh ra gàu.</p><p>Nên sử dụng kèm các sản phẩm khác cùng dòng và kiên trì để đạt hiệu quả tối ưu.</p><p>&nbsp;</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "64d216f0fecb56001d45aea1",
+        "name": "Default",
+        "price": 562000,
+        "listedPrice": 562000,
+        "sku": "SP03295",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "649a96704de519001d100793",
+    "name": "DUNG DỊCH LOẠI BỎ TẾ BÀO CHẾT SKIN PERFECTING 2% BHA LIQUID EXFOLIANT 30ML",
+    "slug": "dung-dich-loai-bo-te-bao-chet-skin-perfecting-2-bha-liquid-exfoliant-30ml",
+    "price": 399000,
+    "listed_price": 399000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc da",
+    "category_slug": "cham-soc-da",
+    "subcategory": "Tẩy tế bào chết",
+    "subcategory_slug": "tay-te-bao-chet",
+    "brand": "30Shine",
+    "brand_slug": "30shine",
+    "image_url": "https://static.30shine.com/shop-admin/2023/06/27/30SUTKP1-1.jpg",
+    "tags": "30Shine",
+    "images": [
+      {
+        "name": "2.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/06/27/30SKPCVD-2.jpg",
+        "alt": ""
+      },
+      {
+        "name": "3.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/06/27/30SEDUHX-3.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Skin Perfecting 2% BHA Liquid Exfoliant là sản phẩm loại bỏ tế bào chết hóa học có công thức dịu nhẹ, không chứa chất làm bào mòn da, dễ dàng thẩm thấu và không làm bít tắc lỗ chân lông. Đồng thời, sản phẩm sẽ giúp giảm thiểu sự xuất hiện của nếp nhăn sâu, cải thiện tông màu da, giúp làn da sáng mịn, rạng rỡ và khỏe mạnh.\n\n+ Làm thông thoáng lỗ chân lông, đẩy lùi nguy cơ bít tắc lỗ chân lông, sinh ra mụn\n\n+ Giảm sưng đỏ, hỗ trợ kháng viêm\n\n+ Kích thích tái tạo tế bào, đẩy lùi sự xuất hiện của các dấu hiệu lão hóa\n\n+ Phù hợp với mọi loại da\n\nLưu ý: Nếu bạn bị dị ứng với Salicylate, hãy hỏi ý kiến ​​bác sĩ trước khi sử dụng bất kỳ sản phẩm nào có chứa thành phần Salicylic Acid (BHA)",
+    "description": "<p>Skin Perfecting 2% BHA Liquid Exfoliant là sản phẩm loại bỏ tế bào chết hóa học có công thức dịu nhẹ, không chứa chất làm bào mòn da, dễ dàng thẩm thấu và không làm bít tắc lỗ chân lông. Đồng thời, sản phẩm sẽ giúp giảm thiểu sự xuất hiện của nếp nhăn sâu, cải thiện tông màu da, giúp làn da sáng mịn, rạng rỡ và khỏe mạnh.</p><p>+ Làm thông thoáng lỗ chân lông, đẩy lùi nguy cơ bít tắc lỗ chân lông, sinh ra mụn</p><p>+ Giảm sưng đỏ, hỗ trợ kháng viêm</p><p>+ Kích thích tái tạo tế bào, đẩy lùi sự xuất hiện của các dấu hiệu lão hóa</p><p>+ Phù hợp với mọi loại da</p><p>Lưu ý: Nếu bạn bị dị ứng với Salicylate, hãy hỏi ý kiến ​​bác sĩ trước khi sử dụng bất kỳ sản phẩm nào có chứa thành phần <a href=\"https://paulaschoice.vn/thong-tin-ve-bha-la-gi-cong-dung-cua-bha.html\">Salicylic Acid (BHA)</a></p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "649a96704de519001d100794",
+        "name": "Default",
+        "price": 399000,
+        "listedPrice": 399000,
+        "sku": "SP03982",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "637742095c46d0001e0fb3b5",
+    "name": "Kem ngày Dưỡng trắng Kiềm dầu 5 trong 1 UNO UV Perfection Gel",
+    "slug": "kem-ngay-duong-trang-kiem-dau-5-trong-1-uno-uv-perfection-gel",
+    "price": 249000,
+    "listed_price": 249000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc da",
+    "category_slug": "cham-soc-da",
+    "subcategory": "Dưỡng da",
+    "subcategory_slug": "duong-da",
+    "brand": "Uno",
+    "brand_slug": "uno",
+    "image_url": "https://static.30shine.com/shop-admin/2022/11/18/30SAQA3E-10114695202vn__1__c5e9a1a563cc4fcd908b1ab2e335132c_master.jpg",
+    "tags": "",
+    "images": [],
+    "short_description": "",
+    "description": "<h2 style=\"text-align:center;margin-left:0px;\">Kem ngày Dưỡng trắng Kiềm dầu 5 trong 1 UNO UV Perfection Gel</h2><p style=\"margin-left:0px;\">- Kem Ngày Dạng Gel Dưỡng Trắng Kiềm Dầu 5 Trong 1 UV Perfection Gel UNO 80Gr được nghiên cứu dành riêng cho da nam giới, chỉ cần 1 bước sử dụng có thể thay thế 5 bước dưỡng giúp giảm các vấn đề về da<br>- Phù hợp: mọi loại da<br>- Không gây kích ứng, không dầu khoáng</p><p style=\"margin-left:0px;\"><strong><u>CÔNG DỤNG CHÍNH</u></strong></p><p style=\"margin-left:0px;\">- Cấp ẩm nhanh chóng, giải quyết tình trạng da khô nẻ, bong tróc<br>- Dưỡng trắng giúp hạn chế hình thành sắc tố melanin, vết thâm, sạm màu trên da cho làn da ẩm mịn, trắng sáng nhưng không để lại cảm giác nhờn rít<br>- Hạn chế dầu nhờn và giảm bóng dầu, giúp cải thiện mụn, không gây kích ứng, bảo vệ da trước tác hại của tia UV cho làn da căng mịn, săn chắc</p><p style=\"margin-left:0px;\"><strong><u>CÁCH DÙNG</u></strong></p><p style=\"margin-left:0px;\">Lấy 1 lượng vừa đủ thoa đều khắp mặt</p><p style=\"margin-left:0px;\"><strong><u>Thành phần:</u></strong>&nbsp;Xem trên bao bì sản phẩm</p><p style=\"margin-left:0px;\"><strong><u>Quy&nbsp;cách:</u></strong>&nbsp;Hộp, 80Gr</p><p style=\"margin-left:0px;\"><strong><u>Bảo quản:</u></strong> Nơi khô ráo, thoáng mát. Tránh ánh nắng trực tiếp</p><p style=\"margin-left:0px;\"><strong><u>Xuất xứ:</u></strong>&nbsp;Nhật Bản</p><p style=\"margin-left:0px;\"><strong><u>HSD:</u></strong>&nbsp;Xem trên bao bì sản phẩm</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "637742095c46d0001e0fb3b6",
+        "name": "Default",
+        "price": 249000,
+        "listedPrice": 249000,
+        "sku": "SP03550",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "6448e68fedf182001de8c6d7",
+    "name": "Tẩy tế bào chết da đầu Cafe Mimi - Làm sạch và dày tóc",
+    "slug": "tay-te-bao-chet-da-dau-cafe-mimi-lam-sach-va-day-toc",
+    "price": 229000,
+    "listed_price": 229000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc tóc",
+    "category_slug": "cham-soc-toc",
+    "subcategory": "Dưỡng tóc",
+    "subcategory_slug": "duong-toc",
+    "brand": "Cafe Mini",
+    "brand_slug": "cafe-mini",
+    "image_url": "https://static.30shine.com/shop-admin/2023/04/26/30SAF800-3e8ba198dd01e0ef361e101eb91c0849_4261a6ccaadd44a6a0e9301fad7e7572_master.jpg",
+    "tags": "",
+    "images": [],
+    "short_description": "",
+    "description": "<p style=\"margin-left:0px;\">THÀNH PHẦN &amp; CÔNG DỤNG TẨY TẾ BÀO CHẾT DA DẦU CAFE MIMI:</p><p style=\"margin-left:0px;\">Màu xanh dương - Dầu gội tẩy tế bào chết da đầu&nbsp;Deep Cleansing &amp; Hair Growth Café Mimi&nbsp;Deep Cleansing &amp; Hair Growth</p><p style=\"margin-left:0px;\">Chứa hơn 50% muối biển tự nhiên có tác dụng hút dầu, làm sạch chân tóc, chống bết, loại bỏ tế bào chết</p><p style=\"margin-left:0px;\">Tinh dầu bạc hà: nuôi dưỡng chân tóc</p><p style=\"margin-left:0px;\">Gừng: hỗ trợ khắc phục các vấn đề khác liên quan đến da đầu</p><p style=\"margin-left:0px;\">Chiết xuất từ rễ nhân sâm kích thích vi tuần hoàn máu trong da đầu và kích hoạt sự phát triển của tóc.</p><p style=\"margin-left:0px;\">Chiết xuất Laminaria nuôi dưỡng, giữ ẩm và bảo vệ tóc khỏi các tác động tiêu cực lên tóc.&nbsp;</p><p style=\"margin-left:0px;\">Sản phẩm giúp làm sạch da đầu, mang lại mái tóc tràn đầy sức sống và&nbsp;kích thích mọc tóc, giúp mái tóc trở nên bồng bềnh, có độ phồng tự nhiên.</p><p style=\"margin-left:0px;\">Điều chỉnh hoạt động của tuyến bã nhờn, giúp da đầu sạch hơn mà không gây khó chịu.</p><p style=\"margin-left:0px;\">Màu xanh lá - Dầu gội tẩy tế bào chết da đầu Super volume &amp; Cleansing</p><p style=\"margin-left:0px;\">Chứa hơn 50% muối biển tự nhiên, chiết xuất gừng và tinh dầu bạc hà mang lại tác dụng giải độc, chăm sóc da đầu và mang lại cảm giác tươi mát dài lâu.</p><p style=\"margin-left:0px;\">Muối biển làm sạch sâu da đầu, hỗ trợ sạch gàu và cho tóc thêm bồng bềnh.</p><p style=\"margin-left:0px;\">Chiết xuất gừng tăng cường sức mạnh cho các nang và kích thích sự phát triển của tóc.</p><p style=\"margin-left:0px;\">Tinh dầu bạc hà có tác dụng giảm oxy hóa và giảm viêm cho da đầu.&nbsp;</p><p style=\"margin-left:0px;\">&nbsp;</p><p style=\"margin-left:0px;\">SO SÁNH</p><p style=\"margin-left:0px;\">Hạt muối: Hạt hũ xanh biển tròn to hơn, dạng bầu ít sắc cạnh hơn hũ xanh lá Super Volume. Nên cảm giác tẩy da chết hũ xanh lá rõ hơn, kiểu mátxa sướng hẳn.</p><p style=\"margin-left:0px;\">Texture: hũ xanh lá nhiều hạt muối hơn, chất sệt sệt hơn. Hũ xanh biển chất lỏng hơn, cũng nhiều dưỡng hơn giúp hỗ trợ mọc tóc.</p><p style=\"margin-left:0px;\">&nbsp;</p><p style=\"margin-left:0px;\">CẢM NHẬN: Hũ xanh lá siêu mát, siêu sạch nên giảm dầu đáng kể, tóc phải 2-3 ngày sau mới bết dù bình thường rất dầu</p><p style=\"margin-left:0px;\">Hũ xanh biển ko có được cảm giác mát lạnh này chắc do thành phần bạc hà đứng cuối, nhưng gội xong đầu cũng rất nhẹ nhõm ấy</p><p style=\"margin-left:0px;\">&nbsp;</p><p style=\"margin-left:0px;\">ĐỐI TƯỢNG SỬ DỤNG TẨY TẾ BÀO CHẾT DA DẦU CAFE MIMI:</p><p style=\"margin-left:0px;\">Dầu gội tẩy tế bào chết da đầu&nbsp;Deep Cleansing &amp; Hair Growth Café Mimi&nbsp;(màu xanh dương) phù hợp với tóc thường.</p><p style=\"margin-left:0px;\">Dầu gội tẩy tế bào chết da đầu Super volume &amp; Cleansing (màu xanh lá) dành cho da dầu đến rất nhiều dầu giúp làm sạch, hút dầu, chống bết tóc tới 2 - 3 ngày.</p><p style=\"margin-left:0px;\">&nbsp;</p><p style=\"margin-left:0px;\">HƯỚNG DẪN SỬ DỤNG TẨY TẾ BÀO CHẾT DA DẦU CAFE MIMI:</p><p style=\"margin-left:0px;\">Bước 1: Làm ướt tóc và trộn đều phần muối trong hũ, lấy một lượng nhỏ pha với 1 ít nước.</p><p style=\"margin-left:0px;\">Bước 2: Apply dầu gội và massage nhẹ nhàng phần dầu gội trên da đầu. Hãy chia thành từng phần nhỏ và massage từ từ để hạt scrub đi sâu vào chân tóc. Bạn cũng nên cúi đầu xuống để dễ dàng luồn tay vào từng chân tóc. Massage nhẹ nhàng trên tóc trong 5 - 7 phút sau đó xả sạch với nước.</p><p style=\"margin-left:0px;\">(Vì shampoo scrub tạo bọt khá nhiều nên bạn có thể tận dụng bước này để gội đầu, bỏ qua bước dầu gội nhé)</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "6448e68fedf182001de8c6d8",
+        "name": "Default",
+        "price": 229000,
+        "listedPrice": 229000,
+        "sku": "SP03903",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "6448e8f6c0617a001d3f918d",
+    "name": "Tẩy tế bào chết toàn thân Cafe Mimi Coffee & Quế",
+    "slug": "tay-te-bao-chet-toan-than-cafe-mimi-coffee-que",
+    "price": 179000,
+    "listed_price": 179000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc da",
+    "category_slug": "cham-soc-da",
+    "subcategory": "Tẩy tế bào chết",
+    "subcategory_slug": "tay-te-bao-chet",
+    "brand": "Cafe Mini",
+    "brand_slug": "cafe-mini",
+    "image_url": "https://static.30shine.com/shop-admin/2023/04/26/30SW7OU3-主图-03.jpg",
+    "tags": "",
+    "images": [],
+    "short_description": "",
+    "description": "<p>Thương hiệu: Cafe Mimi</p><p>Xuất xứ: Nga</p><p>Dung tích: 120g</p><p>Thành phần</p><p>- Sản phẩm có chứa cafe xay tự nhiên, đường mía và muối biển giúp làm sạch tế bào da chết hiệu quả. &nbsp;</p><p>- Bột cafe và quế có tác dụng chống oxy hoá , giúp săn chắc da, phục hồi các tế bào da, cải thiện chức năng bảo vệ và có tác dụng chống mỡ cứng dưới da. &nbsp;</p><p>- Dầu Bơ hạt mỡ nuôi dưỡng và làm mềm da.</p><p>Công dụng:</p><p>- Làm sạch da chết toàn thân</p><p>- Mang lại làn da mịn màng sau khi sử dụng</p><p>- Giúp da sáng mịn, đều màu</p><p>Hướng dẫn sử dụng: &nbsp;</p><p>-Thoa một lượng sản phẩm lên da ướt. &nbsp;</p><p>- Mát-xa nhẹ nhàng từ cổ đến chân, sau đó tắm sạch lại với nước và sữa tắm.</p><p>- Dùng 2-3 lần một tuần để đạt kết quả tốt nhất.</p><p>&nbsp;</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "6448e8f6c0617a001d3f918e",
+        "name": "Default",
+        "price": 179000,
+        "listedPrice": 179000,
+        "sku": "SP03906",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "6448e998edf182001de8c744",
+    "name": "Tẩy tế bào da chết cơ thể Cafe Mimi Detox ",
+    "slug": "tay-te-bao-da-chet-co-the-cafe-mimi-detox",
+    "price": 229000,
+    "listed_price": 229000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc da",
+    "category_slug": "cham-soc-da",
+    "subcategory": "Tẩy tế bào chết",
+    "subcategory_slug": "tay-te-bao-chet",
+    "brand": "Cafe Mini",
+    "brand_slug": "cafe-mini",
+    "image_url": "https://static.30shine.com/shop-admin/2023/04/26/30SJQIL6-cafe-mimi-shampoo-scrub-1_c1799132838d4c43b5043d47c6354355_grande-removebg-preview.jpg",
+    "tags": "",
+    "images": [],
+    "short_description": "",
+    "description": "<p>Tẩy Tế Bào Chết Body Cafe Mimi Sea Salt And Blue Clay Detox Body Scrub 330g</p><p>Tẩy da chết body giúp loại bỏ da chết, detox thanh lọc làn da, làm da sáng mịn và mang lại vẻ ngoài rạng rỡ, hỗ trợ giảm mụn cơ thể và vấn đề lỗ chân lông, làm sáng các phần da sần sùi sạm màu như khuỷu tay, đầu gối. &nbsp;</p><p>Tẩy da chết cơ thể không chỉ hiệu quả mà còn lành tính và an toàn cho da.</p><p>- Muối biển - thành phần tự nhiên có tác dụng kháng khuẩn, làm sạch, giàu khoáng giúp trẻ hóa làn da một cách nhẹ nhàng, hỗ trợ giảm những vấn đề về da như mụn lưng hay lỗ chân lông.</p><p>- Đất sét xanh - giúp làm sạch , giảm dầu nhờn, mụn cơ thể và chống lại tình trạng sần da cellulite, trẻ hoá da.</p><p>- Dầu hạnh nhân - nhẹ nhàng tẩy tế bào da chết, kích thích tái tạo và nuôi dưỡng làn da, giảm cảm giác căng và khô, và tăng độ đàn hồi.</p><p>- Bổ sung Glycerin thực vật và Betaine tăng cường dưỡng ẩm cho da hiệu quả.</p><p>- Không chứa paraben, không dầu khoáng, không EDTA. Bao bì nhựa tái chế bảo vệ môi trường.</p><p>Cafe Mimi Body Scrub Detox có kết cấu sệt, hạt nhỏ và mịn không gây xước da, sử dụng tiết kiệm và mang lại kết quả cao. Sản phẩm thiên nhiên lành tính thích hợp cho mọi loại da.</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "6448e998edf182001de8c745",
+        "name": "Default",
+        "price": 229000,
+        "listedPrice": 229000,
+        "sku": "SP03907",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "63bbd645e1d786001dfb8def",
+    "name": "Xịt tạo phồng Glanzen Booster Pre-Styling - Tạo phồng, Giảm bết tóc & Bảo vệ tóc khỏi nhiệt độ cao",
+    "slug": "xit-tao-phong-glanzen-booster",
+    "price": 199000,
+    "listed_price": 199000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 5,
+    "total_sold": 0,
+    "category": "Tạo kiểu tóc",
+    "category_slug": "tao-kieu-toc",
+    "subcategory": "Pre Styling",
+    "subcategory_slug": "pre-styling",
+    "brand": "Glanzen",
+    "brand_slug": "glanzen",
+    "image_url": "https://static.30shine.com/shop-admin/2023/11/27/30S458BO-vn-11134207-7r98o-lof779dh9dyr6f.jpg",
+    "tags": "",
+    "images": [
+      {
+        "name": "image_7.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/08/16/30SO0AIF-image_7.jpg",
+        "alt": ""
+      },
+      {
+        "name": "image_8.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/08/16/30SOWTS7-image_8.jpg",
+        "alt": ""
+      },
+      {
+        "name": "image_9.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/08/16/30S7DURI-image_9.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "",
+    "description": "<h2>GLANZEN VOLUME BOOSTER &nbsp;</h2><p>Xịt tạo phồng GLANZEN VOLUME BOOSTER &nbsp;</p><p>Tạo phồng chân tóc, giúp tóc trông dày, khoẻ hơn, hút dầu thừa trên tóc giúp tóc khô thoáng cả ngày. Bảo vệ tóc bạn trước nhiệt độ cao và không khí ô nhiễm bằng cách cung cấp các dưỡng chất quý giá cho tóc (vitamin B5, Keratin và collagen từ tơ tằm). Những dưỡng chất này thấm sau vào trong tóc, làm cho tóc khỏe hơn từ bên trong, đồng thời lớp muối biển bảo vệ tóc từ bên ngoài. Sản phẩm này giúp bạn tạo kiểu tự nhiên và làm tóc dày hoặc có thể kết hợp với các sản phẩm tạo kiểu khác để giữ nếp tóc tự nhiên và lâu dài. Xịt muối này rất dễ gội rửa và được thiết kế với hương nước hoa nam tính.</p><p>Thành phần: Deionized water, Ethanol, PVP, Magnesium sulfate, Sodium Chloride, Glycerine, Propylene Glycol, Fragrance, PEG-40 Hydrogenated Castor Oil, DMDM Hydantoin, Tetrasodium EDTA, Hydrolyzed Keratin, D-Panthenol (vitamin B5), Hydrolyzed Silk.</p><figure class=\"image\"><img src=\"https://image-1.gapowork.vn/images/16a8de9f-59c2-4c92-be7a-42577a84f9fe/X%E1%BB%8AT_T%E1%BA%A0O_PH%E1%BB%92NG_GLANZEN.jpeg\" alt=\"Image\"></figure><p>Công dụng: Tạo cấu trúc và độ dày cho kiểu tóc. Bảo vệ tóc trước nhiệt độ cao trong khi uốn/duỗi và ô nhiễm không khí. Tạo kiểu tạm hoặc dùng với các sản phẩm tạo kiểu khác để giữ nếp tóc lâu. Giảm dầu thừa trên tóc giúp tóc khô thoáng</p><p>Hướng dẫn sử dụng: Xịt lên tóc ẩm từ thân tới ngọn, dùng tay bóp nhẹ từ dưới lên để tạo sóng kết hợp sấy tạo kiểu, nên sử dụng lược sấy để dễ dàng tạo kiểu tóc. Sau khi sấy khô, dùng sáp vuốt đều và định hình thành kiểu tóc.</p><p>Lưu ý: Chỉ dùng ở ngoài da.Tránh xa tầm tay trẻ em. &nbsp;</p><p>Bảo quản: Nơi khô ráo thoáng mát, tránh tiếp xúc với &nbsp;nguồn nhiệt và ánh nắng mặt trời. Đậy nắp sau khi sử dụng</p><p>Sản phẩm của \"CÔNG TY CỔ PHẦN THƯƠNG MẠI DỊCH VỤ 30 SHINE\"</p><p>Địa chỉ: Số 82 Trần Đại Nghĩa, Phường Đồng Tâm, Quận Hai Bà Trưng, Thành phố Hà Nội\"</p><p>Sản xuất bởi \"CHI NHÁNH CÔNG TY TNHH SẢN XUẤT THƯƠNG MẠI COLMAV</p><p>Địa chỉ: VFI 1-1C Lô A108-A109, đường số 2, KCN Thái Hòa, xã Đức Lập Hạ, huyện Đức Hòa, tỉnh Long An \"</p><p>&nbsp;</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "63bbd645e1d786001dfb8df0",
+        "name": "Default",
+        "price": 199000,
+        "listedPrice": 199000,
+        "sku": "SP03690",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "63c6115c6512ba001d91212f",
+    "name": "Xịt dưỡng tóc Glanzen Magic Spray - Dưỡng tóc mềm mại bóng mượt",
+    "slug": "xit-duong-toc-glanzen-magic-spray",
+    "price": 179000,
+    "listed_price": 179000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 5,
+    "total_sold": 0,
+    "category": "Tạo kiểu tóc",
+    "category_slug": "tao-kieu-toc",
+    "subcategory": "Pre Styling",
+    "subcategory_slug": "pre-styling",
+    "brand": "Glanzen",
+    "brand_slug": "glanzen",
+    "image_url": "https://static.30shine.com/shop-admin/2023/11/27/30SNLZCI-vn-11134207-7r98o-lof779dhasj71d.jpg",
+    "tags": "",
+    "images": [
+      {
+        "name": "4 (1).jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/01/17/30SHDGEI-4 (1).jpg",
+        "alt": ""
+      },
+      {
+        "name": "5 (1).jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/01/17/30SQMU3K-5 (1).jpg",
+        "alt": ""
+      },
+      {
+        "name": "image_5.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/07/12/30SI8HWN-image_5.jpg",
+        "alt": ""
+      },
+      {
+        "name": "image_6.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/07/12/30SGLFP0-image_6.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Glanzen Magic Spray mang đến nhiều công dụng toàn diện cho mái tóc: dưỡng ẩm, làm mềm và tạo bóng. Với công thức độc đáo, sản phẩm này sẽ mang đến cho bạn sự tự tin với mái tóc đẹp và quyến rũ. Chỉ cần một lần xịt, Glanzen Magic Spray sẽ biến những sợi tóc khô xơ trở nên mềm mại, bóng mượt và quyến rũ hơn bao giờ hết. ",
+    "description": "<p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\"><strong>Glanzen Magic Spray</strong> mang đến nhiều công dụng toàn diện cho mái tóc: dưỡng ẩm, làm mềm và tạo bóng. Với công thức độc đáo, sản phẩm này sẽ mang đến cho bạn sự tự tin với mái tóc đẹp và quyến rũ. Chỉ cần một lần xịt, <strong>Glanzen Magic Spray</strong> sẽ biến những sợi tóc khô xơ trở nên mềm mại, bóng mượt và quyến rũ hơn bao giờ hết.&nbsp;</span></p><figure class=\"table\"><table><thead><tr><th><p style=\"text-align:center;\"><span style=\"color:#000000;background-color:transparent;\"><strong>Thương hiệu</strong></span></p></th><th><p style=\"text-align:center;\"><span style=\"color:#000000;background-color:transparent;\">Glanzen</span></p></th></tr><tr><th><p style=\"text-align:center;\"><span style=\"color:#000000;background-color:transparent;\">Xuất xứ</span></p></th><th><p style=\"text-align:center;\"><span style=\"color:#000000;background-color:transparent;\">Đức</span></p></th></tr><tr><th><p style=\"text-align:center;\"><span style=\"color:#000000;background-color:transparent;\">Dòng sản phẩm</span></p></th><th><p style=\"text-align:center;\"><span style=\"color:#000000;background-color:transparent;\">Xịt dưỡng tóc</span></p></th></tr><tr><th><p style=\"text-align:center;\"><span style=\"color:#000000;background-color:transparent;\">Trọng lượng</span></p></th><th><p style=\"text-align:center;\"><span style=\"color:#000000;background-color:transparent;\">200ml</span></p></th></tr></thead><tbody><tr><td><p style=\"text-align:center;\"><span style=\"color:#000000;background-color:transparent;\">Kết cấu</span></p></td><td><p style=\"text-align:center;\"><span style=\"color:#000000;background-color:transparent;\">Lỏng</span></p></td></tr><tr><td><p style=\"text-align:center;\"><span style=\"color:#000000;background-color:transparent;\">Mùi hương</span></p></td><td><p style=\"text-align:center;\"><span style=\"color:#000000;background-color:transparent;\">Mùi nước hoa nam tính</span></p></td></tr></tbody></table></figure><h2 style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">1. Thông tin về xịt dưỡng tóc Glanzen Magic Spray</span></h2><p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Cùng 30Shine Shop tìm hiểu về sản phẩm xịt dưỡng tóc số 1 của nhà Glanzen qua những thông tin chi tiết dưới đây.</span></p><h3 style=\"text-align:justify;\"><span style=\"color:#434343;background-color:transparent;\">1.1 Thiết kế vỏ ngoài</span></h3><p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Glanzen Magic Spray là một sản phẩm xịt dưỡng tóc đa năng với thiết kế vỏ ngoài sang trọng và tinh tế. Chữ vàng trên nền đen tạo nên cảm giác sang trọng cho sản phẩm.&nbsp;</span></p><p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Vỏ ngoài của sản phẩm được đóng gói trong một chai nhựa chắc chắn. Hình dạng trụ tròn hoặc oval là lựa chọn phổ biến, với nắp xịt để dễ dàng sử dụng và kiểm soát lượng sản phẩm.&nbsp;</span></p><p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Dung tích 200ml bạn có thể sử dụng được khoảng 6 - 8 tháng với tần suất 2 - 3 lần/ tuần.</span></p><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2023/07/26/30S3JALC-glanzen-magic-spray-co-thiet-ke-nho-gon-tien-loi-de-su-dung.jpg\" alt=\"Glanzen Magic Spray có thiết kế nhỏ gọn, tiện lợi, dễ sử dụng\"><figcaption>Glanzen Magic Spray có thiết kế nhỏ gọn, tiện lợi, dễ sử dụng</figcaption></figure><h3 style=\"text-align:justify;\"><span style=\"color:#434343;background-color:transparent;\">1.2 Thành phần</span></h3><figure class=\"table\"><table><tbody><tr><td><p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\"><i><strong>Bảng thành phần của xịt dưỡng tóc Glanzen Magic Spray:&nbsp;</strong></i></span></p><p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\"><i>Aqua (Nước), Cetyl Alcohol, Cyclopentasiloxane, Dimethicone, Behentrimonium Chloride, Argania Spinosa Kernel Oil, Tocopheryl Acetate (Vitamin E), Panthenol (Pro-Vitamin B5), Hydrolyzed Keratin, Phenoxyethanol, Fragrance (Hương liệu), CI 19140 (Yellow 5), CI 42090 (Blue 1)</i></span></p></td></tr></tbody></table></figure><p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Các thành phần chính có trong xịt dưỡng tóc Glanzen Magic Spray có thể kể đến như:&nbsp;</span></p><ul><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Hydrolyzed keratin là một loại protein tự nhiên có trong tóc và da. Nó giúp làm mượt, làm dày, làm bóng sợi tóc đồng thời giúp tóc chắc khỏe. Ngoài ra, Hydrolyzed keratin còn bảo vệ tóc khỏi tác động của môi trường và tác động nhiệt.</span></li><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Vitamin B5 (Panthenol) có khả năng thẩm thấu vào tóc và da. Nó cung cấp độ ẩm, giữ nước và cải thiện độ đàn hồi của tóc. Vitamin B5 làm mềm tóc, giảm tình trạng tóc khô, gãy và tăng độ bóng cho tóc.</span></li><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Nước là thành phần chính trong hầu hết các sản phẩm chăm sóc tóc. Nó giúp làm ẩm và làm mềm tóc, cung cấp độ ẩm cho tóc và duy trì độ ẩm tự nhiên của tóc. Nước cũng giúp các thành phần khác trong sản phẩm thẩm thấu vào tóc một cách hiệu quả.</span></li></ul><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2023/07/26/30S7K2NP-xit-duong-toc-glanzen-magic-spray-co-thanh-phan-keratin-va-b5.jpg\" alt=\"Glanzen Magic Spray có thành phần Keratin và B5 \"><figcaption>Xịt dưỡng tóc Glanzen Magic Spray có thành phần Keratin và B5 giúp dưỡng ẩm và giữ màu tóc nhuộm lâu hơn - Nguồn Internet</figcaption></figure><h3 style=\"text-align:justify;\"><span style=\"color:#434343;background-color:transparent;\">1.3 Công dụng</span></h3><p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Xịt dưỡng tóc Glanzen Magic Spray có 4 công dụng chính là:</span></p><ul><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\"><strong>giảm tình trạng xơ rối tóc:</strong> Các thành phần như Hydrolyzed keratin và vitamin B5 có khả năng làm mềm và làm dày sợi tóc, giúp ngăn chặn hiện tượng tóc bị xơ rối. Điều này giúp tóc dễ dàng để làm mượt và điều chỉnh, giảm thiểu tình trạng đứt gãy và tóc rối sau khi gội.</span></li><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\"><strong>Giữ ẩm cho tóc: </strong>Hydrolyzed keratin và vitamin B5 cung cấp độ ẩm cần thiết cho tóc, giữ cho tóc luôn mềm mượt và không bị khô hay gãy. Điều này rất quan trọng, giúp tóc luôn có sức sống và độ bóng tự nhiên.</span></li><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\"><strong>Làm mềm mượt tóc: </strong>Thành phần Hydrolyzed keratin và vitamin B5 có khả năng làm mềm, mượt tóc, làm cho tóc dễ chải và dễ tạo kiểu. Điều này tạo điều kiện thuận lợi cho việc làm tóc và giúp tóc trông bóng mượt hơn.</span></li><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\"><strong>Làm sạch tóc nhẹ nhàng:</strong> Water (nước) trong sản phẩm giúp làm sạch tóc nhẹ nhàng, loại bỏ bụi bẩn và tạp chất trên da đầu và tóc mà không gây khô hay kích ứng da. Điều này đảm bảo tóc được giữ sạch và khỏe mạnh sau mỗi lần sử dụng.</span></li></ul><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2023/07/26/30SHMY15--xit-duong-toc-glanzen-magic-spray-giup-toc-tro-nen-mem-mai-bong-muot.jpg\" alt=\" Xịt dưỡng tóc Glanzen Magic Spray giúp tóc trở nên mềm mại, bóng mượt\"><figcaption>&nbsp;Xịt dưỡng tóc Glanzen Magic Spray giúp tóc trở nên mềm mại, bóng mượt - Nguồn Internet</figcaption></figure><h3 style=\"text-align:justify;\"><span style=\"color:#434343;background-color:transparent;\">1.4 Đối tượng sử dụng</span></h3><p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Đối tượng sử dụng của xịt dưỡng tóc Glanzen Magic Spray bao gồm:</span></p><ul><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Người có tóc khô và hư tổn</span></li><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Người có tóc yếu và dễ bị gãy</span></li><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Người tóc mỏng và muốn làm dày tóc</span></li><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Sản phẩm có thể sử dụng cho mọi loại tóc, từ tóc thẳng đến tóc xoăn và phù hợp cho cả nam và nữ.</span></li></ul><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2023/07/26/30S5CHZK-glanzen-magic-spray-phu-hop-voi-nhung-ban-nam-co-nen-toc-xo-hu-ton.jpg\" alt=\"Glanzen Magic Spray phù hợp với những bạn nam có nền tóc xơ, hư tổn\"><figcaption>Xịt dưỡng tóc Glanzen Magic Spray phù hợp với những bạn nam có nền tóc xơ, hư tổn - Nguồn Internet</figcaption></figure><h2 style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">2. Hướng dẫn sử dụng xịt dưỡng tóc Glanzen Magic Spray</span></h2><ul><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\"><strong>Bước 1: </strong>Làm sạch tóc và sấy tóc khô khoảng 90% Xịt dưỡng tóc Glanzen Magic Spray lên tóc đã được làm sạch và đã được lau khô một chút. Đảm bảo rằng tóc không quá ẩm hoặc ướt để đảm bảo hiệu quả tốt nhất.</span></li><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\"><strong>Bước 2:</strong> Lắc đều chai: Trước khi sử dụng, hãy lắc đều chai xịt dưỡng tóc Glanzen Magic Spray để đảm bảo thành phần được kết hợp đồng đều.</span></li><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\"><strong>Bước 3:</strong> Xịt lên tóc: giữ bình xịt chắc và xịt đều lên chân tóc và thân tóc. Hãy chú ý không dùng quá nhiều sản phẩm, chỉ cần lượng vừa đủ để phủ đều lên tóc.</span></li><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\"><strong>Bước 4:</strong> Mát-xa nhẹ nhàng: Sau khi xịt đều lên tóc, sử dụng ngón tay để mát-xa nhẹ nhàng tóc để sản phẩm thẩm thấu vào tóc và da đầu.</span></li></ul><figure class=\"table\"><table><tbody><tr><td><p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\"><strong>Lưu ý:</strong></span></p><ul><li><span style=\"color:#000000;background-color:transparent;\">Không cần xả lại: Xịt dưỡng tóc Glanzen Magic Spray không cần rửa lại sau khi sử dụng. Hãy để sản phẩm tự khô tự nhiên trên tóc.</span></li><li><span style=\"color:#000000;background-color:transparent;\">Sử dụng theo nhu cầu: Bạn có thể sử dụng xịt dưỡng tóc Glanzen Magic Spray hàng ngày hoặc khi cần thiết để tăng cường sức sống và bảo vệ tóc.</span></li></ul></td></tr></tbody></table></figure><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2023/07/26/30S11JSL-huong-dan-su-dung-xit-duong-toc-glanzen-magic-spray.jpg\" alt=\"Hướng dẫn sử dụng xịt dưỡng tóc Glanzen Magic Spray\"><figcaption>Hướng dẫn sử dụng xịt dưỡng tóc Glanzen Magic Spray - Nguồn Internet</figcaption></figure><h2 style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">3. Mua xịt dưỡng tóc Glanzen Magic Spray chính hãng tại 30Shine Shop</span></h2><p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Xịt dưỡng tóc Glanzen Magic Spray đang được bán chính hãng tại 30Shine Shop với mức giá 179.000 đ / lọ 200ml. Nếu so với mức giá và hiệu năng, dung tích thì đây hoàn toàn là một mức giá hợp lý.&nbsp;</span></p><p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Để mua xịt dưỡng tóc Glanzen Magic Spray chính hãng tại 30Shine Shop, bạn có thể:</span></p><ul><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Vào ô tìm kiếm và gõ tên sản phẩm \"Glanzen Magic Spray\". Sau đó, thêm sản phẩm vào giỏ hàng rồi làm theo các bước trong quy trình thanh toán.</span></li><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Đến cửa hàng 30Shine Shop gần bạn để mua sản phẩm Glanzen Magic Spray và có cơ hội trải nghiệm sản phẩm, tư vấn trực tiếp từ nhân viên.</span></li></ul><p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Khi mua hàng tại 30Shine, bạn sẽ nhận được những quyền lợi sau:</span></p><ul><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Hệ thống lớn, phân phối chính hãng: 30Shine cam kết cung cấp sản phẩm chính hãng, đảm bảo chất lượng cho khách hàng.</span></li><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Giao hàng nhanh chóng: 30Shine đáp ứng nhu cầu giao hàng nhanh chóng (chậm nhất là 2 ngày), giúp bạn nhận được sản phẩm một cách thuận tiện và nhanh nhất.</span></li><li style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\">Hoàn trả 120% giá trị sản phẩm: Trong trường hợp bạn không cảm thấy hiệu quả sau khi sử dụng xịt dưỡng tóc Glanzen Magic Spray trong vòng 1 tháng, 30Shine sẽ hoàn trả lại 120% giá trị sản phẩm để đảm bảo sự hài lòng của bạn.</span></li></ul><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2023/07/26/30SQ6056-mua-xit-duong-toc-glanzen-magic-spray-chinh-hang-tai-30shine-shop.jpg\"><figcaption>Mua xịt dưỡng tóc Glanzen Magic Spray chính hãng tại 30Shine Shop - Nguồn Internet</figcaption></figure><p style=\"text-align:justify;\"><span style=\"color:#000000;background-color:transparent;\"><strong>Xịt dưỡng tóc Glanzen Magic Spray</strong> với thành phần chính là Keratin và Vitamin B5 không chỉ mang đến cho bạn mái tóc mềm mại và bóng mượt, mà còn có khả năng dưỡng ẩm và phục hồi tóc hư tổn, giúp làm dịu mái tóc xơ rối. Đừng bỏ lỡ cơ hội sở hữu sản phẩm chất lượng này, hãy truy cập ngay vào trang web của 30Shine Shop và đặt hàng ngay hôm nay để tận hưởng mái tóc đẹp như mơ!</span></p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "63c6115c6512ba001d912130",
+        "name": "Default",
+        "price": 179000,
+        "listedPrice": 179000,
+        "sku": "SP03702",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "66b3416195d3bf001d306978",
+    "name": "Xịt thâm mụn lưng bí đao 140ml Cocoon mờ thâm, giảm mụn lưng",
+    "slug": "xit-tham-mun-lung-bi-dao-140ml-cocoon-mo-tham-giam-mun-lung",
+    "price": 265000,
+    "listed_price": 265000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc cơ thể",
+    "category_slug": "cham-soc-co-the",
+    "subcategory": "",
+    "subcategory_slug": "",
+    "brand": "Cocoon",
+    "brand_slug": "cocoon",
+    "image_url": "https://static.30shine.com/shop-admin/2024/08/07/30S0AMN7-484ef2f34aeb88b5d1fa_b3ba02517f.jpg",
+    "tags": "Sản phẩm mới",
+    "images": [
+      {
+        "name": "296122801_5277356585693258_8307837736759509278_n_b64e8e0a64.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/08/07/30S717OG-296122801_5277356585693258_8307837736759509278_n_b64e8e0a64.jpg",
+        "alt": ""
+      },
+      {
+        "name": "slide_2_3_c969650b5a.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/08/07/30S4U30S-slide_2_3_c969650b5a.jpg",
+        "alt": ""
+      },
+      {
+        "name": "slide_2_1_d0e105387c.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/08/07/30SP3DNS-slide_2_1_d0e105387c.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Sản phẩm nổi bật với thiết kế vòi xịt 360 độ có khả năng hoạt động mọi góc độ cùng công thức treatment không cồn hoàn hảo: chiết xuất bí đao, 2% BHA & 5% AHA giúp làm sạch mụn, làm mờ vết thâm và hạn chế mụn mới hình thành.",
+    "description": "<h1 style=\"margin-left:0px;\">Xịt thâm mụn lưng bí đao</h1><p style=\"margin-left:0px;\">Bí đao thuộc họ Cucurbitaceae, là một loại thực vật được sử dụng phổ biến ở Việt Nam, Thái Lan, Ấn độ và những nước nhiệt đới khác.&nbsp;</p><p style=\"margin-left:0px;\">Trong quả bí đao có chứa các amino acid, mucins, muối khoáng, vitamin B và C.. Những nghiên cứu về loại quả này xác định có 2 loại triterpenes đó là alunsenol và mutiflorenol có tác dụng chống oxi hóa.&nbsp;</p><p style=\"margin-left:0px;\">Theo sách y học cổ truyền, bí đao có đặc tính làm mát, làm giảm nhiệt, giúp hạn chế mụn trứng cá, mụn viêm và làm giảm vết bỏng.&nbsp;</p><p style=\"margin-left:0px;\">🔹<span style=\"font-size:16px;color:rgba(31,28,23,var(--tw-text-opacity));background-color:rgba(237,224,204,0.25);\"><strong>Lý tưởng cho</strong></span></p><p style=\"margin-left:0px;\">✔️<span style=\"font-size:16px;color:rgb(65,69,72);background-color:rgba(237,224,204,0.25);\">Da mụn ở lưng, ngực và các vùng khác trên cơ thể.</span></p><p style=\"margin-left:0px;\">✔️<span style=\"font-size:16px;color:rgb(65,69,72);background-color:rgba(237,224,204,0.25);\">Các vết thâm do mụn trên cơ thể.</span></p><p style=\"margin-left:0px;\">🔹<span style=\"font-size:16px;color:rgba(31,28,23,var(--tw-text-opacity));background-color:rgba(237,224,204,0.25);\"><strong>Công dụng</strong></span></p><p style=\"margin-left:0px;\">Làm thông thoáng lỗ chân lông, giảm viêm giúp giảm mụn ở lưng, ngực và các vùng khác trên cơ thể.<br>Làm mờ vết thâm hiệu quả, ngăn ngừa mụn mới hình thành.</p><p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>Kết cấu</strong></span></p><p style=\"margin-left:0px;\">Dạng nước trong suốt.</p><p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>Mùi hương</strong></span></p><p style=\"margin-left:0px;\">Mùi tràm trà, oải hương, bạc hà và hương thảo thoang thoảng dịu nhẹ.</p><p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>Lưu ý</strong></span></p><p style=\"margin-left:0px;\">Khuyến khích dùng vào buổi tối. Nếu dùng vào buổi sáng nên dùng kèm kem chống nắng. Trong tháng đầu sử dụng bạn nên dùng 2-3 lần 1 tuần, xịt một lớp mỏng toàn lưng hoặc xịt ra tay và thoa toàn lưng.</p><p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>Xuất xứ</strong></span></p><p style=\"margin-left:0px;\">Việt Nam</p>",
+    "ingredients": "<p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>Chiết xuất bí đao</strong></span></p><p style=\"margin-left:0px;\">Dịch chiết từ bí đao có tác dụng, chống ôxi hoá, hạn chế sự hình thành những gốc tự do, từ đó giúp điều hoà và làm dịu mụn viêm.</p><p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>2%BHA (Salicylic Acid)</strong></span></p><p style=\"margin-left:0px;\">Với 2%BHA trong công thức sản phẩm giúp làm bong các tế bào chết hiệu quả, từ đó làm thông thoáng lỗ chân lông giúp tình trạng mụn cải thiện rõ rệt, mờ vết thâm và hạn chế hình thành mụn mới.</p><p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>5% AHA</strong></span></p><p style=\"margin-left:0px;\">Hỗn hợp bao gồm Lactic Acid được lên men từ đường và Glycolic Acid được chiết xuất từ mía đường, là những phân tử nhỏ dễ dàng thẩm thấu, làm bong những lớp tế bào sừng già cỗi xỉn màu thông qua việc làm yếu đi liên kết desmosome giữa các tế bào, giúp da trở nên mềm mịn và sáng hơn, giảm các vết nhăn và cải thiện bề mặt da.</p>",
+    "manual": "<p>🔹<span style=\"font-size:16px;color:rgba(204,180,143,var(--tw-text-opacity));background-color:rgba(237,224,204,0.25);\"><strong>Cách sử dụng</strong></span></p><p style=\"margin-left:0px;\">Làm sạch da. Xịt đều lên vùng da có mụn và thâm mụn</p><p style=\"margin-left:0px;\">Lưu ý: Tránh tiếp xúc với mắt. Sản phẩm chứa axít alpha hydroxy (AHA) có thể làm tăng độ nhạy cảm của da với ánh nắng mặt trời, do đó cần sử dụng kem chống nắng và tránh nắng trong quá trình sử dụng sản phẩm.&nbsp;</p><p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>Lượng dùng</strong></span></p><p style=\"margin-left:0px;\">2-3 pumb cho toàn bộ lưng hoặc vùng da mụn cơ thể</p>",
+    "variants": [
+      {
+        "id": "66b3416195d3bf001d306979",
+        "name": "Default",
+        "price": 265000,
+        "listedPrice": 265000,
+        "sku": "SP04875",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "66b338345837a3001d939b39",
+    "name": "Gel tắm bí đao 310ml Cocoon giảm mụn lưng",
+    "slug": "gel-tam-bi-dao-310ml-giam-mun-lung",
+    "price": 245000,
+    "listed_price": 245000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc cơ thể",
+    "category_slug": "cham-soc-co-the",
+    "subcategory": "Sữa Tắm",
+    "subcategory_slug": "tam",
+    "brand": "Cocoon",
+    "brand_slug": "cocoon",
+    "image_url": "https://static.30shine.com/shop-admin/2024/08/07/30SOP5YX-Artboard_15_a3a07f5eb5.jpg",
+    "tags": "Sản phẩm mới",
+    "images": [
+      {
+        "name": "29892185_slide_2_53b5c0cad9.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/08/07/30SZ5AOC-29892185_slide_2_53b5c0cad9.jpg",
+        "alt": ""
+      },
+      {
+        "name": "29892185_slide_3_10476a5e59.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/08/07/30ST3SB8-29892185_slide_3_10476a5e59.jpg",
+        "alt": ""
+      },
+      {
+        "name": "slide_2_f225ccb27e.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/08/07/30SU4OA3-slide_2_f225ccb27e.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Giúp da sạch mịn màng và giảm mụn lưng. Tinh dầu sả chanh giảm mùi cơ thể, tạo cảm giác sảng khoái, thư giãn",
+    "description": "<p style=\"margin-left:0px;\"><br><span style=\"font-size:20px;\"><strong>Gel tắm bí đao Cocoon 310ml</strong></span></p><p style=\"margin-left:0px;\">Bí đao thuộc họ Cucurbitaceae, là một loại thực vật được sử dụng phổ biến ở Việt Nam, Thái Lan, Ấn độ và những nước nhiệt đới khác.&nbsp;</p><p style=\"margin-left:0px;\">Trong quả bí đao có chứa các amino acid, mucins, muối khoáng, vitamin B và C.. Những nghiên cứu về loại quả này xác định có 2 loại triterpenes đó là alunsenol và mutiflorenol có tác dụng chống oxi hóa.&nbsp;</p><p style=\"margin-left:0px;\">Theo sách y học cổ truyền, bí đao có đặc tính làm mát, làm giảm nhiệt, giúp hạn chế mụn trứng cá, mụn viêm và làm giảm vết bỏng.&nbsp;</p><p style=\"margin-left:0px;\">🔹<span style=\"font-size:16px;color:rgba(31,28,23,var(--tw-text-opacity));background-color:rgba(237,224,204,0.25);\"><strong>Lý tưởng cho</strong></span></p><p style=\"margin-left:0px;\"><span style=\"font-size:16px;color:rgb(65,69,72);background-color:rgba(237,224,204,0.25);\">Cơ thể có mụn ở lưng, ngực hoặc các vùng khác cần một loại gel tắm riêng biệt.</span></p><p style=\"margin-left:0px;\">🔹<span style=\"font-size:16px;color:rgba(31,28,23,var(--tw-text-opacity));background-color:rgba(237,224,204,0.25);\"><strong>Công dụng</strong></span></p><p style=\"margin-left:0px;\">Làm sạch da toàn thân, mang lại làn da mịn màng, tươi mới.<br>Loại bỏ vi khuẩn, giảm mụn vùng lưng, làm mờ vết thâm do mụn để lại.<br>Loại bỏ mùi cơ thể, mang lại cảm giác sảng khoái, thư giãn.</p><p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>Kết cấu</strong></span></p><p style=\"margin-left:0px;\">Gel màu vàng nhạt.</p><p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>Mùi hương</strong></span></p><p style=\"margin-left:0px;\">Mùi tinh dầu sả thư giãn.</p><p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>Lưu ý</strong></span></p><p style=\"margin-left:0px;\">Tránh dùng vùng mắt, chỉ dùng ngoài da.</p><p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>Xuất xứ</strong></span></p><p style=\"margin-left:0px;\">Việt Nam</p>",
+    "ingredients": "<p>🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>Chiết xuất bí đao</strong></span></p><p style=\"margin-left:0px;\">Có đặc tính làm mát, làm giảm nhiệt, giúp điều trị mụn trứng cá, mụn viêm.</p><p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>Tinh dầu sả chanh</strong></span></p><p style=\"margin-left:0px;\">Giúp kháng khuẩn, làm sạch mùi hôi cơ thể, tạo cảm giác thư giãn, giải tỏa căng thẳng.</p><p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>Tinh dầu bạc hà</strong></span></p><p style=\"margin-left:0px;\">Tạo cảm giác mát lạnh, sảng khoái.</p>",
+    "manual": "<p>🔹<span style=\"font-size:16px;color:rgba(204,180,143,var(--tw-text-opacity));background-color:rgba(237,224,204,0.25);\"><strong>Cách sử dụng</strong></span></p><p style=\"margin-left:0px;\"><span style=\"color:rgb(66,66,66);\">Lấy sản phẩm vào lòng bàn tay hoặc miếng bọt biển, mát-xa nhẹ nhàng trên da ướt để tạo bọt. Tắm sạch lại với nước.</span></p><p style=\"margin-left:0px;\">🔹<span style=\"color:rgba(31,28,23,var(--tw-text-opacity));\"><strong>Lượng dùng</strong></span></p><p style=\"margin-left:0px;\">Từ 1-2 lần nhấn.</p>",
+    "variants": [
+      {
+        "id": "66b338345837a3001d939b3a",
+        "name": "Default",
+        "price": 245000,
+        "listedPrice": 245000,
+        "sku": "SP04874",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "669774dccef860001d462b52",
+    "name": "Lăn khử mùi cho nam Etiaxil Détranspirants Men 15ml 30Shine phân phối chính hãng",
+    "slug": "lan-khu-mui-cho-nam-etiaxil-detranspirants-men-15ml-30shine-phan-phoi-chinh-hang",
+    "price": 436000,
+    "listed_price": 436000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc cơ thể",
+    "category_slug": "cham-soc-co-the",
+    "subcategory": "Khử mùi",
+    "subcategory_slug": "khu-mui",
+    "brand": "Etiaxil",
+    "brand_slug": "etiaxil",
+    "image_url": "https://static.30shine.com/shop-admin/2024/07/17/30SBWIY2-Máy sấy Glanzen dysion.jpg",
+    "tags": "30Shine, Sản phẩm mới, momo",
+    "images": [
+      {
+        "name": "3614810005581_DT_PS_MEN_AISS_15ML_fermer_HERO_2_P00.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/07/17/30SZ2C6L-3614810005581_DT_PS_MEN_AISS_15ML_fermer_HERO_2_P00.jpg",
+        "alt": ""
+      },
+      {
+        "name": "3614810005581_DT_PS_MEN_AISS_15ML_HERO_1_P00_F.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/07/17/30SCX77D-3614810005581_DT_PS_MEN_AISS_15ML_HERO_1_P00_F.jpg",
+        "alt": ""
+      },
+      {
+        "name": "3614810005581_DT_PS_MEN_AISS_15ML_OUVERT_HERO_3_P00.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/07/17/30SE3ZKV-3614810005581_DT_PS_MEN_AISS_15ML_OUVERT_HERO_3_P00.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Sản phẩm Etiaxil là sản phẩm được các bác sĩ Da liễu hàng đầu tại Pháp và Thế Giới tin và khuyên dùng trong việc hỗ trợ giảm Hội chứng tăng tiết mồ hôi quá mức (Hyperdrosis) ở vùng da dưới cánh tay.",
+    "description": "<p><strong>Đối tượng sử dụng:</strong><br>Dành cho đối tượng nam giới đổ rất nhiều mồ hôi và nặng mùi cơ thể kéo dài.<br><span style=\"font-size:16px;color:rgba(0,0,0,0.85);background-color:rgb(255,255,255);\">Đối tượng hay tham gia các hoạt động ngoài trời.</span></p><p><strong>Ưu thế nổi bật:</strong><br>- Giúp kiểm soát, giảm tình trạng tăng tiết mồ hôi quá mức và giảm mùi cơ thể.<br>- Hiệu quả trong vòng 5 ngày mà không cần lăn lại.<br>- Hiệu quả đã được chứng minh lâm sàng trong việc giảm mùi và giúp vùng da dưới<br>cánh tay khô thoáng chỉ với 1 lần lăn.<br>- Thành phần có chứa phức hợp CPx giúp hạn chế kích ứng da và mang lại sự thoải<br>mái cho làn da nhạy cảm.<br>- Không chứa hương liệu nên không làm ảnh hưởng đến mùi hương nước hoa.<br>- Thành phần Alcohol Denat: Giúp da khô thoáng và hạn chế vi khuẩn để ngăn ngừa sự<br>phát triển của vi khuẩn gây mùi hôi, giúp giảm sự phát triển của vi khuẩn gây<br>mùi cơ thể ở vùng da dưới cánh tay.<br>- Aluminium chloride: Tác dụng giúp làm giảm lượng mồ hôi tiết ra và ngăn mùi<br>khó chịu.<br>- Calcium lactate (CPx): Tác dụng giúp làm giảm sự phát triển của hại khuẩn gây<br>mùi cơ thể, đồng thời còn giúp cân bằng độ pH cho da nhạy cảm.<br>- Hydroxypropyl Cellulose: Giúp duy trì hiệu quả giảm vi khuẩn trong thời gian dài.<br>- Hydrogenated Castor Oil (dầu thầu dầu): Dưỡng da mềm mại và ngăn khô da.</p><p>&nbsp;</p><p><br>&nbsp;</p>",
+    "ingredients": "<p><strong>Thành Phần:</strong><br>Alcohol Denat., Aluminum Chloride, Calcium Lactate, Hydroxypropylcellulose,<br>Hydrogenated Castor Oil</p>",
+    "manual": "<p><span style=\"font-size:16px;color:rgba(0,0,0,0.85);background-color:rgb(255,255,255);\"><strong>Hướng dẫn sử dụng</strong></span><br>Sử dụng 2~3 lần/tuần.<br>Theo nguyên tắc 3S- trên vùng da sạch và không có vết thương, vào buổi tối<br>trước khi đi ngủ.<br>Khi mới bắt đầu có thể sử dụng 3 lần/tuần để hiệu quả hơn, sau đó giảm dần<br>tần suất tùy theo tình trạng và nhu cầu cá nhân.<br>Rửa sạch vùng da vào sáng hôm sau và cảm nhận cảm giác khô thoáng cả ngày&nbsp;</p>",
+    "variants": [
+      {
+        "id": "669774dccef860001d462b53",
+        "name": "Default",
+        "price": 436000,
+        "listedPrice": 436000,
+        "sku": "SP04724",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "664b179d7ccfd7001d2e8c1a",
+    "name": "Máy cạo râu Flyco FS181VN 30Shine phân phối chính hãng giá tốt, bảo hành 2 năm",
+    "slug": "may-cao-rau-flyco-fs181vn-30shine-phan-phoi-chinh-hang-gia-tot-bao-hanh-2-nam",
+    "price": 349000,
+    "listed_price": 349000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc cơ thể",
+    "category_slug": "cham-soc-co-the",
+    "subcategory": "Cạo râu",
+    "subcategory_slug": "cao-rau",
+    "brand": "FLYCO",
+    "brand_slug": "flyco",
+    "image_url": "https://static.30shine.com/shop-admin/2024/05/20/30S7AKRT-1-min.jpg",
+    "tags": "",
+    "images": [
+      {
+        "name": "2.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/05/20/30SION9C-2.jpg",
+        "alt": ""
+      },
+      {
+        "name": "3.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/05/20/30ST16R0-3.jpg",
+        "alt": ""
+      },
+      {
+        "name": "4.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/05/20/30SS7Y9Z-4.jpg",
+        "alt": ""
+      },
+      {
+        "name": "5.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/05/20/30SKX79D-5.jpg",
+        "alt": ""
+      },
+      {
+        "name": "6.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/05/20/30S7ZC12-6.jpg",
+        "alt": ""
+      },
+      {
+        "name": "7.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/05/20/30SF9AHF-7.jpg",
+        "alt": ""
+      },
+      {
+        "name": "8.jpg",
+        "url": "https://static.30shine.com/shop-admin/2024/05/20/30S1F4FW-8.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Với công nghệ tiên tiến và động cơ mạnh mẽ, máy cạo râu Flyco FS181VN mang lại hiệu quả cạo râu sạch sẽ và mượt mà vừa tiện lợi mang theo nhờ kiểu dáng nhỏ gọn, thiết kế thông minh.",
+    "description": "<p>&nbsp;</p><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2024/05/20/30SNFY9V-1-c909c30f-27d0-42f4-9b16-b9171065cfa0.jpg\"></figure><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2024/05/20/30SM4W8J-2-33491f07-81f3-4647-8458-17a64b1809d5.jpg\"></figure><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2024/05/20/30S8P4H4-3-6304b022-c4ea-45ee-8596-d59c00cc610d.jpg\"></figure><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2024/05/20/30SCN1V7-4-2337adad-95e9-49cb-8c34-1438984a9136.jpg\"></figure><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2024/05/20/30SZX0TK-5-1f49cc21-41ab-4517-8df8-cacf0a6a56d0.jpg\"></figure><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2024/05/20/30S0QLP0-6-0af5278f-667e-436e-b92b-c385afdf0482.jpg\"></figure><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2024/05/20/30S0JGR8-7-04aa4f6b-a4f2-49d8-bc25-f7ced62ce800.jpg\"></figure><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2024/05/20/30SXCOL6-8-98a625ef-0a58-4bed-9cb9-173c2958b824.jpg\"></figure><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2024/05/20/30SBW3ZW-9-cdd6c45b-e72b-456e-bb03-2dc3f1449011.jpg\"></figure><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2024/05/20/30SYMQ4Z-10-50c27c45-7358-4850-aec4-3ea4cd34a5af.jpg\"></figure><figure class=\"image\"><img src=\"https://static.30shine.com/shop-admin/2024/05/20/30SVF54J-11-d620c014-82ff-490c-8d3e-002bfda07f9d.jpg\"></figure><h2><span style=\"font-size:20px;\"><strong>1. Thiết kế lưỡi dao của Flyco FS181VN</strong></span></h2><h3><span style=\"font-size:16px;\"><strong>Thiết kế 3D&nbsp;trên bề mặt đầu dao</strong></span></h3><p style=\"margin-left:0px;\">Máy cạo râu Flyco FS181VN được thiết kế với đầu dao cạo độc lập cùng khả năng xoay vòng và tự điều chỉnh sao cho tương thích với cằm, đường nét trên khuôn mặt giúp cạo sạch tối đa.</p><h3><span style=\"font-size:16px;\"><strong>Lưỡi dao kép&nbsp;</strong></span></h3><p style=\"margin-left:0px;\">Hệ thống lưỡi dao kép làm tăng diện tích tiếp xúc rộng hơn với bề mặt da, cải thiện hiệu suất cạo râu đến 50%. Lưỡi dao không tiếp xúc trực tiếp với da, tạo nên một trải nghiệm cạo râu nhẹ nhàng, thoải mái và không gây kích ứng. Không còn nỗi lo đau rát, chảy máu hay trầy xước khi cạo râu nữa.</p><h3><span style=\"font-size:16px;\"><strong>Lưỡi dao&nbsp;cạo tự mài chuyên dụng</strong></span></h3><p style=\"margin-left:0px;\">Lưỡi dao sắc bén, bền lâu nhờ vào cơ chế &nbsp;lưỡi và lưới dao tiếp xúc với nhau trong quá trình sử dụng.</p><h2><span style=\"font-size:20px;\"><strong>2. Các tiện ích của máy cạo râu Flyco FS181VN</strong></span></h2><h3><span style=\"font-size:16px;\"><strong>Chống nước toàn thân, dễ dàng vệ sinh</strong></span></h3><p style=\"margin-left:0px;\">FS181VN trang bị công nghệ chống nước IPX7, bạn có thể rửa trực tiếp dưới vòi nước.&nbsp;<br>Tiện ích này sẽ làm cho việc vệ sinh nhanh chóng, tiện lợi, đồng thời hạn chế nguy cơ tích tụ bụi bẩn, vi khuẩn sau khoảng thời gian dài sử dụng.</p><h3><span style=\"font-size:16px;\"><strong>Hệ thống quản lý điện năng thông minh, tránh mắc kẹt râu</strong></span></h3><p style=\"margin-left:0px;\">Thiết bị sử dụng chip quản lý điện áp thông minh, đảm bảo máy luôn hoạt động ở công suất ổn định, tránh tình trạng kẹp râu. Nếu đầu dao cạo bị tắc, máy sẽ tự động ngừng hoạt động để đảm bảo an toàn cho người dùng.&nbsp;</p><h2><span style=\"font-size:20px;\"><strong>3. Pin&nbsp;của máy cạo râu Flyco FS181VN</strong></span></h2><p style=\"margin-left:0px;\">Máy cạo râu Flyco FS181VN có cáp sạc chuẩn type C cho người dùng có thể sạc máy từ nhiều thiết bị khác nhau như máy tính xách tay, xe hơi hay pin sạc dự phòng. Pin sẽ được sạc đầy trong vòng 8 tiếng và cho thời lượng sử dụng liên tục lên đến 60 phút sau khi sạc đầy, đảm bảo đáp ứng nhu cầu sử dụng của người dùng trong thời gian dài.</p><p style=\"margin-left:0px;\">Pin mạnh mẽ và bền bỉ sẽ mang lại cho bạn trải nghiệm cạo râu liên tục và không bị gián đoạn.Bạn có thể sử dụng máy trong nhiều lần cạo râu mà không cần lo lắng về việc hết pin đột ngột. Điều này rất tiện lợi khi bạn đang trong hành trình hoặc không có nguồn điện gần đây.</p><p style=\"margin-left:0px;\">Thêm vào đó, máy có kích thước chỉ khoảng 9cm, nhỏ gọn và dễ dàng cằm nắm, không chiếm nhiều diện tích nên vô cùng thuận lợi để mang đi xa như công tác, du lịch.</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "664b179d7ccfd7001d2e8c1b",
+        "name": "Default",
+        "price": 349000,
+        "listedPrice": 349000,
+        "sku": "SP04611",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "656ed5029f286d001d14bd30",
+    "name": "Sữa tắm Blairsom Thảo Mộc Dưỡng Ẩm 500ml",
+    "slug": "sua-tam-blairsom-thao-moc-duong-am-500ml",
+    "price": {
+      "from": 55000,
+      "to": 655000
+    },
+    "listed_price": 0,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc cơ thể",
+    "category_slug": "cham-soc-co-the",
+    "subcategory": "Sữa Tắm",
+    "subcategory_slug": "tam",
+    "brand": "Blairsom",
+    "brand_slug": "blairsom",
+    "image_url": "https://static.30shine.com/shop-admin/2023/12/05/30SY49A4-1.jpg",
+    "tags": "30Shine",
+    "images": [
+      {
+        "name": "2.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/12/05/30S3JS8E-2.jpg",
+        "alt": ""
+      },
+      {
+        "name": "3.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/12/05/30S52X0H-3.jpg",
+        "alt": ""
+      },
+      {
+        "name": "4.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/12/05/30SVJJJ9-4.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Sữa tắm Blairsom Thảo Mộc Dưỡng Ẩm 500ml\n",
+    "description": "<p style=\"text-align:justify;margin-left:auto;\"><strong>Sữa tắm Blairsom Thảo Mộc Dưỡng Ẩm Collagen Đại Dương &amp; Tinh Dầu 7 Trong 1</strong>&nbsp;chiết xuất từ Collagen Đại Dương và Tinh Dầu Thảo Mộc nội địa Úc, được phát triển bởi những chuyên gia với hơn 50 năm kinh nghiệm trong ngành hóa mỹ phẩm.</p><p style=\"text-align:justify;margin-left:auto;\"><strong>Công dụng</strong></p><p style=\"text-align:justify;margin-left:auto;\">- Thẩm thấu nhanh trên da, nuôi dưỡng làn da từ sâu bên trong</p><p style=\"text-align:justify;margin-left:auto;\">- Chống oxy hóa, giảm quá trình lão hóa, tăng độ đàn hồi của da</p><p style=\"text-align:justify;margin-left:auto;\">- Dưỡng ẩm, duy trì làn da căng bóng, khỏe mạnh</p><p style=\"text-align:justify;margin-left:auto;\">- Đem lại cảm giác sảng khoái, dễ chịu; lưu hương trong nhiều giờ</p><p style=\"text-align:justify;margin-left:auto;\">- Cam kết 4 KHÔNG: không phẩm màu nhân tạo, không hương liệu nhân tạo, không sillicon, không parabens</p><p style=\"text-align:justify;margin-left:auto;\"><strong>Thành phần:&nbsp;</strong></p><p style=\"margin-left:auto;\">Ammonium Lauryl Sulfate, Nước, Sodium Lauryl Sulfate, Sodium Cocoyl Sarcosinate, Glycerin, Cocamidopropyl Betaine, Tinh Dầu Quả Bơ, Glyceryl Stearate, Tinh Dầu Bơ Hạt Mỡ, Guar Hydroxypropy Monium Chloride, Dầu Dừa, Lactic Acid, Benzyl Alcohol, Phenoxyethanol, Chiết Xuất Hoa Cúc La Mã, Potassium Sorbate, Collagen Thủy Phân, Tinh Dầu Lá Khuynh Diệp, Tinh Dầu Hoa Cam, Tinh Dầu Hoa Oải Hương, Tinh Dầu Vỏ Quýt, Tinh Dầu Lá Chanh Myrtle.</p><p style=\"text-align:justify;margin-left:auto;\"><strong>Hướng dẫn sử dụng:</strong></p><p style=\"text-align:justify;margin-left:auto;\">Làm ướt cơ thể, lấy một lượng sữa tắm vừa đủ lên tay và mát-xa toàn thân. Xả sạch với nước.</p><p style=\"text-align:justify;margin-left:auto;\">Dùng với bông tắm để có trải nghiệm tốt nhất.</p><p style=\"margin-left:auto;\">&nbsp;</p><p style=\"margin-left:auto;\">&nbsp;</p><p style=\"margin-left:auto;\">&nbsp;</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "656ed5029f286d001d14bd31",
+        "name": "500ml",
+        "price": 655000,
+        "listedPrice": 655000,
+        "sku": "SP04341",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "65b35c84122f00001d989cbe",
+        "name": "50ml",
+        "price": 55000,
+        "listedPrice": 55000,
+        "sku": "SP04473",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "64703038c0617a001d4a6ea7",
+    "name": "Sáp khử mùi Old Spice - New Collection",
+    "slug": "sap-khu-mui-old-spice-new-collection",
+    "price": 199000,
+    "listed_price": 199000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc cơ thể",
+    "category_slug": "cham-soc-co-the",
+    "subcategory": "Khử mùi",
+    "subcategory_slug": "khu-mui",
+    "brand": "Old Spice",
+    "brand_slug": "old-spice",
+    "image_url": "https://static.30shine.com/shop-admin/2023/05/26/30SFMDLV-1.jpg",
+    "tags": "",
+    "images": [
+      {
+        "name": "3.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/05/26/30ST7IZR-3.jpg",
+        "alt": ""
+      },
+      {
+        "name": "4.jpg",
+        "url": "https://static.30shine.com/shop-admin/2023/05/26/30SBW1N0-4.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "Sáp khử mùi Old Spice 85g nhập khẩu từ Mỹ, khử mùi bền bỉ suốt 48 giờ và đem lại hương thơm nam tính, dễ chịu cho vùng da dưới cánh tay và không để lại vệt sáp, không làm ố vàng áo giúp Phái Mạnh luôn tự tin và thành công.\n\n \n\n ĐẶC ĐIỂM VÀ TÍNH NĂNG NỔI BẬT:\n\n - Dạng sáp đặc, màu xanh, không chứa Aluminum\n\n - Chứa các thành phần diệt vi khuẩn (Glycol) gây mùi khó chịu.\n\n - Trải nghiệm 4 mùi hương nam tính và đặc trưng, hòa quyện đặc biệt giữa các thành phần tự nhiên: \n\n # NightPanther (BST Wild Collection)- Kết hợp độc đáo từ hương sô cô la đen và vani kem, kèm theo hương trầm ấm từ gỗ và thảo mộc. Cho hình tượng 1 quý ông lịch lãm, ấm áp.\n\n # ElkLord (BST Wild Collection) - Hương thơm nam tính hiện đại với hương phả hệ của cây bách xù, hoa oải hương và nhựa cây, sống động bởi hương tiêu đen cay và rêu biển. \n\n # Wilderness (BST Fresher Collection) - Hương thơm sâu sắc của hoa oải hương hoang dã. Tạo nên sức hút, sự lôi cuốn như đang lạc vào thiên nhiên.\n\n # Oasis (BST Fresher Collection)- Hương thơm như một ốc đảo tươi mát giữa sa mạc được bao quanh bởi các loại trái cây và hương vani thoải mái. Mang lại cho bạn sự thư giãn, sảng khoái.\n\n HƯỚNG DẪN SỬ DỤNG:\n\n - Mở nắp, gỡ miếng chặn trong suốt bên trong chai và xoay nắm vặn ở đáy chai để lấy sáp.\n\n - Lăn nhẹ vùng da dưới cánh tay.\n\n - Sử dụng ngay sau khi tắm và trước khi mặc áo.\n\n \n\n HẠN SỬ DỤNG: \n\n - 23 tháng kể từ ngày sản xuất.",
+    "description": "<p style=\"margin-left:0px;\">Sáp khử mùi Old Spice 85g nhập khẩu từ Mỹ, khử mùi bền bỉ suốt 48 giờ và đem lại hương thơm nam tính, dễ chịu cho vùng da dưới cánh tay và không để lại vệt sáp, không làm ố vàng áo giúp Phái Mạnh luôn tự tin và thành công.</p><p style=\"margin-left:0px;\">&nbsp;</p><p style=\"margin-left:0px;\">ĐẶC ĐIỂM VÀ TÍNH NĂNG NỔI BẬT:</p><p style=\"margin-left:0px;\">- Dạng sáp đặc, màu xanh, không chứa Aluminum</p><p style=\"margin-left:0px;\">- Chứa các thành phần ngăn vi khuẩn (Glycol) gây mùi khó chịu.</p><p style=\"margin-left:0px;\">- Trải nghiệm 4 mùi hương nam tính và đặc trưng, hòa quyện đặc biệt giữa các thành phần tự nhiên:</p><p style=\"margin-left:0px;\"># NightPanther (BST Wild Collection)- Kết hợp độc đáo từ hương sô cô la đen và vani kem, kèm theo hương trầm ấm từ gỗ và thảo mộc. Cho hình tượng 1 quý ông lịch lãm, ấm áp.</p><p style=\"margin-left:0px;\"># ElkLord (BST Wild Collection) - Hương thơm nam tính hiện đại với hương phả hệ của cây bách xù, hoa oải hương và nhựa cây, sống động bởi hương tiêu đen cay và rêu biển.</p><p style=\"margin-left:0px;\"># Wilderness (BST Fresher Collection) - Hương thơm sâu sắc của hoa oải hương hoang dã. Tạo nên sức hút, sự lôi cuốn như đang lạc vào thiên nhiên.</p><p style=\"margin-left:0px;\"># Oasis (BST Fresher Collection)- Hương thơm như một ốc đảo tươi mát giữa sa mạc được bao quanh bởi các loại trái cây và hương vani thoải mái. Mang lại cho bạn sự thư giãn, sảng khoái.</p><p style=\"margin-left:0px;\">HƯỚNG DẪN SỬ DỤNG:</p><p style=\"margin-left:0px;\">- Mở nắp, gỡ miếng chặn trong suốt bên trong chai và xoay nắm vặn ở đáy chai để lấy sáp.</p><p style=\"margin-left:0px;\">- Lăn nhẹ vùng da dưới cánh tay.</p><p style=\"margin-left:0px;\">- Sử dụng tốt nhất ngay sau khi tắm và trước khi mặc áo.</p><p style=\"margin-left:0px;\">&nbsp;</p><p style=\"margin-left:0px;\">HẠN SỬ DỤNG:</p><p style=\"margin-left:0px;\">- 23 tháng kể từ ngày sản xuất.</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "64703038c0617a001d4a6ea8",
+        "name": "Captain",
+        "price": 199000,
+        "listedPrice": 199000,
+        "sku": "SP03962",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "64703038c0617a001d4a6ea9",
+        "name": "Oasis",
+        "price": 199000,
+        "listedPrice": 199000,
+        "sku": "SP03963",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "64703038c0617a001d4a6eaa",
+        "name": "Wilderness",
+        "price": 199000,
+        "listedPrice": 199000,
+        "sku": "SP03964",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "64703038c0617a001d4a6eab",
+        "name": "NightPanther ",
+        "price": 199000,
+        "listedPrice": 199000,
+        "sku": "SP03965",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "64703038c0617a001d4a6eac",
+        "name": "ElkLord",
+        "price": 199000,
+        "listedPrice": 199000,
+        "sku": "SP03966",
+        "image": null,
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "63b3a1a2553c46001dcb81ef",
+    "name": "Bộ 3 chai nước hoa nam chính hãng Nerman 4000",
+    "slug": "bo-3-chai-nuoc-hoa-nam-chinh-hang-nerman-4000",
+    "price": 499000,
+    "listed_price": 499000,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc cơ thể",
+    "category_slug": "cham-soc-co-the",
+    "subcategory": "Nước hoa",
+    "subcategory_slug": "nuoc-hoa",
+    "brand": "Nerman",
+    "brand_slug": "nerman",
+    "image_url": "https://static.30shine.com/shop-admin/2023/01/03/30SNIFQP-bo-3-chai-nuoc-hoa-nam-chinh-hang-nerman-4000-h1.jpg",
+    "tags": "",
+    "images": [],
+    "short_description": "",
+    "description": "<p style=\"margin-left:0px;\">Bộ nước hoa nam giới Nerman 4000 Perfume gồm 3 mùi hương:</p><p style=\"margin-left:0px;\">1. Mùi 938</p><p style=\"margin-left:0px;\">Năm 938 là dấu mốc quan trọng của dân tộc ta khi Ngô Quyền chiến thắng quân Nam Hán ở trận thủy chiến lịch sử sông Bạch Đằng, kết thúc 1000 năm Bắc Thuộc, mở ra thời kỳ độc lập, trung hưng rực rỡ của dân tộc.</p><p style=\"margin-left:0px;\">Đó là lý do chúng tôi chọn 938 là chai nước hoa đầu tiên nằm trong bộ sưu tập này nhằm tôn vinh và tái hiện lại trận chiến hào hùng tại sông Bạch Đằng thông qua hương Gỗ ấm áp, nhưng pha với sự thanh mát của biển cả tạo nên một mùi hương phong trần nhưng trầm ấm đầy lịch lãm.</p><p style=\"margin-left:0px;\">Mùi hương đặc trưng:&nbsp;</p><p style=\"margin-left:0px;\">Hương Đầu: Da thuộc, gỗ, tiêu sọ</p><p style=\"margin-left:0px;\">Hương giữa: Cây hoắc hương, cây bách, gỗ đàn hương</p><p style=\"margin-left:0px;\">Hương cuối : Long diên hương , Hương gỗ, cỏ hương bài.</p><p style=\"margin-left:0px;\">Phong cách: Lịch lãm, phong trần, trầm ấm</p><p style=\"margin-left:0px;\">2. Mùi 1242</p><p style=\"margin-left:0px;\">Năm 1242 là năm sinh của một Yết Kiêu - Một danh tướng nhà Trần dưới thời của Hưng Đạo Đại Vương. Ông được gọi là một trong những “Thiên cổ dị nhân”nổi tiếng với khả năng “nhập thuỷ như phúc bình địa hỹ” (Đi dưới nước ung dung tự tại như trên đất bằng). Vì vậy Yết Kiêu cũng đóng góp vào kho tàng lịch sử Việt Nam những dấu ấn sâu sắc pha một chút huyền bí.</p><p style=\"margin-left:0px;\">Truyền thuyết cho rằng ông có thể lội nước hàng mấy dặm như đi trên mặt đất và thường lặn lội bắt cá, mò trai cả ngày dưới nước, vì thế ông chính là ác mộng của những chiến thuyền địch. Nhắc tới Yết Kiêu chúng ta sẽ nhớ ngay đến biển vì vậy tone chính của “1242” chính là sự tươi mát của biến nhưng vẫn mang theo sự lôi cuốn của một nhân vật mạnh mẽ.</p><p style=\"margin-left:0px;\">Mùi hương đặc trưng:</p><p style=\"margin-left:0px;\">Hương Đầu: Bưởi, Cam Bergamot, Tiêu sọ</p><p style=\"margin-left:0px;\">Hương giữa: Hoa oải hương, tiêu Tứ Xuyên, Cây hoắc hương, Cỏ hương bài, Tiêu hồng, Dấu trám.</p><p style=\"margin-left:0px;\">Hương cuối : Long diên hương , Gỗ tuyết tùng.</p><p style=\"margin-left:0px;\">Phong cách: Nam tính, lịch lãm, thanh mát.</p><p style=\"margin-left:0px;\">3. Mùi 128</p><p style=\"margin-left:0px;\">Chiến tranh Mông Nguyên – Đại Việt hay Kháng chiến chống quân xâm lược Mông Nguyên được xem là một trong những trang sử hào hùng nhất của người Việt Nam, và cũng là chiến công tiêu biểu của triều đại nhà Trần.</p><p style=\"margin-left:0px;\">Năm 1282, sau khi biết tin quân Nguyên mượn đường đánh Cham-pa nhưng chỉ là tìm cớ xâm lược, vua Trần triệu tập hội nghị Bình Than cùng các vương hầu, quan lại để họp bàn chống giặc. Không ai chú ý đến một “cậu bé” mới 16 tuổi Trần Quốc Toản, vì nhỏ tuổi nên không được tham gia hội nghị nên đã tức giận bóp nát quả cam. Khi phách đấy còn được thể hiện trên lá cờ thêu sáu chữ “Phá cường địch, báo hoàng ân”.&nbsp;</p><p style=\"margin-left:0px;\">Lấy cảm hứng từ cột mốc này, chai nước hoa mang tên “1282” của chúng tôi nhằm tái hiện lại cảnh người anh hùng Trần Quốc Toản bóp nát trái cam trong vô thức với hương chủ đạo là Cam Bergamote.</p><p style=\"margin-left:0px;\">Mùi hương đặc trưng:</p><p style=\"margin-left:0px;\">Hương Đầu: Cam Bergamot, Nho đen, chanh</p><p style=\"margin-left:0px;\">Hương giữa: Lựu, hoa hồng, hoa hiền nhân, cây bách</p><p style=\"margin-left:0px;\">Hương cuối : Long diên hương , rêu, hoa xạ hương trắng, Hoắc hương.</p><p style=\"margin-left:0px;\">Phong cách: Lôi cuốn lịch lãm, thanh mát.</p><p style=\"margin-left:0px;\">&nbsp;</p><p style=\"margin-left:0px;\">* Xuất xứ: Việt Nam</p><p style=\"margin-left:0px;\">* Dung tích: 10ml/chai - Bộ 3 chai</p><p style=\"margin-left:0px;\">* Thông tin thương hiệu: Nerman là thương hiệu chăm sóc sức khỏe và làm đẹp dành cho nam giới được xây dựng dựa trên những phản hồi tích cực của khách hàng và những kiến thức chăm sóc da khoa học, điều đó đã giúp duy trì những giá trị cốt lõi trong sản phẩm cũng như sự phát triển của chúng tôi.</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "63b3a1a2553c46001dcb81f0",
+        "name": "Default",
+        "price": 499000,
+        "listedPrice": 499000,
+        "sku": "SP03683",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "6132be843dc73d001c0c4d56",
+    "name": "Sữa tắm Old Spice",
+    "slug": "sua-tam-old-spice",
+    "price": {
+      "from": 159000,
+      "to": 167000
+    },
+    "listed_price": 0,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Chăm sóc cơ thể",
+    "category_slug": "cham-soc-co-the",
+    "subcategory": "Sữa Tắm",
+    "subcategory_slug": "tam",
+    "brand": "Old Spice",
+    "brand_slug": "old-spice",
+    "image_url": "https://static.30shine.com/shop-admin/2021/09/04/30SM93VW-00037000905295_C1N1_2_NA.jpg",
+    "tags": "30Shine",
+    "images": [
+      {
+        "name": "Content 1-OldSpice-BW-473ml.jpg",
+        "url": "https://static.30shine.com/shop-admin/2021/09/04/30SCQR4Z-Content 1-OldSpice-BW-473ml.jpg",
+        "alt": ""
+      },
+      {
+        "name": "Content OldSpice 473mlArtboard 80.jpg",
+        "url": "https://static.30shine.com/shop-admin/2021/09/04/30S81WLW-Content OldSpice 473mlArtboard 80.jpg",
+        "alt": ""
+      },
+      {
+        "name": "OS_Fresh_Global_ECOM_SEC_006.jpg",
+        "url": "https://static.30shine.com/shop-admin/2021/09/04/30SRSPQ0-OS_Fresh_Global_ECOM_SEC_006.jpg",
+        "alt": ""
+      },
+      {
+        "name": "Sữa tắm Old Spice Bearglove 473 ml 4.jpg",
+        "url": "https://static.30shine.com/shop-admin/2021/09/04/30SJ2UFK-Sữa tắm Old Spice Bearglove 473 ml 4.jpg",
+        "alt": ""
+      },
+      {
+        "name": "Sữa tắm Old Spice Fiji 473 ml 8.jpg",
+        "url": "https://static.30shine.com/shop-admin/2021/09/04/30SRLSQ4-Sữa tắm Old Spice Fiji 473 ml 8.jpg",
+        "alt": ""
+      },
+      {
+        "name": "Sữa tắm Old Spice Fresh 532 ml 8.jpg",
+        "url": "https://static.30shine.com/shop-admin/2021/09/04/30SQR151-Sữa tắm Old Spice Fresh 532 ml 8.jpg",
+        "alt": ""
+      },
+      {
+        "name": "Sữa tắm Old Spice Pure Sport 532 ml 7.jpg",
+        "url": "https://static.30shine.com/shop-admin/2021/09/04/30SF2VKR-Sữa tắm Old Spice Pure Sport 532 ml 7.jpg",
+        "alt": ""
+      },
+      {
+        "name": "Power Image (New Look 2021)Artboard 26.jpg",
+        "url": "https://static.30shine.com/shop-admin/2021/09/04/30SHW6RL-Power Image (New Look 2021)Artboard 26.jpg",
+        "alt": ""
+      }
+    ],
+    "short_description": "ĐẶC ĐIỂM VÀ TÍNH NĂNG NỔI BẬT:\n- Làm sạch cơ thể.\n- Mùi hương kết hợp giữa cam và quýt tự nhiên mang đến hương thơm lôi cuốn, độc đáo với biểu tượng Sói quyến rũ, sắc sảo.",
+    "description": "<p>Sữa tắm Old Spice</p><p>&nbsp;</p><p>ĐẶC ĐIỂM VÀ TÍNH NĂNG NỔI BẬT:</p><p>- Làm sạch cơ thể.</p><p>- Mùi hương kết hợp giữa cam và quýt tự nhiên mang đến hương thơm lôi cuốn, độc đáo với biểu tượng Sói quyến rũ, sắc sảo.</p><p>&nbsp;</p><p>HƯỚNG DẪN SỬ DỤNG:</p><p>- Làm ướt cơ thể</p><p>- Cho một lượng sữa tắm vừa phải vào bông hoặc khăn tắm và xoa nhẹ nhàng để tạo bọt.</p><p>- Tắm lại bằng nước sạch</p><p>- Sử dụng thường xuyên để đạt hiệu quả tối ưu..</p><p>&nbsp;</p><p>🔰 TÀI KHOẢN CHÍNH THỨC CỦA HỆ THỐNG 30SHINE TẠI SHOPEE</p><p>- Cam kết hàng chính hãng 100%</p><p>- Hoàn lại tiền nếu phát hiện hàng giả - nhái</p><p>- Đổi trả hàng miễn phí trong vòng 3 ngày</p><p>#30Shinestore - Chuyên mỹ phẩm chính hãng cho nam</p>",
+    "variants": [
+      {
+        "id": "6132be843dc73d001c0c4d57",
+        "name": "Timber",
+        "price": 167000,
+        "listedPrice": 167000,
+        "sku": "SP02846",
+        "image": {
+          "name": "00037000905295_C1N1_2_NA.jpg",
+          "url": "https://static.30shine.com/shop-admin/2021/09/04/30SQTMTI-00037000905295_C1N1_2_NA.jpg",
+          "alt": ""
+        },
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "6132be843dc73d001c0c4d58",
+        "name": "Wolfthorn",
+        "price": 167000,
+        "listedPrice": 167000,
+        "sku": "SP02847",
+        "image": {
+          "name": "80323490_OS BW Wolfhorn 473ml_Front.jpg",
+          "url": "https://static.30shine.com/shop-admin/2021/09/04/30SNOEVM-80323490_OS BW Wolfhorn 473ml_Front.jpg",
+          "alt": ""
+        },
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "6132be843dc73d001c0c4d59",
+        "name": "Bearglove",
+        "price": 167000,
+        "listedPrice": 167000,
+        "sku": "SP02848",
+        "image": {
+          "name": "Sữa tắm Old Spice Bearglove 473 ml.jpg",
+          "url": "https://static.30shine.com/shop-admin/2021/09/04/30SX7NKH-Sữa tắm Old Spice Bearglove 473 ml.jpg",
+          "alt": ""
+        },
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "6132be843dc73d001c0c4d5a",
+        "name": "Fiji",
+        "price": 167000,
+        "listedPrice": 167000,
+        "sku": "SP02849",
+        "image": {
+          "name": "Sữa tắm Old Spice Fiji 473 ml.jpg",
+          "url": "https://static.30shine.com/shop-admin/2021/09/04/30SHNO83-Sữa tắm Old Spice Fiji 473 ml.jpg",
+          "alt": ""
+        },
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "6132be843dc73d001c0c4d5b",
+        "name": "2IN1 High Endurance",
+        "price": 167000,
+        "listedPrice": 167000,
+        "sku": "SP02850",
+        "image": {
+          "name": "Sữa tắm gội Old Spice 2IN1 High Endurance 532 ml.jpg",
+          "url": "https://static.30shine.com/shop-admin/2021/09/04/30SY9WJ5-Sữa tắm gội Old Spice 2IN1 High Endurance 532 ml.jpg",
+          "alt": ""
+        },
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "6132be843dc73d001c0c4d5c",
+        "name": "Fresh ",
+        "price": 159000,
+        "listedPrice": 159000,
+        "sku": "SP02851",
+        "image": {
+          "name": "Sữa tắm Old Spice Fresh 532 ml.jpeg",
+          "url": "https://static.30shine.com/shop-admin/2021/09/04/30STDMF9-Sữa tắm Old Spice Fresh 532 ml.jpeg",
+          "alt": ""
+        },
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "6132be843dc73d001c0c4d5d",
+        "name": "Pure Sport",
+        "price": 159000,
+        "listedPrice": 159000,
+        "sku": "SP02852",
+        "image": {
+          "name": "Sữa tắm Old Spice Pure Sport 532 ml.jpeg",
+          "url": "https://static.30shine.com/shop-admin/2021/09/04/30S1BH6E-Sữa tắm Old Spice Pure Sport 532 ml.jpeg",
+          "alt": ""
+        },
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "61459957f5f763001c599727",
+    "name": "Nước Uống Đẹp Da Bổ Sung Collagen Kinohimitsu Diamond 5300",
+    "slug": "nuoc-uong-dep-da-bo-sung-collagen-kinohimitsu-diamond-5300",
+    "price": {
+      "from": 350000,
+      "to": 1750000
+    },
+    "listed_price": 0,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Thực phẩm chức năng",
+    "category_slug": "sp-thuc-pham-chuc-nang",
+    "subcategory": "Làm đẹp",
+    "subcategory_slug": "lam-dep",
+    "brand": "Kinohimitsu",
+    "brand_slug": "dinohimitsu",
+    "image_url": "https://static.30shine.com/shop-admin/2021/09/18/30SOUT0R-Nước Uống Đẹp Da Bổ Sung Collagen Kinohimitsu Diamond 5300.png",
+    "tags": "",
+    "images": [
+      {
+        "name": "Nước Uống Đẹp Da Bổ Sung Collagen Kinohimitsu Diamond 5300 2.png",
+        "url": "https://static.30shine.com/shop-admin/2021/09/18/30S8K1HV-Nước Uống Đẹp Da Bổ Sung Collagen Kinohimitsu Diamond 5300 2.png",
+        "alt": ""
+      }
+    ],
+    "short_description": "Nước Uống Đẹp Da Bổ Sung Collagen Kinohimitsu Diamond 5300\nThực Phẩm Chức Năng Nước Uống Đẹp Da Collagen Kinohimitsu Diamond 5300 được thiết kế đặc biệt cho làn da trưởng thành để khôi phục sự trẻ trung, đàn hồi và rạng rỡ của da. \nSo với collagen tự nhiên của da, Collagen Peptide có cấu trúc phân tử ngắn hơn nhưng do sự giống nhau của chúng, Collagen Peptide có thể dễ dàng được hấp thụ, giúp làm tăng tổng hợp collagen và giảm các sợi collagen bị tổn thương để giảm thiểu các dấu hiệu lão hóa như nếp nhăn và da khô. Giúp tăng cường sự đàn hồi và mịn màng của làn da, giúp làm sáng da, giữ ẩm cho da, se khít lại các lỗ chân lông cho làn da mượt mà hơn.",
+    "description": "<p><span style=\"font-size:14px;color:rgb(34,34,34);background-color:rgb(255,255,255);\">Thương hiệu: KINOHIMITSU&nbsp;</span></p><p style=\"margin-left:0px;\">Xuất xứ thương hiệu: Nhật Bnar&nbsp;&amp; Singapore&nbsp;</p><p style=\"margin-left:0px;\">Nơi sản xuất:&nbsp;Đài Loan</p><p style=\"margin-left:0px;\">Dung tích: 50ml/chai&nbsp;</p><p style=\"margin-left:0px;\">Hạn sử dụng: 36 tháng kể từ ngày sản xuất&nbsp;</p><p style=\"margin-left:0px;\"><strong>Hướng dẫn sử dụng</strong></p><p style=\"margin-left:0px;\">- Dùng tốt nhất là trước bữa ăn sáng hoặc buổi tối trước khi đi ngủ&nbsp;</p><p style=\"margin-left:0px;\">- Lắc đều trước khi uống Hương vị thơm ngon hơn khi uống lạnh&nbsp;</p><p style=\"margin-left:0px;\">- Người sử dụng lần đầu: 1 chai/ngày và dùng trong 6 ngày, sau 6 ngày: 2 ngày/ 1 chai&nbsp;</p><p style=\"margin-left:0px;\"><strong>Mô tả sản phẩm</strong></p><p style=\"margin-left:0px;\">Thực Phẩm Chức Năng Nước Uống Đẹp Da Collagen Kinohimitsu Diamond 5300 được thiết kế đặc biệt cho làn da trưởng thành để khôi phục sự trẻ trung, đàn hồi và rạng rỡ của da. So với collagen tự nhiên của da, Collagen Peptide có cấu trúc phân tử ngắn hơn nhưng do sự giống nhau của chúng, Collagen Peptide có thể dễ dàng được hấp thụ, giúp làm tăng tổng hợp collagen và sửa hỗ trợ các sợi collagen bị tổn thương để giảm thiểu các dấu hiệu lão hóa như nếp nhăn và da khô. Giúp tăng cường sự đàn hồi và mịn màng của làn da, giúp làm sáng da, giữ ẩm cho da, se khít lại các lỗ chân lông cho làn da mượt mà hơn.</p><p style=\"margin-left:0px;\"><strong>Thành phần nguyên liệu tuyệt vời: </strong>Kinohimitsu khai thác collagen peptide từ collagen cá biển Nhật Bản cao cấp.&nbsp;</p><p style=\"margin-left:0px;\">Được chiết xuất thông qua công nghệ tiên tiến, collagen peptide có chất lượng và độ tinh khiết cao, không chứa chất béo và cholesterol. Phân tử peptide collagen nhỏ Mỗi phân tử collagen peptide đo 1000 - 3000 dalton. Nó dễ dàng hấp thụ bởi cơ thể và giúp tăng hiệu quả tổng hợp collagen ở lớp hạ bì. Công thức vô song Giàu chất chống oxy hóa mạnh mẽ giúp trì hoãn quá trình lão hóa của da, Chiết xuất hạt Perilla được cấp bằng sáng chế độc quyền của Mỹ giúp tăng cường làn da bằng cách sửa hỗ trợ các tế bào bị tổn thương và giảm viêm. Không có chất phụ gia 100% tự nhiên và an toàn.&nbsp;</p><p style=\"margin-left:0px;\">Không thêm đường, chất bảo quản, màu nhân tạo hoặc hương liệu.&nbsp;</p><p style=\"margin-left:0px;\">Không chứa hormone, steroid và hóa chất, được kiểm tra kỹ lưỡng bởi SGS (Nhận dạng Điểm chuẩn Toàn cầu về Chất lượng và Tính toàn vẹn). Công thức Liquid hiệu quả cho phép cơ thể hấp thu ngay lập tức. ** Sản phẩm không phải là thuốc.</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "61459957f5f763001c599728",
+        "name": "3 chai x 50 ml",
+        "price": 350000,
+        "listedPrice": 350000,
+        "sku": "SP02872",
+        "image": {
+          "name": "Nước Uống Đẹp Da Bổ Sung Collagen Kinohimitsu Diamond 5300.png",
+          "url": "https://static.30shine.com/shop-admin/2021/09/18/30SUNOOT-Nước Uống Đẹp Da Bổ Sung Collagen Kinohimitsu Diamond 5300.png",
+          "alt": ""
+        },
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "61459957f5f763001c599729",
+        "name": "16 chai x 50 ml",
+        "price": 1750000,
+        "listedPrice": 1750000,
+        "sku": "SP02873",
+        "image": {
+          "name": "Nước Uống Đẹp Da Bổ Sung Collagen Kinohimitsu Diamond 5300 2.png",
+          "url": "https://static.30shine.com/shop-admin/2021/09/18/30SHF90Y-Nước Uống Đẹp Da Bổ Sung Collagen Kinohimitsu Diamond 5300 2.png",
+          "alt": ""
+        },
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  },
+  {
+    "id": "6145964ef5f763001c599724",
+    "name": "Kinohimitsu Giúp Trắng Da Và Gan Khoẻ Mạnh Prowhite",
+    "slug": "kinohimitsu-giup-trang-da-va-gan-khoe-manh-prowhite",
+    "price": {
+      "from": 610000,
+      "to": 1750000
+    },
+    "listed_price": 0,
+    "discount_percent": 0,
+    "is_discount": false,
+    "is_out_of_stock": false,
+    "rating_score": 0,
+    "total_sold": 0,
+    "category": "Thực phẩm chức năng",
+    "category_slug": "sp-thuc-pham-chuc-nang",
+    "subcategory": "Làm đẹp",
+    "subcategory_slug": "lam-dep",
+    "brand": "Kinohimitsu",
+    "brand_slug": "dinohimitsu",
+    "image_url": "https://static.30shine.com/shop-admin/2021/09/18/30S3H7A4-Kinohimitsu Giúp Trắng Da Và Gan Khoẻ Mạnh Prowhite.png",
+    "tags": "",
+    "images": [],
+    "short_description": "Kinohimitsu Giúp Trắng Da Và Gan Khoẻ Mạnh Prowhite Hộp 30 gói\nKinohimitsu ProWhite là một thức uống thơm ngon, cung cấp đầy đủ nhu cầu về sức khỏe và làm đẹp cơ thể. \nSản phẩm chứa Glutathione, Camu-camu và Maqui Berry giúp loại bỏ các nhược điểm trên da, giảm thiểu quá trình Oxy hoá. Da sáng rạng ngời & gan khỏe mạnh. ",
+    "description": "<p><span style=\"font-size:14px;color:rgb(34,34,34);background-color:rgb(255,255,255);\">Kinohimitsu Giúp Trắng Da Và Gan Khoẻ Mạnh Prowhite Hộp 30 gói</span></p><p style=\"margin-left:0px;\">Kinohimitsu ProWhite là một thức uống thơm ngon, cung cấp đầy đủ nhu cầu về sức khỏe và làm đẹp cơ thể.&nbsp;</p><p style=\"margin-left:0px;\">Sản phẩm chứa Glutathione, Camu-camu và Maqui Berry giúp loại bỏ các nhược điểm trên da, giảm thiểu quá trình Oxy hoá. Da sáng rạng ngời &amp; gan khỏe mạnh.&nbsp;</p><p style=\"margin-left:0px;\"><strong>Thành Phần Chính và Công Dụng:&nbsp;</strong></p><p style=\"margin-left:0px;\">- Glutathione cũng là một trong những chất dinh dưỡng giúp thải độc gan, tăng cường chức năng gan và hệ miễn dịch.&nbsp;</p><p style=\"margin-left:0px;\">-&nbsp;Camu-Camu là một trong những nguồn giàu Vitamin C nhất thế giới - nhiều hơn gấp 30 lần Vitamin C trong một quả cam. Vitamin C phối hợp với Glutathione giúp hoạt động lâu và hiệu quả hơn trong cơ thể. Ngoài ra, Vitamin C cũng là một chất chống Oxy hoá rất hiệu quả.&nbsp;</p><p style=\"margin-left:0px;\">- Maqui Berry rất giàu chất Anthocyamin, là một chất chống Oxy hoá với tính giảm và giảm tình trạng viêm mạnh mẽ, tăng cường khả năng hấp thụ của tế bào.&nbsp;</p><p style=\"margin-left:0px;\">- Wheat Germ Extract (chiết xuất mầm lúa mì) có hàm lượng Vitamin E cao, giúp chống lại quá trình lão hoá và thúc đẩy quá trình trẻ hoá của làn da. Với một lượng giàu chất dinh dưỡng như vậy, Kinohimitsu ProWhite giúp tăng cường độ rạng rỡ cho làn da, tăng cường hệ thống miễn dịch và tăng cường sức khỏe cho làn da hoàn hảo và tươi sáng chỉ trong vài tuần!&nbsp;</p><p style=\"margin-left:0px;\">- Làm sáng da, giảm quá trình Oxy hóa từ bên trong.&nbsp;</p><p style=\"margin-left:0px;\">- Làm mờ các vết thâm nám, tàn nhang.&nbsp;</p><p style=\"margin-left:0px;\">- Trung hòa các gốc tự do trong cơ thể.&nbsp;</p><p style=\"margin-left:0px;\">- Tăng cường chức năng gan và hệ miễn dịch.&nbsp;</p><p style=\"margin-left:0px;\"><strong>Hướng dẫn sử dụng:&nbsp;</strong></p><p style=\"margin-left:0px;\">- 1 gói mỗi ngày, tốt nhất là trước khi đi ngủ.&nbsp;</p><p style=\"margin-left:0px;\">- Có thể dùng trực tiếp cho vào miệng hoặc pha với 150ml nước.&nbsp;</p><p style=\"margin-left:0px;\">- Uống lạnh cho hương vị thơm ngon hơn&nbsp;</p><p style=\"margin-left:0px;\">Hạn sử dụng: 3 năm kể từ ngày sản xuất&nbsp;</p><p style=\"margin-left:0px;\">Bảo quản: bảo quản nơi thoáng mát</p>",
+    "ingredients": "",
+    "manual": "",
+    "variants": [
+      {
+        "id": "6145964ef5f763001c599725",
+        "name": "Hộp 10 gói x 8G",
+        "price": 610000,
+        "listedPrice": 610000,
+        "sku": "SP02878",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      },
+      {
+        "id": "6145964ef5f763001c599726",
+        "name": "Hộp 30 gói x 8G",
+        "price": 1750000,
+        "listedPrice": 1750000,
+        "sku": "SP02877",
+        "isDiscount": false,
+        "discountPercent": 0,
+        "isOutOfStock": false
+      }
+    ]
+  }
+]
