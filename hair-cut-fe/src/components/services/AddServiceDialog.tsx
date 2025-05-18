@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useFieldArray, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { Loader2, UploadIcon, XIcon } from 'lucide-react'
+import { Loader2, Plus, Trash2, UploadIcon, XIcon } from 'lucide-react'
 import { serviceSchema } from '@/types/service'
 import { createService } from '@/lib/api/services'
 import { Button } from '@/components/ui/button'
@@ -23,6 +23,14 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { Card, CardContent } from '@/components/ui/card'
 
 interface AddServiceDialogProps {
   isOpen: boolean
@@ -37,6 +45,15 @@ export function AddServiceDialog({
   const [uploadingImage, setUploadingImage] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
 
+  // Hard-coded category options
+  const categoryOptions = [
+    { id: 1, name: 'Cắt tóc' },
+    { id: 2, name: 'Uốn tóc' },
+    { id: 3, name: 'Nhuộm tóc' },
+    { id: 4, name: 'Chăm sóc da' },
+    { id: 5, name: 'Khác' },
+  ]
+
   const form = useForm({
     resolver: zodResolver(serviceSchema),
     defaultValues: {
@@ -45,8 +62,17 @@ export function AddServiceDialog({
       price: 0,
       description: '',
       bannerImageUrl: '',
-      steps: [],
+      categoryId: 0,
+      steps: [
+        { stepOrder: 1, stepTitle: '', stepDescription: '', stepImageUrl: '' },
+      ],
     },
+  })
+
+  // Set up field array for steps
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: 'steps',
   })
 
   const createServiceMutation = useMutation({
@@ -118,9 +144,43 @@ export function AddServiceDialog({
     }
   }
 
+  const handleStepImageUpload = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number,
+  ) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    try {
+      setUploadingImage(true)
+      const formData = new FormData()
+      formData.append('file', file)
+
+      const response = await fetch('/api/files/upload', {
+        method: 'POST',
+        body: formData,
+      })
+
+      if (!response.ok) {
+        throw new Error('Upload failed')
+      }
+
+      const data = await response.json()
+      const steps = form.getValues('steps')
+      if (steps && steps[index]) {
+        steps[index].stepImageUrl = data.url
+        form.setValue('steps', steps)
+      }
+    } catch (error) {
+      console.error('Error uploading image:', error)
+    } finally {
+      setUploadingImage(false)
+    }
+  }
+
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Thêm dịch vụ mới</DialogTitle>
         </DialogHeader>
@@ -135,6 +195,38 @@ export function AddServiceDialog({
                   <FormControl>
                     <Input {...field} className="col-span-3" />
                   </FormControl>
+                  <FormMessage className="col-start-2 col-span-3" />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="categoryId"
+              render={({ field }) => (
+                <FormItem className="grid grid-cols-4 items-center gap-4">
+                  <FormLabel className="text-right">Danh mục</FormLabel>
+                  <Select
+                    onValueChange={(value) => field.onChange(Number(value))}
+                    defaultValue={
+                      field.value ? field.value.toString() : undefined
+                    }
+                  >
+                    <FormControl>
+                      <SelectTrigger className="col-span-3">
+                        <SelectValue placeholder="Chọn danh mục dịch vụ" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {categoryOptions.map((category) => (
+                        <SelectItem
+                          key={category.id}
+                          value={category.id.toString()}
+                        >
+                          {category.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage className="col-start-2 col-span-3" />
                 </FormItem>
               )}
@@ -256,6 +348,158 @@ export function AddServiceDialog({
                 </FormItem>
               )}
             />
+
+            {/* Steps section */}
+            <div className="grid grid-cols-4 items-start gap-4">
+              <div className="text-right pt-2">
+                <FormLabel>Các bước thực hiện</FormLabel>
+              </div>
+              <div className="col-span-3 space-y-3">
+                {fields.map((field, index) => (
+                  <Card key={field.id} className="overflow-hidden">
+                    <CardContent className="p-4 space-y-3">
+                      <div className="flex justify-between items-center">
+                        <h3 className="font-medium">Bước {index + 1}</h3>
+                        {fields.length > 1 && (
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => remove(index)}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        )}
+                      </div>
+
+                      <FormField
+                        control={form.control}
+                        name={`steps.${index}.stepTitle`}
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Tiêu đề</FormLabel>
+                            <FormControl>
+                              <Input
+                                {...field}
+                                placeholder="Tiêu đề bước thực hiện"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name={`steps.${index}.stepDescription`}
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Mô tả chi tiết</FormLabel>
+                            <FormControl>
+                              <Textarea
+                                {...field}
+                                placeholder="Mô tả chi tiết bước thực hiện"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name={`steps.${index}.stepImageUrl`}
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Hình ảnh minh họa</FormLabel>
+                            <div className="flex flex-col gap-2">
+                              {field.value ? (
+                                <div className="relative rounded-md overflow-hidden border border-gray-200">
+                                  <img
+                                    src={field.value}
+                                    alt="Step preview"
+                                    className="w-full h-32 object-cover"
+                                  />
+                                  <Button
+                                    type="button"
+                                    variant="destructive"
+                                    size="icon"
+                                    className="absolute top-2 right-2 rounded-full h-7 w-7"
+                                    onClick={() => {
+                                      const steps = form.getValues('steps')
+                                      steps[index].stepImageUrl = ''
+                                      form.setValue('steps', steps)
+                                    }}
+                                    disabled={uploadingImage}
+                                  >
+                                    <XIcon className="h-3 w-3" />
+                                  </Button>
+                                </div>
+                              ) : (
+                                <div className="border border-dashed border-gray-300 rounded-md p-4 flex flex-col items-center justify-center gap-2 bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer">
+                                  <input
+                                    type="file"
+                                    id={`step-image-upload-${index}`}
+                                    className="hidden"
+                                    accept="image/*"
+                                    onChange={(e) =>
+                                      handleStepImageUpload(e, index)
+                                    }
+                                    disabled={uploadingImage}
+                                  />
+                                  <label
+                                    htmlFor={`step-image-upload-${index}`}
+                                    className="cursor-pointer flex flex-col items-center w-full h-full"
+                                  >
+                                    {uploadingImage ? (
+                                      <Loader2 className="h-6 w-6 text-gray-400 animate-spin" />
+                                    ) : (
+                                      <>
+                                        <UploadIcon className="h-6 w-6 text-gray-400" />
+                                        <p className="text-xs text-gray-500 mt-1">
+                                          Tải lên hình ảnh
+                                        </p>
+                                      </>
+                                    )}
+                                  </label>
+                                </div>
+                              )}
+                              <Input {...field} type="hidden" />
+                            </div>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <input
+                        type="hidden"
+                        {...form.register(`steps.${index}.stepOrder`)}
+                        value={index + 1}
+                      />
+                    </CardContent>
+                  </Card>
+                ))}
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="w-full"
+                  onClick={() =>
+                    append({
+                      stepOrder: fields.length + 1,
+                      stepTitle: '',
+                      stepDescription: '',
+                      stepImageUrl: '',
+                    })
+                  }
+                >
+                  <Plus className="h-4 w-4 mr-2" />
+                  Thêm bước thực hiện
+                </Button>
+              </div>
+            </div>
+
             <DialogFooter>
               <Button
                 type="button"

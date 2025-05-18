@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
+  Building,
   Calendar as CalendarIcon,
   Clock,
   PlusCircle,
@@ -56,20 +57,50 @@ import serviceService from '@/services/service.service'
 import { createBooking } from '@/lib/api/bookings'
 import { formatDate } from '@/lib/formatters'
 import useBookingForm from '@/hooks/useBookingForm'
+import { useBranch } from '@/contexts/BranchContext'
+import { branchEmployeeApi } from '@/lib/api/branchEmployee'
 
 interface BookingFormProps {}
 
 const BookingForm: React.FC<BookingFormProps> = () => {
   const form = useBookingForm()
-
+  const { branches, fetchBranches } = useBranch()
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(
     form.getValues().appointmentDatetime,
   )
   const navigate = useNavigate()
   const [timeSlots, setTimeSlots] = useState<Array<string>>([])
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<string | null>(null)
-
+  const [selectedBranchId, setSelectedBranchId] = useState<number | null>(null)
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false)
+  const [loadingBranches, setLoadingBranches] = useState(false)
+  const [employeesByBranchId, setEmployeesByBranchId] = useState<Array<any>>([])
+  const [loadingEmployees, setLoadingEmployees] = useState(false)
+  const fetchBranchesRef = useRef(false)
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState<number | null>(
+    null,
+  )
+
+  // Fetch branches only once when component mounts
+  useEffect(() => {
+    if (!fetchBranchesRef.current && branches.length === 0) {
+      fetchBranchesRef.current = true
+
+      const loadBranches = async () => {
+        setLoadingBranches(true)
+        try {
+          await fetchBranches()
+        } catch (error) {
+          console.error('Failed to fetch branches:', error)
+          toast.error('Không thể tải dữ liệu chi nhánh')
+        } finally {
+          setLoadingBranches(false)
+        }
+      }
+
+      loadBranches()
+    }
+  }, [fetchBranches, branches.length])
 
   useEffect(() => {
     if (selectedDate) {
@@ -110,6 +141,8 @@ const BookingForm: React.FC<BookingFormProps> = () => {
         phoneNumber: values.customerPhone,
         serviceIds: values.serviceIds,
         notes: values.notes,
+        branchId: values.branchId,
+        employeeId: selectedEmployeeId !== null ? selectedEmployeeId : 0,
       })
     },
     onSuccess: () => {
@@ -204,6 +237,28 @@ const BookingForm: React.FC<BookingFormProps> = () => {
 
   const { totalPrice, totalDuration } = calculateTotal()
 
+  // Fetch employees when branch is selected
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      if (!selectedBranchId) return
+
+      setLoadingEmployees(true)
+      try {
+        const response =
+          await branchEmployeeApi.getEmployeesByBranchId(selectedBranchId)
+        setEmployeesByBranchId(response.data.employees)
+        console.log('Fetched employees:', response.data.employees)
+      } catch (error) {
+        console.error('Failed to fetch employees:', error)
+        toast.error('Không thể tải dữ liệu nhân viên')
+      } finally {
+        setLoadingEmployees(false)
+      }
+    }
+
+    fetchEmployees()
+  }, [selectedBranchId])
+
   return (
     <Card className="w-full max-w-2xl mx-auto">
       <CardHeader>
@@ -231,6 +286,121 @@ const BookingForm: React.FC<BookingFormProps> = () => {
                 </FormItem>
               )}
             />
+
+            <FormField
+              control={form.control}
+              name="branchId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Chi nhánh</FormLabel>
+                  <Select
+                    disabled={loadingBranches}
+                    onValueChange={(value) => {
+                      const branchId = Number(value)
+                      field.onChange(branchId)
+                      setSelectedBranchId(branchId)
+                      setSelectedEmployeeId(null) // Reset employee selection when branch changes
+                    }}
+                    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+                    value={field.value?.toString() || ''}
+                  >
+                    <FormControl>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Chọn chi nhánh">
+                          {field.value
+                            ? branches.find(
+                                (branch) => branch.id === field.value,
+                              )?.name
+                            : 'Chọn chi nhánh'}
+                        </SelectValue>
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {branches.length > 0 ? (
+                        branches.map((branch) => (
+                          <SelectItem
+                            key={branch.id}
+                            value={branch.id.toString()}
+                          >
+                            <div className="flex items-center">
+                              <Building className="mr-2 h-4 w-4" />
+                              {branch.name}
+                            </div>
+                          </SelectItem>
+                        ))
+                      ) : (
+                        <SelectItem value="no-branches" disabled>
+                          {loadingBranches
+                            ? 'Đang tải chi nhánh...'
+                            : 'Không có chi nhánh nào'}
+                        </SelectItem>
+                      )}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Add Employee Selection Field */}
+            <FormItem>
+              <FormLabel>Nhân viên</FormLabel>
+              <Select
+                disabled={
+                  loadingEmployees ||
+                  !selectedBranchId ||
+                  employeesByBranchId.length === 0
+                }
+                value={
+                  selectedEmployeeId !== null
+                    ? selectedEmployeeId.toString()
+                    : undefined
+                }
+                onValueChange={(value) => setSelectedEmployeeId(Number(value))}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue
+                    placeholder={
+                      loadingEmployees
+                        ? 'Đang tải nhân viên...'
+                        : !selectedBranchId
+                          ? 'Vui lòng chọn chi nhánh trước'
+                          : employeesByBranchId.length === 0
+                            ? 'Không có nhân viên nào hoạt động tại chi nhánh này'
+                            : 'Chọn nhân viên'
+                    }
+                  >
+                    {selectedEmployeeId
+                      ? selectedEmployeeId === 0
+                        ? 'Bất kỳ nhân viên nào'
+                        : employeesByBranchId.find(
+                            (emp) => emp.employee?.id === selectedEmployeeId,
+                          )?.employee?.fullName || 'Chọn nhân viên'
+                      : null}
+                  </SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  {employeesByBranchId.length > 0 ? (
+                    employeesByBranchId.map((empData) => (
+                      <SelectItem
+                        key={empData.employee.id}
+                        value={empData.employee.id.toString()}
+                      >
+                        {empData.employee.fullName}
+                      </SelectItem>
+                    ))
+                  ) : (
+                    <SelectItem value="no-employees" disabled>
+                      {loadingEmployees
+                        ? 'Đang tải nhân viên...'
+                        : selectedBranchId
+                          ? 'Không có nhân viên nào hoạt động tại chi nhánh này'
+                          : 'Vui lòng chọn chi nhánh trước'}
+                    </SelectItem>
+                  )}
+                </SelectContent>
+              </Select>
+            </FormItem>
 
             <FormField
               control={form.control}
@@ -276,7 +446,7 @@ const BookingForm: React.FC<BookingFormProps> = () => {
             <FormField
               control={form.control}
               name="appointmentDatetime"
-              render={({ field }) => (
+              render={() => (
                 <FormItem className="flex flex-col">
                   <FormLabel>Chọn ngày và giờ</FormLabel>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -373,6 +543,30 @@ const BookingForm: React.FC<BookingFormProps> = () => {
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-2">
+                      <div className="flex justify-between py-1 border-b">
+                        <span>Chi nhánh:</span>
+                        <span>
+                          {form.getValues('branchId')
+                            ? branches.find(
+                                (branch) =>
+                                  branch.id === form.getValues('branchId'),
+                              )?.name || 'Chưa chọn'
+                            : 'Chưa chọn'}
+                        </span>
+                      </div>
+                      <div className="flex justify-between py-1 border-b">
+                        <span>Nhân viên:</span>
+                        <span>
+                          {selectedEmployeeId
+                            ? selectedEmployeeId === 0
+                              ? 'Bất kỳ nhân viên nào'
+                              : employeesByBranchId.find(
+                                  (emp) =>
+                                    emp.employee?.id === selectedEmployeeId,
+                                )?.employee?.fullName || 'Chưa chọn'
+                            : 'Chưa chọn'}
+                        </span>
+                      </div>
                       <div className="flex justify-between py-1 border-b">
                         <span>Dịch vụ đã chọn:</span>
                         <span>

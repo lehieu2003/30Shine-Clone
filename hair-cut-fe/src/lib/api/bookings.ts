@@ -47,7 +47,8 @@ interface BookingCreateData {
   appointmentDate: string
   serviceIds: Array<number>
   notes?: string
-  employeeId?: number
+  employeeId: number
+  branchId: number
 }
 
 export async function createBooking(bookingData: BookingCreateData) {

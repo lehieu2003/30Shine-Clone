@@ -204,7 +204,7 @@ function RouteComponent() {
         </Button>
       </div>
       <section id="contact" className="container py-12 md:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="animate-fade-right animate-once animate-duration-1000 animate-ease-in-out">
             <h2 className="text-2xl font-bold text-blue-900 uppercase mb-6">
               Liên hệ với chúng tôi
@@ -262,21 +262,21 @@ function RouteComponent() {
                 <div className="flex gap-4">
                   <a
                     href="#"
-                    className="bg-muted hover:bg-muted/80 p-2 rounded-full hover:animate-spin hover:animate-once hover:animate-duration-500"
+                    className="bg-muted hover:bg-muted/80 p-2 rounded-full flex items-center justify-center transition"
                   >
                     <Instagram className="h-5 w-5" />
                     <span className="sr-only">Instagram</span>
                   </a>
                   <a
                     href="#"
-                    className="bg-muted hover:bg-muted/80 p-2 rounded-full hover:animate-spin hover:animate-once hover:animate-duration-500"
+                    className="bg-muted hover:bg-muted/80 p-2 rounded-full flex items-center justify-center transition"
                   >
                     <Facebook className="h-5 w-5" />
                     <span className="sr-only">Facebook</span>
                   </a>
                   <a
                     href="#"
-                    className="bg-muted hover:bg-muted/80 p-2 rounded-full hover:animate-spin hover:animate-once hover:animate-duration-500"
+                    className="bg-muted hover:bg-muted/80 p-2 rounded-full flex items-center justify-center transition"
                   >
                     <Twitter className="h-5 w-5" />
                     <span className="sr-only">Twitter</span>
@@ -286,14 +286,14 @@ function RouteComponent() {
             </div>
           </div>
 
-          <div className="h-[400px] rounded-lg overflow-hidden animate-fade-left animate-once animate-duration-1000 animate-ease-in-out">
-            <div style={{ width: '100%', height: '500px' }}>
+          <div className="flex justify-center items-center h-full animate-fade-left animate-once animate-duration-1000 animate-ease-in-out">
+            <div className="w-full h-[350px] md:h-[400px] rounded-lg overflow-hidden shadow-lg">
               <iframe
                 title="Google Maps"
                 src={`https://www.google.com/maps?q=${location}&output=embed`}
                 width="100%"
                 height="100%"
-                style={{ border: 0 }}
+                style={{ border: 0, minHeight: 350 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

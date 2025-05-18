@@ -1,16 +1,14 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
-
 import * as TanstackQuery from './integrations/tanstack-query/root-provider'
-
 import { routeTree } from './routeTree.gen'
-
 import './styles.css'
 import reportWebVitals from './reportWebVitals.ts'
 import { AuthProvider } from './contexts/AuthContext.tsx'
 import { ProductProvider } from './contexts/ProductContext'
 import { CartProvider } from './contexts/CartContext'
+import { BranchProvider } from './contexts/BranchContext.tsx'
 import { ToastProvider } from '@/components/ui/toast-provider'
 
 const router = createRouter({
@@ -37,13 +35,15 @@ if (rootElement && !rootElement.innerHTML) {
     <StrictMode>
       <ToastProvider>
         <AuthProvider>
-          <CartProvider>
-            <ProductProvider>
-              <TanstackQuery.Provider>
-                <RouterProvider router={router} />
-              </TanstackQuery.Provider>
-            </ProductProvider>
-          </CartProvider>
+          <BranchProvider>
+            <CartProvider>
+              <ProductProvider>
+                <TanstackQuery.Provider>
+                  <RouterProvider router={router} />
+                </TanstackQuery.Provider>
+              </ProductProvider>
+            </CartProvider>
+          </BranchProvider>
         </AuthProvider>
       </ToastProvider>
     </StrictMode>,

@@ -18,6 +18,9 @@ export const bookingFormSchema = z.object({
   notes: z.string().optional(),
   employeeId: z.number().optional(),
   customerId: z.number().optional(),
+  branchId: z.number({
+    required_error: 'Vui lòng chọn chi nhánh',
+  }),
 })
 
 export type BookingFormValues = z.infer<typeof bookingFormSchema>
@@ -30,8 +33,9 @@ export default function useBookingForm(
     defaultValues: {
       customerPhone: '',
       appointmentDatetime: dayjs().add(2, 'hour').toDate(),
-      ...defaultValues,
+      branchId: undefined, // Make sure branchId is properly initialized
       serviceIds: [],
+      ...defaultValues,
     },
   })
   const searchParams = new URLSearchParams(window.location.search)

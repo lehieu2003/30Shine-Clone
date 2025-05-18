@@ -1,6 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { Heart, Search, ShoppingBag, Star } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { Product } from '@/types/product'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
@@ -33,6 +33,22 @@ function RouteComponent() {
   const [sortBy, setSortBy] = useState('popular')
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 9
+
+  // Add ref for the top element
+  const topRef = useRef<HTMLDivElement>(null)
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  // Scroll to top when products or pagination changes
+  useEffect(() => {
+    window.scrollTo({
+      top: 400,
+      behavior: 'smooth',
+    })
+  }, [products, currentPage])
 
   // Get unique categories and brands from products
   const categories = [
@@ -192,7 +208,7 @@ function RouteComponent() {
         </CardContent>
       </Link>
       <CardFooter className="p-4 pt-0">
-        <Button 
+        <Button
           className="w-full bg-blue-600 hover:bg-blue-700"
           onClick={(e) => {
             e.preventDefault()
@@ -209,6 +225,9 @@ function RouteComponent() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      {/* Reference element at the top of the page */}
+      <div ref={topRef} />
+
       {/* Hero Section */}
       <section className="relative h-[300px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10"></div>
