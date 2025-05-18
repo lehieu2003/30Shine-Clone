@@ -9,6 +9,8 @@ import reportRouter from "./report.route.js";
 import productRouter from "./product.route.js";
 import cartRouter from "./cart.routes.js";
 import paymentRouter from "./payment.routes.js";
+import branchRouter from "./branch.route.js";
+import branchEmployeeRouter from "./branchEmployee.route.js";
 
 const apiRoute = express.Router();
 
@@ -22,5 +24,7 @@ apiRoute.use("/reports", reportRouter);
 apiRoute.use("/products", productRouter);
 apiRoute.use("/cart", cartRouter);
 apiRoute.use("/payment", paymentRouter);
+apiRoute.use("/branches", branchRouter);
+apiRoute.use("/branch-employees", branchEmployeeRouter);
 
 export default apiRoute;

@@ -1,31 +1,3 @@
-model ProductImage {
-  id        Int     @id @default(autoincrement())
-  productId String  @db.VarChar(255)
-  name      String
-  url       String  @db.VarChar(500)
-  alt       String? @db.VarChar(255)
-  
-  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-  
-  @@index([productId])
-}
-
-model ProductVariant {
-  id              Int     @id @default(autoincrement())
-  productId       String  @db.VarChar(255)
-  name            String
-  price           Decimal @db.Decimal(10, 2)
-  listedPrice     Decimal @db.Decimal(10, 2)
-  sku             String? @unique
-  imageUrl        String? @db.VarChar(500)
-  isDiscount      Boolean @default(false)
-  discountPercent Int     @default(0)
-  isOutOfStock    Boolean @default(false)
-  
-  product         Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-  
-  @@index([productId])
-}
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
@@ -47,6 +19,7 @@ enum Role {
   receptionist
   barber
   customer
+  manager // Thêm role quản lý chi nhánh
 }
 
 enum Status {
@@ -115,55 +88,129 @@ model User {
   loyaltyPoints      Int                 @default(0)
   lastLoginAt        DateTime?
 
-  customerBookings  Booking[]            @relation("CustomerBookings")
-  employeeBookings  Booking[]            @relation("EmployeeBookings")
-  schedules         Schedule[]
-  notifications     Notification[]
-  expenses          Expense[]            @relation("ExpenseCreator")
-  inventoryActions  InventoryTransaction[]
-  cart              Cart?
+  branches         BranchEmployee[]
+  customerBookings Booking[]              @relation("CustomerBookings")
+  employeeBookings Booking[]              @relation("EmployeeBookings")
+  schedules        Schedule[]
+  notifications    Notification[]
+  expenses         Expense[]              @relation("ExpenseCreator")
+  inventoryActions InventoryTransaction[]
+  cart             Cart?
+}
+
+model Branch {
+  id          Int       @id @default(autoincrement())
+  name        String
+  address     String
+  phone       String?
+  email       String?
+  description String?   @db.Text
+  imageUrl    String?   @db.VarChar(500)
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime? @updatedAt
+
+  employees            BranchEmployee[]
+  bookings             Booking[]
+  inventory            BranchInventory[]
+  expenses             Expense[]
+  schedules            Schedule[]
+  BranchService        BranchService[]
+  InventoryTransaction InventoryTransaction[]
+}
+
+model BranchEmployee {
+  id           Int       @id @default(autoincrement())
+  branchId     Int
+  employeeId   Int
+  isMainBranch Boolean   @default(false) // Đánh dấu chi nhánh chính của nhân viên
+  startDate    DateTime  @default(now())
+  endDate      DateTime?
+
+  branch   Branch @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  employee User   @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@unique([branchId, employeeId])
+  @@index([branchId])
+  @@index([employeeId])
+}
+
+model BranchInventory {
+  id           Int      @id @default(autoincrement())
+  branchId     Int
+  productId    String   @db.VarChar(255)
+  quantity     Int      @default(0)
+  minimumStock Int      @default(5)
+  updatedAt    DateTime @updatedAt
+
+  branch  Branch  @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([branchId, productId])
+  @@index([branchId])
+  @@index([productId])
 }
 
 model Schedule {
   id         Int      @id @default(autoincrement())
   employeeId Int
-  dayOfWeek  Int      // 0-6 for Sunday-Saturday
+  branchId   Int // Thêm chi nhánh cho lịch làm việc
+  dayOfWeek  Int // 0-6 for Sunday-Saturday
   startTime  DateTime @db.Time
   endTime    DateTime @db.Time
   isActive   Boolean  @default(true)
 
-  employee   User     @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  employee User   @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  branch   Branch @relation(fields: [branchId], references: [id], onDelete: Cascade)
 
   @@index([employeeId])
+  @@index([branchId])
 }
 
 model ServiceCategory {
-  id           Int       @id @default(autoincrement())
+  id           Int     @id @default(autoincrement())
   name         String
-  description  String?   @db.VarChar(500)
-  iconUrl      String?   @db.VarChar(500)
-  displayOrder Int       @default(0)
-  
-  services     Service[]
+  description  String? @db.VarChar(500)
+  iconUrl      String? @db.VarChar(500)
+  displayOrder Int     @default(0)
+
+  services Service[]
 }
 
 model Service {
-  id              Int              @id @default(autoincrement())
-  serviceName     String
-  estimatedTime   Int              // minutes
-  price           Decimal          @db.Decimal(10, 2)
-  description     String?          @db.VarChar(500)
-  bannerImageUrl  String?          @db.VarChar(500)
-  createdAt       DateTime?        @default(now())
-  updatedAt       DateTime?        @updatedAt
-  isActive        Boolean          @default(true)
-  categoryId      Int
+  id             Int       @id @default(autoincrement())
+  serviceName    String
+  estimatedTime  Int // minutes
+  price          Decimal   @db.Decimal(10, 2)
+  description    String?   @db.VarChar(500)
+  bannerImageUrl String?   @db.VarChar(500)
+  createdAt      DateTime? @default(now())
+  updatedAt      DateTime? @updatedAt
+  isActive       Boolean   @default(true)
+  categoryId     Int
 
   category        ServiceCategory  @relation(fields: [categoryId], references: [id])
   bookingServices BookingService[]
   steps           ServiceStep[]
+  branchServices  BranchService[] // Mối quan hệ với giá theo chi nhánh
 
   @@index([categoryId])
+}
+
+// Model mới để quản lý giá dịch vụ theo từng chi nhánh (nếu cần)
+model BranchService {
+  id        Int     @id @default(autoincrement())
+  branchId  Int
+  serviceId Int
+  price     Decimal @db.Decimal(10, 2) // Giá có thể khác nhau tùy chi nhánh
+  isActive  Boolean @default(true)
+
+  branch  Branch  @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@unique([branchId, serviceId])
+  @@index([branchId])
+  @@index([serviceId])
 }
 
 model ServiceStep {
@@ -180,30 +227,33 @@ model ServiceStep {
 }
 
 model Booking {
-  id               Int       @id @default(autoincrement())
-  customerId       Int
-  employeeId       Int?
-  appointmentDate  DateTime  @db.DateTime(3)
-  status           Status    @default(pending)
-  totalPrice       Decimal   @default(0.00) @db.Decimal(10, 2)
-  notes            String?   @db.Text
-  createdAt        DateTime? @default(now())
-  updatedAt        DateTime? @updatedAt
-  promotionId      Int?
-  estimatedDuration Int      @default(0)  // minutes
-  checkInTime      DateTime? @db.DateTime(3)
-  checkOutTime     DateTime? @db.DateTime(3)
-  rating           Int?      // 1-5 stars
-  review           String?   @db.Text
+  id                Int       @id @default(autoincrement())
+  customerId        Int
+  employeeId        Int?
+  branchId          Int // Thêm chi nhánh cho booking
+  appointmentDate   DateTime  @db.DateTime(3)
+  status            Status    @default(pending)
+  totalPrice        Decimal   @default(0.00) @db.Decimal(10, 2)
+  notes             String?   @db.Text
+  createdAt         DateTime? @default(now())
+  updatedAt         DateTime? @updatedAt
+  promotionId       Int?
+  estimatedDuration Int       @default(0) // minutes
+  checkInTime       DateTime? @db.DateTime(3)
+  checkOutTime      DateTime? @db.DateTime(3)
+  rating            Int? // 1-5 stars
+  review            String?   @db.Text
 
-  customer         User      @relation("CustomerBookings", fields: [customerId], references: [id], onDelete: Cascade)
-  employee         User?     @relation("EmployeeBookings", fields: [employeeId], references: [id], onDelete: SetNull)
-  promotion        Promotion? @relation(fields: [promotionId], references: [id])
-  services         BookingService[]
-  payments         Payment[]
+  customer  User             @relation("CustomerBookings", fields: [customerId], references: [id], onDelete: Cascade)
+  employee  User?            @relation("EmployeeBookings", fields: [employeeId], references: [id], onDelete: SetNull)
+  branch    Branch           @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  promotion Promotion?       @relation(fields: [promotionId], references: [id])
+  services  BookingService[]
+  payments  Payment[]
 
   @@index([customerId])
   @@index([employeeId])
+  @@index([branchId])
   @@index([promotionId])
   @@index([appointmentDate])
 }
@@ -214,30 +264,30 @@ model BookingService {
   serviceId    Int
   servicePrice Decimal @db.Decimal(10, 2)
 
-  booking      Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
-  service      Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
 
   @@index([bookingId])
   @@index([serviceId])
 }
 
 model Payment {
-  id            Int           @id @default(autoincrement())
+  id            Int              @id @default(autoincrement())
   bookingId     Int?
-  amount        Decimal       @db.Decimal(10, 2)
+  amount        Decimal          @db.Decimal(10, 2)
   paymentMethod PaymentMethod
-  paymentStatus PaymentStatus @default(pending)
+  paymentStatus PaymentStatus    @default(pending)
   provider      PaymentProvider?
-  transactionId String?       @unique
-  paymentDate   DateTime      @default(now())
-  notes         String?       @db.Text
-  extraData     String?       @db.Text
-  signature     String?       @db.Text
-  requestId     String?       @db.VarChar(255)
-  responseData  String?       @db.Text
-  updatedAt     DateTime      @updatedAt
+  transactionId String?          @unique
+  paymentDate   DateTime         @default(now())
+  notes         String?          @db.Text
+  extraData     String?          @db.Text
+  signature     String?          @db.Text
+  requestId     String?          @db.VarChar(255)
+  responseData  String?          @db.Text
+  updatedAt     DateTime         @updatedAt
 
-  booking       Booking?      @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+  booking Booking? @relation(fields: [bookingId], references: [id], onDelete: SetNull)
 
   @@index([bookingId])
   @@index([transactionId])
@@ -250,7 +300,7 @@ model Promotion {
   code            String        @unique
   description     String?       @db.Text
   discountType    PromotionType
-  discountValue   Decimal       @db.Decimal(10, 2)  // percentage or fixed amount
+  discountValue   Decimal       @db.Decimal(10, 2) // percentage or fixed amount
   startDate       DateTime
   endDate         DateTime
   minimumPurchase Decimal       @default(0.00) @db.Decimal(10, 2)
@@ -259,45 +309,46 @@ model Promotion {
   currentUsage    Int           @default(0)
   isActive        Boolean       @default(true)
   createdAt       DateTime      @default(now())
-  
-  bookings        Booking[]
+
+  bookings Booking[]
 }
 
 model Product {
-  id               String                @id @default(uuid()) @db.VarChar(255)
+  id               String    @id @default(uuid()) @db.VarChar(255)
   name             String
-  slug             String                @unique
-  description      String?               @db.Text
-  shortDescription String?               @db.VarChar(500)
+  slug             String    @unique
+  description      String?   @db.Text
+  shortDescription String?   @db.VarChar(500)
   brand            String?
   brandSlug        String?
   category         String?
   categorySlug     String?
   subcategory      String?
   subcategorySlug  String?
-  price            Decimal               @db.Decimal(10, 2)
-  listedPrice      Decimal               @db.Decimal(10, 2)
-  cost             Decimal?              @db.Decimal(10, 2)
-  discountPercent  Int                   @default(0)
-  isDiscount       Boolean               @default(false)
-  quantity         Int                   @default(0)
-  minimumStock     Int                   @default(5)
-  isOutOfStock     Boolean               @default(false)
-  imageUrl         String?               @db.VarChar(500)
-  sku              String?               @unique
-  tags             String?               @db.Text
-  ingredients      String?               @db.Text
-  manual           String?               @db.Text
-  ratingScore      Float                 @default(0)
-  totalSold        Int                   @default(0)
-  isActive         Boolean               @default(true)
-  createdAt        DateTime              @default(now())
-  updatedAt        DateTime?             @updatedAt
-  
-  images           ProductImage[]
-  variants         ProductVariant[]
-  transactions     InventoryTransaction[]
-  cartItems        CartItem[]
+  price            Decimal   @db.Decimal(10, 2)
+  listedPrice      Decimal   @db.Decimal(10, 2)
+  cost             Decimal?  @db.Decimal(10, 2)
+  discountPercent  Int       @default(0)
+  isDiscount       Boolean   @default(false)
+  quantity         Int       @default(0) // Tổng số lượng tồn kho
+  minimumStock     Int       @default(5)
+  isOutOfStock     Boolean   @default(false)
+  imageUrl         String?   @db.VarChar(500)
+  sku              String?   @unique
+  tags             String?   @db.Text
+  ingredients      String?   @db.Text
+  manual           String?   @db.Text
+  ratingScore      Float     @default(0)
+  totalSold        Int       @default(0)
+  isActive         Boolean   @default(true)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime? @updatedAt
+
+  images          ProductImage[]
+  variants        ProductVariant[]
+  transactions    InventoryTransaction[]
+  branchInventory BranchInventory[]
+  cartItems       CartItem[]
 
   @@index([slug])
   @@index([brandSlug])
@@ -305,69 +356,104 @@ model Product {
   @@index([subcategorySlug])
 }
 
-model InventoryTransaction {
-  id              Int       @id @default(autoincrement())
-  productId       String    @db.VarChar(255)
-  quantity        Int       // positive for inbound, negative for outbound
-  unitPrice       Decimal   @db.Decimal(10, 2)
-  totalPrice      Decimal   @db.Decimal(10, 2)
-  transactionDate DateTime  @default(now())
-  notes           String?   @db.Text
-  employeeId      Int
+model ProductImage {
+  id        Int     @id @default(autoincrement())
+  productId String  @db.VarChar(255)
+  name      String
+  url       String  @db.VarChar(500)
+  alt       String? @db.VarChar(255)
 
-  product         Product   @relation(fields: [productId], references: [id])
-  employee        User      @relation(fields: [employeeId], references: [id])
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@index([productId])
+}
+
+model ProductVariant {
+  id              Int     @id @default(autoincrement())
+  productId       String  @db.VarChar(255)
+  name            String
+  price           Decimal @db.Decimal(10, 2)
+  listedPrice     Decimal @db.Decimal(10, 2)
+  sku             String? @unique
+  imageUrl        String? @db.VarChar(500)
+  isDiscount      Boolean @default(false)
+  discountPercent Int     @default(0)
+  isOutOfStock    Boolean @default(false)
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+}
+
+model InventoryTransaction {
+  id              Int      @id @default(autoincrement())
+  productId       String   @db.VarChar(255)
+  branchId        Int // Thêm chi nhánh cho giao dịch hàng tồn kho
+  quantity        Int // positive for inbound, negative for outbound
+  unitPrice       Decimal  @db.Decimal(10, 2)
+  totalPrice      Decimal  @db.Decimal(10, 2)
+  transactionDate DateTime @default(now())
+  notes           String?  @db.Text
+  employeeId      Int
+
+  product  Product @relation(fields: [productId], references: [id])
+  branch   Branch  @relation(fields: [branchId], references: [id])
+  employee User    @relation(fields: [employeeId], references: [id])
+
+  @@index([productId])
+  @@index([branchId])
   @@index([employeeId])
 }
 
 model Notification {
-  id        Int       @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   userId    Int
   title     String
-  message   String    @db.Text
-  isRead    Boolean   @default(false)
-  createdAt DateTime  @default(now())
+  message   String   @db.Text
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
 
-  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
 }
 
 model ExpenseCategory {
-  id          Int       @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   name        String
-  description String?   @db.Text
-  
-  expenses    Expense[]
+  description String? @db.Text
+
+  expenses Expense[]
 }
 
 model Expense {
-  id               Int             @id @default(autoincrement())
-  title            String
-  amount           Decimal         @db.Decimal(10, 2)
-  expenseDate      DateTime
-  categoryId       Int
-  notes            String?         @db.Text
-  receiptImageUrl  String?         @db.VarChar(500)
-  createdBy        Int
-  createdAt        DateTime        @default(now())
+  id              Int      @id @default(autoincrement())
+  title           String
+  amount          Decimal  @db.Decimal(10, 2)
+  expenseDate     DateTime
+  categoryId      Int
+  branchId        Int // Thêm chi nhánh cho chi phí
+  notes           String?  @db.Text
+  receiptImageUrl String?  @db.VarChar(500)
+  createdBy       Int
+  createdAt       DateTime @default(now())
 
-  category         ExpenseCategory @relation(fields: [categoryId], references: [id])
-  creator          User            @relation("ExpenseCreator", fields: [createdBy], references: [id])
+  category ExpenseCategory @relation(fields: [categoryId], references: [id])
+  branch   Branch          @relation(fields: [branchId], references: [id])
+  creator  User            @relation("ExpenseCreator", fields: [createdBy], references: [id])
 
   @@index([categoryId])
+  @@index([branchId])
   @@index([createdBy])
 }
 
 model Cart {
-  id        String      @id @default(cuid())
-  userId    Int         @unique
-  user      User        @relation(fields: [userId], references: [id])
+  id        String     @id @default(cuid())
+  userId    Int        @unique
+  user      User       @relation(fields: [userId], references: [id])
   items     CartItem[]
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
 
   @@index([userId])
 }

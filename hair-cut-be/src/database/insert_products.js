@@ -1,13 +1,18 @@
 import { PrismaClient } from "./generated/client.js";
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+import { dirname } from 'path';
 
-const prisma = new PrismaClient();
-
-// Get directory path for ES modules
+// Load environment variables from .env file
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const rootDir = path.resolve(__dirname, '../../');
+dotenv.config({ path: path.join(rootDir, '.env') });
+
+// Initialize PrismaClient
+const prisma = new PrismaClient();
 
 // Path to the JSON file
 const productsFilePath = path.join(__dirname, '../../products-dataset/product_details.json');

@@ -15,6 +15,7 @@ const bookingSchema = z.object({
 	notes: z.string().optional(),
 	employeeId: z.number().optional(),
 	status: z.string().optional(),
+	branchId: z.number().int().positive(), // Add required branchId field
 });
 
 const updateBookingSchema = bookingSchema.partial();
@@ -23,8 +24,12 @@ const createBooking = [
 	processRequestBody(bookingSchema),
 	async (req, res) => {
 		try {
-			const { phoneNumber, appointmentDate, serviceIds, notes } = req.body;
-			console.log('Creating booking with data:', { phoneNumber, appointmentDate, serviceIds, notes });
+			const { phoneNumber, appointmentDate, serviceIds, notes, branchId, employeeId } = req.body;
+			console.log('Creating booking with data:', { phoneNumber, appointmentDate, serviceIds, notes, branchId, employeeId });
+
+			if (!branchId) {
+				return res.status(400).json({ message: "branchId is required" });
+			}
 
 			const user = await authService.getUserByPhoneOrCreate(phoneNumber);
 			if (!user) {
@@ -57,14 +62,21 @@ const createBooking = [
 			}, 0);
 			console.log('Calculated total price:', totalPrice);
 
+			// Calculate estimated duration (sum of all service times)
+			const estimatedDuration = allServices.reduce((acc, service) => {
+				return acc + service.estimatedTime;
+			}, 0);
+
 			const booking = await db.booking.create({
 				data: {
 					customerId: user.id,
 					appointmentDate: new Date(appointmentDate),
-					employeeId: req.body.employeeId,
+					employeeId: employeeId,
+					branchId: branchId, // Add branchId to booking creation
 					notes,
 					status: "pending",
 					totalPrice,
+					estimatedDuration, // Add estimated duration based on services
 					createdAt: new Date(),
 					updatedAt: new Date(),
 				},

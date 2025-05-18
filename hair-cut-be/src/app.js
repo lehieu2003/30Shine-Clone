@@ -1,6 +1,5 @@
 import express from "express";
 import apiRoute from "./routes/index.js";
-import paymentRoutes from './routes/payment.routes.js';
 
 const app = express();
 

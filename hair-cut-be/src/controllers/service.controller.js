@@ -8,6 +8,14 @@ const serviceSchema = z.object({
 	price: z.number().positive(),
 	bannerImageUrl: z.string().optional(),
 	description: z.string().optional(),
+	categoryId: z.number().positive(), // Make sure it's required and positive
+	isActive: z.boolean().optional(),
+	steps: z.array(z.object({
+		stepOrder: z.number().int().positive(),
+		stepTitle: z.string(),
+		stepDescription: z.string().optional(),
+		stepImageUrl: z.string().optional(),
+	})).optional(),
 });
 const updateServiceSchema = serviceSchema.partial();
 const querySchema = z.object({
@@ -30,6 +38,8 @@ const createService = [
 			steps,
 			bannerImageUrl,
 			description,
+			categoryId,
+			isActive,
 		} = req.body;
 		try {
 			const data = {
@@ -39,12 +49,28 @@ const createService = [
 				createdAt: new Date(),
 				bannerImageUrl,
 				description,
+				categoryId,
+				isActive: isActive ?? true,
 			};
-			if (steps) {
-				data.steps = { create: steps };
+			
+			// Handle steps separately from other data
+			if (steps && steps.length > 0) {
+				data.steps = { 
+					create: steps.map(step => ({
+						stepOrder: step.stepOrder,
+						stepTitle: step.stepTitle,
+						stepDescription: step.stepDescription,
+						stepImageUrl: step.stepImageUrl,
+					}))
+				};
 			}
+			
 			const created = await db.service.create({
 				data: data,
+				include: {
+					steps: true,
+					category: true,
+				},
 			});
 			return res.status(201).json(created);
 		} catch (err) {
@@ -70,7 +96,10 @@ const getServices = [
 				orderBy: { [sortBy]: sortDirection },
 				skip: (page - 1) * size,
 				take: size,
-				include: { steps: true },
+				include: { 
+					steps: true,
+					category: true, // Include category information
+				},
 			}),
 			db.service.count({ where }),
 		]);
@@ -83,7 +112,10 @@ const getServiceById = async (req, res) => {
 	const id = Number(req.params.id);
 	const service = await db.service.findUnique({
 		where: { id },
-		include: { steps: true },
+		include: { 
+			steps: true,
+			category: true, // Include category information
+		},
 	});
 	if (!service) return res.status(404).json({ message: "Not found" });
 	return res.json(service);
