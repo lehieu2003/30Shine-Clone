@@ -7,17 +7,8 @@ const router = express.Router()
 // Create MoMo payment request
 router.post('/momo/create', authenticateMiddleware, paymentController.createMomoPayment)
 
-// Handle MoMo return URL
-router.get('/momo/return', paymentController.handleMomoReturn)
-
-// Handle MoMo notify URL
-router.post('/momo/notify', paymentController.handleMomoNotify)
-
-// Handle MoMo IPN URL
-router.post('/momo/ipn', paymentController.handleMomoNotify)
-
-// Check payment status
-router.post('/momo/check-status', authenticateMiddleware, paymentController.checkPaymentStatus)
+// momo/status 
+router.get('/momo/status', authenticateMiddleware, paymentController.momoPaymentStatus)
 
 // COD payment
 router.post('/cod', authenticateMiddleware, paymentController.createCodPayment)

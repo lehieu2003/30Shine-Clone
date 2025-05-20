@@ -1,15 +1,31 @@
 import crypto from 'crypto'
 import axios from 'axios'
+import dotenv from 'dotenv'
+
+// Ensure environment variables are loaded
+dotenv.config()
+
+// Debug current environment variables
+console.log('Environment variables for MoMo:')
+console.log('MOMO_PARTNER_CODE:', process.env.MOMO_PARTNER_CODE ? 'defined' : 'undefined')
+console.log('MOMO_ACCESS_KEY:', process.env.MOMO_ACCESS_KEY ? 'defined' : 'undefined')
+console.log('MOMO_SECRET_KEY:', process.env.MOMO_SECRET_KEY ? 'defined' : 'undefined')
 
 const MOMO_CONFIG = {
-  partnerCode: process.env.MOMO_PARTNER_CODE,
-  accessKey: process.env.MOMO_ACCESS_KEY,
-  secretKey: process.env.MOMO_SECRET_KEY,
+  partnerCode: process.env.MOMO_PARTNER_CODE || '',
+  accessKey: process.env.MOMO_ACCESS_KEY || '',
+  secretKey: process.env.MOMO_SECRET_KEY || '',
   endpoint: process.env.MOMO_ENDPOINT || 'https://test-payment.momo.vn/v2/gateway/api',
-  returnUrl: process.env.MOMO_RETURN_URL || 'http://localhost:3111/shopping/cart/payment/momo/return',
+  returnUrl: process.env.MOMO_RETURN_URL || 'http://localhost:3111/shopping',
   notifyUrl: process.env.MOMO_NOTIFY_URL || 'http://localhost:3111/api/payment/momo/notify',
-  ipnUrl: process.env.MOMO_IPN_URL || 'https://3d58-1-53-55-242.ngrok-free.app/api/payment/momo/ipn',
+  ipnUrl: process.env.MOMO_IPN_URL || 'https://8d3b-183-81-125-220.ngrok-free.app/api/payment/momo/ipn',
 }
+
+// Log the actual configuration values (partially redacted for security)
+console.log('MOMO_CONFIG:')
+console.log('partnerCode:', MOMO_CONFIG.partnerCode ? MOMO_CONFIG.partnerCode.substring(0, 4) + '...' : 'empty')
+console.log('accessKey:', MOMO_CONFIG.accessKey ? MOMO_CONFIG.accessKey.substring(0, 4) + '...' : 'empty')
+console.log('secretKey:', MOMO_CONFIG.secretKey ? 'defined (hidden)' : 'empty')
 
 // Validate required environment variables
 const validateConfig = () => {
