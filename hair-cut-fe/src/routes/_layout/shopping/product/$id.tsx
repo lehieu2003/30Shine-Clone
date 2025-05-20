@@ -39,7 +39,6 @@ function ProductDetailComponent() {
       try {
         setIsLoading(true)
         setError(null)
-        console.log('Fetching product with ID:', id) // Add debugging
         const data = await productApi.getProductById(id)
         console.log('Received product data:', data) // Add debugging
         setProduct(data)

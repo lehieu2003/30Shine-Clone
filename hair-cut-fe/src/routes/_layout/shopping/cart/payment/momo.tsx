@@ -5,7 +5,6 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
-
 import { useCart } from '@/contexts/CartContext'
 import { formatPrice } from '@/lib/formatters'
 import apiClient from '@/lib/api'
@@ -73,63 +72,97 @@ function RouteComponent() {
     }
   }
 
-  // const checkPaymentStatus = async () => {
-  //   if (!orderId || !requestId) return
-
-  //   setCheckingStatus(true)
-  //   try {
-  //     const response = await apiClient.post('/api/payment/momo/check-status', {
-  //       orderId,
-  //       requestId,
-  //     })
-
-  //     console.log('Payment status:', response.data)
-
-  //     if (response.data.success && response.data.data) {
-  //       const resultCode = response.data.data.resultCode
-
-  //       if (resultCode === 0) {
-  //         setPaymentStatus('success')
-  //         toast.success('Thanh toán thành công!', {
-  //           description: 'Đơn hàng của bạn đã được thanh toán',
-  //         })
-  //         // Clear cart after successful payment
-  //         clearCart()
-  //         // Redirect to order confirmation after a short delay
-  //         setTimeout(() => {
-  //           navigate({ to: '/' })
-  //         }, 3000)
-  //       } else if (resultCode === 1001) {
-  //         setPaymentStatus('pending')
-  //         toast.info('Đang chờ thanh toán', {
-  //           description: 'Vui lòng hoàn tất thanh toán trên ứng dụng MoMo',
-  //         })
-  //       } else {
-  //         setPaymentStatus('failed')
-  //         toast.error('Thanh toán thất bại', {
-  //           description: response.data.data.message || 'Vui lòng thử lại sau',
-  //         })
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.error('Error checking payment status:', error)
-  //     toast.error('Không thể kiểm tra trạng thái thanh toán')
-  //   } finally {
-  //     setCheckingStatus(false)
-  //   }
-  // }
-
   useEffect(() => {
+    // Check URL parameters first for MoMo payment response
+    const urlParams = new URLSearchParams(window.location.search)
+    const resultCode = urlParams.get('resultCode')
+    const responseOrderId = urlParams.get('orderId')
+    console.log('MoMo response:', { resultCode, responseOrderId })
+
+    // If we have a resultCode directly from the URL, process it immediately
+    if (resultCode === '0' && responseOrderId) {
+      setCheckingStatus(true)
+      setOrderId(responseOrderId)
+
+      console.log('Processing successful MoMo redirect')
+      setPaymentStatus('success')
+
+      // Clear the cart after successful payment
+      clearCart()
+        .then(() => {
+          toast.success('Đặt hàng và thanh toán qua momo thành công!')
+
+          // Remove the saved payment data
+          localStorage.removeItem('momoPayment')
+
+          // Redirect to orders page after a delay
+          setTimeout(() => {
+            navigate({ to: '/shopping/cart/cart' })
+          }, 2000)
+        })
+        .catch((error) => {
+          console.error('Error clearing cart:', error)
+        })
+        .finally(() => {
+          setCheckingStatus(false)
+        })
+
+      return // Exit early as we've handled the redirect
+    }
+
+    // Check saved payment data in localStorage if no direct response
     const savedPayment = localStorage.getItem('momoPayment')
     if (savedPayment) {
       try {
         const paymentData = JSON.parse(savedPayment)
+        console.log('Found saved payment data:', paymentData)
+
         // Only use saved data if it's recent (within last hour)
         if (Date.now() - paymentData.timestamp < 60 * 60 * 1000) {
           setOrderId(paymentData.orderId)
           setRequestId(paymentData.requestId)
+
+          // If we have resultCode from URL params but didn't handle it above
+          if (resultCode) {
+            const checkPaymentStatus = async () => {
+              setCheckingStatus(true)
+              try {
+                console.log(
+                  'Checking payment status for order:',
+                  paymentData.orderId,
+                )
+                const response = await apiClient.get(
+                  '/api/payment/momo/status',
+                  {
+                    params: { orderId: paymentData.orderId },
+                  },
+                )
+                console.log('Payment status response:', response.data)
+
+                if (
+                  response.data.success &&
+                  response.data.data?.status === 'success'
+                ) {
+                  handleSuccessfulPayment()
+                } else if (resultCode === '0') {
+                  handleSuccessfulPayment()
+                } else {
+                  console.log('Payment failed. Result code:', resultCode)
+                  setPaymentStatus('failed')
+                }
+              } catch (error) {
+                console.error('Error checking payment status:', error)
+                setPaymentStatus('failed')
+              } finally {
+                setCheckingStatus(false)
+              }
+            }
+
+            checkPaymentStatus()
+          }
         } else {
           // Clear old payment data
+          console.log('Clearing expired payment data')
           localStorage.removeItem('momoPayment')
         }
       } catch (e) {
@@ -138,20 +171,27 @@ function RouteComponent() {
       }
     }
 
-    // let statusCheckInterval: any
+    // Helper function to handle successful payment
+    function handleSuccessfulPayment() {
+      setPaymentStatus('success')
+      // Clear the cart after successful payment
+      clearCart()
+        .then(() => {
+          toast.success('Đặt hàng và thanh toán qua momo thành công!')
 
-    // if (orderId && requestId && !paymentStatus) {
-    //   // Check immediately
-    //   checkPaymentStatus()
+          // Remove the saved payment data
+          localStorage.removeItem('momoPayment')
 
-    //   // Then check every 5 seconds
-    //   statusCheckInterval = setInterval(checkPaymentStatus, 5000)
-    // }
-
-    // return () => {
-    //   if (statusCheckInterval) clearInterval(statusCheckInterval)
-    // }
-  }, [orderId, requestId])
+          // Redirect to orders page after a delay
+          setTimeout(() => {
+            navigate({ to: '/shopping/cart/cart' })
+          }, 2000)
+        })
+        .catch((error) => {
+          console.error('Error clearing cart:', error)
+        })
+    }
+  }, [navigate, clearCart])
 
   // Handle payment status display
   const renderPaymentStatusMessage = () => {
