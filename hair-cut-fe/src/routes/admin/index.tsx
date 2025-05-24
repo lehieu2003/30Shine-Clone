@@ -420,35 +420,33 @@ export default function AdminDashboard() {
         <div className="p-6">
           <ul className="space-y-4">
             {recentActivities && recentActivities.length > 0 ? (
-              recentActivities.map((activity) => (
-                <li key={activity.id} className="flex items-start">
-                  <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-                    <ClipboardList className="h-5 w-5 text-blue-600" />
-                  </div>
-                  <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-900">
-                      {activity.message}
+              recentActivities.map(
+                (activity: {
+                  id: string
+                  message: string
+                  timestamp: string
+                }) => (
+                  <li key={activity.id} className="flex items-start">
+                    <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                      <ClipboardList className="h-5 w-5 text-blue-600" />
                     </div>
-                    <div className="text-sm text-gray-500">
-                      {formatDateTime(activity.timestamp)}
+                    <div className="ml-4">
+                      <div className="text-sm font-medium text-gray-900">
+                        {activity.message}
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        {formatDateTime(activity.timestamp)}
+                      </div>
                     </div>
-                  </div>
-                </li>
-              ))
+                  </li>
+                ),
+              )
             ) : (
               <li className="text-center text-gray-500">
                 Không có hoạt động gần đây
               </li>
             )}
           </ul>
-        </div>
-        <div className="px-6 py-4 border-t">
-          <Link
-            to="/admin/activities"
-            className="text-blue-600 hover:text-blue-900 text-sm font-medium"
-          >
-            Xem tất cả hoạt động
-          </Link>
         </div>
       </div>
     </>

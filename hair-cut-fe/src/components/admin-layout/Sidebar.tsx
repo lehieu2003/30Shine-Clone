@@ -1,5 +1,6 @@
 import {
   BarChart3,
+  Building,
   Calendar,
   Home,
   LogOut,
@@ -45,7 +46,7 @@ const SIDEBAR_ALL_ITEMS = [
     role: ['admin'],
   },
   {
-    href: '/admin/reports',
+    href: '/admin/report',
     icon: <BarChart3 size={20} />,
     label: 'Báo cáo',
     role: ['admin'],
@@ -56,9 +57,15 @@ const SIDEBAR_ALL_ITEMS = [
     label: 'Quản lý sản phẩm',
     role: ['admin'],
   },
+  {
+    href: '/admin/branches',
+    icon: <Building size={20} />,
+    label: 'Quản lý chi nhánh',
+    role: ['admin'],
+  },
 ]
 export default function Sidebar({ open, toggle }: Props) {
-  const { isAuth, user, refreshUser } = useAuth()
+  const { user, refreshUser } = useAuth()
   const role = user?.role
   const sidebarItems = React.useMemo(() => {
     return SIDEBAR_ALL_ITEMS.filter((item) => {

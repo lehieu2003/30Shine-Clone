@@ -9,8 +9,15 @@ import apiClient from '@/lib/api'
 // Branch API calls
 const branchApi = {
   // Get all branches with pagination and filtering
-  getBranches: async (): Promise<BranchResponse> => {
-    const response = await apiClient.get('/api/branches')
+  getBranches: async (params?: {
+    keyword?: string
+    page?: number
+    size?: number
+    sortBy?: string
+    sortDirection?: 'asc' | 'desc'
+    isActive?: boolean
+  }): Promise<BranchResponse> => {
+    const response = await apiClient.get('/api/branches', { params })
     return response.data
   },
 
