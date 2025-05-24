@@ -1,5 +1,6 @@
 import {
   BarChart3,
+  Box,
   Building,
   Calendar,
   Home,
@@ -46,14 +47,8 @@ const SIDEBAR_ALL_ITEMS = [
     role: ['admin'],
   },
   {
-    href: '/admin/report',
-    icon: <BarChart3 size={20} />,
-    label: 'Báo cáo',
-    role: ['admin'],
-  },
-  {
     href: '/admin/products/',
-    icon: <BarChart3 size={20} />,
+    icon: <Box size={20} />,
     label: 'Quản lý sản phẩm',
     role: ['admin'],
   },
@@ -61,6 +56,12 @@ const SIDEBAR_ALL_ITEMS = [
     href: '/admin/branches',
     icon: <Building size={20} />,
     label: 'Quản lý chi nhánh',
+    role: ['admin'],
+  },
+  {
+    href: '/admin/report',
+    icon: <BarChart3 size={20} />,
+    label: 'Báo cáo',
     role: ['admin'],
   },
 ]

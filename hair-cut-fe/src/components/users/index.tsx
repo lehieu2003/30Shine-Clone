@@ -121,6 +121,8 @@ export default function UsersPage({ type }: UsersPageProps) {
     },
   })
 
+  console.log('Nhân viên', data)
+
   const getRoleBadge = (role: Role) => {
     switch (role) {
       case 'admin':

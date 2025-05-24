@@ -102,24 +102,20 @@ function SortableTableRow({
   const handleDelete = useCallback(() => onDelete(step), [step, onDelete])
 
   return (
-    <TableRow
+    <tr
       ref={setNodeRef}
       style={style}
-      className={isDragging ? 'bg-gray-50' : ''}
+      className={`${isDragging ? 'bg-gray-50' : ''}`}
     >
-      <TableCell className="w-10 pr-0">
+      <td className="w-10 pr-0 border-b p-4">
         <div className="cursor-grab" {...attributes} {...listeners}>
           <GripVertical size={16} className="text-gray-400" />
         </div>
-      </TableCell>
-      <TableCell className="text-center font-medium">
-        {step.stepOrder}
-      </TableCell>
-      <TableCell>{step.stepTitle}</TableCell>
-      <TableCell className="max-w-xs truncate">
-        {step.stepDescription}
-      </TableCell>
-      <TableCell>
+      </td>
+      <td className="text-center font-medium border-b p-4">{step.stepOrder}</td>
+      <td className="border-b p-4">{step.stepTitle}</td>
+      <td className="max-w-xs truncate border-b p-4">{step.stepDescription}</td>
+      <td className="border-b p-4">
         {step.stepImageUrl && (
           <div className="h-10 w-10 rounded bg-gray-100 flex items-center justify-center overflow-hidden">
             <img
@@ -129,8 +125,8 @@ function SortableTableRow({
             />
           </div>
         )}
-      </TableCell>
-      <TableCell className="text-right">
+      </td>
+      <td className="text-right border-b p-4">
         <div className="flex justify-end gap-2">
           <Button
             variant="ghost"
@@ -149,8 +145,8 @@ function SortableTableRow({
             <Trash2 size={16} className="text-red-600" />
           </Button>
         </div>
-      </TableCell>
-    </TableRow>
+      </td>
+    </tr>
   )
 }
 
@@ -467,18 +463,18 @@ export function ServiceStepsTab({ service, serviceId }: ServiceStepsTabProps) {
             collisionDetection={closestCenter}
             onDragEnd={handleDragEnd}
           >
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-10"></TableHead>
-                  <TableHead className="w-16 text-center">STT</TableHead>
-                  <TableHead>Tiêu đề</TableHead>
-                  <TableHead>Mô tả</TableHead>
-                  <TableHead>Hình ảnh</TableHead>
-                  <TableHead className="w-24 text-right">Thao tác</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
+            <table className="w-full">
+              <thead>
+                <tr>
+                  <th className="w-10 text-left p-4 font-medium"></th>
+                  <th className="w-16 text-center p-4 font-medium">STT</th>
+                  <th className="text-left p-4 font-medium">Tiêu đề</th>
+                  <th className="text-left p-4 font-medium">Mô tả</th>
+                  <th className="text-left p-4 font-medium">Hình ảnh</th>
+                  <th className="w-24 text-right p-4 font-medium">Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
                 <SortableContext
                   items={steps.map((step) => step.stepOrder.toString())}
                   strategy={verticalListSortingStrategy}
@@ -492,8 +488,8 @@ export function ServiceStepsTab({ service, serviceId }: ServiceStepsTabProps) {
                     />
                   ))}
                 </SortableContext>
-              </TableBody>
-            </Table>
+              </tbody>
+            </table>
           </DndContext>
         </div>
       )}
