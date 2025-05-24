@@ -1,6 +1,9 @@
 import { Link, createFileRoute, useLoaderData } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import serviceService from '@/services/service.service'
+import { Button } from '@/components/ui/button'
+import { useAuth } from '@/contexts/AuthContext'
 
 export const Route = createFileRoute('/_layout/services/hair-cut/$id')({
   loader: async ({ params }) => {
@@ -12,9 +15,28 @@ export const Route = createFileRoute('/_layout/services/hair-cut/$id')({
 })
 
 function RouteComponent() {
+  const { user } = useAuth()
+  const [phoneNumber, setPhoneNumber] = useState<string | null>(null)
   const service = useLoaderData({
     from: '/_layout/services/hair-cut/$id',
   })
+
+  useEffect(() => {
+    if (user) {
+      setPhoneNumber(user.phone)
+    }
+  }, [user])
+
+  const handleBooking = () => {
+    if (user?.phone) {
+      // Redirect to booking page with phone number as a query parameter
+      window.location.href = `/booking?phoneNumber=${phoneNumber}`
+    } else {
+      // Handle case when phone number is not available
+      alert('Vui lòng đăng nhập để đặt lịch hẹn.')
+    }
+  }
+
   return (
     <main className="container mx-auto px-4 py-8">
       <Link
@@ -73,11 +95,12 @@ function RouteComponent() {
       </div>
 
       <div className="w-full flex justify-center">
-        <button className="bg-blue-100 hover:bg-blue-200 mx-auto text-xl py-5 px-15 cursor-pointer text-blue-900 font-bold rounded-md whitespace-nowrap">
-          <Link to="/booking" search={{ serviceIds: service.id }}>
-            ĐẶT LỊCH NGAY
-          </Link>
-        </button>
+        <Button
+          className="bg-blue-100 hover:bg-blue-200 mx-auto text-xl py-5 px-15 cursor-pointer text-blue-900 font-bold rounded-md whitespace-nowrap"
+          onClick={handleBooking}
+        >
+          ĐẶT LỊCH NGAY
+        </Button>
       </div>
     </main>
   )

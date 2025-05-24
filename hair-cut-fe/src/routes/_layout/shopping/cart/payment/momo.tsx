@@ -72,6 +72,24 @@ function RouteComponent() {
     }
   }
 
+  // Notify the backend about successful payment
+  const notifyPaymentSuccess = async (paymentOrderId: string) => {
+    try {
+      const response = await apiClient.post('/api/payment/momo/status', {
+        orderId: paymentOrderId,
+        status: 'success',
+        requestId: paymentOrderId,
+        message: 'Payment successful via MoMo',
+      })
+
+      console.log('Payment notification response:', response.data)
+      return response.data.success
+    } catch (error) {
+      console.error('Error notifying payment success:', error)
+      return false
+    }
+  }
+
   useEffect(() => {
     // Check URL parameters first for MoMo payment response
     const urlParams = new URLSearchParams(window.location.search)
@@ -87,8 +105,16 @@ function RouteComponent() {
       console.log('Processing successful MoMo redirect')
       setPaymentStatus('success')
 
-      // Clear the cart after successful payment
-      clearCart()
+      // Notify backend about successful payment
+      notifyPaymentSuccess(responseOrderId)
+        .then((success) => {
+          if (success) {
+            // Clear the cart after successful payment
+            return clearCart()
+          } else {
+            throw new Error('Failed to notify backend about payment')
+          }
+        })
         .then(() => {
           toast.success('Đặt hàng và thanh toán qua momo thành công!')
 
@@ -101,7 +127,8 @@ function RouteComponent() {
           }, 2000)
         })
         .catch((error) => {
-          console.error('Error clearing cart:', error)
+          console.error('Error processing payment:', error)
+          toast.error('Có lỗi xảy ra khi xử lý thanh toán')
         })
         .finally(() => {
           setCheckingStatus(false)
@@ -131,24 +158,27 @@ function RouteComponent() {
                   'Checking payment status for order:',
                   paymentData.orderId,
                 )
-                const response = await apiClient.get(
-                  '/api/payment/momo/status',
-                  {
-                    params: { orderId: paymentData.orderId },
-                  },
-                )
-                console.log('Payment status response:', response.data)
 
-                if (
-                  response.data.success &&
-                  response.data.data?.status === 'success'
-                ) {
-                  handleSuccessfulPayment()
-                } else if (resultCode === '0') {
+                if (resultCode === '0') {
+                  // If resultCode is success, notify backend about successful payment
+                  await notifyPaymentSuccess(paymentData.orderId)
                   handleSuccessfulPayment()
                 } else {
-                  console.log('Payment failed. Result code:', resultCode)
-                  setPaymentStatus('failed')
+                  // Otherwise, check current payment status
+                  const response = await apiClient.get('/payment/momo/status', {
+                    params: { orderId: paymentData.orderId },
+                  })
+                  console.log('Payment status response:', response.data)
+
+                  if (
+                    response.data.success &&
+                    response.data.data?.status === 'success'
+                  ) {
+                    handleSuccessfulPayment()
+                  } else {
+                    console.log('Payment failed. Result code:', resultCode)
+                    setPaymentStatus('failed')
+                  }
                 }
               } catch (error) {
                 console.error('Error checking payment status:', error)
