@@ -18,7 +18,7 @@ const MOMO_CONFIG = {
   endpoint: process.env.MOMO_ENDPOINT || 'https://test-payment.momo.vn/v2/gateway/api',
   returnUrl: process.env.MOMO_RETURN_URL || 'http://localhost:3111/shopping',
   notifyUrl: process.env.MOMO_NOTIFY_URL || 'http://localhost:3111/api/payment/momo/notify',
-  ipnUrl: process.env.MOMO_IPN_URL || 'https://8d3b-183-81-125-220.ngrok-free.app/api/payment/momo/ipn',
+  ipnUrl: process.env.MOMO_IPN_URL || 'https://00a0-183-81-125-220.ngrok-free.app/api/payment/momo/ipn',
 }
 
 // Log the actual configuration values (partially redacted for security)

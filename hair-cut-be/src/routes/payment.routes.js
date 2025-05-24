@@ -8,8 +8,8 @@ const router = express.Router()
 router.post('/momo/create', authenticateMiddleware, paymentController.createMomoPayment)
 
 // momo/status 
-router.get('/momo/status', authenticateMiddleware, paymentController.momoPaymentStatus)
-
+router.post('/momo/status', authenticateMiddleware, paymentController.momoPaymentStatus)
+router.get('/momo/status', paymentController.momoPaymentStatus)
 // COD payment
 router.post('/cod', authenticateMiddleware, paymentController.createCodPayment)
 export default router

@@ -20,7 +20,7 @@ const updateBranchSchema = branchSchema.partial();
 const querySchema = z.object({
   keyword: z.string().optional(),
   page: z.coerce.number().min(1).optional().default(1),
-  size: z.coerce.number().min(1).max(100).optional().default(10),
+  size: z.coerce.number().min(1).max(100).optional(),
   sortBy: z.enum(["id", "name", "createdAt", "updatedAt"]).default("id"),
   sortDirection: z.enum(["asc", "desc"]).default("asc"),
   isActive: z.coerce.boolean().optional(),
@@ -58,7 +58,6 @@ const getBranches = [
       // Extract query parameters with defaults to avoid undefined values
       const keyword = req.query.keyword || '';
       const page = parseInt(req.query.page || 1);
-      const size = parseInt(req.query.size || 10);
       const sortBy = req.query.sortBy || 'id';
       const sortDirection = req.query.sortDirection || 'asc';
       const isActive = req.query.isActive !== undefined ? Boolean(req.query.isActive) : undefined;
@@ -81,6 +80,9 @@ const getBranches = [
       
       // Get total count
       const total = await db.branch.count({ where });
+      
+      // Use the size from query or default to total count
+      const size = req.query.size ? parseInt(req.query.size) : total;
       
       // Get paginated data with validated parameters
       const branches = await db.branch.findMany({

@@ -23,13 +23,13 @@ const createMomoPayment = async (req, res) => {
       extraData
     });
 
-    // Create payment record in database
+    // Store the temporary payment info in the database with 'pending' status
     const payment = await prisma.payment.create({
       data: {
         bookingId: bookingId || null,
         amount: amount,
         paymentMethod: 'momo',
-        paymentStatus: 'completed',
+        paymentStatus: 'pending', // Set to pending initially
         transactionId: orderId,
         provider: 'momo',
         notes: orderInfo || 'MoMo payment',
@@ -58,25 +58,86 @@ const createMomoPayment = async (req, res) => {
 // Handle MoMo payment status callback
 const momoPaymentStatus = async (req, res) => {
   try {
-    const { orderId, status, requestId } = req.body;
+    // Check if it's a GET or POST request
+    const isGetRequest = req.method === 'GET';
+    
+    // Extract data from either query params (GET) or request body (POST)
+    const data = isGetRequest ? req.query : req.body;
+    const { orderId, status, requestId, message } = data;
 
-    console.log('MoMo payment status callback:', req.body);
+    console.log(`MoMo payment status ${isGetRequest ? 'check' : 'callback'}:`, data);
 
-    // Validate required fields
-    if (!orderId || !status) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Missing required fields: orderId or status' 
+    // For GET requests, we only need orderId
+    if (isGetRequest) {
+      if (!orderId) {
+        return res.status(400).json({
+          success: false,
+          message: 'Missing required fields: orderId'
+        });
+      }    
+    } else {
+      // For POST requests, we need both orderId and status
+      if (!orderId || !status) {
+        return res.status(400).json({ 
+          success: false, 
+          message: 'Missing required fields: orderId or status' 
+        });
+      }
+    }
+    
+    // Check if payment exists
+    const existingPayment = await prisma.payment.findUnique({
+      where: { transactionId: orderId }
+    });
+
+    if (!existingPayment) {
+      return res.status(404).json({
+        success: false,
+        message: 'Payment record not found'
       });
     }
 
+    // If it's a GET request, just return the current payment status
+    if (isGetRequest) {
+      // Ensure the response includes all required fields
+      return res.status(200).json({
+        success: true,
+        data: {
+          orderId,
+          status: existingPayment.paymentStatus === 'completed' ? 'success' : existingPayment.paymentStatus,
+          amount: existingPayment.amount,
+          updatedAt: existingPayment.updatedAt.toISOString()
+        }
+      });
+    }
+
+    // For POST requests, update payment status based on MoMo response
+    const paymentStatus = status === 'success' ? 'completed' : 'failed';
+    
     // Update payment record in database
     const payment = await prisma.payment.update({
       where: { transactionId: orderId },
       data: {
-        paymentStatus: status,
-        responseData: JSON.stringify(req.body),
+        paymentStatus: paymentStatus,
+        responseData: JSON.stringify(data, (key, value) => 
+          typeof value === 'bigint' ? value.toString() : value
+        ),
         requestId: requestId || null,
+        notes: message || existingPayment.notes,
+      },
+      select: {
+        id: true,
+        bookingId: true,
+        amount: true,
+        paymentMethod: true,
+        paymentStatus: true,
+        provider: true,
+        transactionId: true,
+        notes: true,
+        extraData: true,
+        responseData: true,
+        requestId: true,
+        updatedAt: true
       }
     });
 
