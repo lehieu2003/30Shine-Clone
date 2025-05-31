@@ -6,8 +6,10 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock,
+  Download,
   Edit,
   Eye,
+  FileText,
   MoreHorizontal,
   RefreshCcw,
   Search,
@@ -59,6 +61,10 @@ import { formatDate, formatDateTime, formatPrice } from '@/lib/formatters'
 import { fetchUsers } from '@/lib/api/users'
 import serviceService from '@/services/service.service'
 import { useAuth } from '@/contexts/AuthContext'
+import {
+  exportBookingsToPDF,
+  exportSingleBookingToPDF,
+} from '@/utils/pdfExport.ts'
 
 type Status =
   | 'pending'
@@ -179,6 +185,7 @@ const BookingRow = memo(
     onChangeStatus,
     isBarber,
     onDelete,
+    onExportPDF,
   }: {
     booking: Booking
     onView: (selectedBooking: Booking) => void
@@ -186,6 +193,7 @@ const BookingRow = memo(
     onChangeStatus: (bookingId: string, status: BookingStatus) => void
     isBarber: boolean
     onDelete: (bookingId: number) => void
+    onExportPDF: (bookingData: Booking) => void
   }) => {
     return (
       <tr key={booking.id} className="hover:bg-gray-50">
@@ -307,6 +315,11 @@ const BookingRow = memo(
                   Hủy lịch hẹn
                 </DropdownMenuItem>
               )}
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={() => onExportPDF(booking)}>
+                <FileText className="h-4 w-4 mr-2" />
+                Xuất PDF
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </td>
@@ -422,12 +435,12 @@ export default function AdminBookings() {
           : undefined,
       })
     },
-    select: (data) => {
+    select: (response) => {
       return {
-        bookings: data.data,
-        total: data.meta.total || 1,
-        page: data.meta.page || 1,
-        size: data.meta.size || 10,
+        bookings: response.data,
+        total: response.meta.total || 1,
+        page: response.meta.page || 1,
+        size: response.meta.size || 10,
       }
     },
     staleTime: 30000,
@@ -527,12 +540,49 @@ export default function AdminBookings() {
       refetch()
     },
   })
-
   const handleUpdateBooking = useCallback(
     (formData: any) => {
       updateBookingMutation.mutate(formData)
     },
     [updateBookingMutation],
+  )
+
+  const handleExportPDF = useCallback(async () => {
+    if (data.bookings.length === 0) {
+      toast.error('Không có dữ liệu để xuất')
+      return
+    }
+
+    try {
+      await exportBookingsToPDF(
+        data.bookings,
+        {
+          keyword: searchParams.keyword,
+          status: searchParams.status,
+          employeeId: searchParams.employeeId,
+          dateFrom: searchParams.dateFrom,
+          dateTo: searchParams.dateTo,
+        },
+        employees || [],
+      )
+      toast.success('Xuất PDF thành công')
+    } catch (error) {
+      console.error('Export PDF error:', error)
+      toast.error('Xuất PDF thất bại')
+    }
+  }, [data.bookings, searchParams, employees])
+
+  const handleExportSingleBooking = useCallback(
+    async (booking: Booking) => {
+      try {
+        await exportSingleBookingToPDF(booking, bookingDetail)
+        toast.success('Xuất PDF thành công')
+      } catch (error) {
+        console.error('Export single booking PDF error:', error)
+        toast.error('Xuất PDF thất bại')
+      }
+    },
+    [bookingDetail],
   )
 
   return (
@@ -546,7 +596,7 @@ export default function AdminBookings() {
             <p className="text-gray-600">
               Quản lý tất cả các lịch hẹn của khách hàng
             </p>
-          </div>
+          </div>{' '}
           <div className="flex gap-2">
             <Button
               className="bg-green-600 hover:bg-green-700 text-white flex items-center gap-2"
@@ -555,6 +605,14 @@ export default function AdminBookings() {
             >
               <CalendarClock size={16} />
               Tạo lịch hẹn
+            </Button>
+            <Button
+              className="bg-orange-600 hover:bg-orange-700 text-white flex items-center gap-2"
+              onClick={handleExportPDF}
+              disabled={data.bookings.length === 0}
+            >
+              <Download size={16} />
+              Xuất PDF
             </Button>
             <Button
               className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2"
@@ -747,6 +805,7 @@ export default function AdminBookings() {
                           status: status,
                         })
                       }
+                      onExportPDF={handleExportSingleBooking}
                       isBarber={isBarber}
                     />
                   ))
