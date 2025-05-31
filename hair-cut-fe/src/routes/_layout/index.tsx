@@ -7,6 +7,7 @@ import {
   Mail,
   MapPin,
   Phone,
+  Scissors,
   Star,
   Twitter,
 } from 'lucide-react'
@@ -22,6 +23,8 @@ import {
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import VirtualTryOn from '@/components/VirtualTryOn'
 import serviceService from '@/services/service.service'
 import { cn } from '@/lib/utils'
 import { useAuth } from '@/contexts/AuthContext'
@@ -47,6 +50,7 @@ function RouteComponent() {
   })
   const { user } = useAuth()
   const [phoneNumber, setPhoneNumber] = useState('')
+  const [isVirtualTryOnOpen, setIsVirtualTryOnOpen] = useState(false)
 
   React.useEffect(() => {
     if (user) {
@@ -80,7 +84,6 @@ function RouteComponent() {
           <CarouselNext className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md" />
         </Carousel>
       </div>
-
       <div className="container mx-auto px-4 py-8">
         <div className="grid md:grid-cols-2 gap-6">
           {/* Booking Form */}
@@ -89,7 +92,7 @@ function RouteComponent() {
               ĐẶT LỊCH GIỮ CHỖ CHỈ 30 GIÂY
             </h2>
             <p className="mb-4">Cắt xong trả tiền, hủy lịch không sao</p>
-            <div className="flex gap-2">
+            <div className="flex gap-2 mb-4">
               <Input
                 placeholder="Nhập SĐT để đặt lịch"
                 className="bg-white text-gray-800"
@@ -117,6 +120,15 @@ function RouteComponent() {
                 </Link>
               </Button>
             </div>
+            <Button
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold"
+              asChild
+            >
+              <Link to="/test-hair">
+                <Scissors className="w-4 h-4 mr-2" />
+                Thử kiểu tóc online
+              </Link>
+            </Button>
           </div>
 
           {/* Rating Section */}
@@ -144,7 +156,6 @@ function RouteComponent() {
           </div>
         </div>
       </div>
-
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center mb-6">
           <div className="w-1 h-8 bg-blue-500 mr-3"></div>
@@ -193,8 +204,7 @@ function RouteComponent() {
             </div>
           ))}
         </div>
-      </div>
-
+      </div>{' '}
       <div className="fixed bottom-6 right-6 flex flex-col gap-4">
         <Button
           size="icon"

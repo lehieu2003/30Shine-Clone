@@ -16,6 +16,7 @@ import { Route as LayoutImport } from './routes/_layout'
 import { Route as AdminIndexImport } from './routes/admin/index'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
 import { Route as LayoutWeddingImport } from './routes/_layout/wedding'
+import { Route as LayoutTestHairImport } from './routes/_layout/test-hair'
 import { Route as LayoutPartnersImport } from './routes/_layout/partners'
 import { Route as LayoutLocationsImport } from './routes/_layout/locations'
 import { Route as LayoutFranchiseImport } from './routes/_layout/franchise'
@@ -64,6 +65,12 @@ const LayoutIndexRoute = LayoutIndexImport.update({
 const LayoutWeddingRoute = LayoutWeddingImport.update({
   id: '/wedding',
   path: '/wedding',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutTestHairRoute = LayoutTestHairImport.update({
+  id: '/test-hair',
+  path: '/test-hair',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -237,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutPartnersImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/test-hair': {
+      id: '/_layout/test-hair'
+      path: '/test-hair'
+      fullPath: '/test-hair'
+      preLoaderRoute: typeof LayoutTestHairImport
+      parentRoute: typeof LayoutImport
+    }
     '/_layout/wedding': {
       id: '/_layout/wedding'
       path: '/wedding'
@@ -367,6 +381,7 @@ interface LayoutRouteChildren {
   LayoutFranchiseRoute: typeof LayoutFranchiseRoute
   LayoutLocationsRoute: typeof LayoutLocationsRoute
   LayoutPartnersRoute: typeof LayoutPartnersRoute
+  LayoutTestHairRoute: typeof LayoutTestHairRoute
   LayoutWeddingRoute: typeof LayoutWeddingRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
   LayoutShoppingIndexRoute: typeof LayoutShoppingIndexRoute
@@ -383,6 +398,7 @@ const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutFranchiseRoute: LayoutFranchiseRoute,
   LayoutLocationsRoute: LayoutLocationsRoute,
   LayoutPartnersRoute: LayoutPartnersRoute,
+  LayoutTestHairRoute: LayoutTestHairRoute,
   LayoutWeddingRoute: LayoutWeddingRoute,
   LayoutIndexRoute: LayoutIndexRoute,
   LayoutShoppingIndexRoute: LayoutShoppingIndexRoute,
@@ -430,6 +446,7 @@ export interface FileRoutesByFullPath {
   '/franchise': typeof LayoutFranchiseRoute
   '/locations': typeof LayoutLocationsRoute
   '/partners': typeof LayoutPartnersRoute
+  '/test-hair': typeof LayoutTestHairRoute
   '/wedding': typeof LayoutWeddingRoute
   '/': typeof LayoutIndexRoute
   '/admin/': typeof AdminIndexRoute
@@ -455,6 +472,7 @@ export interface FileRoutesByTo {
   '/franchise': typeof LayoutFranchiseRoute
   '/locations': typeof LayoutLocationsRoute
   '/partners': typeof LayoutPartnersRoute
+  '/test-hair': typeof LayoutTestHairRoute
   '/wedding': typeof LayoutWeddingRoute
   '/': typeof LayoutIndexRoute
   '/admin': typeof AdminIndexRoute
@@ -483,6 +501,7 @@ export interface FileRoutesById {
   '/_layout/franchise': typeof LayoutFranchiseRoute
   '/_layout/locations': typeof LayoutLocationsRoute
   '/_layout/partners': typeof LayoutPartnersRoute
+  '/_layout/test-hair': typeof LayoutTestHairRoute
   '/_layout/wedding': typeof LayoutWeddingRoute
   '/_layout/': typeof LayoutIndexRoute
   '/admin/': typeof AdminIndexRoute
@@ -512,6 +531,7 @@ export interface FileRouteTypes {
     | '/franchise'
     | '/locations'
     | '/partners'
+    | '/test-hair'
     | '/wedding'
     | '/'
     | '/admin/'
@@ -536,6 +556,7 @@ export interface FileRouteTypes {
     | '/franchise'
     | '/locations'
     | '/partners'
+    | '/test-hair'
     | '/wedding'
     | '/'
     | '/admin'
@@ -562,6 +583,7 @@ export interface FileRouteTypes {
     | '/_layout/franchise'
     | '/_layout/locations'
     | '/_layout/partners'
+    | '/_layout/test-hair'
     | '/_layout/wedding'
     | '/_layout/'
     | '/admin/'
@@ -614,6 +636,7 @@ export const routeTree = rootRoute
         "/_layout/franchise",
         "/_layout/locations",
         "/_layout/partners",
+        "/_layout/test-hair",
         "/_layout/wedding",
         "/_layout/",
         "/_layout/shopping/",
@@ -656,6 +679,10 @@ export const routeTree = rootRoute
     },
     "/_layout/partners": {
       "filePath": "_layout/partners.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/test-hair": {
+      "filePath": "_layout/test-hair.tsx",
       "parent": "/_layout"
     },
     "/_layout/wedding": {
