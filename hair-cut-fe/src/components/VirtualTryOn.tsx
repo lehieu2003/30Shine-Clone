@@ -12,30 +12,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
-
-// Hair images from local hairstyles folder
-const HAIR_STYLES = [
-  {
-    id: 1,
-    name: 'Classic Style',
-    url: '/images/hairstyles/download.jpg',
-  },
-  {
-    id: 2,
-    name: 'Modern Cut',
-    url: '/images/hairstyles/download (1).jpg',
-  },
-  {
-    id: 3,
-    name: 'Trendy Look',
-    url: '/images/hairstyles/download (2).jpg',
-  },
-  {
-    id: 4,
-    name: 'Stylish Hair',
-    url: '/images/hairstyles/download (3).jpg',
-  },
-]
+import { HAIR_STYLES } from '@/utils/hairstyles'
 
 export default function VirtualTryOn() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
