@@ -58,7 +58,7 @@ const getListUsers = [
 
 			...(status && { status }),
 			...(role && { role: { in: role } }),
-			...(availabilityStatus && { availabilityStatus }),
+			...(availabilityStatus && { availabilityStatus })
 		};
 
 		try {

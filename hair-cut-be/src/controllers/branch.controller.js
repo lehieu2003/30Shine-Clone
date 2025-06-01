@@ -19,10 +19,20 @@ const updateBranchSchema = branchSchema.partial();
 
 const querySchema = z.object({
   keyword: z.string().optional(),
-  page: z.coerce.number().min(1).optional().default(1),
+  page: z.coerce.number().min(1).optional(),
   size: z.coerce.number().min(1).max(100).optional(),
-  sortBy: z.enum(["id", "name", "createdAt", "updatedAt"]).default("id"),
-  sortDirection: z.enum(["asc", "desc"]).default("asc"),
+  sortBy: z
+    .enum([
+      "id", 
+      "name", 
+      "address", 
+      "phone", 
+      "email", 
+      "createdAt", 
+      "updatedAt"
+    ])
+    .default("createdAt"),
+  sortDirection: z.enum(["asc", "desc"]).default("desc"),
   isActive: z.coerce.boolean().optional(),
 });
 
@@ -55,12 +65,14 @@ const getBranches = [
   processRequestParams(querySchema),
   async (req, res) => {
     try {
-      // Extract query parameters with defaults to avoid undefined values
-      const keyword = req.query.keyword || '';
-      const page = parseInt(req.query.page || 1);
-      const sortBy = req.query.sortBy || 'id';
-      const sortDirection = req.query.sortDirection || 'asc';
-      const isActive = req.query.isActive !== undefined ? Boolean(req.query.isActive) : undefined;
+      const {
+        keyword,
+        page,
+        size,
+        sortBy,
+        sortDirection,
+        isActive,
+      } = req.query;
       
       // Build WHERE clause
       const where = {};
@@ -75,26 +87,27 @@ const getBranches = [
       }
       
       if (isActive !== undefined) {
-        where.isActive = isActive;
+        where.isActive = Boolean(isActive);
       }
       
       // Get total count
       const total = await db.branch.count({ where });
       
-      // Use the size from query or default to total count
-      const size = req.query.size ? parseInt(req.query.size) : total;
+      // Use the size from query or default to reasonable limit
+      const pageSize = Number(size) || 10;
+      const pageNumber = Number(page) || 1;
       
       // Get paginated data with validated parameters
       const branches = await db.branch.findMany({
         where,
-        orderBy: { [sortBy]: sortDirection },
-        skip: (page - 1) * size,
-        take: size,
+        orderBy: { [sortBy || 'createdAt']: sortDirection || 'desc' },
+        skip: (pageNumber - 1) * pageSize,
+        take: pageSize,
       });
       
       return res.json({
         data: branches,
-        meta: { total, page, size },
+        meta: { total, page: pageNumber, size: pageSize },
       });
     } catch (err) {
       console.error("Get branches error:", err);
