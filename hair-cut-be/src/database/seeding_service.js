@@ -15,6 +15,19 @@ dotenv.config({ path: path.join(rootDir, '.env') });
 const db = new PrismaClient();
 const dataFilePath = path.join(__dirname, "data.json");
 
+const categoryOptions = [
+  { id: 1, name: 'Cắt tóc' },
+  { id: 2, name: 'Uốn tóc' },
+  { id: 3, name: 'Nhuộm tóc' },
+  { id: 4, name: 'Chăm sóc da' },
+  { id: 5, name: 'Khác' },
+]
+
+function getRandomCategoryId() {
+  const randomIndex = Math.floor(Math.random() * categoryOptions.length);
+  return categoryOptions[randomIndex].id;
+}
+
 // Main function to handle seeding with proper error handling
 async function seedServices() {
   try {
@@ -23,16 +36,16 @@ async function seedServices() {
 
     // Create a default category if none exists
     let defaultCategory = await db.serviceCategory.findFirst();
-    if (!defaultCategory) {
-      defaultCategory = await db.serviceCategory.create({
-        data: {
-          name: "Default Category",
-          description: "Default service category",
-          displayOrder: 1
-        }
-      });
-      console.log("Created default category:", defaultCategory.name);
-    }
+    // if (!defaultCategory) {
+    //   defaultCategory = await db.serviceCategory.create({
+    //     data: {
+    //       name: "Default Category",
+    //       description: "Default service category",
+    //       displayOrder: 1
+    //     }
+    //   });
+    //   console.log("Created default category:", defaultCategory.name);
+    // }
 
     console.log(`Processing ${data.length} services...`);
     
@@ -45,7 +58,7 @@ async function seedServices() {
           description: sv.des,
           bannerImageUrl: sv.banner,
           createdAt: new Date(),
-          categoryId: defaultCategory.id // Add the required categoryId
+          categoryId: getRandomCategoryId() // Add the required categoryId
         },
       });
 
