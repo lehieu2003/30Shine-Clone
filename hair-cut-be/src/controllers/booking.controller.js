@@ -367,6 +367,127 @@ const changeBookingStatus = [
 		}
 	},
 ];
+
+const userBookingQuerySchema = z.object({
+	page: z.coerce.number().min(1).optional().default(1),
+	size: z.coerce.number().min(1).max(50).optional().default(10),
+	sortBy: z
+		.enum([
+			"appointmentDate",
+			"status", 
+			"totalPrice",
+			"createdAt",
+		])
+		.default("appointmentDate"),
+	sortDirection: z.enum(["asc", "desc"]).default("desc"),
+	status: z
+		.enum([
+			"pending",
+			"confirmed",
+			"cancelled",
+			"in_progress",
+			"completed",
+			"success",
+		])
+		.optional(),
+});
+
+const getBookingByUserAccount = [
+	processRequestParams(userBookingQuerySchema),
+	async (req, res) => {
+		try {
+			// Get user ID from authenticated request
+			const userId = req.user.id;
+			if (!userId) {
+				return res.status(401).json({ message: "User not authenticated" });
+			}
+
+			const {
+				page,
+				size,
+				sortBy,
+				sortDirection,
+				status,
+			} = req.query;
+
+			// Build WHERE clause for user's bookings
+			const where = {
+				customerId: userId,
+			};
+
+			if (status) {
+				where.status = status;
+			}
+
+			try {
+				// Get total count
+				const total = await db.booking.count({ where });
+
+				// Get user's bookings with pagination and sorting
+				const bookings = await db.booking.findMany({
+					where,
+					include: {
+						employee: {
+							select: {
+								id: true,
+								fullName: true,
+								phone: true,
+							},
+						},
+						services: {
+							include: {
+								service: {
+									select: {
+										id: true,
+										serviceName: true,
+										price: true,
+										estimatedTime: true,
+									},
+								},
+							},
+						},
+						branch: {
+							select: {
+								id: true,
+								name: true,
+								address: true,
+								phone: true,
+							},
+						},
+					},
+					orderBy: { [sortBy]: sortDirection },
+					skip: (page - 1) * size,			
+					take: Number(size),
+				});
+
+				return res.json({
+					success: true,
+					data: bookings,
+					meta: { 
+						total, 
+						page: Number(page), 
+						size: Number(size),
+						totalPages: Math.ceil(total / size)
+					},
+				});
+			} catch (err) {
+				console.error("Error fetching user bookings:", err);
+				return res.status(500).json({ 
+					success: false,
+					message: "Internal server error",
+					error: err.message 
+				});
+			}
+		} catch (err) {
+			console.error("Authentication error:", err);
+			return res.status(401).json({ 
+				success: false,
+				message: "Authentication failed" 
+			});
+		}
+	},
+];
+
 export default {
 	createBooking,
 	getBookings: getBookings,
@@ -374,4 +495,5 @@ export default {
 	updateBooking,
 	deleteBooking: [deleteBooking],
 	changeBookingStatus: [changeBookingStatus],
+	getBookingByUserAccount,
 };
