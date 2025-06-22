@@ -22,8 +22,8 @@ import dayjs from 'dayjs'
 import { toast } from 'sonner'
 import { EditBookingDialog } from './booking/EditBookingDialog'
 import AdminCreateBookingModal from './booking/AdminCreateBookingModal'
+import { BookingStatus } from '@/types/booking'
 import {
-  BookingStatus,
   changeBookingStatus,
   deleteBooking,
   fetchBookings,

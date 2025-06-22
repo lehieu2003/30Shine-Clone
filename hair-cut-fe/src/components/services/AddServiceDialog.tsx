@@ -205,28 +205,28 @@ export function AddServiceDialog({
               render={({ field }) => (
                 <FormItem className="grid grid-cols-4 items-center gap-4">
                   <FormLabel className="text-right">Danh mục</FormLabel>
-                  <Select
-                    onValueChange={(value) => field.onChange(Number(value))}
-                    defaultValue={
-                      field.value ? field.value.toString() : undefined
-                    }
-                  >
-                    <FormControl>
-                      <SelectTrigger className="col-span-3">
-                        <SelectValue placeholder="Chọn danh mục dịch vụ" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {categoryOptions.map((category) => (
-                        <SelectItem
-                          key={category.id}
-                          value={category.id.toString()}
-                        >
-                          {category.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <div className="col-span-3">
+                    <Select
+                      onValueChange={(value) => field.onChange(Number(value))}
+                      value={field.value ? field.value.toString() : undefined}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Chọn danh mục dịch vụ" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {categoryOptions.map((category) => (
+                          <SelectItem
+                            key={category.id}
+                            value={category.id.toString()}
+                          >
+                            {category.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
                   <FormMessage className="col-start-2 col-span-3" />
                 </FormItem>
               )}
@@ -375,12 +375,12 @@ export function AddServiceDialog({
                       <FormField
                         control={form.control}
                         name={`steps.${index}.stepTitle`}
-                        render={({ field }) => (
+                        render={({ field: stepField }) => (
                           <FormItem>
                             <FormLabel>Tiêu đề</FormLabel>
                             <FormControl>
                               <Input
-                                {...field}
+                                {...stepField}
                                 placeholder="Tiêu đề bước thực hiện"
                               />
                             </FormControl>
@@ -392,12 +392,12 @@ export function AddServiceDialog({
                       <FormField
                         control={form.control}
                         name={`steps.${index}.stepDescription`}
-                        render={({ field }) => (
+                        render={({ field: stepDescriptionField }) => (
                           <FormItem>
                             <FormLabel>Mô tả chi tiết</FormLabel>
                             <FormControl>
                               <Textarea
-                                {...field}
+                                {...stepDescriptionField}
                                 placeholder="Mô tả chi tiết bước thực hiện"
                               />
                             </FormControl>
@@ -409,14 +409,14 @@ export function AddServiceDialog({
                       <FormField
                         control={form.control}
                         name={`steps.${index}.stepImageUrl`}
-                        render={({ field }) => (
+                        render={({ field: stepImageUrl }) => (
                           <FormItem>
                             <FormLabel>Hình ảnh minh họa</FormLabel>
                             <div className="flex flex-col gap-2">
-                              {field.value ? (
+                              {stepImageUrl.value ? (
                                 <div className="relative rounded-md overflow-hidden border border-gray-200">
                                   <img
-                                    src={field.value}
+                                    src={stepImageUrl.value}
                                     alt="Step preview"
                                     className="w-full h-32 object-cover"
                                   />
@@ -427,8 +427,10 @@ export function AddServiceDialog({
                                     className="absolute top-2 right-2 rounded-full h-7 w-7"
                                     onClick={() => {
                                       const steps = form.getValues('steps')
-                                      steps[index].stepImageUrl = ''
-                                      form.setValue('steps', steps)
+                                      if (steps && steps[index]) {
+                                        steps[index].stepImageUrl = ''
+                                        form.setValue('steps', steps)
+                                      }
                                     }}
                                     disabled={uploadingImage}
                                   >
@@ -464,17 +466,19 @@ export function AddServiceDialog({
                                   </label>
                                 </div>
                               )}
-                              <Input {...field} type="hidden" />
+                              <input {...stepImageUrl} type="hidden" />
                             </div>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
 
+                      {/* Fixed: Use value prop instead of passing stepOrder directly to the DOM element */}
                       <input
                         type="hidden"
-                        {...form.register(`steps.${index}.stepOrder`)}
+                        name={`steps.${index}.stepOrder`}
                         value={index + 1}
+                        onChange={() => {}}
                       />
                     </CardContent>
                   </Card>

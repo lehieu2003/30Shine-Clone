@@ -23,14 +23,6 @@ import type { DragEndEvent } from '@dnd-kit/core'
 import type { Service, Step } from '@/types/service'
 import { Button } from '@/components/ui/button'
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
-import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -330,7 +322,7 @@ export function ServiceStepsTab({ service, serviceId }: ServiceStepsTabProps) {
     })
   }, [])
 
-  const handleSavePositions = useCallback(async () => {
+  const handleSavePositions = useCallback(() => {
     if (!steps.length) return
 
     try {

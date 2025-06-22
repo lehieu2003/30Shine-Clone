@@ -245,12 +245,17 @@ function RouteComponent() {
                         <div className="text-gray-500 truncate text-xs mt-0.5">
                           {user.phone}
                         </div>
-                      </div>
+                      </div>{' '}
                       <DropdownMenuItem className="cursor-pointer">
                         <User className="mr-2 h-4 w-4" />
                         <span>Cá nhân</span>
                       </DropdownMenuItem>
-
+                      <DropdownMenuItem className="cursor-pointer" asChild>
+                        <Link to="/my-bookings">
+                          <Scissors className="mr-2 h-4 w-4" />
+                          <span>Lịch sử đặt lịch</span>
+                        </Link>
+                      </DropdownMenuItem>
                       {isStaff && (
                         <DropdownMenuItem className="cursor-pointer" asChild>
                           <Link to="/admin">
@@ -259,9 +264,7 @@ function RouteComponent() {
                           </Link>
                         </DropdownMenuItem>
                       )}
-
                       <DropdownMenuSeparator />
-
                       <DropdownMenuItem
                         onClick={handleLogout}
                         className="cursor-pointer text-red-600 focus:text-red-700"

@@ -18,6 +18,7 @@ import { Route as LayoutIndexImport } from './routes/_layout/index'
 import { Route as LayoutWeddingImport } from './routes/_layout/wedding'
 import { Route as LayoutTestHairImport } from './routes/_layout/test-hair'
 import { Route as LayoutPartnersImport } from './routes/_layout/partners'
+import { Route as LayoutMyBookingsImport } from './routes/_layout/my-bookings'
 import { Route as LayoutLocationsImport } from './routes/_layout/locations'
 import { Route as LayoutFranchiseImport } from './routes/_layout/franchise'
 import { Route as LayoutBookingImport } from './routes/_layout/booking'
@@ -77,6 +78,12 @@ const LayoutTestHairRoute = LayoutTestHairImport.update({
 const LayoutPartnersRoute = LayoutPartnersImport.update({
   id: '/partners',
   path: '/partners',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutMyBookingsRoute = LayoutMyBookingsImport.update({
+  id: '/my-bookings',
+  path: '/my-bookings',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -237,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutLocationsImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/my-bookings': {
+      id: '/_layout/my-bookings'
+      path: '/my-bookings'
+      fullPath: '/my-bookings'
+      preLoaderRoute: typeof LayoutMyBookingsImport
+      parentRoute: typeof LayoutImport
+    }
     '/_layout/partners': {
       id: '/_layout/partners'
       path: '/partners'
@@ -380,6 +394,7 @@ interface LayoutRouteChildren {
   LayoutBookingRoute: typeof LayoutBookingRoute
   LayoutFranchiseRoute: typeof LayoutFranchiseRoute
   LayoutLocationsRoute: typeof LayoutLocationsRoute
+  LayoutMyBookingsRoute: typeof LayoutMyBookingsRoute
   LayoutPartnersRoute: typeof LayoutPartnersRoute
   LayoutTestHairRoute: typeof LayoutTestHairRoute
   LayoutWeddingRoute: typeof LayoutWeddingRoute
@@ -397,6 +412,7 @@ const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutBookingRoute: LayoutBookingRoute,
   LayoutFranchiseRoute: LayoutFranchiseRoute,
   LayoutLocationsRoute: LayoutLocationsRoute,
+  LayoutMyBookingsRoute: LayoutMyBookingsRoute,
   LayoutPartnersRoute: LayoutPartnersRoute,
   LayoutTestHairRoute: LayoutTestHairRoute,
   LayoutWeddingRoute: LayoutWeddingRoute,
@@ -445,6 +461,7 @@ export interface FileRoutesByFullPath {
   '/booking': typeof LayoutBookingRoute
   '/franchise': typeof LayoutFranchiseRoute
   '/locations': typeof LayoutLocationsRoute
+  '/my-bookings': typeof LayoutMyBookingsRoute
   '/partners': typeof LayoutPartnersRoute
   '/test-hair': typeof LayoutTestHairRoute
   '/wedding': typeof LayoutWeddingRoute
@@ -471,6 +488,7 @@ export interface FileRoutesByTo {
   '/booking': typeof LayoutBookingRoute
   '/franchise': typeof LayoutFranchiseRoute
   '/locations': typeof LayoutLocationsRoute
+  '/my-bookings': typeof LayoutMyBookingsRoute
   '/partners': typeof LayoutPartnersRoute
   '/test-hair': typeof LayoutTestHairRoute
   '/wedding': typeof LayoutWeddingRoute
@@ -500,6 +518,7 @@ export interface FileRoutesById {
   '/_layout/booking': typeof LayoutBookingRoute
   '/_layout/franchise': typeof LayoutFranchiseRoute
   '/_layout/locations': typeof LayoutLocationsRoute
+  '/_layout/my-bookings': typeof LayoutMyBookingsRoute
   '/_layout/partners': typeof LayoutPartnersRoute
   '/_layout/test-hair': typeof LayoutTestHairRoute
   '/_layout/wedding': typeof LayoutWeddingRoute
@@ -530,6 +549,7 @@ export interface FileRouteTypes {
     | '/booking'
     | '/franchise'
     | '/locations'
+    | '/my-bookings'
     | '/partners'
     | '/test-hair'
     | '/wedding'
@@ -555,6 +575,7 @@ export interface FileRouteTypes {
     | '/booking'
     | '/franchise'
     | '/locations'
+    | '/my-bookings'
     | '/partners'
     | '/test-hair'
     | '/wedding'
@@ -582,6 +603,7 @@ export interface FileRouteTypes {
     | '/_layout/booking'
     | '/_layout/franchise'
     | '/_layout/locations'
+    | '/_layout/my-bookings'
     | '/_layout/partners'
     | '/_layout/test-hair'
     | '/_layout/wedding'
@@ -635,6 +657,7 @@ export const routeTree = rootRoute
         "/_layout/booking",
         "/_layout/franchise",
         "/_layout/locations",
+        "/_layout/my-bookings",
         "/_layout/partners",
         "/_layout/test-hair",
         "/_layout/wedding",
@@ -675,6 +698,10 @@ export const routeTree = rootRoute
     },
     "/_layout/locations": {
       "filePath": "_layout/locations.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/my-bookings": {
+      "filePath": "_layout/my-bookings.tsx",
       "parent": "/_layout"
     },
     "/_layout/partners": {
