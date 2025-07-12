@@ -23,8 +23,6 @@ import {
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
-import VirtualTryOn from '@/components/VirtualTryOn'
 import serviceService from '@/services/service.service'
 import { cn } from '@/lib/utils'
 import { useAuth } from '@/contexts/AuthContext'
@@ -50,7 +48,6 @@ function RouteComponent() {
   })
   const { user } = useAuth()
   const [phoneNumber, setPhoneNumber] = useState('')
-  const [isVirtualTryOnOpen, setIsVirtualTryOnOpen] = useState(false)
 
   React.useEffect(() => {
     if (user) {

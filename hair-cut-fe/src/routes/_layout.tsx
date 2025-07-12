@@ -246,9 +246,11 @@ function RouteComponent() {
                           {user.phone}
                         </div>
                       </div>{' '}
-                      <DropdownMenuItem className="cursor-pointer">
-                        <User className="mr-2 h-4 w-4" />
-                        <span>Cá nhân</span>
+                      <DropdownMenuItem className="cursor-pointer" asChild>
+                        <Link to="/profile">
+                          <User className="mr-2 h-4 w-4" />
+                          <span>Cá nhân</span>
+                        </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem className="cursor-pointer" asChild>
                         <Link to="/my-bookings">

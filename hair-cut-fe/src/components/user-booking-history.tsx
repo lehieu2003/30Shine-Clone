@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query'
 import { CalendarDays, Clock, Eye, FileText, MapPin, User } from 'lucide-react'
 import { bookingApi } from '@/lib/api/bookings'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   Select,
@@ -31,24 +30,48 @@ type Status =
   | 'success'
 
 const StatusBadge = ({ status }: { status: Status }) => {
-  const variants: Record<
-    Status,
-    { variant: 'secondary' | 'default' | 'destructive'; label: string }
-  > = {
-    pending: { variant: 'secondary', label: 'Chờ xác nhận' },
-    confirmed: { variant: 'default', label: 'Đã xác nhận' },
-    cancelled: { variant: 'destructive', label: 'Đã hủy' },
-    in_progress: { variant: 'default', label: 'Đang thực hiện' },
-    completed: { variant: 'default', label: 'Hoàn thành' },
-    success: { variant: 'default', label: 'Thành công' },
+  const getStatusClasses = (bookingStatus: Status): string => {
+    const baseClasses = 'text-xs px-2 py-1 rounded-full font-medium'
+
+    switch (bookingStatus) {
+      case 'pending':
+        return `${baseClasses} bg-yellow-100 text-yellow-800 border border-yellow-200`
+      case 'confirmed':
+        return `${baseClasses} bg-blue-100 text-blue-800 border border-blue-200`
+      case 'in_progress':
+        return `${baseClasses} bg-purple-100 text-purple-800 border border-purple-200`
+      case 'completed':
+        return `${baseClasses} bg-green-100 text-green-800 border border-green-200`
+      case 'success':
+        return `${baseClasses} bg-emerald-100 text-emerald-800 border border-emerald-200`
+      case 'cancelled':
+        return `${baseClasses} bg-red-100 text-red-800 border border-red-200`
+      default:
+        return `${baseClasses} bg-gray-100 text-gray-800 border border-gray-200`
+    }
   }
 
-  const config = variants[status]
+  const getStatusLabel = (bookingStatus: Status): string => {
+    switch (bookingStatus) {
+      case 'pending':
+        return 'Chờ xác nhận'
+      case 'confirmed':
+        return 'Đã xác nhận'
+      case 'in_progress':
+        return 'Đang thực hiện'
+      case 'completed':
+        return 'Hoàn thành'
+      case 'success':
+        return 'Thành công'
+      case 'cancelled':
+        return 'Đã hủy'
+      default:
+        return 'Không xác định'
+    }
+  }
 
   return (
-    <Badge variant={config.variant} className="text-xs">
-      {config.label}
-    </Badge>
+    <span className={getStatusClasses(status)}>{getStatusLabel(status)}</span>
   )
 }
 

@@ -230,7 +230,7 @@ export default function UsersPage({ type }: UsersPageProps) {
       refetch()
       setIsAddDialogOpen(false)
     },
-    onError: (error) => {
+    onError: () => {
       toast.error('Có lỗi xảy ra khi tạo người dùng')
     },
   })
@@ -244,7 +244,7 @@ export default function UsersPage({ type }: UsersPageProps) {
       refetch()
       setIsEditDialogOpen(false)
     },
-    onError: (error) => {
+    onError: () => {
       toast.error('Có lỗi xảy ra khi cập nhật người dùng')
     },
   })
@@ -256,7 +256,7 @@ export default function UsersPage({ type }: UsersPageProps) {
       refetch()
       setIsConfirmDialogOpen(false)
     },
-    onError: (error) => {
+    onError: () => {
       toast.error('Có lỗi xảy ra khi cập nhật trạng thái người dùng')
     },
   })
@@ -277,7 +277,7 @@ export default function UsersPage({ type }: UsersPageProps) {
   }
 
   // Handle update user status
-  const handleUpdateStatus = (user: UserType, newStatus: UserStatus) => {
+  const handleUpdateStatus = (user: UserType) => {
     setCurrentUser(user)
     setConfirmAction({
       title: 'Xóa' + RESOURCE_DISPLAY,
@@ -295,7 +295,7 @@ export default function UsersPage({ type }: UsersPageProps) {
     onSuccess: () => {
       refetch()
     },
-    onError: (error) => {
+    onError: () => {
       toast.error('Có lỗi xảy ra khi cập nhật trạng thái người dùng')
     },
   })
@@ -516,7 +516,7 @@ export default function UsersPage({ type }: UsersPageProps) {
                           <DropdownMenuSeparator />
                           <DropdownMenuItem
                             className="text-red-500"
-                            onClick={() => handleUpdateStatus(user, 'inactive')}
+                            onClick={() => handleUpdateStatus(user)}
                           >
                             <Trash2 className="h-4 w-4 mr-2 text-red-500" />
                             Xóa {RESOURCE_DISPLAY}

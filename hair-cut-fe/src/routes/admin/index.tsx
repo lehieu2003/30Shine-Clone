@@ -33,7 +33,7 @@ export default function AdminDashboard() {
   const { data: statsData } = useQuery({
     queryKey: ['dashboard-stats'],
     queryFn: fetchDashboardStats,
-    select: (data) => data.data,
+    select: (data) => data,
   })
 
   // Fetch recent bookings
@@ -52,7 +52,7 @@ export default function AdminDashboard() {
   const { data: recentActivities } = useQuery({
     queryKey: ['recent-activities'],
     queryFn: () => fetchRecentActivities(5),
-    select: (data) => data.data,
+    select: (data) => data,
   })
 
   // Fetch revenue by service data
