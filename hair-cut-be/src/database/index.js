@@ -1,5 +1,5 @@
 import { PrismaClient } from "./generated/client.js";
-
+aaaaaa
 const db = new PrismaClient({
 	log: [
 		{
