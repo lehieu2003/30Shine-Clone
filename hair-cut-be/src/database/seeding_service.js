@@ -34,22 +34,41 @@ async function seedServices() {
     console.log("Reading data file...");
     const data = JSON.parse(fs.readFileSync(dataFilePath, "utf8"));
 
-    // Create a default category if none exists
-    let defaultCategory = await db.serviceCategory.findFirst();
-    // if (!defaultCategory) {
-    //   defaultCategory = await db.serviceCategory.create({
-    //     data: {
-    //       name: "Default Category",
-    //       description: "Default service category",
-    //       displayOrder: 1
-    //     }
-    //   });
-    //   console.log("Created default category:", defaultCategory.name);
-    // }
+    // Create service categories first
+    console.log("Creating service categories...");
+    for (const category of categoryOptions) {
+      const existingCategory = await db.serviceCategory.findUnique({
+        where: { id: category.id }
+      });
+      
+      if (!existingCategory) {
+        await db.serviceCategory.create({
+          data: {
+            id: category.id,
+            name: category.name,
+            description: `Danh mục dịch vụ ${category.name}`,
+            displayOrder: category.id
+          }
+        });
+        console.log(`Created category: ${category.name}`);
+      } else {
+        console.log(`Category already exists: ${category.name}`);
+      }
+    }
 
     console.log(`Processing ${data.length} services...`);
     
     for (const sv of data) {
+      // Check if service already exists by name
+      const existingService = await db.service.findFirst({
+        where: { serviceName: sv.name }
+      });
+      
+      if (existingService) {
+        console.log(`Service already exists: ${sv.name}`);
+        continue;
+      }
+      
       const service = await db.service.create({
         data: {
           estimatedTime: Number(sv.time),
@@ -62,19 +81,27 @@ async function seedServices() {
         },
       });
 
-      const serviceStep = sv.stepNames.map((step, index) => {
-        return {
-          stepTitle: step,
-          serviceId: service.id,
-          stepOrder: index + 1,
-          stepDescription: "",
-          stepImageUrl: sv.stepImgs[index],
-        };
+      // Check if service steps already exist
+      const existingSteps = await db.serviceStep.findMany({
+        where: { serviceId: service.id }
       });
+      
+      if (existingSteps.length === 0) {
+        const serviceStep = sv.stepNames.map((step, index) => {
+          return {
+            stepTitle: step,
+            serviceId: service.id,
+            stepOrder: index + 1,
+            stepDescription: "",
+            stepImageUrl: sv.stepImgs[index],
+          };
+        });
 
-      await db.serviceStep.createMany({
-        data: serviceStep,
-      });
+        await db.serviceStep.createMany({
+          data: serviceStep,
+        });
+      }
+      
       console.log("Created service:", service.serviceName);
     }
     
