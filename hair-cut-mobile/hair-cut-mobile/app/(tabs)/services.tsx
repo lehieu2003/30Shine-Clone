@@ -6,6 +6,8 @@ import {
   ScrollView,
   RefreshControl,
   TextInput,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { router } from 'expo-router';
 import { useAuth } from '@/context/AuthContext';
@@ -79,62 +81,69 @@ export default function ServicesScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Dịch vụ</Text>
-      </View>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.flex}>
+          <View style={styles.header}>
+            <Text style={styles.title}>Dịch vụ</Text>
+          </View>
 
-      <View style={styles.searchContainer}>
-        <Ionicons
-          name='search'
-          size={20}
-          color='#999'
-          style={styles.searchIcon}
-        />
-        <TextInput
-          style={styles.searchInput}
-          placeholder='Tìm kiếm dịch vụ...'
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-          placeholderTextColor='#999'
-        />
-        {searchQuery.length > 0 && (
-          <Ionicons
-            name='close-circle'
-            size={20}
-            color='#999'
-            onPress={() => setSearchQuery('')}
-          />
-        )}
-      </View>
-
-      {loading ? (
-        <Loading fullScreen text='Đang tải...' />
-      ) : (
-        <ScrollView
-          style={styles.content}
-          refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-          }
-        >
-          <View style={styles.list}>
-            {services.length === 0 ? (
-              <Text style={styles.emptyText}>
-                {searchQuery
-                  ? 'Không tìm thấy dịch vụ nào'
-                  : 'Chưa có dịch vụ nào'}
-              </Text>
-            ) : (
-              services.map((service) => (
-                <ServiceCard
-                  key={service.id}
-                  service={service}
-                  onPress={() => router.push(`/service/${service.id}`)}
-                />
-              ))
+          <View style={styles.searchContainer}>
+            <Ionicons
+              name='search'
+              size={20}
+              color='#999'
+              style={styles.searchIcon}
+            />
+            <TextInput
+              style={styles.searchInput}
+              placeholder='Tìm kiếm dịch vụ...'
+              value={searchQuery}
+              onChangeText={setSearchQuery}
+              placeholderTextColor='#999'
+            />
+            {searchQuery.length > 0 && (
+              <Ionicons
+                name='close-circle'
+                size={20}
+                color='#999'
+                onPress={() => setSearchQuery('')}
+              />
             )}
           </View>
-        </ScrollView>
-      )}
+
+          {loading ? (
+            <Loading fullScreen text='Đang tải...' />
+          ) : (
+            <ScrollView
+              style={styles.content}
+              keyboardShouldPersistTaps='handled'
+              keyboardDismissMode='on-drag'
+              showsVerticalScrollIndicator={false}
+              refreshControl={
+                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+              }
+            >
+              <View style={styles.list}>
+                {services.length === 0 ? (
+                  <Text style={styles.emptyText}>
+                    {searchQuery
+                      ? 'Không tìm thấy dịch vụ nào'
+                      : 'Chưa có dịch vụ nào'}
+                  </Text>
+                ) : (
+                  services.map((service) => (
+                    <ServiceCard
+                      key={service.id}
+                      service={service}
+                      onPress={() => router.push(`/service/${service.id}`)}
+                    />
+                  ))
+                )}
+              </View>
+            </ScrollView>
+          )}
+        </View>
+      </TouchableWithoutFeedback>
     </SafeAreaView>
   );
 }
@@ -143,6 +152,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f8f8f8',
+  },
+  flex: {
+    flex: 1,
   },
   authContainer: {
     flex: 1,
@@ -155,7 +167,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     color: '#333',
-    marginTop: 24,
     marginBottom: 12,
   },
   authSubtitle: {
@@ -173,7 +184,6 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: '#8B4513',
     padding: 24,
-    paddingTop: 60,
   },
   title: {
     fontSize: 28,

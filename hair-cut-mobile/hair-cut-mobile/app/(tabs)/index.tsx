@@ -13,7 +13,6 @@ import { serviceApi } from '@/lib/apis/services';
 import { Service } from '@/types/service';
 import { ServiceCard } from '@/components/ServiceCard';
 import { Loading } from '@/components/ui/Loading';
-import { Button } from '@/components/ui/Button';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -46,31 +45,6 @@ export default function HomeScreen() {
     setRefreshing(true);
     fetchServices();
   };
-
-  if (!isAuth) {
-    return (
-      <View style={styles.authContainer}>
-        <Ionicons name='cut-outline' size={80} color='#8B4513' />
-        <Text style={styles.welcomeTitle}>Chào mừng đến với Hair Cut</Text>
-        <Text style={styles.welcomeSubtitle}>
-          Đăng nhập để đặt lịch cắt tóc và trải nghiệm dịch vụ tốt nhất
-        </Text>
-        <View style={styles.authButtons}>
-          <Button
-            title='Đăng nhập'
-            onPress={() => router.push('/auth/login')}
-            style={styles.authButton}
-          />
-          <Button
-            title='Đăng ký'
-            onPress={() => router.push('/auth/register')}
-            variant='outline'
-            style={styles.authButton}
-          />
-        </View>
-      </View>
-    );
-  }
 
   if (loading) {
     return <Loading fullScreen text='Đang tải...' />;
@@ -121,39 +95,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f8f8f8',
   },
-  authContainer: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 24,
-  },
-  welcomeTitle: {
-    fontSize: 24,
-    fontWeight: '700',
-    color: '#333',
-    textAlign: 'center',
-    marginTop: 24,
-    marginBottom: 12,
-  },
-  welcomeSubtitle: {
-    fontSize: 16,
-    color: '#666',
-    textAlign: 'center',
-    marginBottom: 32,
-    lineHeight: 24,
-  },
-  authButtons: {
-    width: '100%',
-    gap: 12,
-  },
-  authButton: {
-    width: '100%',
-  },
   header: {
     backgroundColor: '#8B4513',
     padding: 24,
-    paddingTop: 60,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

@@ -16,8 +16,14 @@ import type { CartItem } from '@/types/cart';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CartScreen() {
-  const { cart, isLoading, updateCartItem, removeFromCart, getTotalPrice } =
-    useCart();
+  const {
+    cart,
+    isLoading,
+    updateCartItem,
+    removeFromCart,
+    getTotalPrice,
+    getTotalItems,
+  } = useCart();
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('vi-VN', {
@@ -113,7 +119,16 @@ export default function CartScreen() {
       {/* Cart Items */}
       {!cart || cart.items.length === 0 ? (
         <View style={styles.emptyContainer}>
-          <Ionicons name='cart-outline' size={100} color='#ccc' />
+          <View>
+            <Ionicons name='cart-outline' size={100} color='#ccc' />
+            {getTotalItems() > 0 && (
+              <View style={styles.emptyBadge}>
+                <Text style={styles.emptyBadgeText}>
+                  {getTotalItems() > 99 ? '99+' : getTotalItems()}
+                </Text>
+              </View>
+            )}
+          </View>
           <Text style={styles.emptyText}>Giỏ hàng trống</Text>
           <TouchableOpacity
             style={styles.shopButton}
@@ -230,6 +245,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  emptyBadge: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    backgroundColor: '#FF3B30',
+    borderRadius: 20,
+    minWidth: 32,
+    height: 32,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 8,
+  },
+  emptyBadgeText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '700',
   },
   emptyText: {
     fontSize: 18,

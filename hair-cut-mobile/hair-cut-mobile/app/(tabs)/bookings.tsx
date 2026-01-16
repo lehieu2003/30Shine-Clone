@@ -188,7 +188,6 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: '#8B4513',
     padding: 24,
-    paddingTop: 60,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -210,12 +209,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: '#f0f0f0',
+    maxHeight: 60,
   },
   filterContent: {
     padding: 16,
     gap: 8,
   },
   filterButton: {
+    height: 32,
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 20,

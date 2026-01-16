@@ -3,18 +3,35 @@ import {
   DefaultTheme,
   ThemeProvider,
 } from '@react-navigation/native';
-import { Stack } from 'expo-router';
+import { Slot, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
+import { useEffect } from 'react';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import { AuthProvider } from '@/context/AuthContext';
+import { AuthProvider, useAuth } from '@/context/AuthContext';
 import { CartProvider } from '@/context/CartContext';
 import { ProductProvider } from '@/context/ProductContext';
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+function RootLayoutNav() {
+  const { isAuth } = useAuth();
+  const segments = useSegments();
+  const router = useRouter();
+
+  useEffect(() => {
+    const inAuthGroup = segments[0] === 'auth';
+
+    if (!isAuth && !inAuthGroup) {
+      // Redirect to auth if not authenticated
+      router.replace('/auth/login');
+    } else if (isAuth && inAuthGroup) {
+      // Redirect to tabs if authenticated
+      router.replace('/(tabs)');
+    }
+  }, [isAuth, segments]);
+
+  return <Slot />;
+}
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -24,29 +41,7 @@ export default function RootLayout() {
       <AuthProvider>
         <ProductProvider>
           <CartProvider>
-            <Stack>
-              <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-              <Stack.Screen
-                name='auth/login'
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name='auth/register'
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name='service/[id]'
-                options={{ title: 'Chi tiết dịch vụ' }}
-              />
-              <Stack.Screen
-                name='booking/create'
-                options={{ title: 'Đặt lịch' }}
-              />
-              <Stack.Screen
-                name='booking/[id]'
-                options={{ title: 'Chi tiết đặt lịch' }}
-              />
-            </Stack>
+            <RootLayoutNav />
             <StatusBar style='auto' />
           </CartProvider>
         </ProductProvider>

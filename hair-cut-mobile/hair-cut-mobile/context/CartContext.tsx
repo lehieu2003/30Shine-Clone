@@ -85,17 +85,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    // Update local state immediately (optimistic update)
+    // Only update local state, backend doesn't have DELETE endpoint
     const updatedItems = cart.items.filter((item) => item.id !== productId);
     setCart({ ...cart, items: updatedItems });
-
-    // Then sync with API in background (optional - can be skipped if not needed)
-    try {
-      await cartApi.removeFromCart(productId);
-    } catch (err) {
-      // Ignore API errors for remove operation
-      console.log('Failed to sync cart removal with server:', err);
-    }
   };
 
   const clearCart = async () => {

@@ -84,7 +84,7 @@ export const BookingCard: React.FC<BookingCardProps> = ({
 
       <View style={styles.footer}>
         <Text style={styles.total}>
-          {booking.totalAmount?.toLocaleString('vi-VN')}đ
+          {booking.totalPrice?.toLocaleString('vi-VN')}đ
         </Text>
       </View>
     </Card>

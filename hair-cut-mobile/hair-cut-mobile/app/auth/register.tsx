@@ -7,8 +7,11 @@ import {
   KeyboardAvoidingView,
   Platform,
   Alert,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { router } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import authService from '@/services/auth.service';
@@ -129,86 +132,96 @@ export default function RegisterScreen() {
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}
     >
-      <ScrollView
-        contentContainerStyle={styles.scrollContent}
-        keyboardShouldPersistTaps='handled'
-      >
-        <View style={styles.header}>
-          <Text style={styles.title}>Tạo tài khoản mới</Text>
-          <Text style={styles.subtitle}>Đăng ký để bắt đầu</Text>
-        </View>
-
-        <View style={styles.form}>
-          <Input
-            label='Họ và tên'
-            placeholder='Nhập họ và tên'
-            value={formData.fullName}
-            onChangeText={(text) => updateField('fullName', text)}
-            error={errors.fullName}
-            icon='person-outline'
-          />
-
-          <Input
-            label='Số điện thoại'
-            placeholder='Nhập số điện thoại'
-            value={formData.phone}
-            onChangeText={(text) => updateField('phone', text)}
-            error={errors.phone}
-            icon='call-outline'
-            keyboardType='phone-pad'
-          />
-
-          <Input
-            label='Email'
-            placeholder='Nhập email'
-            value={formData.email}
-            onChangeText={(text) => updateField('email', text)}
-            error={errors.email}
-            icon='mail-outline'
-            keyboardType='email-address'
-            autoCapitalize='none'
-          />
-
-          <Input
-            label='Mật khẩu'
-            placeholder='Nhập mật khẩu'
-            value={formData.password}
-            onChangeText={(text) => updateField('password', text)}
-            error={errors.password}
-            icon='lock-closed-outline'
-            isPassword
-          />
-
-          <Input
-            label='Xác nhận mật khẩu'
-            placeholder='Nhập lại mật khẩu'
-            value={formData.confirmPassword}
-            onChangeText={(text) => updateField('confirmPassword', text)}
-            error={errors.confirmPassword}
-            icon='lock-closed-outline'
-            isPassword
-          />
-
-          <Button
-            title='Đăng ký'
-            onPress={handleRegister}
-            loading={loading}
-            style={styles.registerButton}
-          />
-
-          <View style={styles.loginContainer}>
-            <Text style={styles.loginText}>Đã có tài khoản? </Text>
-            <Button
-              title='Đăng nhập'
-              onPress={() => router.back()}
-              variant='outline'
-              size='small'
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView
+          contentContainerStyle={styles.scrollContent}
+          keyboardShouldPersistTaps='handled'
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={styles.header}>
+            <Ionicons
+              name='cut-outline'
+              size={80}
+              color='#8B4513'
+              style={styles.icon}
             />
+            <Text style={styles.title}>Tạo tài khoản mới</Text>
+            <Text style={styles.subtitle}>Đăng ký để bắt đầu</Text>
           </View>
-        </View>
-      </ScrollView>
+
+          <View style={styles.form}>
+            <Input
+              label='Họ và tên'
+              placeholder='Nhập họ và tên'
+              value={formData.fullName}
+              onChangeText={(text) => updateField('fullName', text)}
+              error={errors.fullName}
+              icon='person-outline'
+            />
+
+            <Input
+              label='Số điện thoại'
+              placeholder='Nhập số điện thoại'
+              value={formData.phone}
+              onChangeText={(text) => updateField('phone', text)}
+              error={errors.phone}
+              icon='call-outline'
+              keyboardType='phone-pad'
+            />
+
+            <Input
+              label='Email'
+              placeholder='Nhập email'
+              value={formData.email}
+              onChangeText={(text) => updateField('email', text)}
+              error={errors.email}
+              icon='mail-outline'
+              keyboardType='email-address'
+              autoCapitalize='none'
+            />
+
+            <Input
+              label='Mật khẩu'
+              placeholder='Nhập mật khẩu'
+              value={formData.password}
+              onChangeText={(text) => updateField('password', text)}
+              error={errors.password}
+              icon='lock-closed-outline'
+              isPassword
+            />
+
+            <Input
+              label='Xác nhận mật khẩu'
+              placeholder='Nhập lại mật khẩu'
+              value={formData.confirmPassword}
+              onChangeText={(text) => updateField('confirmPassword', text)}
+              error={errors.confirmPassword}
+              icon='lock-closed-outline'
+              isPassword
+            />
+
+            <Button
+              title='Đăng ký'
+              onPress={handleRegister}
+              loading={loading}
+              style={styles.registerButton}
+            />
+
+            <View style={styles.loginContainer}>
+              <Text style={styles.loginText}>Đã có tài khoản? </Text>
+              <Button
+                title='Đăng nhập'
+                onPress={() => router.back()}
+                variant='outline'
+                size='small'
+              />
+            </View>
+          </View>
+        </ScrollView>
+      </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
 }
@@ -221,16 +234,21 @@ const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
     padding: 24,
-    justifyContent: 'center',
+    paddingTop: 80,
   },
   header: {
     marginBottom: 32,
+    alignItems: 'center',
+  },
+  icon: {
+    marginBottom: 24,
   },
   title: {
     fontSize: 32,
     fontWeight: '700',
     color: '#8B4513',
     marginBottom: 8,
+    textAlign: 'center',
   },
   subtitle: {
     fontSize: 16,

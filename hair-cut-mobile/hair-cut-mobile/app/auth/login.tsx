@@ -7,8 +7,11 @@ import {
   KeyboardAvoidingView,
   Platform,
   Alert,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { router } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import authService from '@/services/auth.service';
@@ -73,63 +76,73 @@ export default function LoginScreen() {
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}
     >
-      <ScrollView
-        contentContainerStyle={styles.scrollContent}
-        keyboardShouldPersistTaps='handled'
-      >
-        <View style={styles.header}>
-          <Text style={styles.title}>Chào mừng trở lại!</Text>
-          <Text style={styles.subtitle}>Đăng nhập để tiếp tục</Text>
-        </View>
-
-        <View style={styles.form}>
-          <Input
-            label='Số điện thoại hoặc Email'
-            placeholder='Nhập số điện thoại hoặc email'
-            value={username}
-            onChangeText={(text) => {
-              setUsername(text);
-              setErrors({ ...errors, username: '' });
-            }}
-            error={errors.username}
-            icon='person-outline'
-            autoCapitalize='none'
-            keyboardType='email-address'
-          />
-
-          <Input
-            label='Mật khẩu'
-            placeholder='Nhập mật khẩu'
-            value={password}
-            onChangeText={(text) => {
-              setPassword(text);
-              setErrors({ ...errors, password: '' });
-            }}
-            error={errors.password}
-            icon='lock-closed-outline'
-            isPassword
-          />
-
-          <Button
-            title='Đăng nhập'
-            onPress={handleLogin}
-            loading={loading}
-            style={styles.loginButton}
-          />
-
-          <View style={styles.registerContainer}>
-            <Text style={styles.registerText}>Chưa có tài khoản? </Text>
-            <Button
-              title='Đăng ký ngay'
-              onPress={() => router.push('/auth/register')}
-              variant='outline'
-              size='small'
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView
+          contentContainerStyle={styles.scrollContent}
+          keyboardShouldPersistTaps='handled'
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={styles.header}>
+            <Ionicons
+              name='cut-outline'
+              size={80}
+              color='#8B4513'
+              style={styles.icon}
             />
+            <Text style={styles.title}>Chào mừng trở lại!</Text>
+            <Text style={styles.subtitle}>Đăng nhập để tiếp tục</Text>
           </View>
-        </View>
-      </ScrollView>
+
+          <View style={styles.form}>
+            <Input
+              label='Số điện thoại hoặc Email'
+              placeholder='Nhập số điện thoại hoặc email'
+              value={username}
+              onChangeText={(text) => {
+                setUsername(text);
+                setErrors({ ...errors, username: '' });
+              }}
+              error={errors.username}
+              icon='person-outline'
+              autoCapitalize='none'
+              keyboardType='email-address'
+            />
+
+            <Input
+              label='Mật khẩu'
+              placeholder='Nhập mật khẩu'
+              value={password}
+              onChangeText={(text) => {
+                setPassword(text);
+                setErrors({ ...errors, password: '' });
+              }}
+              error={errors.password}
+              icon='lock-closed-outline'
+              isPassword
+            />
+
+            <Button
+              title='Đăng nhập'
+              onPress={handleLogin}
+              loading={loading}
+              style={styles.loginButton}
+            />
+
+            <View style={styles.registerContainer}>
+              <Text style={styles.registerText}>Chưa có tài khoản? </Text>
+              <Button
+                title='Đăng ký ngay'
+                onPress={() => router.push('/auth/register')}
+                variant='outline'
+                size='small'
+              />
+            </View>
+          </View>
+        </ScrollView>
+      </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
 }
@@ -142,10 +155,14 @@ const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
     padding: 24,
-    justifyContent: 'center',
+    paddingTop: 80,
   },
   header: {
     marginBottom: 40,
+    alignItems: 'center',
+  },
+  icon: {
+    marginBottom: 24,
   },
   title: {
     fontSize: 32,

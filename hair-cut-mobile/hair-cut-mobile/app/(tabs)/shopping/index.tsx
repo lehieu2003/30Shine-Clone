@@ -20,7 +20,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ShoppingScreen() {
   const { products, isLoading, refreshProducts } = useProduct();
-  const { addToCart } = useCart();
+  const { addToCart, getTotalItems } = useCart();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [refreshing, setRefreshing] = useState(false);
@@ -120,9 +120,18 @@ export default function ShoppingScreen() {
     <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Shopping</Text>
+        <Text style={styles.headerTitle}>Mua Sắm</Text>
         <TouchableOpacity onPress={() => router.push('/(tabs)/shopping/cart')}>
-          <Ionicons name='cart-outline' size={28} color='#000' />
+          <View>
+            <Ionicons name='cart-outline' size={28} color='#fff' />
+            {getTotalItems() > 0 && (
+              <View style={styles.cartBadge}>
+                <Text style={styles.cartBadgeText}>
+                  {getTotalItems() > 99 ? '99+' : getTotalItems()}
+                </Text>
+              </View>
+            )}
+          </View>
         </TouchableOpacity>
       </View>
 
@@ -207,13 +216,31 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#fff',
+    backgroundColor: '#8B4513',
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
   },
   headerTitle: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: '#fff',
+  },
+  cartBadge: {
+    position: 'absolute',
+    right: -6,
+    top: -3,
+    backgroundColor: '#FF3B30',
+    borderRadius: 10,
+    minWidth: 18,
+    height: 18,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 4,
+  },
+  cartBadgeText: {
+    color: '#fff',
+    fontSize: 10,
+    fontWeight: '600',
   },
   searchContainer: {
     flexDirection: 'row',
