@@ -13,6 +13,7 @@ import '../../screens/profile/profile_screen.dart';
 import '../../screens/shopping/shopping_screen.dart';
 import '../../screens/shopping/product_detail_screen.dart';
 import '../../screens/shopping/cart_screen.dart';
+import '../../screens/shopping/payment_screen.dart';
 import '../../screens/main_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -87,15 +88,19 @@ final routerProvider = Provider<GoRouter>((ref) {
         },
       ),
       GoRoute(
+        path: '/shopping/cart',
+        builder: (context, state) => const CartScreen(),
+      ),
+      GoRoute(
+        path: '/shopping/cart/payment',
+        builder: (context, state) => const PaymentScreen(),
+      ),
+      GoRoute(
         path: '/shopping/:id',
         builder: (context, state) {
           final id = state.pathParameters['id']!;
           return ProductDetailScreen(productId: id);
         },
-      ),
-      GoRoute(
-        path: '/shopping/cart',
-        builder: (context, state) => const CartScreen(),
       ),
     ],
   );

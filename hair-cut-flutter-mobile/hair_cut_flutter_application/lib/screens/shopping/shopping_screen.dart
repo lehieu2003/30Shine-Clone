@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/products/products_provider.dart';
+import '../../features/cart/cart_provider.dart';
 import '../../core/widgets/loading_widget.dart';
 import '../../core/widgets/empty_state_widget.dart';
 import '../../core/widgets/error_widget.dart' as custom;
@@ -39,14 +40,44 @@ class _ShoppingScreenState extends ConsumerState<ShoppingScreen> {
   @override
   Widget build(BuildContext context) {
     final productsState = ref.watch(productsProvider);
+    final cartState = ref.watch(cartProvider);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sản phẩm'),
         actions: [
-          IconButton(
-            onPressed: () => context.push('/shopping/cart'),
-            icon: const Icon(Icons.shopping_cart),
+          Stack(
+            children: [
+              IconButton(
+                onPressed: () => context.push('/shopping/cart'),
+                icon: const Icon(Icons.shopping_cart),
+              ),
+              if (cartState.totalItems > 0)
+                Positioned(
+                  right: 8,
+                  top: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: const BoxDecoration(
+                      color: Colors.red,
+                      shape: BoxShape.circle,
+                    ),
+                    constraints: const BoxConstraints(
+                      minWidth: 16,
+                      minHeight: 16,
+                    ),
+                    child: Text(
+                      cartState.totalItems.toString(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+            ],
           ),
         ],
       ),
@@ -108,101 +139,179 @@ class _ShoppingScreenState extends ConsumerState<ShoppingScreen> {
                       itemBuilder: (context, index) {
                         final product = productsState.products[index];
                         return Card(
-                          child: InkWell(
-                            onTap: () =>
-                                context.push('/shopping/${product.id}'),
-                            borderRadius: BorderRadius.circular(12),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  child: ClipRRect(
-                                    borderRadius: const BorderRadius.vertical(
-                                      top: Radius.circular(12),
-                                    ),
-                                    child: Image.network(
-                                      product.imageUrl ?? '',
-                                      width: double.infinity,
-                                      fit: BoxFit.cover,
-                                      errorBuilder:
-                                          (context, error, stackTrace) =>
-                                              Container(
-                                                color: Colors.grey[300],
-                                                child: const Icon(
-                                                  Icons.image,
-                                                  size: 48,
-                                                ),
-                                              ),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        product.name,
-                                        style: Theme.of(
-                                          context,
-                                        ).textTheme.titleSmall,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      const SizedBox(height: 4),
-                                      if (product.isDiscount) ...[
-                                        Text(
-                                          '${product.listedPrice}đ',
-                                          style: const TextStyle(
-                                            fontSize: 12,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                            color: Colors.grey,
-                                          ),
+                          child: Stack(
+                            children: [
+                              InkWell(
+                                onTap: () =>
+                                    context.push('/shopping/${product.id}'),
+                                borderRadius: BorderRadius.circular(12),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            const BorderRadius.vertical(
+                                              top: Radius.circular(12),
+                                            ),
+                                        child: Image.network(
+                                          product.imageUrl ?? '',
+                                          width: double.infinity,
+                                          fit: BoxFit.cover,
+                                          errorBuilder:
+                                              (context, error, stackTrace) =>
+                                                  Container(
+                                                    color: Colors.grey[300],
+                                                    child: const Icon(
+                                                      Icons.image,
+                                                      size: 48,
+                                                    ),
+                                                  ),
                                         ),
-                                        const SizedBox(height: 2),
-                                      ],
-                                      Row(
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            '${product.price}đ',
-                                            style: const TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color(0xFF8B4513),
-                                            ),
+                                            product.name,
+                                            style: Theme.of(
+                                              context,
+                                            ).textTheme.titleSmall,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
                                           ),
+                                          const SizedBox(height: 4),
                                           if (product.isDiscount) ...[
-                                            const SizedBox(width: 4),
-                                            Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                    horizontal: 4,
-                                                    vertical: 2,
-                                                  ),
-                                              decoration: BoxDecoration(
-                                                color: Colors.red,
-                                                borderRadius:
-                                                    BorderRadius.circular(4),
+                                            Text(
+                                              '${product.listedPrice}đ',
+                                              style: const TextStyle(
+                                                fontSize: 12,
+                                                decoration:
+                                                    TextDecoration.lineThrough,
+                                                color: Colors.grey,
                                               ),
-                                              child: Text(
-                                                '-${product.discountPercent}%',
+                                            ),
+                                            const SizedBox(height: 2),
+                                          ],
+                                          Row(
+                                            children: [
+                                              Text(
+                                                '${product.price}đ',
                                                 style: const TextStyle(
-                                                  fontSize: 10,
-                                                  color: Colors.white,
+                                                  fontSize: 16,
                                                   fontWeight: FontWeight.bold,
+                                                  color: Color(0xFF8B4513),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                              if (product.isDiscount) ...[
+                                                const SizedBox(width: 4),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.symmetric(
+                                                        horizontal: 4,
+                                                        vertical: 2,
+                                                      ),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.red,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          4,
+                                                        ),
+                                                  ),
+                                                  child: Text(
+                                                    '-${product.discountPercent}%',
+                                                    style: const TextStyle(
+                                                      fontSize: 10,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ],
+                                          ),
                                         ],
                                       ),
-                                    ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              // Add to Cart Button
+                              Positioned(
+                                right: 5,
+                                bottom: 2,
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: InkWell(
+                                    onTap: () {
+                                      if (product.isOutOfStock) {
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
+                                          const SnackBar(
+                                            content: Text('Sản phẩm hết hàng'),
+                                            duration: Duration(seconds: 1),
+                                          ),
+                                        );
+                                        return;
+                                      }
+
+                                      ref
+                                          .read(cartProvider.notifier)
+                                          .addToCart(
+                                            product: product,
+                                            quantity: 1,
+                                          );
+
+                                      ScaffoldMessenger.of(
+                                        context,
+                                      ).showSnackBar(
+                                        SnackBar(
+                                          content: const Text(
+                                            'Đã thêm vào giỏ hàng',
+                                          ),
+                                          duration: const Duration(seconds: 1),
+                                          action: SnackBarAction(
+                                            label: 'Xem',
+                                            onPressed: () =>
+                                                context.push('/shopping/cart'),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Container(
+                                      padding: const EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                        color: product.isOutOfStock
+                                            ? Colors.grey
+                                            : const Color(0xFF8B4513),
+                                        shape: BoxShape.circle,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.black.withOpacity(
+                                              0.2,
+                                            ),
+                                            blurRadius: 4,
+                                            offset: const Offset(0, 2),
+                                          ),
+                                        ],
+                                      ),
+                                      child: const Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                        size: 15,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         );
                       },

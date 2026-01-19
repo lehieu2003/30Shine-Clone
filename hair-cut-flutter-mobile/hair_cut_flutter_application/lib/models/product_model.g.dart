@@ -7,7 +7,7 @@ part of 'product_model.dart';
 // **************************************************************************
 
 ProductImage _$ProductImageFromJson(Map<String, dynamic> json) => ProductImage(
-  id: (json['id'] as num?)?.toInt() ?? 0,
+  id: intFromJson(json['id']),
   productId: json['productId'] as String,
   name: json['name'] as String,
   url: json['url'] as String,
@@ -25,16 +25,16 @@ Map<String, dynamic> _$ProductImageToJson(ProductImage instance) =>
 
 ProductVariant _$ProductVariantFromJson(Map<String, dynamic> json) =>
     ProductVariant(
-      id: (json['id'] as num?)?.toInt() ?? 0,
+      id: intFromJson(json['id']),
       productId: json['productId'] as String,
       name: json['name'] as String,
       price: json['price'] as String,
       listedPrice: json['listedPrice'] as String,
       sku: json['sku'] as String?,
       imageUrl: json['imageUrl'] as String?,
-      isDiscount: json['isDiscount'] as bool,
-      discountPercent: (json['discountPercent'] as num?)?.toInt() ?? 0,
-      isOutOfStock: json['isOutOfStock'] as bool,
+      isDiscount: boolFromJson(json['isDiscount']),
+      discountPercent: intFromJson(json['discountPercent']),
+      isOutOfStock: boolFromJson(json['isOutOfStock']),
     );
 
 Map<String, dynamic> _$ProductVariantToJson(ProductVariant instance) =>
@@ -66,27 +66,31 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
   price: json['price'] as String,
   listedPrice: json['listedPrice'] as String,
   cost: json['cost'] as String?,
-  discountPercent: (json['discountPercent'] as num?)?.toInt() ?? 0,
-  isDiscount: json['isDiscount'] as bool,
-  quantity: (json['quantity'] as num?)?.toInt() ?? 0,
-  minimumStock: (json['minimumStock'] as num?)?.toInt() ?? 0,
-  isOutOfStock: json['isOutOfStock'] as bool,
+  discountPercent: intFromJson(json['discountPercent']),
+  isDiscount: boolFromJson(json['isDiscount']),
+  quantity: intFromJson(json['quantity']),
+  minimumStock: intFromJson(json['minimumStock']),
+  isOutOfStock: boolFromJson(json['isOutOfStock']),
   imageUrl: json['imageUrl'] as String?,
   sku: json['sku'] as String?,
   tags: json['tags'] as String?,
   ingredients: json['ingredients'] as String?,
   manual: json['manual'] as String?,
-  ratingScore: json['ratingScore'] as num? ?? 0,
-  totalSold: (json['totalSold'] as num?)?.toInt() ?? 0,
-  isActive: json['isActive'] as bool,
+  ratingScore: numFromJson(json['ratingScore']),
+  totalSold: intFromJson(json['totalSold']),
+  isActive: boolFromJson(json['isActive']),
   createdAt: json['createdAt'] as String,
   updatedAt: json['updatedAt'] as String?,
-  images: (json['images'] as List<dynamic>)
-      .map((e) => ProductImage.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  variants: (json['variants'] as List<dynamic>)
-      .map((e) => ProductVariant.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  images:
+      (json['images'] as List<dynamic>?)
+          ?.map((e) => ProductImage.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      [],
+  variants:
+      (json['variants'] as List<dynamic>?)
+          ?.map((e) => ProductVariant.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      [],
 );
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{

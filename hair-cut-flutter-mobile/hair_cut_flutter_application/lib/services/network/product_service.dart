@@ -34,16 +34,13 @@ class ProductService {
         'data': (response.data['data'] as List).map((json) {
           try {
             return Product.fromJson(json);
-          } catch (e, stackTrace) {
-            print('❌ Error parsing product: $e');
-            print('📦 Product JSON: $json');
-            print('🔍 Stack trace: $stackTrace');
+          } catch (e) {
             rethrow;
           }
         }).toList(),
-        'total': response.data['total'],
-        'page': response.data['page'],
-        'size': response.data['size'],
+        'total': response.data['meta']['total'],
+        'page': page,
+        'size': size,
       };
     } catch (e) {
       rethrow;

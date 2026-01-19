@@ -1,10 +1,14 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:hair_cut_flutter_application/core/utils/helpers.dart';
 
 part 'product_model.g.dart';
 
+/// =======================
+///  ProductImage
+/// =======================
 @JsonSerializable()
 class ProductImage {
-  @JsonKey(defaultValue: 0)
+  @JsonKey(fromJson: intFromJson)
   final int id;
 
   final String productId;
@@ -30,7 +34,7 @@ class ProductImage {
 /// =======================
 @JsonSerializable()
 class ProductVariant {
-  @JsonKey(defaultValue: 0)
+  @JsonKey(fromJson: intFromJson)
   final int id;
 
   final String productId;
@@ -42,11 +46,13 @@ class ProductVariant {
   final String? sku;
   final String? imageUrl;
 
+  @JsonKey(fromJson: boolFromJson)
   final bool isDiscount;
 
-  @JsonKey(defaultValue: 0)
+  @JsonKey(fromJson: intFromJson)
   final int discountPercent;
 
+  @JsonKey(fromJson: boolFromJson)
   final bool isOutOfStock;
 
   ProductVariant({
@@ -85,24 +91,23 @@ class Product {
   final String? subcategory;
   final String? subcategorySlug;
 
-  // JSON là string "880000"
   final String price;
   final String listedPrice;
   final String? cost;
 
-  // JSON: "discountPercent": 0 (số)
-  @JsonKey(defaultValue: 0)
+  @JsonKey(fromJson: intFromJson)
   final int discountPercent;
 
+  @JsonKey(fromJson: boolFromJson)
   final bool isDiscount;
 
-  // Nếu backend lỡ trả null → tự về 0, tránh lỗi Null cast
-  @JsonKey(defaultValue: 0)
+  @JsonKey(fromJson: intFromJson)
   final int quantity;
 
-  @JsonKey(defaultValue: 0)
+  @JsonKey(fromJson: intFromJson)
   final int minimumStock;
 
+  @JsonKey(fromJson: boolFromJson)
   final bool isOutOfStock;
 
   final String? imageUrl;
@@ -111,17 +116,22 @@ class Product {
   final String? ingredients;
   final String? manual;
 
-  @JsonKey(defaultValue: 0)
+  @JsonKey(fromJson: numFromJson)
   final num ratingScore;
 
-  @JsonKey(defaultValue: 0)
+  @JsonKey(fromJson: intFromJson)
   final int totalSold;
 
+  @JsonKey(fromJson: boolFromJson)
   final bool isActive;
+
   final String createdAt;
   final String? updatedAt;
 
+  @JsonKey(defaultValue: [])
   final List<ProductImage> images;
+
+  @JsonKey(defaultValue: [])
   final List<ProductVariant> variants;
 
   Product({

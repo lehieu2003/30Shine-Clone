@@ -1,153 +1,165 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/cart_model.dart';
-import '../../services/network/cart_service.dart';
-import '../auth/auth_provider.dart';
+import '../../models/product_model.dart';
 
-final cartServiceProvider = Provider<CartService>((ref) => CartService());
+class LocalCartItem {
+  final String id;
+  final Product product;
+  final ProductVariant? variant;
+  final int quantity;
+  final String price;
+
+  LocalCartItem({
+    required this.id,
+    required this.product,
+    this.variant,
+    required this.quantity,
+    required this.price,
+  });
+
+  LocalCartItem copyWith({
+    String? id,
+    Product? product,
+    ProductVariant? variant,
+    int? quantity,
+    String? price,
+  }) {
+    return LocalCartItem(
+      id: id ?? this.id,
+      product: product ?? this.product,
+      variant: variant ?? this.variant,
+      quantity: quantity ?? this.quantity,
+      price: price ?? this.price,
+    );
+  }
+
+  double get totalPrice {
+    return double.parse(price) * quantity;
+  }
+}
 
 class CartState {
-  final Cart? cart;
+  final List<LocalCartItem> items;
   final bool isLoading;
   final String? error;
 
-  CartState({this.cart, this.isLoading = false, this.error});
+  CartState({this.items = const [], this.isLoading = false, this.error});
 
-  CartState copyWith({Cart? cart, bool? isLoading, String? error}) {
+  CartState copyWith({
+    List<LocalCartItem>? items,
+    bool? isLoading,
+    String? error,
+  }) {
     return CartState(
-      cart: cart ?? this.cart,
+      items: items ?? this.items,
       isLoading: isLoading ?? this.isLoading,
       error: error,
     );
+  }
+
+  int get totalItems {
+    return items.fold(0, (sum, item) => sum + item.quantity);
+  }
+
+  double get totalPrice {
+    return items.fold(0.0, (sum, item) => sum + item.totalPrice);
   }
 }
 
 class CartNotifier extends Notifier<CartState> {
   @override
   CartState build() {
-    _init();
     return CartState();
   }
 
-  Future<void> _init() async {
-    final isAuth = ref.read(authProvider).isAuth;
-    if (!isAuth) {
-      state = state.copyWith(isLoading: false);
+  void addToCart({
+    required Product product,
+    ProductVariant? variant,
+    int quantity = 1,
+  }) {
+    final items = List<LocalCartItem>.from(state.items);
+
+    // Check if item already exists in cart
+    final existingIndex = items.indexWhere(
+      (item) =>
+          item.product.id == product.id && item.variant?.id == variant?.id,
+    );
+
+    if (existingIndex >= 0) {
+      // Update quantity of existing item
+      final existingItem = items[existingIndex];
+      items[existingIndex] = existingItem.copyWith(
+        quantity: existingItem.quantity + quantity,
+      );
+    } else {
+      // Add new item
+      final price = variant?.price ?? product.price;
+      final newItem = LocalCartItem(
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
+        product: product,
+        variant: variant,
+        quantity: quantity,
+        price: price,
+      );
+      items.add(newItem);
+    }
+
+    state = state.copyWith(items: items);
+  }
+
+  void updateQuantity(String itemId, int quantity) {
+    if (quantity <= 0) {
+      removeFromCart(itemId);
       return;
     }
 
-    await fetchCart();
-  }
+    final items = List<LocalCartItem>.from(state.items);
+    final index = items.indexWhere((item) => item.id == itemId);
 
-  Future<void> fetchCart() async {
-    final isAuth = ref.read(authProvider).isAuth;
-    if (!isAuth) {
-      state = state.copyWith(cart: null, isLoading: false);
-      return;
-    }
-
-    try {
-      state = state.copyWith(isLoading: true, error: null);
-      final cartService = ref.read(cartServiceProvider);
-      final cart = await cartService.getCart();
-      state = state.copyWith(cart: cart, isLoading: false);
-    } catch (e) {
-      state = state.copyWith(error: e.toString(), isLoading: false);
+    if (index >= 0) {
+      items[index] = items[index].copyWith(quantity: quantity);
+      state = state.copyWith(items: items);
     }
   }
 
-  Future<void> addToCart(String productId, int quantity) async {
-    final isAuth = ref.read(authProvider).isAuth;
-    if (!isAuth) return;
-
-    try {
-      final cartService = ref.read(cartServiceProvider);
-      final cart = await cartService.addToCart(productId, quantity);
-      state = state.copyWith(cart: cart);
-    } catch (e) {
-      state = state.copyWith(error: e.toString());
-      rethrow;
-    }
+  void removeFromCart(String itemId) {
+    final items = state.items.where((item) => item.id != itemId).toList();
+    state = state.copyWith(items: items);
   }
 
-  Future<void> updateCartItem(String productId, int quantity) async {
-    final isAuth = ref.read(authProvider).isAuth;
-    if (!isAuth || state.cart == null) return;
+  void clearCart() {
+    state = state.copyWith(items: []);
+  }
 
-    // Optimistic update
-    final updatedItems = state.cart!.items.map((item) {
-      if (item.id == productId) {
-        return CartItem(
-          id: item.id,
-          cartId: item.cartId,
-          productId: item.productId,
-          quantity: quantity,
-          product: item.product,
-          createdAt: item.createdAt,
-          updatedAt: item.updatedAt,
-        );
+  void increaseQuantity(String itemId) {
+    final items = List<LocalCartItem>.from(state.items);
+    final index = items.indexWhere((item) => item.id == itemId);
+
+    if (index >= 0) {
+      final item = items[index];
+      final maxQuantity = item.product.quantity;
+
+      if (item.quantity < maxQuantity) {
+        items[index] = item.copyWith(quantity: item.quantity + 1);
+        state = state.copyWith(items: items);
       }
-      return item;
-    }).toList();
-
-    final updatedCart = Cart(
-      id: state.cart!.id,
-      userId: state.cart!.userId,
-      items: updatedItems,
-      createdAt: state.cart!.createdAt,
-      updatedAt: state.cart!.updatedAt,
-    );
-
-    state = state.copyWith(cart: updatedCart);
-
-    try {
-      final cartService = ref.read(cartServiceProvider);
-      await cartService.updateCartItem(productId, quantity);
-    } catch (e) {
-      // Revert on error
-      await fetchCart();
-      rethrow;
     }
   }
 
-  Future<void> removeFromCart(String productId) async {
-    final isAuth = ref.read(authProvider).isAuth;
-    if (!isAuth || state.cart == null) return;
+  void decreaseQuantity(String itemId) {
+    final items = List<LocalCartItem>.from(state.items);
+    final index = items.indexWhere((item) => item.id == itemId);
 
-    final updatedItems = state.cart!.items
-        .where((item) => item.id != productId)
-        .toList();
+    if (index >= 0) {
+      final item = items[index];
 
-    final updatedCart = Cart(
-      id: state.cart!.id,
-      userId: state.cart!.userId,
-      items: updatedItems,
-      createdAt: state.cart!.createdAt,
-      updatedAt: state.cart!.updatedAt,
-    );
-
-    state = state.copyWith(cart: updatedCart);
-  }
-
-  Future<void> clearCart() async {
-    final isAuth = ref.read(authProvider).isAuth;
-    if (!isAuth || state.cart == null) return;
-
-    try {
-      for (var item in state.cart!.items) {
-        await removeFromCart(item.productId);
+      if (item.quantity > 1) {
+        items[index] = item.copyWith(quantity: item.quantity - 1);
+        state = state.copyWith(items: items);
+      } else {
+        removeFromCart(itemId);
       }
-      await fetchCart();
-    } catch (e) {
-      rethrow;
     }
-  }
-
-  double getTotalPrice() {
-    return state.cart?.totalPrice ?? 0;
-  }
-
-  int getTotalItems() {
-    return state.cart?.totalItems ?? 0;
   }
 }
 
